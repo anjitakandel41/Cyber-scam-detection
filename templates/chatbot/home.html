@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}Phishing Awareness Chatbot{% endblock %}
+
+{% block content %}
+<section class="panel">
+    <h1>Phishing awareness chatbot</h1>
+    <p>Ask about phishing emails, suspicious links, QR codes, SMS scams, passwords, OTPs, and reporting steps.</p>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Send</button>
+    </form>
+
+    <div class="result">
+        {% for chat in conversations %}
+            <article>
+                <h2>You</h2>
+                <p>{{ chat.message }}</p>
+                <h2>Chatbot</h2>
+                <p>{{ chat.response }}</p>
+            </article>
+        {% empty %}
+            <article>
+                <h2>Try asking</h2>
+                <ul class="reason-list">
+                    <li>How do I identify a phishing email?</li>
+                    <li>Is a QR code risky?</li>
+                    <li>What should I do with a high risk scan?</li>
+                    <li>Should I share my OTP?</li>
+                </ul>
+            </article>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

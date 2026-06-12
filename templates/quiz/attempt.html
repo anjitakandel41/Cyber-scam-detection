@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Attempt Quiz{% endblock %}
+
+{% block content %}
+<section class="panel">
+    <h1>Attempt quiz</h1>
+    <form method="post">
+        {% csrf_token %}
+        {% for field in form %}
+            <fieldset>
+                <legend>{{ forloop.counter }}. {{ field.label }}</legend>
+                {{ field.errors }}
+                {{ field }}
+            </fieldset>
+        {% endfor %}
+        <button type="submit">Submit quiz</button>
+    </form>
+</section>
+{% endblock %}

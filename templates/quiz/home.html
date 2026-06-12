@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Cybersecurity Quiz{% endblock %}
+
+{% block content %}
+<section class="panel">
+    <h1>Cybersecurity quiz</h1>
+    <p>Test your phishing awareness and review your latest score.</p>
+
+    <div class="stats-grid" style="margin: 20px 0;">
+        <article class="stat-card">
+            <span>Available Questions</span>
+            <strong>{{ total_questions }}</strong>
+            <small>Active questions</small>
+        </article>
+        <article class="stat-card">
+            <span>Latest Score</span>
+            <strong>{% if latest_attempt %}{{ latest_attempt.score }}/{{ latest_attempt.total_questions }}{% else %}-{% endif %}</strong>
+            <small>{% if latest_attempt %}{{ latest_attempt.percentage }}%{% else %}No attempts yet{% endif %}</small>
+        </article>
+    </div>
+
+    {% if total_questions %}
+        <a class="button" href="{% url 'quiz:attempt' %}">Attempt quiz</a>
+        {% if latest_attempt %}
+            <a class="button" href="{% url 'quiz:result' latest_attempt.pk %}">View latest score</a>
+        {% endif %}
+    {% else %}
+        <p>No quiz questions are available yet.</p>
+    {% endif %}
+</section>
+{% endblock %}

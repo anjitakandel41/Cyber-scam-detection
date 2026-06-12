@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Django App{% endblock %}</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; background: #f5f7fb; color: #1f2937; }
+        header { background: #ffffff; border-bottom: 1px solid #e5e7eb; padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; }
+        main { max-width: 720px; margin: 48px auto; padding: 0 24px; }
+        .panel { background: #ffffff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 24px; }
+        form { display: grid; gap: 14px; }
+        input { width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; box-sizing: border-box; }
+        button, .button { background: #0f766e; color: #ffffff; border: 0; border-radius: 6px; padding: 10px 14px; text-decoration: none; cursor: pointer; display: inline-block; }
+        a { color: #0f766e; }
+        .messages { list-style: none; padding: 0; display: grid; gap: 8px; }
+        .messages li { background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 6px; padding: 10px; }
+        .errorlist { color: #b91c1c; margin: 0; }
+        .dashboard { display: grid; gap: 24px; }
+        .dashboard-header { display: flex; justify-content: space-between; gap: 16px; align-items: end; }
+        .dashboard-header h1 { margin: 0 0 6px; }
+        .dashboard-header p { margin: 0; color: #64748b; }
+        .stats-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+        .stat-card { background: #ffffff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 18px; }
+        .stat-card span { color: #64748b; display: block; font-size: 14px; margin-bottom: 10px; }
+        .stat-card strong { color: #111827; display: block; font-size: 30px; line-height: 1; }
+        .stat-card small { color: #64748b; display: block; margin-top: 10px; }
+        .charts-grid { display: grid; grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr); gap: 16px; }
+        .chart-panel { background: #ffffff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 20px; min-height: 320px; }
+        .chart-panel h2 { font-size: 18px; margin: 0 0 18px; }
+        .chart-panel canvas { max-height: 250px; }
+        .tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; }
+        .tab { border: 1px solid #cbd5e1; border-radius: 6px; padding: 9px 12px; text-decoration: none; }
+        .tab.active { background: #0f766e; color: #ffffff; border-color: #0f766e; }
+        .result { display: grid; gap: 16px; margin-top: 20px; }
+        .score-card { border-radius: 8px; color: #ffffff; padding: 22px; }
+        .score-card.low { background: #0f766e; }
+        .score-card.medium { background: #ca8a04; }
+        .score-card.high { background: #b91c1c; }
+        .score-card strong { display: block; font-size: 42px; line-height: 1; margin-top: 8px; }
+        .reason-list { margin: 0; padding-left: 20px; }
+        @media (max-width: 900px) {
+            main { margin: 32px auto; }
+            .dashboard-header { align-items: start; flex-direction: column; }
+            .stats-grid, .charts-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+    <header>
+        <strong>Django App</strong>
+        <nav>
+            {% if request.user.is_authenticated %}
+                <a href="{% url 'scanner:home' %}">Scanner</a>
+                <a href="{% url 'quiz:home' %}">Quiz</a>
+                <a href="{% url 'chatbot:home' %}">Chatbot</a>
+                <form method="post" action="{% url 'users:logout' %}" style="display:inline">
+                    {% csrf_token %}
+                    <button type="submit">Logout</button>
+                </form>
+            {% else %}
+                <a href="{% url 'users:login' %}">Login</a>
+                <a href="{% url 'users:register' %}">Register</a>
+            {% endif %}
+        </nav>
+    </header>
+    <main>
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        {% block content %}{% endblock %}
+    </main>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

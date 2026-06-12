@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+<section class="dashboard">
+    <div class="dashboard-header">
+        <div>
+            <h1>Admin dashboard</h1>
+            <p>Monitor users, scans, high-risk activity, alerts, quiz usage, and chatbot engagement.</p>
+        </div>
+    </div>
+
+    <div class="stats-grid">
+        {% for stat in stats %}
+            <article class="stat-card">
+                <span>{{ stat.label }}</span>
+                <strong>{{ stat.value }}</strong>
+                <small>{{ stat.note }}</small>
+            </article>
+        {% endfor %}
+    </div>
+
+    <div class="charts-grid">
+        <article class="chart-panel">
+            <h2>New registrations</h2>
+            <canvas id="registrationChart"></canvas>
+        </article>
+        <article class="chart-panel">
+            <h2>Scan activity</h2>
+            <canvas id="scanChart"></canvas>
+        </article>
+    </div>
+
+    <div class="charts-grid">
+        <article class="chart-panel">
+            <h2>Role distribution</h2>
+            <canvas id="roleChart"></canvas>
+        </article>
+        <article class="chart-panel">
+            <h2>Risk distribution</h2>
+            <canvas id="riskChart"></canvas>
+        </article>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+{{ registration_chart|json_script:"registration-chart-data" }}
+{{ scan_chart|json_script:"scan-chart-data" }}
+{{ role_chart|json_script:"role-chart-data" }}
+{{ risk_chart|json_script:"risk-chart-data" }}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const registrationData = JSON.parse(document.getElementById('registration-chart-data').textContent);
+    const scanData = JSON.parse(document.getElementById('scan-chart-data').textContent);
+    const roleData = JSON.parse(document.getElementById('role-chart-data').textContent);
+    const riskData = JSON.parse(document.getElementById('risk-chart-data').textContent);
+
+    new Chart(document.getElementById('registrationChart'), {
+        type: 'line',
+        data: {
+            labels: registrationData.labels,
+            datasets: [{
+                label: 'Users',
+                data: registrationData.values,
+                borderColor: '#0f766e',
+                backgroundColor: 'rgba(15, 118, 110, 0.14)',
+                fill: true,
+                tension: 0.35
+            }]
+        },
+        options: { responsive: true, maintainAspectRatio: false }
+    });
+
+    new Chart(document.getElementById('scanChart'), {
+        type: 'bar',
+        data: {
+            labels: scanData.labels,
+            datasets: [{
+                label: 'Scans',
+                data: scanData.values,
+                backgroundColor: '#2563eb',
+                borderRadius: 6
+            }]
+        },
+        options: { responsive: true, maintainAspectRatio: false }
+    });
+
+    new Chart(document.getElementById('roleChart'), {
+        type: 'doughnut',
+        data: {
+            labels: roleData.labels,
+            datasets: [{
+                data: roleData.values,
+                backgroundColor: ['#0f766e', '#2563eb']
+            }]
+        },
+        options: { responsive: true, maintainAspectRatio: false }
+    });
+
+    new Chart(document.getElementById('riskChart'), {
+        type: 'doughnut',
+        data: {
+            labels: riskData.labels,
+            datasets: [{
+                data: riskData.values,
+                backgroundColor: ['#0f766e', '#ca8a04', '#b91c1c']
+            }]
+        },
+        options: { responsive: true, maintainAspectRatio: false }
+    });
+</script>
+{% endblock %}

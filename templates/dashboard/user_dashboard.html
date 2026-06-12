@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+
+{% block title %}User Dashboard{% endblock %}
+
+{% block content %}
+<section class="dashboard">
+    <div class="dashboard-header">
+        <div>
+            <h1>User dashboard</h1>
+            <p>Welcome back, {{ request.user.username }}. Track scans, alerts, reports, quiz progress, and awareness support.</p>
+        </div>
+    </div>
+
+    <div class="stats-grid">
+        {% for stat in stats %}
+            <article class="stat-card">
+                <span>{{ stat.label }}</span>
+                <strong>{{ stat.value }}</strong>
+                <small>{{ stat.note }}</small>
+            </article>
+        {% endfor %}
+    </div>
+
+    <div class="charts-grid">
+        <article class="chart-panel">
+            <h2>Weekly activity</h2>
+            <canvas id="activityChart"></canvas>
+        </article>
+        <article class="chart-panel">
+            <h2>Module usage</h2>
+            <canvas id="moduleChart"></canvas>
+        </article>
+    </div>
+
+    <div class="charts-grid">
+        <article class="chart-panel">
+            <h2>Risk distribution</h2>
+            <canvas id="riskChart"></canvas>
+        </article>
+        <article class="chart-panel">
+            <h2>Quick actions</h2>
+            <p>{{ question_count }} active quiz question{{ question_count|pluralize }} available.</p>
+            <p>{% if latest_attempt %}Latest quiz score: {{ latest_attempt.percentage }}%.{% else %}No quiz attempts yet.{% endif %}</p>
+            <a class="button" href="{% url 'scanner:home' %}">Run scan</a>
+            <a class="button" href="{% url 'quiz:home' %}">Open quiz</a>
+            <a class="button" href="{% url 'chatbot:home' %}">Ask chatbot</a>
+        </article>
+    </div>
+
+    <div class="charts-grid">
+        <article class="chart-panel">
+            <h2>Recent scans</h2>
+            {% for scan in recent_scans %}
+                <p>{{ scan.classification }} - {{ scan.risk_score }}% - {{ scan.timestamp }}</p>
+            {% empty %}
+                <p>No scans yet.</p>
+            {% endfor %}
+        </article>
+        <article class="chart-panel">
+            <h2>Recent alerts</h2>
+            {% for alert in recent_alerts %}
+                <p>{{ alert.status|title }} - {{ alert.sent_at }}</p>
+            {% empty %}
+                <p>No alerts yet.</p>
+            {% endfor %}
+        </article>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+{{ activity_chart|json_script:"activity-chart-data" }}
+{{ module_chart|json_script:"module-chart-data" }}
+{{ risk_chart|json_script:"risk-chart-data" }}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const activityData = JSON.parse(document.getElementById('activity-chart-data').textContent);
+    const moduleData = JSON.parse(document.getElementById('module-chart-data').textContent);
+    const riskData = JSON.parse(document.getElementById('risk-chart-data').textContent);
+
+    new Chart(document.getElementById('activityChart'), {
+        type: 'bar',
+        data: {
+            labels: activityData.labels,
+            datasets: [{
+                label: 'Actions',
+                data: activityData.values,
+                backgroundColor: '#0f766e',
+                borderRadius: 6
+            }]
+        },
+        options: { responsive: true, maintainAspectRatio: false }
+    });
+
+    new Chart(document.getElementById('moduleChart'), {
+        type: 'radar',
+        data: {
+            labels: moduleData.labels,
+            datasets: [{
+                label: 'Usage',
+                data: moduleData.values,
+                borderColor: '#2563eb',
+                backgroundColor: 'rgba(37, 99, 235, 0.16)',
+                pointBackgroundColor: '#2563eb'
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: { r: { beginAtZero: true } }
+        }
+    });
+
+    new Chart(document.getElementById('riskChart'), {
+        type: 'doughnut',
+        data: {
+            labels: riskData.labels,
+            datasets: [{
+                data: riskData.values,
+                backgroundColor: ['#0f766e', '#ca8a04', '#b91c1c']
+            }]
+        },
+        options: { responsive: true, maintainAspectRatio: false }
+    });
+</script>
+{% endblock %}

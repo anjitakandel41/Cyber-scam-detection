@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ config.title }}{% endblock %}
+
+{% block content %}
+<section class="panel">
+    <div class="tabs">
+        <a class="tab {% if scan_type == 'url' %}active{% endif %}" href="{% url 'scanner:url_scan' %}">URL Scan</a>
+        <a class="tab {% if scan_type == 'email' %}active{% endif %}" href="{% url 'scanner:email_scan' %}">Email Scan</a>
+        <a class="tab {% if scan_type == 'sms' %}active{% endif %}" href="{% url 'scanner:sms_scan' %}">SMS Scan</a>
+        <a class="tab {% if scan_type == 'qr' %}active{% endif %}" href="{% url 'scanner:qr_upload' %}">QR Upload</a>
+    </div>
+
+    <h1>{{ config.title }}</h1>
+    <p>{{ config.description }}</p>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Scan</button>
+    </form>
+
+    {% if result %}
+        <div class="result">
+            <article class="score-card {% if result.risk_score >= 70 %}high{% elif result.risk_score >= 40 %}medium{% else %}low{% endif %}">
+                <span>{{ result.label }}</span>
+                <strong>{{ result.risk_score }}%</strong>
+                <small>{{ result.scan_type }} phishing risk score</small>
+            </article>
+
+            <article>
+                <h2>Explanation</h2>
+                <ul class="reason-list">
+                    {% for reason in result.explanation %}
+                        <li>{{ reason }}</li>
+                    {% endfor %}
+                </ul>
+            </article>
+
+            <article>
+                <h2>Recommendation</h2>
+                <p>{{ result.recommendation }}</p>
+                {% if result.report_url %}
+                    <a class="button" href="{{ result.report_url }}" target="_blank" rel="noopener">Download PDF report</a>
+                {% endif %}
+            </article>
+        </div>
+    {% endif %}
+</section>
+{% endblock %}
