@@ -3,35 +3,53 @@
 {% block title %}Phishing Awareness Chatbot{% endblock %}
 
 {% block content %}
-<section class="panel">
-    <h1>Phishing awareness chatbot</h1>
-    <p>Ask about phishing emails, suspicious links, QR codes, SMS scams, passwords, OTPs, and reporting steps.</p>
+<div class="content-container">
+    <section class="panel mb-4">
+        <div class="row g-4">
+            <div class="col-lg-5">
+                <span class="section-kicker">Guided support</span>
+                <h1 class="fw-bold mt-2">Phishing awareness chatbot</h1>
+                <p class="text-muted-soft">Ask about phishing emails, suspicious links, QR codes, SMS scams, passwords, OTPs, and reporting steps.</p>
+                <div class="activity-list">
+                    <div class="activity-item">How do I identify a phishing email?</div>
+                    <div class="activity-item">What should I do with a high-risk scan?</div>
+                    <div class="activity-item">Should I share my OTP?</div>
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <form method="post" class="d-grid gap-3">
+                    {% csrf_token %}
+                    {% for field in form %}
+                        <div>
+                            <label class="form-label fw-semibold" for="{{ field.id_for_label }}">{{ field.label }}</label>
+                            {{ field }}
+                            {% if field.errors %}<div class="text-danger small mt-1">{{ field.errors }}</div>{% endif %}
+                        </div>
+                    {% endfor %}
+                    <button class="btn btn-cyber btn-lg" type="submit"><i class="bi bi-send me-2"></i>Send</button>
+                </form>
+            </div>
+        </div>
+    </section>
 
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Send</button>
-    </form>
-
-    <div class="result">
+    <section class="activity-list">
         {% for chat in conversations %}
-            <article>
-                <h2>You</h2>
-                <p>{{ chat.message }}</p>
-                <h2>Chatbot</h2>
-                <p>{{ chat.response }}</p>
+            <article class="activity-item">
+                <div class="mb-3">
+                    <span class="section-kicker">You</span>
+                    <p class="mb-0">{{ chat.message }}</p>
+                </div>
+                <div>
+                    <span class="section-kicker">Chatbot</span>
+                    <p class="mb-0 text-muted-soft">{{ chat.response }}</p>
+                </div>
             </article>
         {% empty %}
-            <article>
-                <h2>Try asking</h2>
-                <ul class="reason-list">
-                    <li>How do I identify a phishing email?</li>
-                    <li>Is a QR code risky?</li>
-                    <li>What should I do with a high risk scan?</li>
-                    <li>Should I share my OTP?</li>
-                </ul>
+            <article class="result-panel p-4">
+                <h2 class="h5 fw-bold">Start a conversation</h2>
+                <p class="text-muted-soft mb-0">Ask a phishing awareness question to get practical guidance.</p>
             </article>
         {% endfor %}
-    </div>
-</section>
+    </section>
+</div>
 {% endblock %}

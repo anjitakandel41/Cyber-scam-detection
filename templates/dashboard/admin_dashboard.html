@@ -3,46 +3,60 @@
 {% block title %}Admin Dashboard{% endblock %}
 
 {% block content %}
-<section class="dashboard">
-    <div class="dashboard-header">
+<div class="content-container">
+    <section class="dashboard-header">
         <div>
-            <h1>Admin dashboard</h1>
-            <p>Monitor users, scans, high-risk activity, alerts, quiz usage, and chatbot engagement.</p>
+            <span class="section-kicker">Command center</span>
+            <h1 class="fw-bold mt-2 mb-1">Admin dashboard</h1>
+            <p class="text-muted-soft mb-0">Monitor users, scans, high-risk activity, alerts, quiz usage, and chatbot engagement.</p>
         </div>
-    </div>
+        <a class="btn btn-cyber" href="{% url 'scanner:home' %}"><i class="bi bi-search me-2"></i>Run scan</a>
+    </section>
 
-    <div class="stats-grid">
+    <section class="metric-grid mb-4">
         {% for stat in stats %}
-            <article class="stat-card">
+            <article class="metric-card">
                 <span>{{ stat.label }}</span>
                 <strong>{{ stat.value }}</strong>
                 <small>{{ stat.note }}</small>
             </article>
         {% endfor %}
-    </div>
+    </section>
 
-    <div class="charts-grid">
+    <section class="analytics-grid mb-3">
         <article class="chart-panel">
-            <h2>New registrations</h2>
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h2 class="h5 fw-bold mb-0">New registrations</h2>
+                <span class="badge text-bg-light">7 days</span>
+            </div>
             <canvas id="registrationChart"></canvas>
         </article>
         <article class="chart-panel">
-            <h2>Scan activity</h2>
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h2 class="h5 fw-bold mb-0">Scan activity</h2>
+                <span class="badge text-bg-light">Volume</span>
+            </div>
             <canvas id="scanChart"></canvas>
         </article>
-    </div>
+    </section>
 
-    <div class="charts-grid">
+    <section class="analytics-grid">
         <article class="chart-panel">
-            <h2>Role distribution</h2>
-            <canvas id="roleChart"></canvas>
-        </article>
-        <article class="chart-panel">
-            <h2>Risk distribution</h2>
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h2 class="h5 fw-bold mb-0">Risk distribution</h2>
+                <span class="badge text-bg-light">All scans</span>
+            </div>
             <canvas id="riskChart"></canvas>
         </article>
-    </div>
-</section>
+        <article class="chart-panel">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h2 class="h5 fw-bold mb-0">Role distribution</h2>
+                <span class="badge text-bg-light">Accounts</span>
+            </div>
+            <canvas id="roleChart"></canvas>
+        </article>
+    </section>
+</div>
 {% endblock %}
 
 {% block scripts %}
@@ -56,6 +70,7 @@
     const scanData = JSON.parse(document.getElementById('scan-chart-data').textContent);
     const roleData = JSON.parse(document.getElementById('role-chart-data').textContent);
     const riskData = JSON.parse(document.getElementById('risk-chart-data').textContent);
+    const gridColor = 'rgba(102, 117, 140, 0.18)';
 
     new Chart(document.getElementById('registrationChart'), {
         type: 'line',
@@ -64,51 +79,41 @@
             datasets: [{
                 label: 'Users',
                 data: registrationData.values,
-                borderColor: '#0f766e',
-                backgroundColor: 'rgba(15, 118, 110, 0.14)',
+                borderColor: '#0b746d',
+                backgroundColor: 'rgba(24, 214, 195, 0.16)',
                 fill: true,
-                tension: 0.35
+                tension: 0.35,
+                pointRadius: 4
             }]
         },
-        options: { responsive: true, maintainAspectRatio: false }
+        options: { responsive: true, maintainAspectRatio: false, scales: { y: { beginAtZero: true, grid: { color: gridColor } }, x: { grid: { display: false } } } }
     });
 
     new Chart(document.getElementById('scanChart'), {
         type: 'bar',
         data: {
             labels: scanData.labels,
-            datasets: [{
-                label: 'Scans',
-                data: scanData.values,
-                backgroundColor: '#2563eb',
-                borderRadius: 6
-            }]
+            datasets: [{ label: 'Scans', data: scanData.values, backgroundColor: '#5b8def', borderRadius: 6 }]
         },
-        options: { responsive: true, maintainAspectRatio: false }
-    });
-
-    new Chart(document.getElementById('roleChart'), {
-        type: 'doughnut',
-        data: {
-            labels: roleData.labels,
-            datasets: [{
-                data: roleData.values,
-                backgroundColor: ['#0f766e', '#2563eb']
-            }]
-        },
-        options: { responsive: true, maintainAspectRatio: false }
+        options: { responsive: true, maintainAspectRatio: false, scales: { y: { beginAtZero: true, grid: { color: gridColor } }, x: { grid: { display: false } } } }
     });
 
     new Chart(document.getElementById('riskChart'), {
         type: 'doughnut',
         data: {
             labels: riskData.labels,
-            datasets: [{
-                data: riskData.values,
-                backgroundColor: ['#0f766e', '#ca8a04', '#b91c1c']
-            }]
+            datasets: [{ data: riskData.values, backgroundColor: ['#18b26b', '#f2b84b', '#ef5b6b'], borderWidth: 0 }]
         },
-        options: { responsive: true, maintainAspectRatio: false }
+        options: { responsive: true, maintainAspectRatio: false, cutout: '68%' }
+    });
+
+    new Chart(document.getElementById('roleChart'), {
+        type: 'doughnut',
+        data: {
+            labels: roleData.labels,
+            datasets: [{ data: roleData.values, backgroundColor: ['#0b746d', '#5b8def'], borderWidth: 0 }]
+        },
+        options: { responsive: true, maintainAspectRatio: false, cutout: '68%' }
     });
 </script>
 {% endblock %}

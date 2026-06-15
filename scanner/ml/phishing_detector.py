@@ -167,6 +167,7 @@ def scan_content(content, scan_type):
     features = extract_features(content, scan_type)
     phishing_probability = model.predict_proba(features)[0][1]
     risk_score = round(phishing_probability * 100)
+    confidence_score = round(max(phishing_probability, 1 - phishing_probability) * 100)
 
     if risk_score >= 70:
         label = 'High Risk'
@@ -179,6 +180,7 @@ def scan_content(content, scan_type):
         'scan_type': scan_type.title(),
         'content': content,
         'risk_score': risk_score,
+        'confidence_score': confidence_score,
         'label': label,
         'explanation': explain(content, scan_type, risk_score),
         'recommendation': recommendation_for_score(risk_score),

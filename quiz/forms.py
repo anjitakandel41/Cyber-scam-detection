@@ -18,6 +18,6 @@ class QuizAttemptForm(forms.Form):
             self.fields[f'question_{question.pk}'] = forms.ChoiceField(
                 label=question.text,
                 choices=choices,
-                widget=forms.RadioSelect,
+                widget=forms.RadioSelect(attrs={'class': 'form-check-input'}),
                 required=True,
             )

@@ -3,40 +3,57 @@
 {% block title %}Quiz Score{% endblock %}
 
 {% block content %}
-<section class="panel">
-    <h1>Quiz score</h1>
-    <article class="score-card {% if attempt.percentage >= 80 %}low{% elif attempt.percentage >= 50 %}medium{% else %}high{% endif %}">
-        <span>{{ attempt.score }} of {{ attempt.total_questions }} correct</span>
-        <strong>{{ attempt.percentage }}%</strong>
-        <small>Completed {{ attempt.completed_at }}</small>
-    </article>
+<div class="content-container">
+    <section class="row g-3 align-items-stretch">
+        <div class="col-lg-4">
+            <article class="score-card {% if attempt.percentage >= 80 %}low{% elif attempt.percentage >= 50 %}medium{% else %}high{% endif %} h-100">
+                <span class="text-uppercase fw-bold">Quiz Score</span>
+                <strong>{{ attempt.percentage }}%</strong>
+                <div class="mt-3">{{ attempt.score }} of {{ attempt.total_questions }} correct</div>
+                <small>Completed {{ attempt.completed_at }}</small>
+            </article>
+        </div>
+        <div class="col-lg-8">
+            <article class="panel h-100">
+                <span class="section-kicker">Review</span>
+                <h1 class="fw-bold mt-2">Answer breakdown</h1>
+                <p class="text-muted-soft mb-0">Review correct answers and explanations to strengthen future decisions.</p>
+            </article>
+        </div>
+    </section>
 
-    <div class="result">
+    <section class="activity-list mt-4">
         {% for answer in attempt.answers.all %}
-            <article>
-                <h2>{{ forloop.counter }}. {{ answer.question.text }}</h2>
-                <p>
-                    Selected:
-                    {% if answer.selected_option == 'A' %}{{ answer.question.option_a }}
-                    {% elif answer.selected_option == 'B' %}{{ answer.question.option_b }}
-                    {% elif answer.selected_option == 'C' %}{{ answer.question.option_c }}
-                    {% else %}{{ answer.question.option_d }}{% endif %}
-                </p>
-                <p>
-                    Correct:
-                    {% if answer.question.correct_option == 'A' %}{{ answer.question.option_a }}
-                    {% elif answer.question.correct_option == 'B' %}{{ answer.question.option_b }}
-                    {% elif answer.question.correct_option == 'C' %}{{ answer.question.option_c }}
-                    {% else %}{{ answer.question.option_d }}{% endif %}
-                </p>
-                <p>{% if answer.is_correct %}Correct{% else %}Incorrect{% endif %}</p>
+            <article class="activity-item">
+                <h2 class="h5 fw-bold">{{ forloop.counter }}. {{ answer.question.text }}</h2>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <span class="text-muted-soft d-block">Selected</span>
+                        <strong>
+                            {% if answer.selected_option == 'A' %}{{ answer.question.option_a }}
+                            {% elif answer.selected_option == 'B' %}{{ answer.question.option_b }}
+                            {% elif answer.selected_option == 'C' %}{{ answer.question.option_c }}
+                            {% else %}{{ answer.question.option_d }}{% endif %}
+                        </strong>
+                    </div>
+                    <div class="col-md-6">
+                        <span class="text-muted-soft d-block">Correct</span>
+                        <strong>
+                            {% if answer.question.correct_option == 'A' %}{{ answer.question.option_a }}
+                            {% elif answer.question.correct_option == 'B' %}{{ answer.question.option_b }}
+                            {% elif answer.question.correct_option == 'C' %}{{ answer.question.option_c }}
+                            {% else %}{{ answer.question.option_d }}{% endif %}
+                        </strong>
+                    </div>
+                </div>
+                <span class="risk-badge mt-3 d-inline-block {% if answer.is_correct %}status-low{% else %}status-high{% endif %}">{% if answer.is_correct %}Correct{% else %}Incorrect{% endif %}</span>
                 {% if answer.question.explanation %}
-                    <p>{{ answer.question.explanation }}</p>
+                    <p class="text-muted-soft mt-3 mb-0">{{ answer.question.explanation }}</p>
                 {% endif %}
             </article>
         {% endfor %}
-    </div>
+    </section>
 
-    <a class="button" href="{% url 'quiz:attempt' %}">Try again</a>
-</section>
+    <a class="btn btn-cyber btn-lg mt-4" href="{% url 'quiz:attempt' %}"><i class="bi bi-arrow-repeat me-2"></i>Try again</a>
+</div>
 {% endblock %}

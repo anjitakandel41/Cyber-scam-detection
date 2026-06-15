@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+
+{% block title %}PhishGuard Cyber Defense{% endblock %}
+
+{% block main_class %}is-landing{% endblock %}
+
+{% block content %}
+<section id="home" class="hero">
+    <div class="content-container">
+        <div class="hero-grid">
+            <div>
+                <span class="section-kicker text-info">AI phishing defense platform</span>
+                <h1 class="fw-bold mt-3 mb-4">PhishGuard Cyber Defense</h1>
+                <p class="mb-4">Scan suspicious URLs, emails, SMS messages, and QR codes with clear risk scoring, practical recommendations, training, and alert workflows for safer digital decisions.</p>
+                <div class="d-flex flex-wrap gap-2">
+                    <a class="btn btn-cyber btn-lg" href="{% url 'users:register' %}"><i class="bi bi-person-plus me-2"></i>Register</a>
+                    <a class="btn btn-outline-light btn-lg" href="{% url 'users:login' %}"><i class="bi bi-box-arrow-in-right me-2"></i>Login</a>
+                </div>
+            </div>
+            <div class="security-visual" aria-label="Security scan preview">
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                    <strong>Threat Intelligence Console</strong>
+                    <span class="status-pill status-low">Live</span>
+                </div>
+                <div class="terminal-line"><span>scan:url</span><span class="status-pill status-high">High 87%</span></div>
+                <div class="terminal-line"><span>scan:email</span><span class="status-pill status-medium">Medium 48%</span></div>
+                <div class="terminal-line"><span>scan:qr</span><span class="status-pill status-low">Low 12%</span></div>
+                <div class="terminal-line"><span>alert:report</span><span class="status-pill status-low">Sent</span></div>
+                <div class="mt-4 p-3 rounded border border-info border-opacity-25">
+                    <div class="small text-uppercase text-info fw-bold mb-2">Recommendation</div>
+                    <p class="mb-0 text-light">Block credential requests, verify through official channels, and download the PDF report for audit records.</p>
+                </div>
+            </div>
+        </div>
+        <div class="trust-strip">
+            <div class="row g-3 text-center text-md-start">
+                <div class="col-md-4"><i class="bi bi-shield-check me-2"></i>URL, email, SMS, and QR analysis</div>
+                <div class="col-md-4"><i class="bi bi-graph-up-arrow me-2"></i>Admin and user analytics</div>
+                <div class="col-md-4"><i class="bi bi-file-earmark-pdf me-2"></i>Actionable PDF reports</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="features" class="py-5">
+    <div class="content-container">
+        <div class="row align-items-end mb-4">
+            <div class="col-lg-7">
+                <span class="section-kicker">Features</span>
+                <h2 class="fw-bold mt-2">Everything needed for practical phishing awareness.</h2>
+            </div>
+            <div class="col-lg-5 text-muted-soft">Designed for quick checks, clear explanations, and team visibility without overwhelming users.</div>
+        </div>
+        <div class="row g-3">
+            <div class="col-md-6 col-lg-3">
+                <article class="feature-card">
+                    <span class="icon-tile mb-3"><i class="bi bi-link-45deg"></i></span>
+                    <h3 class="h5">Multi-channel scanning</h3>
+                    <p class="text-muted-soft mb-0">Analyze URLs, emails, SMS content, and uploaded QR images from one interface.</p>
+                </article>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <article class="feature-card">
+                    <span class="icon-tile mb-3"><i class="bi bi-speedometer2"></i></span>
+                    <h3 class="h5">Risk analytics</h3>
+                    <p class="text-muted-soft mb-0">Review risk score, confidence, classification, reasons, and next steps after each scan.</p>
+                </article>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <article class="feature-card">
+                    <span class="icon-tile mb-3"><i class="bi bi-bar-chart-line"></i></span>
+                    <h3 class="h5">Dashboards</h3>
+                    <p class="text-muted-soft mb-0">Track scan volume, risk distribution, quiz progress, alerts, and usage trends.</p>
+                </article>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <article class="feature-card">
+                    <span class="icon-tile mb-3"><i class="bi bi-mortarboard"></i></span>
+                    <h3 class="h5">Awareness tools</h3>
+                    <p class="text-muted-soft mb-0">Use quizzes and chatbot support to reinforce safer habits over time.</p>
+                </article>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="about" class="py-5 bg-white border-top border-bottom">
+    <div class="content-container">
+        <div class="row g-4 align-items-center">
+            <div class="col-lg-6">
+                <span class="section-kicker">About</span>
+                <h2 class="fw-bold mt-2">Built for clear decisions under pressure.</h2>
+                <p class="text-muted-soft">PhishGuard turns suspicious messages into understandable security signals. Users get direct guidance, while administrators get a clean analytics view of risk patterns and training engagement.</p>
+            </div>
+            <div class="col-lg-6">
+                <div class="row g-3">
+                    <div class="col-6"><div class="metric-card"><span>Scan types</span><strong>4</strong><small>URL, email, SMS, QR</small></div></div>
+                    <div class="col-6"><div class="metric-card"><span>Outputs</span><strong>5</strong><small>Scores, reasons, reports</small></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="faq" class="py-5">
+    <div class="content-container">
+        <span class="section-kicker">FAQ</span>
+        <h2 class="fw-bold mt-2 mb-4">Common questions</h2>
+        <div class="accordion" id="faqAccordion">
+            <div class="accordion-item">
+                <h3 class="accordion-header"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faqOne">What can I scan?</button></h3>
+                <div id="faqOne" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion"><div class="accordion-body">You can scan suspicious URLs, pasted email content, SMS text, and QR code images.</div></div>
+            </div>
+            <div class="accordion-item">
+                <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqTwo">What does the score mean?</button></h3>
+                <div id="faqTwo" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body">The risk score estimates phishing likelihood. Classification and recommendations translate that score into practical action.</div></div>
+            </div>
+            <div class="accordion-item">
+                <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqThree">Do admins get analytics?</button></h3>
+                <div id="faqThree" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body">Yes. Admin dashboards summarize users, scans, risk distribution, alerts, quiz attempts, and chatbot usage.</div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="py-5 bg-white border-top">
+    <div class="content-container">
+        <div class="row g-4 align-items-center">
+            <div class="col-lg-7">
+                <span class="section-kicker">Contact</span>
+                <h2 class="fw-bold mt-2">Ready to check suspicious content?</h2>
+                <p class="text-muted-soft mb-0">Create an account to access scanners, dashboards, reports, quizzes, and chatbot support.</p>
+            </div>
+            <div class="col-lg-5 text-lg-end">
+                <a class="btn btn-cyber btn-lg" href="{% url 'users:register' %}">Get started</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

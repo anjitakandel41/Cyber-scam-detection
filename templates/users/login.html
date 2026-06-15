@@ -3,14 +3,28 @@
 {% block title %}Login{% endblock %}
 
 {% block content %}
-<section class="panel">
-    <h1>Login</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Login</button>
-    </form>
-    <p><a href="{% url 'users:password_reset' %}">Forgot password?</a></p>
-    <p>Need an account? <a href="{% url 'users:register' %}">Register</a>.</p>
-</section>
+<div class="content-container auth-wrap">
+    <section class="auth-card">
+        <div class="text-center mb-4">
+            <span class="icon-tile mb-3"><i class="bi bi-shield-lock"></i></span>
+            <h1 class="h3 fw-bold mb-2">Welcome back</h1>
+            <p class="text-muted-soft mb-0">Sign in to scan suspicious content and review your security dashboard.</p>
+        </div>
+        <form method="post" class="d-grid gap-3">
+            {% csrf_token %}
+            {% for field in form %}
+                <div>
+                    <label class="form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    {{ field }}
+                    {% if field.errors %}<div class="text-danger small mt-1">{{ field.errors }}</div>{% endif %}
+                </div>
+            {% endfor %}
+            <button class="btn btn-cyber btn-lg" type="submit">Login</button>
+        </form>
+        <div class="d-flex flex-column flex-sm-row justify-content-between gap-2 mt-4">
+            <a href="{% url 'users:password_reset' %}">Forgot password?</a>
+            <span class="text-muted-soft">Need an account? <a href="{% url 'users:register' %}">Register</a></span>
+        </div>
+    </section>
+</div>
 {% endblock %}

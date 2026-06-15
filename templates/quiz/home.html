@@ -3,30 +3,43 @@
 {% block title %}Cybersecurity Quiz{% endblock %}
 
 {% block content %}
-<section class="panel">
-    <h1>Cybersecurity quiz</h1>
-    <p>Test your phishing awareness and review your latest score.</p>
-
-    <div class="stats-grid" style="margin: 20px 0;">
-        <article class="stat-card">
-            <span>Available Questions</span>
-            <strong>{{ total_questions }}</strong>
-            <small>Active questions</small>
-        </article>
-        <article class="stat-card">
-            <span>Latest Score</span>
-            <strong>{% if latest_attempt %}{{ latest_attempt.score }}/{{ latest_attempt.total_questions }}{% else %}-{% endif %}</strong>
-            <small>{% if latest_attempt %}{{ latest_attempt.percentage }}%{% else %}No attempts yet{% endif %}</small>
-        </article>
-    </div>
-
-    {% if total_questions %}
-        <a class="button" href="{% url 'quiz:attempt' %}">Attempt quiz</a>
-        {% if latest_attempt %}
-            <a class="button" href="{% url 'quiz:result' latest_attempt.pk %}">View latest score</a>
-        {% endif %}
-    {% else %}
-        <p>No quiz questions are available yet.</p>
-    {% endif %}
-</section>
+<div class="content-container">
+    <section class="panel">
+        <div class="row g-4 align-items-center">
+            <div class="col-lg-7">
+                <span class="section-kicker">Awareness training</span>
+                <h1 class="fw-bold mt-2">Cybersecurity quiz</h1>
+                <p class="text-muted-soft mb-0">Test phishing awareness, review your latest score, and reinforce safer habits.</p>
+            </div>
+            <div class="col-lg-5">
+                <div class="row g-3">
+                    <div class="col-sm-6">
+                        <article class="metric-card">
+                            <span>Available Questions</span>
+                            <strong>{{ total_questions }}</strong>
+                            <small>Active questions</small>
+                        </article>
+                    </div>
+                    <div class="col-sm-6">
+                        <article class="metric-card">
+                            <span>Latest Score</span>
+                            <strong>{% if latest_attempt %}{{ latest_attempt.score }}/{{ latest_attempt.total_questions }}{% else %}-{% endif %}</strong>
+                            <small>{% if latest_attempt %}{{ latest_attempt.percentage }}%{% else %}No attempts yet{% endif %}</small>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex flex-wrap gap-2 mt-4">
+            {% if total_questions %}
+                <a class="btn btn-cyber btn-lg" href="{% url 'quiz:attempt' %}"><i class="bi bi-play-circle me-2"></i>Attempt quiz</a>
+                {% if latest_attempt %}
+                    <a class="btn btn-outline-cyber btn-lg" href="{% url 'quiz:result' latest_attempt.pk %}"><i class="bi bi-clipboard-check me-2"></i>View latest score</a>
+                {% endif %}
+            {% else %}
+                <p class="text-muted-soft mb-0">No quiz questions are available yet.</p>
+            {% endif %}
+        </div>
+    </section>
+</div>
 {% endblock %}

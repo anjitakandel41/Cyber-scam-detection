@@ -3,13 +3,26 @@
 {% block title %}Register{% endblock %}
 
 {% block content %}
-<section class="panel">
-    <h1>Create account</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Register</button>
-    </form>
-    <p>Already registered? <a href="{% url 'users:login' %}">Log in</a>.</p>
-</section>
+<div class="content-container auth-wrap">
+    <section class="auth-card">
+        <div class="text-center mb-4">
+            <span class="icon-tile mb-3"><i class="bi bi-person-plus"></i></span>
+            <h1 class="h3 fw-bold mb-2">Create your account</h1>
+            <p class="text-muted-soft mb-0">Start scanning, learning, and tracking phishing risk from one secure workspace.</p>
+        </div>
+        <form method="post" class="d-grid gap-3">
+            {% csrf_token %}
+            {% for field in form %}
+                <div>
+                    <label class="form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    {{ field }}
+                    {% if field.help_text %}<div class="form-text">{{ field.help_text }}</div>{% endif %}
+                    {% if field.errors %}<div class="text-danger small mt-1">{{ field.errors }}</div>{% endif %}
+                </div>
+            {% endfor %}
+            <button class="btn btn-cyber btn-lg" type="submit">Register</button>
+        </form>
+        <p class="text-center text-muted-soft mt-4 mb-0">Already registered? <a href="{% url 'users:login' %}">Log in</a>.</p>
+    </section>
+</div>
 {% endblock %}

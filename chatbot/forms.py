@@ -6,6 +6,7 @@ class ChatForm(forms.Form):
         label='Ask a phishing awareness question',
         widget=forms.Textarea(attrs={
             'rows': 3,
+            'class': 'form-control',
             'placeholder': 'Example: How do I identify a phishing email?',
         }),
     )
