@@ -1,4 +1,5 @@
 import re
+from .threat_intelligence import check_virustotal
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -6,10 +7,11 @@ import joblib
 import numpy as np
 from django.conf import settings
 from sklearn.ensemble import RandomForestClassifier
+from .google_safe_browsing import check_google_safe_browsing
+from .whois_lookup import check_domain_age
 
 
-MODEL_PATH = Path(settings.BASE_DIR) / 'scanner' / 'ml' / 'phishing_model.joblib'
-
+MODEL_PATH = Path(settings.BASE_DIR) / 'ml_model' / 'model.pkl'
 SUSPICIOUS_WORDS = (
     'verify',
     'urgent',
@@ -165,10 +167,63 @@ def explain(content, scan_type, risk_score):
 def scan_content(content, scan_type):
     model = load_model()
     features = extract_features(content, scan_type)
-    phishing_probability = model.predict_proba(features)[0][1]
-    risk_score = round(phishing_probability * 100)
-    confidence_score = round(max(phishing_probability, 1 - phishing_probability) * 100)
 
+    # 1. Machine Learning prediction
+    phishing_probability = model.predict_proba(features)[0][1]
+    ml_score = round(phishing_probability * 100)
+
+    # 2. Rule-based explanation
+    explanations = explain(content, scan_type, ml_score)
+
+    # 3. VirusTotal only for URL scan
+    if scan_type == "url":
+        vt_result = check_virustotal(content)
+        vt_score = vt_result.get("score", 0)
+        explanations.append(vt_result.get("message", "VirusTotal check completed."))
+
+        google_result = check_google_safe_browsing(content)
+        google_score = google_result.get("score", 0)
+        explanations.append(google_result.get("message", "Google Safe Browsing check completed."))
+
+        whois_result = check_domain_age(content)
+        whois_score = whois_result.get("score", 0)
+        explanations.append(whois_result.get("message", "WHOIS check completed."))
+    else:
+        vt_score = 0
+        google_score = 0
+        whois_score = 0
+
+    # 4. Rule-based score
+    rule_score = 0
+
+    if _has_ip_address(content):
+        rule_score += 20
+
+    if content.lower().startswith("http://"):
+        rule_score += 15
+
+    if _count_suspicious_words(content) >= 2:
+        rule_score += 15
+
+    if _has_urgency(content):
+        rule_score += 10
+
+    if _has_money_or_reward(content):
+        rule_score += 10
+
+    # 5. Final risk aggregation
+    risk_score = round(
+    (ml_score * 0.40) +
+    (vt_score * 0.20) +
+    (google_score * 0.15) +
+    (whois_score * 0.15) +
+    (rule_score * 0.10)
+
+    )
+
+    risk_score = min(risk_score, 100)
+
+    # 6. Risk label
     if risk_score >= 70:
         label = 'High Risk'
     elif risk_score >= 40:
@@ -176,17 +231,21 @@ def scan_content(content, scan_type):
     else:
         label = 'Low Risk'
 
+    # 7. Confidence score
+    confidence_score = min(abs(risk_score - 50) * 2, 100)
+
     return {
         'scan_type': scan_type.title(),
         'content': content,
+        'ml_score': ml_score,
+        'rule_score': rule_score,
+        'virustotal_score': vt_score,
         'risk_score': risk_score,
         'confidence_score': confidence_score,
         'label': label,
-        'explanation': explain(content, scan_type, risk_score),
+        'explanation': explanations,
         'recommendation': recommendation_for_score(risk_score),
     }
-
-
 def recommendation_for_score(risk_score):
     if risk_score >= 70:
         return 'Do not click links, reply, download attachments, or enter credentials. Report this item for review.'
