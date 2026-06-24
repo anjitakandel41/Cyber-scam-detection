@@ -1,30 +1,178 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Login{% endblock %}
 
 {% block content %}
-<div class="content-container auth-wrap">
-    <section class="auth-card">
-        <div class="text-center mb-4">
-            <span class="icon-tile mb-3"><i class="bi bi-shield-lock"></i></span>
-            <h1 class="h3 fw-bold mb-2">Welcome back</h1>
-            <p class="text-muted-soft mb-0">Sign in to scan suspicious content and review your security dashboard.</p>
-        </div>
-        <form method="post" class="d-grid gap-3">
-            {% csrf_token %}
-            {% for field in form %}
-                <div>
-                    <label class="form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
-                    {{ field }}
-                    {% if field.errors %}<div class="text-danger small mt-1">{{ field.errors }}</div>{% endif %}
+
+<div class="container-fluid min-vh-100 d-flex align-items-center justify-content-center py-5">
+
+    <div class="row justify-content-center w-100">
+
+        <div class="col-lg-5 col-md-7 col-sm-10">
+
+            <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+
+                <div class="card-body p-5">
+
+                    <div class="text-center mb-4">
+
+                        <div class="mb-3">
+                            <i class="bi bi-shield-lock-fill text-primary"
+                               style="font-size:65px;"></i>
+                        </div>
+
+                        <h2 class="fw-bold">
+                            Welcome Back
+                        </h2>
+
+                        <p class="text-muted">
+                            Sign in to access your AI Scam Detection Dashboard.
+                        </p>
+
+                    </div>
+
+                    <!-- Google Login -->
+
+                    <div class="d-grid mb-4">
+
+                        <a href="#"
+                           class="btn btn-outline-dark btn-lg">
+
+                            <i class="bi bi-google me-2"></i>
+
+                            Continue with Google
+
+                        </a>
+
+                    </div>
+
+                    <div class="text-center text-muted mb-4">
+                        OR LOGIN WITH EMAIL
+                    </div>
+
+                    <form method="post">
+
+                        {% csrf_token %}
+
+                        {% for field in form %}
+
+                        <div class="mb-3">
+
+                            <label class="form-label fw-semibold">
+
+                                {{ field.label }}
+
+                            </label>
+
+                            {{ field }}
+
+                            {% if field.errors %}
+                            <div class="text-danger small mt-1">
+
+                                {{ field.errors }}
+
+                            </div>
+                            {% endif %}
+
+                        </div>
+
+                        {% endfor %}
+
+                        <div class="form-check mb-3">
+
+                            <input
+                                class="form-check-input"
+                                type="checkbox"
+                                id="rememberMe">
+
+                            <label
+                                class="form-check-label"
+                                for="rememberMe">
+
+                                Remember Me
+
+                            </label>
+
+                        </div>
+
+                        <div class="d-grid">
+
+                            <button
+                                type="submit"
+                                class="btn btn-primary btn-lg">
+
+                                <i class="bi bi-box-arrow-in-right me-2"></i>
+
+                                Login
+
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                    <hr class="my-4">
+
+                    <div class="d-flex justify-content-between">
+
+                        <a href="{% url 'users:password_reset' %}">
+                            Forgot Password?
+                        </a>
+
+                        <a href="{% url 'users:register' %}">
+                            Create Account
+                        </a>
+
+                    </div>
+
                 </div>
-            {% endfor %}
-            <button class="btn btn-cyber btn-lg" type="submit">Login</button>
-        </form>
-        <div class="d-flex flex-column flex-sm-row justify-content-between gap-2 mt-4">
-            <a href="{% url 'users:password_reset' %}">Forgot password?</a>
-            <span class="text-muted-soft">Need an account? <a href="{% url 'users:register' %}">Register</a></span>
+
+            </div>
+
         </div>
-    </section>
+
+    </div>
+
 </div>
+
+<style>
+
+body{
+    background: linear-gradient(
+        135deg,
+        #0f172a,
+        #1e293b,
+        #0f172a
+    );
+}
+
+.card{
+    background:#ffffff;
+    backdrop-filter: blur(12px);
+}
+
+.form-control{
+    padding:12px;
+    border-radius:12px;
+}
+
+.btn{
+    border-radius:12px;
+}
+
+@media(max-width:768px){
+
+    .card-body{
+        padding:25px;
+    }
+
+    h2{
+        font-size:1.8rem;
+    }
+
+}
+
+</style>
+
 {% endblock %}

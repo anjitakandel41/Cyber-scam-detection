@@ -25,11 +25,14 @@
                 <form method="post" class="d-grid gap-3">
                     {% csrf_token %}
                     {% for field in form %}
-                        <div>
-                            <label class="form-label fw-semibold" for="{{ field.id_for_label }}">{{ field.label }}</label>
-                            {{ field }}
-                            {% if field.errors %}<div class="text-danger small mt-1">{{ field.errors }}</div>{% endif %}
-                        </div>
+                        {% if scan_type == 'email' or field.name == 'content' %}
+                            <div>
+                                <label class="form-label fw-semibold" for="{{ field.id_for_label }}">{{ field.label }}</label>
+                                {{ field }}
+                                {% if field.help_text %}<div class="text-muted small mt-1">{{ field.help_text }}</div>{% endif %}
+                                {% if field.errors %}<div class="text-danger small mt-1">{{ field.errors }}</div>{% endif %}
+                            </div>
+                        {% endif %}
                     {% endfor %}
                     <button class="btn btn-cyber btn-lg" type="submit"><i class="bi bi-search me-2"></i>Scan content</button>
                 </form>

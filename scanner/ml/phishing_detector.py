@@ -9,6 +9,7 @@ from django.conf import settings
 from sklearn.ensemble import RandomForestClassifier
 from .google_safe_browsing import check_google_safe_browsing
 from .whois_lookup import check_domain_age
+from ml_model.train import load_datasets
 
 
 MODEL_PATH = Path(settings.BASE_DIR) / 'ml_model' / 'model.pkl'
@@ -109,7 +110,11 @@ def training_samples():
 
 
 def train_and_save_model():
-    samples = training_samples()
+    try:
+        samples = load_datasets()
+    except FileNotFoundError:
+        samples = training_samples()
+
     x_train = np.vstack([extract_features(content, scan_type) for content, scan_type, _ in samples])
     y_train = np.array([label for _, _, label in samples])
     model = RandomForestClassifier(n_estimators=160, max_depth=8, random_state=42)

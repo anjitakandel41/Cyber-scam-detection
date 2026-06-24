@@ -3,7 +3,7 @@ from django.shortcuts import render
 
 from .forms import ChatForm
 from .models import ChatMessage
-from .rules import chatbot_response
+from .rules import hybrid_response
 
 
 @login_required
@@ -12,7 +12,7 @@ def chatbot_home(request):
 
     if request.method == 'POST' and form.is_valid():
         message = form.cleaned_data['message']
-        response = chatbot_response(message)
+        response = hybrid_response(message)
         ChatMessage.objects.create(user=request.user, message=message, response=response)
         form = ChatForm()
 

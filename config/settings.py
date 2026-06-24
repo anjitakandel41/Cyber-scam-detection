@@ -23,7 +23,7 @@ load_dotenv(BASE_DIR / ".env")
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-1ghrfp1z9q4cq$far#fju4r61c0)#_44*l$bqvr=^d8v@9f0@9'
+SECRET_KEY = 'django-insecure-2&xutc%*^o2ff!q!hi(__oe*t*wlc)n74-$ou2z05yp-d!^oy7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -140,8 +140,8 @@ EMAIL_BACKEND = os.getenv('EMAIL_BACKEND', 'django.core.mail.backends.smtp.Email
 EMAIL_HOST = os.getenv('EMAIL_HOST', 'smtp.gmail.com')
 EMAIL_PORT = int(os.getenv('EMAIL_PORT', '587'))
 EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS', 'True') == 'True'
-EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER','')
-EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD','')
-DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL','')
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER','kandelanjita872@gmail.com')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD','egfcftgfltgaahwj')
+DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL','kandelanjita872@gmail.com')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

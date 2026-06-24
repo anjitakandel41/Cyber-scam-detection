@@ -1,0 +1,200 @@
+{% extends "base-modern.html" %}
+
+{% block title %}Dashboard - Cyber Scam Awareness & Detection System{% endblock %}
+
+{% block content %}
+
+<div class="dashboard-wrapper">
+    <!-- SIDEBAR -->
+    <div class="dashboard-sidebar">
+        <ul class="sidebar-menu">
+            <li class="sidebar-item"><a href="#" class="sidebar-link active"><i class="bi bi-graph-up me-2"></i>Dashboard</a></li>
+            <li class="sidebar-item"><a href="#" class="sidebar-link"><i class="bi bi-search me-2"></i>Scan URL</a></li>
+            <li class="sidebar-item"><a href="#" class="sidebar-link"><i class="bi bi-envelope me-2"></i>Check Email</a></li>
+            <li class="sidebar-item"><a href="#" class="sidebar-link"><i class="bi bi-qr-code me-2"></i>QR Scanner</a></li>
+            <li class="sidebar-item"><a href="#" class="sidebar-link"><i class="bi bi-chat-dots me-2"></i>Chatbot</a></li>
+            <li class="sidebar-item"><a href="#" class="sidebar-link"><i class="bi bi-history me-2"></i>History</a></li>
+            <li class="sidebar-item"><a href="#" class="sidebar-link"><i class="bi bi-gear me-2"></i>Settings</a></li>
+        </ul>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="dashboard-main">
+        <div class="dashboard-header">
+            <div>
+                <h1 class="dashboard-title">Welcome Back!</h1>
+                <p style="color: var(--page-muted);">Here's your security overview</p>
+            </div>
+            <div style="text-align: right;">
+                <div style="font-size: 0.9rem; color: var(--page-muted);">Last updated: Just now</div>
+            </div>
+        </div>
+
+        <!-- METRICS -->
+        <div class="metric-cards">
+            <div class="metric-card">
+                <h3>Total Scans</h3>
+                <div class="metric-value">1,247</div>
+                <div class="metric-change">↑ 89 this week</div>
+            </div>
+            <div class="metric-card">
+                <h3>Safe URLs</h3>
+                <div style="font-size: 2rem; font-weight: 700; color: var(--success); margin-bottom: 0.5rem;">892</div>
+                <div class="metric-change" style="color: var(--success);">71.6% safe</div>
+            </div>
+            <div class="metric-card">
+                <h3>Suspicious URLs</h3>
+                <div style="font-size: 2rem; font-weight: 700; color: var(--warning); margin-bottom: 0.5rem;">247</div>
+                <div class="metric-change" style="color: var(--warning);">19.8% caution</div>
+            </div>
+            <div class="metric-card">
+                <h3>Dangerous URLs</h3>
+                <div style="font-size: 2rem; font-weight: 700; color: var(--accent); margin-bottom: 0.5rem;">108</div>
+                <div class="metric-change negative">8.6% dangerous</div>
+            </div>
+        </div>
+
+        
+
+          <div style="background: linear-gradient(135deg, var(--dark-surface) 0%, var(--dark-surface-2) 100%); color: var(--light-text); padding: 2rem; border-radius: 12px; margin: 2rem 0;">
+            <h2 style="margin-bottom: 1rem;">Quick Scan</h2>
+            <p style="color: var(--muted-text); margin-bottom: 1.5rem;">Paste any suspicious URL, email, or SMS to check its safety status</p>
+            
+            <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+                <input type="text" id="quickScanInput" placeholder="Enter URL or email..." style="flex: 1; padding: 0.9rem 1rem; border: 2px solid rgba(255,255,255,0.2); border-radius: 8px; background: rgba(255,255,255,0.05); color: var(--light-text);">
+                <button style="padding: 0.9rem 1.5rem; background: linear-gradient(135deg, var(--primary), #0f9d8a); color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer;">Scan</button>
+            </div>
+            
+            <div id="quickScanResult" style="display: none; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 1rem; border-radius: 8px; text-align: center;"></div>
+            </div> 
+
+
+         <!-- ACTIVITY LOG  -->
+        <div style="background: white; border-radius: 12px; border: 1px solid #e1e8f2; padding: 2rem; margin-bottom: 2rem;">
+            <h2 style="color: var(--page-text); font-weight: 700; margin-bottom: 1.5rem;">Recent Activity</h2>
+            
+            <table style="width: 100%; border-collapse: collapse;">
+                <thead>
+                    <tr style="border-bottom: 2px solid #e1e8f2;">
+                        <th style="text-align: left; padding: 0.8rem 0; color: var(--page-muted); font-weight: 600;">Content</th>
+                        <th style="text-align: left; padding: 0.8rem 0; color: var(--page-muted); font-weight: 600;">Type</th>
+                        <th style="text-align: left; padding: 0.8rem 0; color: var(--page-muted); font-weight: 600;">Status</th>
+                        <th style="text-align: left; padding: 0.8rem 0; color: var(--page-muted); font-weight: 600;">Risk Score</th>
+                        <th style="text-align: left; padding: 0.8rem 0; color: var(--page-muted); font-weight: 600;">Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="border-bottom: 1px solid #e1e8f2;">
+                        <td style="padding: 1rem 0; color: var(--page-text);">example-payment-verify.com</td>
+                        <td style="padding: 1rem 0; color: var(--page-muted);">URL</td>
+                        <td style="padding: 1rem 0;"><span style="background: rgba(239,91,107,0.1); color: var(--accent); padding: 0.3rem 0.8rem; border-radius: 6px; font-size: 0.85rem;">Dangerous</span></td>
+                        <td style="padding: 1rem 0; color: var(--accent); font-weight: 600;">92%</td>
+                        <td style="padding: 1rem 0; color: var(--page-muted);">2 hours ago</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #e1e8f2;">
+                        <td style="padding: 1rem 0; color: var(--page-text);">verify-your-account@bank.com</td>
+                        <td style="padding: 1rem 0; color: var(--page-muted);">Email</td>
+                        <td style="padding: 1rem 0;"><span style="background: rgba(242,184,75,0.1); color: var(--warning); padding: 0.3rem 0.8rem; border-radius: 6px; font-size: 0.85rem;">Suspicious</span></td>
+                        <td style="padding: 1rem 0; color: var(--warning); font-weight: 600;">68%</td>
+                        <td style="padding: 1rem 0; color: var(--page-muted);">4 hours ago</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #e1e8f2;">
+                        <td style="padding: 1rem 0; color: var(--page-text);">https://www.official-bank.com</td>
+                        <td style="padding: 1rem 0; color: var(--page-muted);">URL</td>
+                        <td style="padding: 1rem 0;"><span style="background: rgba(24,178,107,0.1); color: var(--success); padding: 0.3rem 0.8rem; border-radius: 6px; font-size: 0.85rem;">Safe</span></td>
+                        <td style="padding: 1rem 0; color: var(--success); font-weight: 600;">12%</td>
+                        <td style="padding: 1rem 0; color: var(--page-muted);">6 hours ago</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 1rem 0; color: var(--page-text);">👋 Urgent action needed click here</td>
+                        <td style="padding: 1rem 0; color: var(--page-muted);">SMS</td>
+                        <td style="padding: 1rem 0;"><span style="background: rgba(239,91,107,0.1); color: var(--accent); padding: 0.3rem 0.8rem; border-radius: 6px; font-size: 0.85rem;">Dangerous</span></td>
+                        <td style="padding: 1rem 0; color: var(--accent); font-weight: 600;">85%</td>
+                        <td style="padding: 1rem 0; color: var(--page-muted);">Yesterday</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div style="text-align: center; margin-top: 1.5rem;">
+                <button style="padding: 0.7rem 1.5rem; background: transparent; color: var(--primary); border: 2px solid var(--primary); border-radius: 8px; font-weight: 600; cursor: pointer;">View Full History</button>
+            </div>
+        </div>
+
+        <!-- CHARTS/STATS -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
+            <div style="background: white; border-radius: 12px; border: 1px solid #e1e8f2; padding: 2rem;">
+                <h3 style="color: var(--page-text); font-weight: 700; margin-bottom: 1rem;">Scan Distribution</h3>
+                <div style="display: flex; gap: 1rem; flex-direction: column;">
+                    <div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                            <span style="color: var(--page-muted);">URLs</span>
+                            <span style="font-weight: 600;">65%</span>
+                        </div>
+                        <div style="height: 8px; background: #e1e8f2; border-radius: 4px; overflow: hidden;">
+                            <div style="height: 100%; width: 65%; background: linear-gradient(90deg, var(--primary), var(--secondary));"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                            <span style="color: var(--page-muted);">Emails</span>
+                            <span style="font-weight: 600;">20%</span>
+                        </div>
+                        <div style="height: 8px; background: #e1e8f2; border-radius: 4px; overflow: hidden;">
+                            <div style="height: 100%; width: 20%; background: linear-gradient(90deg, var(--primary), var(--secondary));"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                            <span style="color: var(--page-muted);">SMS</span>
+                            <span style="font-weight: 600;">10%</span>
+                        </div>
+                        <div style="height: 8px; background: #e1e8f2; border-radius: 4px; overflow: hidden;">
+                            <div style="height: 100%; width: 10%; background: linear-gradient(90deg, var(--primary), var(--secondary));"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                            <span style="color: var(--page-muted);">QR Codes</span>
+                            <span style="font-weight: 600;">5%</span>
+                        </div>
+                        <div style="height: 8px; background: #e1e8f2; border-radius: 4px; overflow: hidden;">
+                            <div style="height: 100%; width: 5%; background: linear-gradient(90deg, var(--primary), var(--secondary));"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="background: white; border-radius: 12px; border: 1px solid #e1e8f2; padding: 2rem;">
+                <h3 style="color: var(--page-text); font-weight: 700; margin-bottom: 1rem;">Risk Breakdown</h3>
+                <div style="display: flex; justify-content: space-around; align-items: flex-end; height: 150px;">
+                    <div style="text-align: center;">
+                        <div style="height: 100px; width: 40px; background: linear-gradient(180deg, var(--success), rgba(24,178,107,0.3)); border-radius: 4px; margin: 0 auto;"></div>
+                        <p style="color: var(--page-muted); font-size: 0.85rem; margin-top: 0.5rem;">Safe<br><strong>892</strong></p>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="height: 60px; width: 40px; background: linear-gradient(180deg, var(--warning), rgba(242,184,75,0.3)); border-radius: 4px; margin: 0 auto;"></div>
+                        <p style="color: var(--page-muted); font-size: 0.85rem; margin-top: 0.5rem;">Suspicious<br><strong>247</strong></p>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="height: 40px; width: 40px; background: linear-gradient(180deg, var(--accent), rgba(239,91,107,0.3)); border-radius: 4px; margin: 0 auto;"></div>
+                        <p style="color: var(--page-muted); font-size: 0.85rem; margin-top: 0.5rem;">Dangerous<br><strong>108</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TIPS -->
+        <div style="background: linear-gradient(135deg, rgba(24,214,195,0.08) 0%, rgba(91,141,239,0.08) 100%); border-radius: 12px; padding: 2rem; border: 1px solid #e1e8f2;">
+            <h3 style="color: var(--page-text); font-weight: 700; margin-bottom: 1rem;">💡 Security Tips</h3>
+            <ul style="color: var(--page-muted); padding-left: 1.5rem;">
+                <li>Always verify sender addresses before clicking links</li>
+                <li>Enable two-factor authentication on all important accounts</li>
+                <li>Keep your software and browser updated</li>
+                <li>Never share passwords, OTPs, or security codes</li>
+                <li>Report suspicious activity immediately</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

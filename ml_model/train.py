@@ -11,7 +11,11 @@ from sklearn.model_selection import train_test_split
 
 
 BASE_DIR = Path(__file__).resolve().parent
-DATASET_PATH = BASE_DIR / 'phishing_dataset.csv'
+URL_DATASET_PATH = BASE_DIR / 'url_dataset.csv'
+EMAIL_DATASET_PATH = BASE_DIR / 'email_dataset.csv'
+SMS_DATASET_PATH = BASE_DIR / 'sms_dataset.csv'
+QR_DATASET_PATH = BASE_DIR / 'qr_dataset.csv'
+LEGACY_DATASET_PATH = BASE_DIR / 'phishing_dataset.csv'
 MODEL_PATH = BASE_DIR / 'model.pkl'
 
 SUSPICIOUS_WORDS = (
@@ -69,11 +73,41 @@ def extract_features(content, scan_type='url'):
     ]
 
 
-def train():
-    dataset = pd.read_csv(DATASET_PATH)
+def load_datasets():
+    dataset_files = {
+        'url': URL_DATASET_PATH,
+        'email': EMAIL_DATASET_PATH,
+        'sms': SMS_DATASET_PATH,
+        'qr': QR_DATASET_PATH,
+    }
 
-    x = np.array([extract_features(url, 'url') for url in dataset['url']])
-    y = dataset['label']
+    rows = []
+    for scan_type, path in dataset_files.items():
+        if path.exists():
+            df = pd.read_csv(path)
+            if 'content' not in df.columns or 'label' not in df.columns:
+                raise ValueError(f"Dataset {path.name} must contain 'content' and 'label' columns.")
+            for _, row in df.iterrows():
+                rows.append((str(row['content']), scan_type, int(row['label'])))
+
+    if not rows and LEGACY_DATASET_PATH.exists():
+        df = pd.read_csv(LEGACY_DATASET_PATH)
+        if 'url' in df.columns and 'label' in df.columns:
+            for _, row in df.iterrows():
+                rows.append((str(row['url']), 'url', int(row['label'])))
+
+    if not rows:
+        raise FileNotFoundError(
+            'No training datasets found in ml_model/. Add url_dataset.csv, email_dataset.csv, sms_dataset.csv, or qr_dataset.csv.'
+        )
+
+    return rows
+
+
+def train():
+    dataset = load_datasets()
+    x = np.array([extract_features(content, scan_type) for content, scan_type, _ in dataset])
+    y = np.array([label for _, _, label in dataset])
 
     x_train, x_test, y_train, y_test = train_test_split(
         x,

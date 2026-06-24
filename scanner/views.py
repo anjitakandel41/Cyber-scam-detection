@@ -18,8 +18,8 @@ SCAN_CONFIG = {
     },
     'email': {
         'title': 'Email Scan',
-        'description': 'Paste email content to detect phishing language and links.',
-        'placeholder': 'Paste the email subject and body here',
+        'description': 'Paste email sender, subject, and body to detect phishing language and links.',
+        'placeholder': 'Paste the email body here',
     },
     'sms': {
         'title': 'SMS Scan',
@@ -42,7 +42,7 @@ def scanner_home(request):
 def save_scan_result(user, result):
     scan_result = ScanResult.objects.create(
         user=user,
-        input=result['content'],
+        input=result.get('scan_input', result['content']),
         risk_score=result['risk_score'],
         classification=result['label'],
         explanation=result['explanation'],
@@ -62,10 +62,33 @@ def scan_view(request, scan_type):
     result = None
 
     form = ScanForm(request.POST or None)
-    form.fields['content'].widget.attrs['placeholder'] = config['placeholder']
+    if scan_type == 'email':
+        form.fields['email_sender'].widget.attrs['placeholder'] = 'sender@example.com'
+        form.fields['email_subject'].widget.attrs['placeholder'] = 'Enter the email subject'
+        form.fields['content'].widget.attrs['placeholder'] = config['placeholder']
+    else:
+        form.fields['content'].widget.attrs['placeholder'] = config['placeholder']
 
     if request.method == 'POST' and form.is_valid():
-        result = scan_content(form.cleaned_data['content'], scan_type)
+        if scan_type == 'email':
+            sender = form.cleaned_data.get('email_sender', '').strip()
+            subject = form.cleaned_data.get('email_subject', '').strip()
+            body = form.cleaned_data['content'].strip()
+            scan_input_parts = []
+            if sender:
+                scan_input_parts.append(f'From: {sender}')
+            if subject:
+                scan_input_parts.append(f'Subject: {subject}')
+            scan_input_parts.append('')
+            scan_input_parts.append(body)
+            scan_input = '\n'.join(scan_input_parts).strip()
+            result = scan_content(scan_input, scan_type)
+            result['sender'] = sender
+            result['subject'] = subject
+            result['content'] = body
+            result['scan_input'] = scan_input
+        else:
+            result = scan_content(form.cleaned_data['content'], scan_type)
         save_scan_result(request.user, result)
 
     return render(

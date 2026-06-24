@@ -1,5 +1,7 @@
 import re
 
+from .llm import llama3_response
+
 
 RULES = [
     (
@@ -64,3 +66,23 @@ def chatbot_response(message):
         'I can help with phishing awareness, suspicious URLs, emails, SMS messages, QR codes, passwords, OTPs, and reporting steps. '
         'Try asking: "How do I identify a phishing email?"'
     )
+
+
+def hybrid_response(message):
+    """Try rule-based first; if the reply is generic, fall back to Meta Llama 3 for a richer answer.
+
+    Requires environment variable `HUGGINGFACE_API_TOKEN` to call the Hugging Face Inference API.
+    If not set or the LLM call fails, the rule-based reply is returned.
+    """
+    rule_reply = chatbot_response(message)
+
+    generic = (
+        'I can help with phishing awareness, suspicious URLs, emails, SMS messages, QR codes, passwords, OTPs, and reporting steps. '
+        'Try asking: "How do I identify a phishing email?"'
+    )
+
+    if rule_reply and rule_reply != generic:
+        return rule_reply
+
+    llm_answer = llama3_response(message)
+    return llm_answer or rule_reply

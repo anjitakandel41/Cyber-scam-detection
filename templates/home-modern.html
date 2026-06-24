@@ -1,0 +1,385 @@
+{% extends "base-modern.html" %}
+
+{% block title %}Home - Cyber Scam Awareness & Detection System{% endblock %}
+
+{% block content %}
+
+<!-- ===== 1. HERO SECTION ===== -->
+<section class="hero-section" id="hero">
+    <div class="hero-content">
+        <div class="hero-text">
+            <h1>Protect Yourself from Cyber Scams</h1>
+            <p>Advanced detection system powered by AI and machine learning. Scan URLs, emails, QR codes, and SMS messages in real-time to identify phishing attacks and scam attempts.</p>
+            
+            <div class="hero-cta">
+                <a class="btn-primary" href="{% url 'scanner:url_scan' %}">
+                    <i class="bi bi-shield-check me-2"></i>Start Scanning
+                </a>
+                <!-- {% if not request.user.is_authenticated %}
+                    <button class="btn-secondary" type="button" data-auth-trigger="register">
+                        <i class="bi bi-person-plus me-2"></i>Register
+                    </button>
+                    <button class="btn-secondary" type="button" data-auth-trigger="login">
+                        <i class="bi bi-box-arrow-in-right me-2"></i>Login
+                    </button>
+                {% endif %} -->
+                <button class="btn-secondary" onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'})">
+                    <i class="bi bi-arrow-down me-2"></i>Learn More
+                </button>
+            </div>
+
+            <div style="margin-top: 2rem; color: var(--muted-text); font-size: 0.95rem;">
+                <p>✓ Real-time threat detection</p>
+                <p>✓ Free for all users</p>
+            </div>
+        </div>
+
+        <div class="hero-visual">
+            <div class="security-card">
+                <div style="text-align: center; color: var(--light-text);">
+                    <i class="bi bi-shield-check" style="font-size: 3rem; color: var(--primary); margin-bottom: 1rem;"></i>
+                    <p>🔒 Real-time Protection</p>
+                    <p>🛡️ Multi-layer Detection</p>
+                    <p>📊 Advanced Analytics</p>
+                    <p>⚡ Instant Results</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== 2. SCAM DETECTION OVERVIEW ===== -->
+<section class="section" id="overview">
+    <div class="section-header">
+        <span class="section-kicker">How it works</span>
+        <h2 class="section-title">Real-Time Threat Detection</h2>
+        <p class="section-desc">Our advanced AI analyzes multiple threat indicators to detect phishing, malware, and fraud attempts instantly.</p>
+    </div>
+
+    <!-- <div class="stats-grid">
+        <div class="stat-box">
+            <div class="stat-number">2.5M+</div>
+            <div class="stat-label">Threats Blocked</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-number">99.2%</div>
+            <div class="stat-label">Detection Accuracy</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-number">150+</div>
+            <div class="stat-label">Countries Protected</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-number">24/7</div>
+            <div class="stat-label">Real-Time Monitoring</div>
+        </div>
+    </div>
+</section> -->
+
+<!-- ===== 3. SCAN INPUT SECTION ===== -->
+<!-- <section class="scan-input-section" data-scan-url="{% url 'scanner:url_scan' %}">
+    <div class="scan-input-wrapper">
+        <h3>Test Our Detection Now</h3>
+        <p style="text-align: center; color: var(--muted-text); margin-bottom: 2rem;">Paste a suspicious URL or email to see our threat detection in action</p>
+        
+        <div class="input-group">
+            <input type="text" id="scanInput" placeholder="Paste URL, email, or phone number...">
+            <button id="scanBtn">Start Scan</button>
+            <button id="clearBtn" style="background: transparent; border: 2px solid rgba(255,255,255,0.2); color: var(--light-text); padding: 0.9rem 1.5rem; cursor: pointer; border-radius: 8px;">Clear</button>
+        </div>
+        
+        <div id="scanResult" style="display: none;"></div>
+    </div>
+</section> -->
+
+<!-- ===== 4. FEATURES SECTION ===== -->
+<section class="section" id="features">
+    <div class="section-header">
+        <span class="section-kicker">Capabilities</span>
+        <h2 class="section-title">Advanced Security Features</h2>
+        <p class="section-desc">Comprehensive tools to protect you from every angle of cyber threats</p>
+    </div>
+
+    <div class="grid grid-3">
+        <div class="card">
+            <div class="card-icon">🔗</div>
+            <h3 class="card-title">URL Scanner</h3>
+            <p class="card-text">Instantly analyze any link to detect phishing, malware, and suspicious redirects. Get detailed threat reports.</p>
+            <a href="{% url 'features' %}#url-scanner" class="card-link">Read More -&gt;</a>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">📧</div>
+            <h3 class="card-title">Email Analyzer</h3>
+            <p class="card-text">Examine email headers, attachments, and content for phishing indicators and social engineering tactics.</p>
+            <a href="{% url 'features' %}#email-analyzer" class="card-link">Read More -&gt;</a>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">📱</div>
+            <h3 class="card-title">SMS Protection</h3>
+            <p class="card-text">Detect smishing attacks and suspicious text messages designed to steal your personal information.</p>
+            <a href="{% url 'features' %}#sms-protection" class="card-link">Read More -&gt;</a>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">📲</div>
+            <h3 class="card-title">QR Code Scanner</h3>
+            <p class="card-text">Safely scan and analyze QR codes before following links. See decoded URL before opening.</p>
+            <a href="{% url 'features' %}#qr-scanner" class="card-link">Read More -&gt;</a>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">🤖</div>
+            <h3 class="card-title">AI Analysis</h3>
+            <p class="card-text">Machine learning models trained on millions of threats provide predictive threat detection.</p>
+            <a href="{% url 'features' %}#ai-analysis" class="card-link">Read More -&gt;</a>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">📊</div>
+            <h3 class="card-title">Risk Dashboard</h3>
+            <p class="card-text">Track threats, view analytics, and generate comprehensive security reports for your awareness.</p>
+            <a href="{% url 'features' %}#risk-dashboard" class="card-link">Read More -&gt;</a>
+        </div>
+    </div>
+</section>
+
+<!-- ===== 5. HOW IT WORKS (STEPS) ===== -->
+<section class="section" style="background: linear-gradient(135deg, rgba(24,214,195,0.05) 0%, rgba(91,141,239,0.05) 100%); border-radius: 16px; margin: 4rem 2rem;">
+    <div class="section-header">
+        <span class="section-kicker">Process</span>
+        <h2 class="section-title">How It Works</h2>
+    </div>
+
+    <div class="grid grid-4" style="margin-top: 3rem;">
+        <div style="text-align: center;">
+            <div style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), var(--secondary)); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 1.5rem; margin: 0 auto 1rem;">1</div>
+            <h4 style="font-weight: 600; color: var(--page-text); margin-bottom: 0.5rem;">Paste Content</h4>
+            <p style="color: var(--page-muted); font-size: 0.9rem;">Upload URL, email, or message</p>
+        </div>
+
+        <div style="text-align: center;">
+            <div style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), var(--secondary)); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 1.5rem; margin: 0 auto 1rem;">2</div>
+            <h4 style="font-weight: 600; color: var(--page-text); margin-bottom: 0.5rem;">AI Analysis</h4>
+            <p style="color: var(--page-muted); font-size: 0.9rem;">Multi-layer threat detection</p>
+        </div>
+
+        <div style="text-align: center;">
+            <div style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), var(--secondary)); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 1.5rem; margin: 0 auto 1rem;">3</div>
+            <h4 style="font-weight: 600; color: var(--page-text); margin-bottom: 0.5rem;">Get Results</h4>
+            <p style="color: var(--page-muted); font-size: 0.9rem;">Risk score and recommendations</p>
+        </div>
+
+        <div style="text-align: center;">
+            <div style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary), var(--secondary)); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 1.5rem; margin: 0 auto 1rem;">4</div>
+            <h4 style="font-weight: 600; color: var(--page-text); margin-bottom: 0.5rem;">Stay Safe</h4>
+            <p style="color: var(--page-muted); font-size: 0.9rem;">Make informed decisions</p>
+        </div>
+    </div>
+</section>
+
+<!-- ===== 6. REAL-LIFE AWARENESS TIPS ===== -->
+<section class="section">
+    <div class="section-header">
+        <span class="section-kicker">Education</span>
+        <h2 class="section-title">Scam Awareness Tips</h2>
+        <p class="section-desc">Learn the common tactics used by scammers and how to protect yourself</p>
+    </div>
+
+    <div class="grid grid-2">
+        <div class="card">
+            <h3 class="card-title">🎣 Phishing Attacks</h3>
+            <p class="card-text">Scammers impersonate trusted companies via email to steal login credentials. Look for:</p>
+            <ul style="color: var(--page-muted); margin: 1rem 0; padding-left: 1.5rem;">
+                <li>Generic greetings ("Dear Customer")</li>
+                <li>Urgent language or threats</li>
+                <li>Suspicious sender addresses</li>
+                <li>Links that don't match company domains</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3 class="card-title">💬 Social Engineering</h3>
+            <p class="card-text">Attackers manipulate you into revealing sensitive information. Be cautious of:</p>
+            <ul style="color: var(--page-muted); margin: 1rem 0; padding-left: 1.5rem;">
+                <li>Requests for passwords or OTPs</li>
+                <li>Unfamiliar caller IDs claiming authority</li>
+                <li>Pressure to act immediately</li>
+                <li>Too-good-to-be-true offers</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3 class="card-title">🔗 Malicious Links</h3>
+            <p class="card-text">Dangerous URLs can lead to malware or fake login pages. Watch for:</p>
+            <ul style="color: var(--page-muted); margin: 1rem 0; padding-left: 1.5rem;">
+                <li>Shortened URLs hiding true destination</li>
+                <li>Misspelled domain names</li>
+                <li>HTTP instead of HTTPS</li>
+                <li>Links in unexpected emails</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3 class="card-title">📱 Mobile Scams</h3>
+            <p class="card-text">Scammers target mobile users with fake apps and SMS. Protect yourself by:</p>
+            <ul style="color: var(--page-muted); margin: 1rem 0; padding-left: 1.5rem;">
+                <li>Only installing from official app stores</li>
+                <li>Verifying app permissions</li>
+                <li>Never sharing OTPs via SMS</li>
+                <li>Enabling two-factor authentication</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- ===== 7. ABOUT PREVIEW ===== -->
+<section class="section" id="about" style="background: linear-gradient(135deg, var(--dark-surface) 0%, var(--dark-surface-2) 100%); color: var(--light-text); border-radius: 16px; padding: 3rem 2rem;">
+    <div style="max-width: 900px; margin: 0 auto;">
+        <span class="section-kicker" style="color: var(--primary);">About Us</span>
+        <h2 class="section-title" style="color: var(--light-text); margin-bottom: 1.5rem;">Dedicated to Your Digital Security</h2>
+        
+        <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">
+            The Cyber Scam Awareness & Detection System was created to combat the rising tide of online fraud. With millions of phishing attempts happening daily, we recognized the need for accessible, powerful tools to protect everyone.
+        </p>
+
+        <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem; color: var(--muted-text);">
+            Our mission is simple: empower users with knowledge and technology to stay safe online. Whether you're checking a suspicious link or learning about new threats, we're here to help.
+        </p>
+
+        <a href="{% url 'about' %}" class="btn-primary">Read Full Story</a>
+    </div>
+</section>
+
+<!-- ===== 8. FAQ PREVIEW ===== -->
+<section class="section" id="faq">
+    <div class="section-header">
+        <span class="section-kicker">Questions</span>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-desc">Get answers to common security and scam-related questions</p>
+    </div>
+
+    <div style="max-width: 800px; margin: 2rem auto;">
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <span>What is phishing?</span>
+                <span class="accordion-icon">⌄</span>
+            </div>
+            <div class="accordion-body">
+                <div class="accordion-content">
+                    Phishing is a social engineering attack where scammers impersonate trusted organizations to steal passwords, financial data, and personal information. Attacks typically come via email, SMS, or fake websites that closely mimic legitimate services.
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <span>How can I identify a phishing email?</span>
+                <span class="accordion-icon">⌄</span>
+            </div>
+            <div class="accordion-body">
+                <div class="accordion-content">
+                    Check for: suspicious sender address, generic greetings, urgent language, spelling/grammar errors, requests for sensitive information, suspicious links or attachments. Always hover over links to verify the actual URL before clicking.
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <span>Is it safe to share OTPs?</span>
+                <span class="accordion-icon">⌄</span>
+            </div>
+            <div class="accordion-body">
+                <div class="accordion-content">
+                    Never share OTPs (One-Time Passwords), PINs, or security codes with anyone, even if they claim to be from your bank or service provider. Legitimate organizations will never ask for this information.
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <span>How can I report a scam?</span>
+                <span class="accordion-icon">⌄</span>
+            </div>
+            <div class="accordion-body">
+                <div class="accordion-content">
+                    Report scams to: your bank/service provider, local law enforcement (cybercrime units), national authorities (FBI IC3, NCFR), and the platform where you encountered it. Keep evidence and file a report with our system as well.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 2rem;">
+        <a href="{% url 'faq' %}" class="btn-primary">View All FAQs</a>
+    </div>
+</section>
+
+<!-- ===== 9. STATISTICS ===== -->
+<section class="section" style="background: linear-gradient(135deg, rgba(24,214,195,0.08) 0%, rgba(91,141,239,0.08) 100%); border-radius: 16px; padding: 3rem 2rem;">
+    <div class="section-header">
+        <span class="section-kicker">Impact</span>
+        <h2 class="section-title">Our Global Impact</h2>
+    </div>
+
+    <div class="stats-grid">
+        <div class="stat-box">
+            <div class="stat-number">500+</div>
+            <div class="stat-label">Scans Performed</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-number">50+</div>
+            <div class="stat-label">Active Users</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-number">400+</div>
+            <div class="stat-label">Losses Prevented</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-number">3ms</div>
+            <div class="stat-label">Average Response Time</div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== 10. CTA SECTION ===== -->
+<section class="section" style="text-align: center; padding: 4rem 2rem;">
+    <h2 class="section-title">Start Protecting Yourself Today</h2>
+    <p class="section-desc" style="margin-bottom: 2rem;">Join millions of users who are staying safe online with our free, easy-to-use security tools.</p>
+    
+    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <a class="btn-primary" href="{% url 'scanner:url_scan' %}">
+            <i class="bi bi-shield-check me-2"></i>Start Free Scan
+        </a>
+        <!-- {% if not request.user.is_authenticated %}
+            <button class="btn-secondary" type="button" data-auth-trigger="register">
+                <i class="bi bi-person-plus me-2"></i>Register Free
+            </button>
+        {% endif %} -->
+        <button class="btn-secondary" onclick="document.body.scrollTop = 0; document.documentElement.scrollTop = 0;">
+            <i class="bi bi-arrow-up me-2"></i>Back to Top
+        </button>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize observers for fade-in animations
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('fade-in-up');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.card, .stat-box').forEach(el => {
+        observer.observe(el);
+    });
+});
+</script>
+{% endblock %}

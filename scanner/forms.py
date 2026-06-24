@@ -2,6 +2,22 @@ from django import forms
 
 
 class ScanForm(forms.Form):
+    email_sender = forms.EmailField(
+        required=False,
+        label='Sender',
+        widget=forms.EmailInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'sender@example.com',
+        }),
+    )
+    email_subject = forms.CharField(
+        required=False,
+        label='Subject',
+        widget=forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter the email subject',
+        }),
+    )
     content = forms.CharField(
         label='Content to scan',
         widget=forms.Textarea(attrs={

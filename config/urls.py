@@ -21,8 +21,17 @@ from django.urls import include, path
 from django.views.generic import TemplateView
 
 urlpatterns = [
-    path('', TemplateView.as_view(template_name='public/landing.html'), name='home'),
+    # Modern website pages
+    path('', TemplateView.as_view(template_name='home-modern.html'), name='home'),
+    path('features/', TemplateView.as_view(template_name='features-modern.html'), name='features'),
+    path('about/', TemplateView.as_view(template_name='about-modern.html'), name='about'),
+    path('faq/', TemplateView.as_view(template_name='faq-modern.html'), name='faq'),
+    path('profile/', TemplateView.as_view(template_name='profile-modern.html'), name='profile'),
+    
+    # Admin
     path('admin/', admin.site.urls),
+    
+    # App URLs
     path('users/', include('users.urls')),
     path('scanner/', include('scanner.urls')),
     path('dashboard/', include('dashboard.urls')),
