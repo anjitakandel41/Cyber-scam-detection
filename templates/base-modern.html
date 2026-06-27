@@ -38,113 +38,12 @@
                     <li><a href="{% url 'home' %}#about">About</a></li>
                     <li><a href="{% url 'home' %}#faq">FAQ</a></li>
 
-                    <!-- {% if request.user.is_authenticated %}
-                        {% if request.user.is_admin_role %}
-                            <li><a href="{% url 'dashboard:admin_dashboard' %}"><i class="bi bi-grid-1x2 me-1"></i>Dashboard</a></li>
-                        {% else %}
-                            <li><a href="{% url 'dashboard:user_dashboard' %}"><i class="bi bi-grid-1x2 me-1"></i>Dashboard</a></li>
-                        {% endif %}
-                        <li>
-                            <form method="post" action="{% url 'users:logout' %}">
-                                {% csrf_token %}
-                                <button class="btn-auth btn-login" type="submit">Logout</button>
-                            </form>
-                        </li> 
-                    {% else %}
-                        <li>
-                            <button class="btn-auth btn-login" type="button" data-auth-trigger="login">Login</button>
-                        </li>
-                        <li>
-                            <button class="btn-auth btn-register" type="button" data-auth-trigger="register">Register</button>
-                        </li>
-                    {% endif %} -->
-                    
+                  
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- AUTH MODAL -->
-    <!-- <div class="modal-overlay" id="authModal">
-        <div class="modal-content">
-            <button class="modal-close" type="button">&times;</button> -->
-            
-            <!-- LOGIN FORM -->
-            <!-- <div id="loginForm" style="display: block;">
-                <h2 class="modal-title">Welcome Back</h2>
-                <p class="modal-subtitle">Login to your account to continue</p>
-                
-                <form id="loginFormElement" method="post" action="{% url 'users:login' %}">
-                    {% csrf_token %}
-                    <div id="loginError" class="alert alert-danger" style="display: none; margin-bottom: 1rem;"></div>
-                    
-                    <div class="form-group">
-                        <label>Username</label>
-                        <input type="text" name="username" id="loginUsername" placeholder="Enter your username" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Password</label>
-                        <div class="password-toggle">
-                            <input type="password" name="password" id="loginPassword" placeholder="Enter your password" required>
-                            <span class="toggle-visibility">👁️</span>
-                        </div>
-                    </div>
-                    
-                    <button type="submit" class="btn-submit">Login</button>
-                </form>
-                
-                <div class="toggle-auth">
-                    Don't have an account? 
-                    <button type="button" id="toggleToRegister">Register here</button>
-                </div>
-            </div> -->
-            
-            <!-- REGISTER FORM -->
-            <!-- <div id="registerForm" style="display: none;">
-                <h2 class="modal-title">Create Account</h2>
-                <p class="modal-subtitle">Join our security community</p>
-                
-                <form id="registerFormElement" method="post" action="{% url 'users:register' %}">
-                    {% csrf_token %}
-                    <div id="registerError" class="alert alert-danger" style="display: none; margin-bottom: 1rem;"></div>
-                    
-                    <div class="form-group">
-                        <label>Username</label>
-                        <input type="text" name="username" id="registerUsername" placeholder="Choose a username" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Email Address</label>
-                        <input type="email" name="email" id="registerEmail" placeholder="your@email.com" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Password</label>
-                        <div class="password-toggle">
-                            <input type="password" name="password1" id="registerPassword" placeholder="Create a password" required>
-                            <span class="toggle-visibility">👁️</span>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Confirm Password</label>
-                        <div class="password-toggle">
-                            <input type="password" name="password2" id="registerPasswordConfirm" placeholder="Confirm password" required>
-                            <span class="toggle-visibility">👁️</span>
-                        </div>
-                    </div>
-                    
-                    <button type="submit" class="btn-submit">Create Account</button>
-                </form>
-                
-                <div class="toggle-auth">
-                    Already have an account? 
-                    <button type="button" id="toggleToLogin">Login here</button>
-                </div>
-            </div>
-        </div>
-    </div> -->
 
     <!-- MAIN CONTENT -->
     <main class="main-content">

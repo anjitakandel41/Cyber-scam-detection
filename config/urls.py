@@ -39,6 +39,7 @@ urlpatterns = [
     path('reports/', include('reports.urls')),
     path('quiz/', include('quiz.urls')),
     path('chatbot/', include('chatbot.urls')),
+    path("accounts/", include("allauth.urls")),
 ]
 
 if settings.DEBUG:

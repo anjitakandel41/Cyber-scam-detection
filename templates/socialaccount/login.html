@@ -1,0 +1,54 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Continue with Google</title>
+
+    <link rel="stylesheet" href="{% static 'css/google-login.css' %}">
+</head>
+<body>
+
+<div class="background">
+
+    <div class="card">
+
+        <div class="logo-circle">
+            <img src="{% static 'images/google-logo.webp' %}" alt="Google">
+        </div>
+
+        <h1>Continue with Google</h1>
+
+        <p>
+            You're about to sign in securely using your Google account.
+            Your password is never shared with <strong>ScamShield AI</strong>.
+        </p>
+
+        <form method="post">
+            {% csrf_token %}
+
+            <button type="submit" class="google-btn">
+                <img src="{% static 'images/google-logo.webp' %}" alt="Google">
+                Continue with Google
+            </button>
+        </form>
+
+        <div class="divider"></div>
+
+        <div class="security">
+            🔒 Protected by Google OAuth 2.0
+        </div>
+
+       <a href="{% url 'users:login' %}" class="cancel">
+    ← Back to Login
+</a>
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

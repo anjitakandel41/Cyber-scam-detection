@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Complete Your Account{% endblock %}
+
+{% block content %}
+
+<div class="signup-wrapper">
+
+    <div class="signup-card">
+        </div>
+
+        <h2>Complete Your Account</h2>
+
+        <p class="subtitle">
+            Your Google account has been verified successfully.
+            Choose a username to finish creating your account.
+        </p>
+
+        <form method="post">
+
+            {% csrf_token %}
+
+            {% for field in form %}
+
+            <div class="form-group">
+
+                <label>{{ field.label }}</label>
+
+                {{ field }}
+
+                {% if field.errors %}
+                    <small class="error">
+                        {{ field.errors }}
+                    </small>
+                {% endif %}
+
+            </div>
+
+            {% endfor %}
+
+            <button type="submit" class="signup-btn">
+                Finish Registration
+            </button>
+
+        </form>
+
+        <div class="divider"></div>
+
+        <p class="secure">
+            🔒 Your Google account is securely connected.
+        </p>
+
+    </div>
+
+</div>
+
+{% endblock %}
