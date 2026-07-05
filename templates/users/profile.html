@@ -1,0 +1,56 @@
+﻿{% extends 'dashboard/layout.html' %}
+
+{% block title %}Profile{% endblock %}
+{% block page_heading %}Profile{% endblock %}
+
+{% block content %}
+<div class="content-container">
+    <section class="dashboard-header">
+        <div>
+            <span class="section-kicker">Account</span>
+            <h1 class="fw-bold mt-2 mb-1">Profile</h1>
+            <p class="text-muted-soft mb-0">Your CyberShield AI account details and workspace shortcuts.</p>
+        </div>
+        <a class="btn btn-cyber" href="{{ dashboard_url }}"><i class="bi bi-grid-1x2 me-2"></i>Dashboard</a>
+    </section>
+
+    <section class="profile-grid">
+        <article class="profile-card">
+            <div class="profile-avatar-lg mb-3">{{ profile_user.username|default:'U'|first|upper }}</div>
+            <h2 class="h4 fw-bold mb-1">{{ profile_user.get_full_name|default:profile_user.username }}</h2>
+            <p class="text-muted-soft mb-3">{{ profile_user.email|default:'No email added' }}</p>
+            <span class="risk-badge status-low">{% if profile_user.is_admin_role %}Administrator{% else %}User Account{% endif %}</span>
+        </article>
+
+        <article class="profile-card">
+            <h2 class="h5 fw-bold mb-3">Account information</h2>
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <span class="text-muted-soft d-block">Username</span>
+                    <strong>{{ profile_user.username }}</strong>
+                </div>
+                <div class="col-md-6">
+                    <span class="text-muted-soft d-block">Email</span>
+                    <strong>{{ profile_user.email|default:'Not provided' }}</strong>
+                </div>
+                <div class="col-md-6">
+                    <span class="text-muted-soft d-block">Role</span>
+                    <strong>{{ profile_user.get_role_display }}</strong>
+                </div>
+                <div class="col-md-6">
+                    <span class="text-muted-soft d-block">Joined</span>
+                    <strong>{{ profile_user.date_joined }}</strong>
+                </div>
+                <div class="col-md-6">
+                    <span class="text-muted-soft d-block">Last login</span>
+                    <strong>{{ profile_user.last_login|default:'Not recorded' }}</strong>
+                </div>
+                <div class="col-md-6">
+                    <span class="text-muted-soft d-block">Status</span>
+                    <strong>{% if profile_user.is_active %}Active{% else %}Inactive{% endif %}</strong>
+                </div>
+            </div>
+        </article>
+    </section>
+</div>
+{% endblock %}

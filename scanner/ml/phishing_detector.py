@@ -9,7 +9,8 @@ from django.conf import settings
 from sklearn.ensemble import RandomForestClassifier
 from .google_safe_browsing import check_google_safe_browsing
 from .whois_lookup import check_domain_age
-from ml_model.train import load_datasets
+# from ml_model.train import load_datasets
+from ml_model.train import load_datasets, extract_features as train_extract_features
 
 
 MODEL_PATH = Path(settings.BASE_DIR) / 'ml_model' / 'model.pkl'
@@ -72,6 +73,7 @@ def extract_features(content, scan_type):
         int(scan_type == 'url'),
         int(scan_type == 'email'),
         int(scan_type == 'sms'),
+        int(scan_type == 'qr'),
         _has_money_or_reward(text),
         _has_urgency(text),
         int(bool(re.search(r'(password|otp|pin|ssn|card|bank)', lowered))),
@@ -249,11 +251,23 @@ def scan_content(content, scan_type):
         'confidence_score': confidence_score,
         'label': label,
         'explanation': explanations,
-        'recommendation': recommendation_for_score(risk_score),
+        'recommendation': build_recommendation(risk_score,scan_type),
     }
-def recommendation_for_score(risk_score):
+def build_recommendation(risk_score, scan_type):
     if risk_score >= 70:
-        return 'Do not click links, reply, download attachments, or enter credentials. Report this item for review.'
+        return (
+            "This content appears malicious. Do not click any links, do not reply, "
+            "do not share passwords, OTP codes, banking details, or personal information. "
+            "Block the sender, report the message, and delete it if it came from an unknown source."
+        )
+
     if risk_score >= 40:
-        return 'Treat with caution. Verify the sender or destination through an official channel before taking action.'
-    return 'No major phishing indicators were found, but continue to verify unexpected requests before sharing information.'
+        return (
+            "This content looks suspicious. Verify the sender or website through an official source "
+            "before taking action. Avoid clicking links or downloading files until you confirm it is legitimate."
+        )
+
+    return (
+        "This content appears safe based on the current scan. Still, be careful with unexpected messages, "
+        "unknown links, payment requests, login pages, or requests for personal information."
+    )

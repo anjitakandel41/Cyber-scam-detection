@@ -1,4 +1,4 @@
-"""
+﻿"""
 URL configuration for config project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -19,6 +19,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import include, path
 from django.views.generic import TemplateView
+from users.profile_views import account_profile
+from reports.views import history as scan_history
 
 urlpatterns = [
     # Modern website pages
@@ -37,6 +39,8 @@ urlpatterns = [
     path('dashboard/', include('dashboard.urls')),
     path('alerts/', include('alerts.urls')),
     path('reports/', include('reports.urls')),
+    path('history/', scan_history, name='scan_history'),
+    path('accounts/profile/', account_profile, name='account_profile'),
     path('quiz/', include('quiz.urls')),
     path('chatbot/', include('chatbot.urls')),
     path("accounts/", include("allauth.urls")),
@@ -44,3 +48,4 @@ urlpatterns = [
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

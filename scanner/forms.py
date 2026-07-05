@@ -10,6 +10,7 @@ class ScanForm(forms.Form):
             'placeholder': 'sender@example.com',
         }),
     )
+
     email_subject = forms.CharField(
         required=False,
         label='Subject',
@@ -18,12 +19,23 @@ class ScanForm(forms.Form):
             'placeholder': 'Enter the email subject',
         }),
     )
+
+    phone_number = forms.CharField(
+        required=False,
+        max_length=20,
+        label='Phone Number',
+        widget=forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': '+97798XXXXXXXX',
+        }),
+    )
+
     content = forms.CharField(
         label='Content to scan',
         widget=forms.Textarea(attrs={
             'rows': 6,
             'class': 'form-control',
-            'placeholder': 'Paste a URL, email, or SMS message here',
+            'placeholder': 'Paste URL, email, or SMS here',
         }),
     )
 
@@ -31,5 +43,7 @@ class ScanForm(forms.Form):
 class QRUploadForm(forms.Form):
     qr_image = forms.ImageField(
         label='QR image',
-        widget=forms.ClearableFileInput(attrs={'class': 'form-control'}),
+        widget=forms.ClearableFileInput(attrs={
+            'class': 'form-control',
+        }),
     )

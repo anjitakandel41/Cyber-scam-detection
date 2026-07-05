@@ -34,6 +34,14 @@ SCAN_CONFIG = {
 }
 
 
+TEMPLATE_MAP = {
+    'url': 'scanner/url_scan.html',
+    'email': 'scanner/email_scan.html',
+    'sms': 'scanner/sms_scan.html',
+    'qr': 'scanner/qr_scan.html',
+}
+
+
 @login_required
 def scanner_home(request):
     return redirect('scanner:url_scan')
@@ -48,52 +56,94 @@ def save_scan_result(user, result):
         explanation=result['explanation'],
         recommendation=result['recommendation'],
     )
+
     scan_result.report_file = generate_scan_report(scan_result)
     scan_result.save(update_fields=['report_file'])
+
     result['report_url'] = scan_result.report_file.url
+
     if scan_result.risk_score >= 70:
         send_high_risk_alert(scan_result)
+
     return scan_result
 
 
 @login_required
 def scan_view(request, scan_type):
-    config = SCAN_CONFIG[scan_type]
-    result = None
+    config = SCAN_CONFIG.get(scan_type)
 
+    if config is None:
+        return redirect('scanner:url_scan')
+
+    result = None
     form = ScanForm(request.POST or None)
+
     if scan_type == 'email':
         form.fields['email_sender'].widget.attrs['placeholder'] = 'sender@example.com'
         form.fields['email_subject'].widget.attrs['placeholder'] = 'Enter the email subject'
         form.fields['content'].widget.attrs['placeholder'] = config['placeholder']
+
+    elif scan_type == 'sms':
+        form.fields['phone_number'].widget.attrs['placeholder'] = '+97798XXXXXXXX'
+        form.fields['content'].widget.attrs['placeholder'] = config['placeholder']
+
     else:
         form.fields['content'].widget.attrs['placeholder'] = config['placeholder']
 
     if request.method == 'POST' and form.is_valid():
+
         if scan_type == 'email':
             sender = form.cleaned_data.get('email_sender', '').strip()
             subject = form.cleaned_data.get('email_subject', '').strip()
             body = form.cleaned_data['content'].strip()
+
             scan_input_parts = []
+
             if sender:
                 scan_input_parts.append(f'From: {sender}')
+
             if subject:
                 scan_input_parts.append(f'Subject: {subject}')
+
             scan_input_parts.append('')
             scan_input_parts.append(body)
+
             scan_input = '\n'.join(scan_input_parts).strip()
+
             result = scan_content(scan_input, scan_type)
             result['sender'] = sender
             result['subject'] = subject
             result['content'] = body
             result['scan_input'] = scan_input
+
+        elif scan_type == 'sms':
+            phone_number = form.cleaned_data.get('phone_number', '').strip()
+            message = form.cleaned_data.get('content', '').strip()
+
+            scan_input = f"""
+Phone Number: {phone_number}
+
+Message:
+{message}
+""".strip()
+
+            result = scan_content(scan_input, 'sms')
+            result['phone_number'] = phone_number
+            result['content'] = message
+            result['scan_input'] = scan_input
+
         else:
-            result = scan_content(form.cleaned_data['content'], scan_type)
+            content = form.cleaned_data['content'].strip()
+
+            result = scan_content(content, scan_type)
+            result['content'] = content
+            result['scan_input'] = content
+
         save_scan_result(request.user, result)
 
     return render(
         request,
-        'scanner/scan.html',
+        TEMPLATE_MAP[scan_type],
         {
             'form': form,
             'result': result,
@@ -111,21 +161,27 @@ def qr_upload_view(request):
     result = None
     decoded_content = None
     decode_error = None
+
     form = QRUploadForm(request.POST or None, request.FILES or None)
 
     if request.method == 'POST' and form.is_valid():
         try:
             decoded_content = decode_qr_upload(form.cleaned_data['qr_image'])
             inferred_type = infer_scan_type(decoded_content)
+
             result = scan_content(decoded_content, inferred_type)
             result['scan_type'] = f'QR {result["scan_type"]}'
+            result['content'] = decoded_content
+            result['scan_input'] = decoded_content
+
             save_scan_result(request.user, result)
+
         except QRDecodeError as exc:
             decode_error = str(exc)
 
     return render(
         request,
-        'scanner/qr_upload.html',
+        'scanner/qr_scan.html',
         {
             'form': form,
             'result': result,
