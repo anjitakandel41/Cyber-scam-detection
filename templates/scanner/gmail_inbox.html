@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block title %}Spam Inbox{% endblock %}
+
+{% block content %}
+<div class="content-container">
+
+    <h2 class="mb-4">
+        Gmail Spam Messages
+    </h2>
+
+    {% if emails %}
+
+    <div class="table-responsive">
+
+        <table class="table table-hover">
+
+            <thead>
+                <tr>
+                    <th>Sender</th>
+                    <th>Subject</th>
+                    <th>Date</th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+            {% for email in emails %}
+
+                <tr>
+
+                    <td>{{ email.sender }}</td>
+
+                    <td>{{ email.subject }}</td>
+
+                    <td>{{ email.date }}</td>
+
+                    <td>
+
+                        <a
+                            href="{% url 'scanner:scan_gmail_email' email.id %}"
+                            class="btn btn-danger btn-sm">
+
+                            Scan
+
+                        </a>
+
+                    </td>
+
+                </tr>
+
+            {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    {% else %}
+
+        <div class="alert alert-info">
+            No spam emails found.
+        </div>
+
+    {% endif %}
+
+</div>
+{% endblock %}

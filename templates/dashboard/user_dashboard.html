@@ -4,136 +4,242 @@
 
 {% block content %}
 <div class="content-container">
-    <section class="dashboard-header">
+
+    <!-- ================= HEADER ================= -->
+    <section class="dashboard-header d-flex justify-content-between align-items-start flex-wrap gap-3">
         <div>
             <span class="section-kicker">Personal security workspace</span>
-            <h1 class="fw-bold mt-2 mb-1">User dashboard</h1>
-            <p class="text-muted-soft mb-0">Welcome back, {{ request.user.username }}. Track scans, alerts, reports, quiz progress, and awareness support.</p>
+            <h1 class="fw-bold mt-2 mb-1">User Dashboard</h1>
+            <p class="text-muted-soft mb-0">
+                Welcome back, {{ request.user.username }}.
+                Track scans, alerts, reports, quiz progress, and awareness support.
+            </p>
         </div>
-        <div class="d-flex flex-wrap gap-2">
-            <a class="btn btn-cyber" href="{% url 'scanner:home' %}"><i class="bi bi-search me-2"></i>Run scan</a>
-            <a class="btn btn-outline-cyber" href="{% url 'quiz:home' %}"><i class="bi bi-patch-question me-2"></i>Quiz</a>
-        </div>
-    </section>
 
-    <section class="metric-grid mb-4">
+        <div class="d-flex flex-wrap gap-2">
+            <a class="btn btn-cyber" href="{% url 'scanner:home' %}">
+                <i class="bi bi-search me-2"></i>Run Scan
+            </a>
+
+    <a class="btn btn-outline-cyber" href="{% url 'scanner:gmail_inbox' %}">
+        <i class="bi bi-envelope-fill me-2"></i>Scan Gmail Spam
+    </a>
+
+    <a class="btn btn-outline-cyber" href="{% url 'quiz:home' %}">
+        <i class="bi bi-patch-question me-2"></i>Quiz
+    </a>
+    </div>
+</section>
+
+    <!-- ================= METRICS ================= -->
+    <section class="metric-grid my-4">
         {% for stat in stats %}
-            <article class="metric-card">
-                <span>{{ stat.label }}</span>
-                <strong>{{ stat.value }}</strong>
-                <small>{{ stat.note }}</small>
-            </article>
+        <article class="metric-card">
+            <span>{{ stat.label }}</span>
+            <strong>{{ stat.value }}</strong>
+            <small>{{ stat.note }}</small>
+        </article>
         {% endfor %}
     </section>
 
-    <section class="analytics-grid mb-3">
+    <!-- ================= CHARTS ================= -->
+    <section class="analytics-grid mb-4">
+
         <article class="chart-panel">
             <div class="d-flex justify-content-between align-items-center mb-3">
-                <h2 class="h5 fw-bold mb-0">Weekly activity</h2>
-                <span class="badge text-bg-light">7 days</span>
+                <h2 class="h5 fw-bold mb-0">Weekly Activity</h2>
+                <span class="badge text-bg-light">7 Days</span>
             </div>
             <canvas id="activityChart"></canvas>
         </article>
+
         <article class="chart-panel">
             <div class="d-flex justify-content-between align-items-center mb-3">
-                <h2 class="h5 fw-bold mb-0">Risk distribution</h2>
-                <span class="badge text-bg-light">Your scans</span>
+                <h2 class="h5 fw-bold mb-0">Risk Distribution</h2>
+                <span class="badge text-bg-light">Your Scans</span>
             </div>
             <canvas id="riskChart"></canvas>
         </article>
+
     </section>
 
-    <section class="analytics-grid mb-3">
+    <!-- ================= MODULE + ACTIONS ================= -->
+    <section class="analytics-grid mb-4">
+
         <article class="chart-panel">
             <div class="d-flex justify-content-between align-items-center mb-3">
-                <h2 class="h5 fw-bold mb-0">Module usage</h2>
+                <h2 class="h5 fw-bold mb-0">Module Usage</h2>
                 <span class="badge text-bg-light">Engagement</span>
             </div>
             <canvas id="moduleChart"></canvas>
         </article>
+
         <article class="action-panel">
-            <h2 class="h5 fw-bold">Quick actions</h2>
-            <p class="text-muted-soft">{{ question_count }} active quiz question{{ question_count|pluralize }} available.</p>
-            <div class="activity-list">
-                <a class="btn btn-cyber" href="{% url 'scanner:home' %}"><i class="bi bi-search me-2"></i>Run a new scan</a>
-                <a class="btn btn-outline-cyber" href="{% url 'quiz:home' %}"><i class="bi bi-patch-question me-2"></i>Open quiz</a>
-                <a class="btn btn-outline-cyber" href="{% url 'chatbot:home' %}"><i class="bi bi-chat-dots me-2"></i>Ask chatbot</a>
+
+            <h2 class="h5 fw-bold mb-3">Quick Actions</h2>
+
+            <div class="d-grid gap-2 mb-3">
+                <a class="btn btn-cyber" href="{% url 'scanner:home' %}">
+                    <i class="bi bi-search me-2"></i>Run New Scan
+                </a>
+
+                <a class="btn btn-outline-cyber" href="{% url 'quiz:home' %}">
+                    <i class="bi bi-patch-question me-2"></i>Open Quiz
+                </a>
+
+                <a class="btn btn-outline-cyber" href="{% url 'chatbot:home' %}">
+                    <i class="bi bi-chat-dots me-2"></i>Ask Chatbot
+                </a>
             </div>
+
             <hr>
-            <p class="mb-0 text-muted-soft">{% if latest_attempt %}Latest quiz score: <strong>{{ latest_attempt.percentage }}%</strong>.{% else %}No quiz attempts yet.{% endif %}</p>
+
+            <p class="text-muted-soft mb-2">
+                {{ question_count }} active quiz question{{ question_count|pluralize }} available.
+            </p>
+
+            <p class="mb-0 text-muted-soft">
+                {% if latest_attempt %}
+                    Latest quiz score: <strong>{{ latest_attempt.percentage }}%</strong>
+                {% else %}
+                    No quiz attempts yet.
+                {% endif %}
+            </p>
+
         </article>
+
     </section>
 
+    <!-- ================= ACTIVITY ================= -->
     <section class="analytics-grid">
+
+        <!-- Recent Scans -->
         <article class="activity-panel">
-            <h2 class="h5 fw-bold mb-3">Recent scans</h2>
+            <h2 class="h5 fw-bold mb-3">Recent Scans</h2>
+
             <div class="activity-list">
                 {% for scan in recent_scans %}
-                    <div class="activity-item d-flex justify-content-between gap-3">
-                        <div>
-                            <strong>{{ scan.classification }}</strong>
-                            <div class="text-muted-soft small">{{ scan.timestamp }}</div>
-                        </div>
-                        <span class="risk-badge {% if scan.risk_score >= 70 %}status-high{% elif scan.risk_score >= 40 %}status-medium{% else %}status-low{% endif %}">{{ scan.risk_score }}%</span>
+                <div class="activity-item d-flex justify-content-between gap-3">
+                    <div>
+                        <strong>{{ scan.classification }}</strong>
+                        <div class="text-muted-soft small">{{ scan.timestamp }}</div>
                     </div>
+
+                    <span class="risk-badge
+                        {% if scan.risk_score >= 70 %}
+                            status-high
+                        {% elif scan.risk_score >= 40 %}
+                            status-medium
+                        {% else %}
+                            status-low
+                        {% endif %}">
+                        {{ scan.risk_score }}%
+                    </span>
+                </div>
                 {% empty %}
-                    <p class="text-muted-soft mb-0">No scans yet.</p>
+                <p class="text-muted-soft mb-0">No scans yet.</p>
                 {% endfor %}
             </div>
         </article>
+
+        <!-- Recent Alerts -->
         <article class="activity-panel">
-            <h2 class="h5 fw-bold mb-3">Recent alerts</h2>
+            <h2 class="h5 fw-bold mb-3">Recent Alerts</h2>
+
             <div class="activity-list">
                 {% for alert in recent_alerts %}
-                    <div class="activity-item">
-                        <strong>{{ alert.status|title }}</strong>
-                        <div class="text-muted-soft small">{{ alert.sent_at }}</div>
-                    </div>
+                <div class="activity-item">
+                    <strong>{{ alert.status|title }}</strong>
+                    <div class="text-muted-soft small">{{ alert.sent_at }}</div>
+                </div>
                 {% empty %}
-                    <p class="text-muted-soft mb-0">No alerts yet.</p>
+                <p class="text-muted-soft mb-0">No alerts yet.</p>
                 {% endfor %}
             </div>
         </article>
+
     </section>
+
 </div>
 {% endblock %}
 
+<!-- ================= CHART SCRIPTS ================= -->
 {% block scripts %}
+
 {{ activity_chart|json_script:"activity-chart-data" }}
 {{ module_chart|json_script:"module-chart-data" }}
 {{ risk_chart|json_script:"risk-chart-data" }}
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <script>
     const activityData = JSON.parse(document.getElementById('activity-chart-data').textContent);
     const moduleData = JSON.parse(document.getElementById('module-chart-data').textContent);
     const riskData = JSON.parse(document.getElementById('risk-chart-data').textContent);
+
     const gridColor = 'rgba(102, 117, 140, 0.18)';
 
     new Chart(document.getElementById('activityChart'), {
         type: 'bar',
         data: {
             labels: activityData.labels,
-            datasets: [{ label: 'Actions', data: activityData.values, backgroundColor: '#0b746d', borderRadius: 6 }]
+            datasets: [{
+                label: 'Actions',
+                data: activityData.values,
+                backgroundColor: '#0b746d',
+                borderRadius: 6
+            }]
         },
-        options: { responsive: true, maintainAspectRatio: false, scales: { y: { beginAtZero: true, grid: { color: gridColor } }, x: { grid: { display: false } } } }
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: { beginAtZero: true, grid: { color: gridColor } },
+                x: { grid: { display: false } }
+            }
+        }
     });
 
     new Chart(document.getElementById('riskChart'), {
         type: 'doughnut',
         data: {
             labels: riskData.labels,
-            datasets: [{ data: riskData.values, backgroundColor: ['#18b26b', '#f2b84b', '#ef5b6b'], borderWidth: 0 }]
+            datasets: [{
+                data: riskData.values,
+                backgroundColor: ['#18b26b', '#f2b84b', '#ef5b6b'],
+                borderWidth: 0
+            }]
         },
-        options: { responsive: true, maintainAspectRatio: false, cutout: '68%' }
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            cutout: '68%'
+        }
     });
 
     new Chart(document.getElementById('moduleChart'), {
         type: 'radar',
         data: {
             labels: moduleData.labels,
-            datasets: [{ label: 'Usage', data: moduleData.values, borderColor: '#5b8def', backgroundColor: 'rgba(91, 141, 239, 0.16)', pointBackgroundColor: '#5b8def' }]
+            datasets: [{
+                label: 'Usage',
+                data: moduleData.values,
+                borderColor: '#5b8def',
+                backgroundColor: 'rgba(91, 141, 239, 0.16)',
+                pointBackgroundColor: '#5b8def'
+            }]
         },
-        options: { responsive: true, maintainAspectRatio: false, scales: { r: { beginAtZero: true, grid: { color: gridColor } } } }
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                r: {
+                    beginAtZero: true,
+                    grid: { color: gridColor }
+                }
+            }
+        }
     });
 </script>
+
 {% endblock %}

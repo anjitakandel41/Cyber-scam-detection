@@ -713,6 +713,9 @@ body {
     color: var(--accent);
 }
 
+
+
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
     .navbar-menu {

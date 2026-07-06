@@ -126,22 +126,21 @@ AUTH_PASSWORD_VALIDATORS = [
 
 SOCIALACCOUNT_PROVIDERS = {
     "google": {
-        "APP": {
-            "client_id": os.getenv("GOOGLE_CLIENT_ID"),
-            "secret": os.getenv("GOOGLE_CLIENT_SECRET"),
-            "key": "",
-        },
         "SCOPE": [
             "profile",
             "email",
+            "https://www.googleapis.com/auth/gmail.readonly",
         ],
         "AUTH_PARAMS": {
-            "access_type": "online",
+            "access_type": "offline",
+            "prompt": "consent",
         },
     }
 }
 
 SOCIALACCOUNT_ADAPTER = "users.adapters.MySocialAccountAdapter"
+SOCIALACCOUNT_STORE_TOKENS = True
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/6.0/topics/i18n/

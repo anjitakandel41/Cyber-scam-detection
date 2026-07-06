@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block title %}Scan Result{% endblock %}
+
+{% block content %}
+
+<div class="content-container">
+
+    <h2 class="mb-4">
+        Gmail Scan Result
+    </h2>
+
+    <div class="card shadow">
+
+        <div class="card-body">
+
+            <h5>
+                Sender
+            </h5>
+
+            <p>
+                {{ result.sender }}
+            </p>
+
+            <h5>
+                Subject
+            </h5>
+
+            <p>
+                {{ result.subject }}
+            </p>
+
+            <hr>
+
+            <h5>
+                Risk Score
+            </h5>
+
+            <h2>
+                {{ result.risk_score }}%
+            </h2>
+
+            <hr>
+
+            <h5>
+                Classification
+            </h5>
+
+            <p>
+                {{ result.label }}
+            </p>
+
+            <hr>
+
+            <h5>
+                Explanation
+            </h5>
+
+            <p>
+                {{ result.explanation }}
+            </p>
+
+            <hr>
+
+            <h5>
+                Recommendation
+            </h5>
+
+            <p>
+                {{ result.recommendation }}
+            </p>
+
+            <a
+                href="{% url 'scanner:gmail_inbox' %}"
+                class="btn btn-primary">
+
+                Back to Spam Inbox
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
