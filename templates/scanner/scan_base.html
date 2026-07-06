@@ -1,0 +1,106 @@
+{% extends 'dashboard/layout.html' %}
+
+{% block title %}{{ config.title }}{% endblock %}
+
+{% block content %}
+<div class="content-container">
+
+    <section class="scanner-clean-page">
+        <div class="scanner-clean-header">
+            <span class="scanner-label">Threat Scanner</span>
+            <h1>{{ config.title }}</h1>
+            <p>{{ config.description }}</p>
+        </div>
+
+        <div class="scanner-clean-form">
+            <div class="clean-form-title">
+                <span>Scan Form</span>
+                <h2>Submit Content</h2>
+            </div>
+
+            {% block scanner_form %}{% endblock %}
+        </div>
+    </section>
+
+    {% if result %}
+        <section class="clean-report-card {% if result.risk_score >= 70 %}report-danger{% elif result.risk_score >= 40 %}report-warning{% else %}report-safe{% endif %}">
+
+            <div class="report-header">
+                <span>Scan Report</span>
+                <h2>
+                    {% if result.risk_score >= 70 %}
+                        High Risk
+                    {% elif result.risk_score >= 40 %}
+                        Medium Risk
+                    {% else %}
+                        Low Risk
+                    {% endif %}
+                </h2>
+            </div>
+
+            <div class="risk-score-area">
+                <div class="risk-score-top">
+                    <span>Risk Score</span>
+                    <strong>{{ result.risk_score }}%</strong>
+                </div>
+
+                <div class="risk-bar">
+                    <div class="risk-bar-fill" style="width: {{ result.risk_score }}%;"></div>
+                </div>
+            </div>
+
+            <div class="report-meta-grid">
+                <div>
+                    <span>Status</span>
+                    <strong>
+                        {% if result.risk_score >= 70 %}
+                            Malicious
+                        {% elif result.risk_score >= 40 %}
+                            Suspicious
+                        {% else %}
+                            Safe
+                        {% endif %}
+                    </strong>
+                </div>
+
+                <div>
+                    <span>Classification</span>
+                    <strong>{{ result.label }}</strong>
+                </div>
+
+                <div>
+                    <span>Scan Type</span>
+                    <strong>{{ result.scan_type }}</strong>
+                </div>
+            </div>
+
+            <div class="report-section">
+                <h3>Detection Summary</h3>
+
+                <div class="clean-reason-list">
+                    {% for reason in result.explanation %}
+                        <div class="clean-reason-item">
+                            {{ reason }}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="report-section recommendation-clean">
+                <h3>Recommendation</h3>
+                <p>{{ result.recommendation }}</p>
+            </div>
+
+            {% if result.report_url %}
+                <div class="report-actions">
+                    <a class="clean-report-btn" href="{{ result.report_url }}" target="_blank" rel="noopener">
+                        Download PDF Report
+                    </a>
+                </div>
+            {% endif %}
+
+        </section>
+    {% endif %}
+
+</div>
+{% endblock %}

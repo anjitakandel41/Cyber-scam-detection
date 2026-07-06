@@ -1,0 +1,28 @@
+{% extends 'scanner/scan_base.html' %}
+
+{% block scanner_form %}
+<form method="post" class="scanner-form">
+    {% csrf_token %}
+
+    <div class="scanner-field">
+        <label for="{{ form.phone_number.id_for_label }}">Phone Number</label>
+        {{ form.phone_number }}
+        {% if form.phone_number.errors %}
+            <div class="field-error">{{ form.phone_number.errors }}</div>
+        {% endif %}
+    </div>
+
+    <div class="scanner-field">
+        <label for="{{ form.content.id_for_label }}">Message</label>
+        {{ form.content }}
+        {% if form.content.errors %}
+            <div class="field-error">{{ form.content.errors }}</div>
+        {% endif %}
+    </div>
+
+    <button class="btn-scan-pro" type="submit">
+        <i class="bi bi-chat-left-text"></i>
+        Analyze SMS
+    </button>
+</form>
+{% endblock %}

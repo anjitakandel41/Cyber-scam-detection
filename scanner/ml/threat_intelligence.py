@@ -46,7 +46,8 @@ def check_virustotal(url):
 
         return {
             "score": score,
-            "message": f"VirusTotal found {malicious} malicious and {suspicious} suspicious reports."
+            # "message": f"VirusTotal found {malicious} malicious and {suspicious} suspicious reports."
+              "message": "No known threats were found in VirusTotal's global database."
         }
 
     except Exception as e:

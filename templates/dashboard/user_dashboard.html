@@ -1,20 +1,376 @@
-{% extends 'base.html' %}
+﻿{% extends 'dashboard/layout.html' %}
 
 {% block title %}User Dashboard{% endblock %}
 
 {% block content %}
+<style>
+    .content-container {
+        padding: 28px;
+        background: linear-gradient(135deg, #f8fafc, #eef6ff);
+        min-height: 100vh;
+    }
+
+    .dashboard-hero {
+        display: grid;
+        grid-template-columns: 1.8fr 1fr;
+        gap: 24px;
+        margin-bottom: 28px;
+    }
+
+    .hero-left,
+    .hero-card,
+    .metric-card,
+    .chart-panel,
+    .action-panel,
+    .activity-panel {
+        background: rgba(255, 255, 255, 0.88);
+        backdrop-filter: blur(14px);
+        border: 1px solid rgba(226, 232, 240, 0.9);
+        border-radius: 24px;
+        box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
+    }
+
+    .hero-left {
+        padding: 34px;
+        background:
+            radial-gradient(circle at top right, rgba(37, 99, 235, 0.18), transparent 35%),
+            linear-gradient(135deg, #0f172a, #123c69);
+        color: white;
+    }
+
+    .section-kicker {
+        display: inline-flex;
+        align-items: center;
+        padding: 8px 14px;
+        border-radius: 999px;
+        background: rgba(255,255,255,0.14);
+        font-size: 13px;
+        margin-bottom: 18px;
+    }
+
+    .hero-left h1 {
+        font-size: 38px;
+        font-weight: 800;
+        margin-bottom: 12px;
+    }
+
+    .hero-left p {
+        max-width: 650px;
+        color: #dbeafe;
+        font-size: 16px;
+    }
+
+    .hero-actions {
+        display: flex;
+        gap: 14px;
+        margin-top: 24px;
+        flex-wrap: wrap;
+    }
+
+    .btn-cyber {
+        background: #14b8a6;
+        color: white;
+        border: none;
+        border-radius: 14px;
+        padding: 12px 20px;
+        font-weight: 700;
+    }
+
+    .btn-cyber:hover {
+        background: #0f766e;
+        color: white;
+        transform: translateY(-2px);
+    }
+
+    .btn-outline-cyber {
+        color: white;
+        border: 1px solid rgba(255,255,255,0.4);
+        border-radius: 14px;
+        padding: 12px 20px;
+        font-weight: 700;
+    }
+
+    .btn-outline-cyber:hover {
+        background: white;
+        color: #0f172a;
+    }
+
+    .hero-card {
+        padding: 28px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    .hero-icon {
+        width: 64px;
+        height: 64px;
+        border-radius: 20px;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(135deg, #dcfce7, #ccfbf1);
+        color: #0f766e;
+        font-size: 32px;
+        margin-bottom: 18px;
+    }
+
+    .status-pill,
+    .risk-badge {
+        padding: 7px 13px;
+        border-radius: 999px;
+        font-size: 13px;
+        font-weight: 800;
+    }
+
+    .status-low {
+        background: #dcfce7;
+        color: #15803d;
+    }
+
+    .status-medium {
+        background: #fef3c7;
+        color: #b45309;
+    }
+
+    .status-high {
+        background: #fee2e2;
+        color: #b91c1c;
+    }
+
+    .metric-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 18px;
+    }
+
+    .metric-card {
+        padding: 22px;
+        transition: 0.25s ease;
+    }
+
+    .metric-card:hover,
+    .chart-panel:hover,
+    .action-panel:hover,
+    .activity-panel:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 24px 50px rgba(15, 23, 42, 0.12);
+    }
+
+    .metric-top {
+        display: flex;
+        justify-content: space-between;
+        color: #64748b;
+        font-weight: 700;
+        font-size: 14px;
+    }
+
+    .metric-card strong {
+        display: block;
+        font-size: 34px;
+        color: #0f172a;
+        margin: 10px 0 4px;
+    }
+
+    .metric-card small {
+        color: #64748b;
+    }
+
+    .analytics-grid {
+        display: grid;
+        grid-template-columns: 1.4fr 1fr;
+        gap: 22px;
+        margin-bottom: 22px;
+    }
+
+    .chart-panel,
+    .action-panel,
+    .activity-panel {
+        padding: 24px;
+        min-height: 360px;
+    }
+
+    .large-card {
+        min-height: 390px;
+    }
+
+    .panel-heading {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 18px;
+    }
+
+    .panel-heading h2 {
+        font-size: 20px;
+        font-weight: 800;
+        margin-bottom: 4px;
+        color: #0f172a;
+    }
+
+    .panel-heading p {
+        margin: 0;
+        color: #64748b;
+        font-size: 14px;
+    }
+
+    .badge-soft {
+        height: fit-content;
+        padding: 7px 12px;
+        border-radius: 999px;
+        background: #eff6ff;
+        color: #2563eb;
+        font-size: 12px;
+        font-weight: 800;
+    }
+
+    canvas {
+        width: 100% !important;
+        height: 280px !important;
+    }
+
+    .quick-action-list {
+        display: grid;
+        gap: 14px;
+    }
+
+    .quick-action-list a {
+        display: flex;
+        gap: 14px;
+        align-items: center;
+        text-decoration: none;
+        padding: 16px;
+        border-radius: 18px;
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        color: #0f172a;
+        transition: 0.25s ease;
+    }
+
+    .quick-action-list a:hover {
+        background: #ecfeff;
+        border-color: #14b8a6;
+        transform: translateX(5px);
+    }
+
+    .quick-action-list i {
+        width: 44px;
+        height: 44px;
+        display: grid;
+        place-items: center;
+        border-radius: 14px;
+        background: #e0f2fe;
+        color: #0369a1;
+        font-size: 20px;
+    }
+
+    .quick-action-list span {
+        display: block;
+        font-size: 13px;
+        color: #64748b;
+    }
+
+    .quiz-score-box {
+        margin-top: 18px;
+        padding: 15px;
+        border-radius: 18px;
+        background: linear-gradient(135deg, #f0fdf4, #ecfeff);
+        color: #0f172a;
+        font-weight: 600;
+    }
+
+    .activity-list {
+        display: grid;
+        gap: 13px;
+    }
+
+    .activity-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 14px;
+        padding: 15px;
+        border-radius: 16px;
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+    }
+
+    .text-muted-soft {
+        color: #64748b;
+    }
+
+    .empty-state {
+        text-align: center;
+        padding: 35px 10px;
+        color: #94a3b8;
+    }
+
+    .empty-state i {
+        font-size: 34px;
+        display: block;
+        margin-bottom: 8px;
+    }
+
+    @media (max-width: 992px) {
+        .dashboard-hero,
+        .analytics-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .metric-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 576px) {
+        .content-container {
+            padding: 16px;
+        }
+
+        .metric-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .hero-left h1 {
+            font-size: 28px;
+        }
+    }
+</style>
+
 <div class="content-container">
 
-    <!-- ================= HEADER ================= -->
-    <section class="dashboard-header d-flex justify-content-between align-items-start flex-wrap gap-3">
-        <div>
-            <span class="section-kicker">Personal security workspace</span>
-            <h1 class="fw-bold mt-2 mb-1">User Dashboard</h1>
-            <p class="text-muted-soft mb-0">
-                Welcome back, {{ request.user.username }}.
-                Track scans, alerts, reports, quiz progress, and awareness support.
+    <section class="dashboard-hero">
+        <div class="hero-left">
+            <span class="section-kicker">
+                <i class="bi bi-shield-lock me-1"></i>
+                Personal Security Workspace
+            </span>
+
+            <h1>Welcome back, {{ request.user.username }}</h1>
+
+            <p>
+                Track scam scans, alerts, risk levels, reports, and quiz progress from your personal cyber safety dashboard.
             </p>
+
+            <div class="hero-actions">
+                <a class="btn btn-cyber" href="{% url 'scanner:home' %}">
+                    <i class="bi bi-search me-2"></i>Run New Scan
+                </a>
+                <a class="btn btn-outline-cyber" href="{% url 'quiz:home' %}">
+                    <i class="bi bi-patch-question me-2"></i>Start Quiz
+                </a>
+            </div>
         </div>
+
+        <div class="hero-card">
+            <div class="hero-icon">
+                <i class="bi bi-shield-check"></i>
+            </div>
+            <h3>Protection Status</h3>
+            <p class="text-muted-soft">Your account security activity is active and being monitored.</p>
+            <span class="status-pill status-low">Active</span>
+        </div>
+    </section>
 
         <div class="d-flex flex-wrap gap-2">
             <a class="btn btn-cyber" href="{% url 'scanner:home' %}">
@@ -34,78 +390,95 @@
     <!-- ================= METRICS ================= -->
     <section class="metric-grid my-4">
         {% for stat in stats %}
-        <article class="metric-card">
-            <span>{{ stat.label }}</span>
-            <strong>{{ stat.value }}</strong>
-            <small>{{ stat.note }}</small>
-        </article>
+            <article class="metric-card">
+                <div class="metric-top">
+                    <span>{{ stat.label }}</span>
+                    <i class="bi bi-activity"></i>
+                </div>
+                <strong>{{ stat.value }}</strong>
+                <small>{{ stat.note }}</small>
+            </article>
         {% endfor %}
     </section>
 
-    <!-- ================= CHARTS ================= -->
-    <section class="analytics-grid mb-4">
-
-        <article class="chart-panel">
-            <div class="d-flex justify-content-between align-items-center mb-3">
-                <h2 class="h5 fw-bold mb-0">Weekly Activity</h2>
-                <span class="badge text-bg-light">7 Days</span>
+    <section class="analytics-grid">
+        <article class="chart-panel large-card">
+            <div class="panel-heading">
+                <div>
+                    <h2>Weekly Activity</h2>
+                    <p>Your scan and quiz activity over the last 7 days.</p>
+                </div>
+                <span class="badge-soft">7 Days</span>
             </div>
             <canvas id="activityChart"></canvas>
         </article>
 
         <article class="chart-panel">
-            <div class="d-flex justify-content-between align-items-center mb-3">
-                <h2 class="h5 fw-bold mb-0">Risk Distribution</h2>
-                <span class="badge text-bg-light">Your Scans</span>
+            <div class="panel-heading">
+                <div>
+                    <h2>Risk Distribution</h2>
+                    <p>Safe, medium, and high-risk scan ratio.</p>
+                </div>
+                <span class="badge-soft">Scans</span>
             </div>
             <canvas id="riskChart"></canvas>
         </article>
 
     </section>
 
-    <!-- ================= MODULE + ACTIONS ================= -->
-    <section class="analytics-grid mb-4">
-
+    <section class="analytics-grid">
         <article class="chart-panel">
-            <div class="d-flex justify-content-between align-items-center mb-3">
-                <h2 class="h5 fw-bold mb-0">Module Usage</h2>
-                <span class="badge text-bg-light">Engagement</span>
+            <div class="panel-heading">
+                <div>
+                    <h2>Module Usage</h2>
+                    <p>How actively each security feature is used.</p>
+                </div>
+                <span class="badge-soft">Engagement</span>
             </div>
             <canvas id="moduleChart"></canvas>
         </article>
 
         <article class="action-panel">
+            <div class="panel-heading">
+                <div>
+                    <h2>Quick Actions</h2>
+                    <p>{{ question_count }} active quiz question{{ question_count|pluralize }} available.</p>
+                </div>
+            </div>
 
-            <h2 class="h5 fw-bold mb-3">Quick Actions</h2>
-
-            <div class="d-grid gap-2 mb-3">
-                <a class="btn btn-cyber" href="{% url 'scanner:home' %}">
-                    <i class="bi bi-search me-2"></i>Run New Scan
+            <div class="quick-action-list">
+                <a href="{% url 'scanner:home' %}">
+                    <i class="bi bi-search"></i>
+                    <div>
+                        <strong>Run a new scan</strong>
+                        <span>Check URL, email, SMS, or QR risk.</span>
+                    </div>
                 </a>
 
-                <a class="btn btn-outline-cyber" href="{% url 'quiz:home' %}">
-                    <i class="bi bi-patch-question me-2"></i>Open Quiz
+                <a href="{% url 'quiz:home' %}">
+                    <i class="bi bi-patch-question"></i>
+                    <div>
+                        <strong>Open awareness quiz</strong>
+                        <span>Improve scam detection knowledge.</span>
+                    </div>
                 </a>
 
-                <a class="btn btn-outline-cyber" href="{% url 'chatbot:home' %}">
-                    <i class="bi bi-chat-dots me-2"></i>Ask Chatbot
+                <a href="{% url 'chatbot:home' %}">
+                    <i class="bi bi-chat-dots"></i>
+                    <div>
+                        <strong>Ask AI chatbot</strong>
+                        <span>Get cyber safety guidance.</span>
+                    </div>
                 </a>
             </div>
 
-            <hr>
-
-            <p class="text-muted-soft mb-2">
-                {{ question_count }} active quiz question{{ question_count|pluralize }} available.
-            </p>
-
-            <p class="mb-0 text-muted-soft">
+            <div class="quiz-score-box">
                 {% if latest_attempt %}
                     Latest quiz score: <strong>{{ latest_attempt.percentage }}%</strong>
                 {% else %}
                     No quiz attempts yet.
                 {% endif %}
-            </p>
-
+            </div>
         </article>
 
     </section>
@@ -115,14 +488,24 @@
 
         <!-- Recent Scans -->
         <article class="activity-panel">
-            <h2 class="h5 fw-bold mb-3">Recent Scans</h2>
+            <div class="panel-heading">
+                <div>
+                    <h2>Recent Scans</h2>
+                    <p>Your latest scam detection results.</p>
+                </div>
+            </div>
 
             <div class="activity-list">
                 {% for scan in recent_scans %}
-                <div class="activity-item d-flex justify-content-between gap-3">
-                    <div>
-                        <strong>{{ scan.classification }}</strong>
-                        <div class="text-muted-soft small">{{ scan.timestamp }}</div>
+                    <div class="activity-item">
+                        <div>
+                            <strong>{{ scan.classification }}</strong>
+                            <div class="text-muted-soft small">{{ scan.timestamp }}</div>
+                        </div>
+
+                        <span class="risk-badge {% if scan.risk_score >= 70 %}status-high{% elif scan.risk_score >= 40 %}status-medium{% else %}status-low{% endif %}">
+                            {{ scan.risk_score }}%
+                        </span>
                     </div>
 
                     <span class="risk-badge
@@ -137,23 +520,36 @@
                     </span>
                 </div>
                 {% empty %}
-                <p class="text-muted-soft mb-0">No scans yet.</p>
+                    <div class="empty-state">
+                        <i class="bi bi-inbox"></i>
+                        <p>No scans yet.</p>
+                    </div>
                 {% endfor %}
             </div>
         </article>
 
-        <!-- Recent Alerts -->
         <article class="activity-panel">
-            <h2 class="h5 fw-bold mb-3">Recent Alerts</h2>
+            <div class="panel-heading">
+                <div>
+                    <h2>Recent Alerts</h2>
+                    <p>Latest warning notifications.</p>
+                </div>
+            </div>
 
             <div class="activity-list">
                 {% for alert in recent_alerts %}
-                <div class="activity-item">
-                    <strong>{{ alert.status|title }}</strong>
-                    <div class="text-muted-soft small">{{ alert.sent_at }}</div>
-                </div>
+                    <div class="activity-item">
+                        <div>
+                            <strong>{{ alert.status|title }}</strong>
+                            <div class="text-muted-soft small">{{ alert.sent_at }}</div>
+                        </div>
+                        <i class="bi bi-bell text-muted-soft"></i>
+                    </div>
                 {% empty %}
-                <p class="text-muted-soft mb-0">No alerts yet.</p>
+                    <div class="empty-state">
+                        <i class="bi bi-bell-slash"></i>
+                        <p>No alerts yet.</p>
+                    </div>
                 {% endfor %}
             </div>
         </article>
@@ -177,7 +573,7 @@
     const moduleData = JSON.parse(document.getElementById('module-chart-data').textContent);
     const riskData = JSON.parse(document.getElementById('risk-chart-data').textContent);
 
-    const gridColor = 'rgba(102, 117, 140, 0.18)';
+    const gridColor = 'rgba(148, 163, 184, 0.22)';
 
     new Chart(document.getElementById('activityChart'), {
         type: 'bar',
@@ -186,13 +582,15 @@
             datasets: [{
                 label: 'Actions',
                 data: activityData.values,
-                backgroundColor: '#0b746d',
-                borderRadius: 6
+                backgroundColor: '#14b8a6',
+                borderRadius: 12,
+                barThickness: 34
             }]
         },
         options: {
             responsive: true,
             maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
             scales: {
                 y: { beginAtZero: true, grid: { color: gridColor } },
                 x: { grid: { display: false } }
@@ -206,14 +604,16 @@
             labels: riskData.labels,
             datasets: [{
                 data: riskData.values,
-                backgroundColor: ['#18b26b', '#f2b84b', '#ef5b6b'],
-                borderWidth: 0
+                backgroundColor: ['#22c55e', '#f59e0b', '#ef4444'],
+                borderWidth: 0,
+                hoverOffset: 8
             }]
         },
         options: {
             responsive: true,
             maintainAspectRatio: false,
-            cutout: '68%'
+            cutout: '72%',
+            plugins: { legend: { position: 'bottom' } }
         }
     });
 
@@ -224,18 +624,21 @@
             datasets: [{
                 label: 'Usage',
                 data: moduleData.values,
-                borderColor: '#5b8def',
-                backgroundColor: 'rgba(91, 141, 239, 0.16)',
-                pointBackgroundColor: '#5b8def'
+                borderColor: '#2563eb',
+                backgroundColor: 'rgba(37, 99, 235, 0.16)',
+                pointBackgroundColor: '#2563eb',
+                pointRadius: 4
             }]
         },
         options: {
             responsive: true,
             maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
             scales: {
                 r: {
                     beginAtZero: true,
-                    grid: { color: gridColor }
+                    grid: { color: gridColor },
+                    angleLines: { color: gridColor }
                 }
             }
         }
@@ -243,3 +646,150 @@
 </script>
 
 {% endblock %}
+
+
+
+
+
+
+
+.scanner-page-card {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 48px;
+    align-items: center;
+    padding: 48px 56px;
+    background: rgba(255,255,255,0.92);
+    border: 1px solid rgba(15,23,42,0.08);
+    border-radius: 24px;
+    box-shadow: 0 24px 60px rgba(15,23,42,0.08);
+}
+
+.scanner-intro h1 {
+    font-size: 46px;
+    font-weight: 850;
+    letter-spacing: -0.04em;
+    margin: 20px 0 12px;
+}
+
+.scanner-intro p {
+    color: var(--cyber-muted);
+    font-size: 17px;
+    line-height: 1.7;
+    max-width: 520px;
+}
+
+.scanner-switch-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 24px;
+}
+
+.scanner-switch-row a {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 11px 18px;
+    border-radius: 12px;
+    border: 1px solid rgba(15,23,42,0.1);
+    background: #fff;
+    color: var(--cyber-text);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.scanner-switch-row a.active {
+    background: linear-gradient(135deg, var(--cyber-primary), var(--cyber-blue));
+    color: #fff;
+    border-color: transparent;
+}
+
+.scanner-form-area {
+    padding: 6px;
+}
+
+.scanner-form {
+    display: grid;
+    gap: 18px;
+}
+
+.scanner-field label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 800;
+    color: var(--cyber-text);
+}
+
+.scanner-field input,
+.scanner-field textarea,
+.scanner-field select {
+    width: 100%;
+    border: 1px solid rgba(15,23,42,0.14);
+    border-radius: 14px;
+    padding: 14px 16px;
+    font-size: 15px;
+    background: #fff;
+}
+
+.scanner-field textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.scanner-field input:focus,
+.scanner-field textarea:focus {
+    border-color: var(--cyber-primary);
+    box-shadow: 0 0 0 4px rgba(15,118,110,0.12);
+    outline: none;
+}
+
+.btn-scan-pro {
+    width: 100%;
+    border: none;
+    border-radius: 14px;
+    padding: 15px 18px;
+    background: linear-gradient(135deg, var(--cyber-primary), var(--cyber-blue));
+    color: #fff;
+    font-size: 18px;
+    font-weight: 850;
+    box-shadow: 0 18px 34px rgba(37,99,235,0.18);
+}
+
+.btn-scan-pro:hover {
+    transform: translateY(-2px);
+}
+
+.field-error {
+    margin-top: 7px;
+    color: #b91c1c;
+    font-size: 13px;
+}
+
+@media (max-width: 992px) {
+    .scanner-page-card {
+        grid-template-columns: 1fr;
+        padding: 32px;
+    }
+}
+
+@media (max-width: 576px) {
+    .scanner-page-card {
+        padding: 24px;
+        border-radius: 18px;
+    }
+
+    .scanner-intro h1 {
+        font-size: 34px;
+    }
+
+    .scanner-switch-row a {
+        flex: 1;
+        justify-content: center;
+    }
+}
+
+
+
+
+

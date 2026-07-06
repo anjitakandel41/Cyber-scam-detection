@@ -21,29 +21,29 @@ class ScanForm(forms.Form):
         }),
     )
 
-    # SMS field
     phone_number = forms.CharField(
         required=False,
+        max_length=20,
         label='Phone Number',
         widget=forms.TextInput(attrs={
             'class': 'form-control',
-            'placeholder': '+977 98XXXXXXXX',
+            'placeholder': '+97798XXXXXXXX',
         }),
     )
 
-    # Shared field
     content = forms.CharField(
-        label='Content',
+        label='Content to scan',
         widget=forms.Textarea(attrs={
-            'rows': 8,
+            'rows': 6,
             'class': 'form-control',
+            'placeholder': 'Paste URL, email, or SMS here',
         }),
     )
 
 
 class QRUploadForm(forms.Form):
     qr_image = forms.ImageField(
-        label='QR Image',
+        label='QR image',
         widget=forms.ClearableFileInput(attrs={
             'class': 'form-control',
         }),

@@ -1,0 +1,20 @@
+{% extends 'scanner/scan_base.html' %}
+
+{% block scanner_form %}
+<form method="post" enctype="multipart/form-data" class="scanner-form">
+    {% csrf_token %}
+
+    <div class="scanner-field">
+        <label for="{{ form.qr_image.id_for_label }}">QR Image</label>
+        {{ form.qr_image }}
+        {% if form.qr_image.errors %}
+            <div class="field-error">{{ form.qr_image.errors }}</div>
+        {% endif %}
+    </div>
+
+    <button class="btn-scan-pro" type="submit">
+        <i class="bi bi-qr-code-scan"></i>
+        Decode and Scan
+    </button>
+</form>
+{% endblock %}

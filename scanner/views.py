@@ -36,6 +36,14 @@ SCAN_CONFIG = {
 }
 
 
+TEMPLATE_MAP = {
+    'url': 'scanner/url_scan.html',
+    'email': 'scanner/email_scan.html',
+    'sms': 'scanner/sms_scan.html',
+    'qr': 'scanner/qr_scan.html',
+}
+
+
 @login_required
 def scanner_home(request):
     return redirect('scanner:url_scan')
@@ -199,75 +207,55 @@ def save_scan_result(user, result):
 
 @login_required
 def scan_view(request, scan_type):
+    config = SCAN_CONFIG.get(scan_type)
 
-    config = SCAN_CONFIG[scan_type]
+    if config is None:
+        return redirect('scanner:url_scan')
+
     result = None
-
     form = ScanForm(request.POST or None)
 
-    # ---------------- Placeholder ----------------
-
-    if scan_type == 'url':
-        form.fields['content'].widget.attrs['placeholder'] = \
-            'https://example.com/login'
-
-    elif scan_type == 'email':
-        form.fields['email_sender'].widget.attrs['placeholder'] = \
-            'sender@example.com'
-
-        form.fields['email_subject'].widget.attrs['placeholder'] = \
-            'Enter the email subject'
-
-        form.fields['content'].widget.attrs['placeholder'] = \
-            'Paste the email body here'
+    if scan_type == 'email':
+        form.fields['email_sender'].widget.attrs['placeholder'] = 'sender@example.com'
+        form.fields['email_subject'].widget.attrs['placeholder'] = 'Enter the email subject'
+        form.fields['content'].widget.attrs['placeholder'] = config['placeholder']
 
     elif scan_type == 'sms':
-        form.fields['phone_number'].widget.attrs['placeholder'] = \
-            '+977 98XXXXXXXX'
+        form.fields['phone_number'].widget.attrs['placeholder'] = '+97798XXXXXXXX'
+        form.fields['content'].widget.attrs['placeholder'] = config['placeholder']
 
-        form.fields['content'].widget.attrs['placeholder'] = \
-            'Paste the SMS message here'
+    else:
+        form.fields['content'].widget.attrs['placeholder'] = config['placeholder']
 
-    # ---------------- Submit ----------------
+    if request.method == 'POST' and form.is_valid():
 
-    if request.method == "POST" and form.is_valid():
+        if scan_type == 'email':
+            sender = form.cleaned_data.get('email_sender', '').strip()
+            subject = form.cleaned_data.get('email_subject', '').strip()
+            body = form.cleaned_data['content'].strip()
 
-        # URL
-        if scan_type == "url":
+            scan_input_parts = []
 
-            url = form.cleaned_data["content"].strip()
+            if sender:
+                scan_input_parts.append(f'From: {sender}')
 
-            result = scan_content(url, "url")
+            if subject:
+                scan_input_parts.append(f'Subject: {subject}')
 
-            result["content"] = url
-            result["scan_input"] = url
+            scan_input_parts.append('')
+            scan_input_parts.append(body)
 
-        # EMAIL
-        elif scan_type == "email":
+            scan_input = '\n'.join(scan_input_parts).strip()
 
-            sender = form.cleaned_data.get("email_sender", "").strip()
-            subject = form.cleaned_data.get("email_subject", "").strip()
-            body = form.cleaned_data.get("content", "").strip()
+            result = scan_content(scan_input, scan_type)
+            result['sender'] = sender
+            result['subject'] = subject
+            result['content'] = body
+            result['scan_input'] = scan_input
 
-            scan_input = f"""
-From: {sender}
-Subject: {subject}
-
-{body}
-""".strip()
-
-            result = scan_content(scan_input, "email")
-
-            result["sender"] = sender
-            result["subject"] = subject
-            result["content"] = body
-            result["scan_input"] = scan_input
-
-        # SMS
-        elif scan_type == "sms":
-
-            phone_number = form.cleaned_data.get("phone_number", "").strip()
-            message = form.cleaned_data.get("content", "").strip()
+        elif scan_type == 'sms':
+            phone_number = form.cleaned_data.get('phone_number', '').strip()
+            message = form.cleaned_data.get('content', '').strip()
 
             scan_input = f"""
 Phone Number: {phone_number}
@@ -276,17 +264,23 @@ Message:
 {message}
 """.strip()
 
-            result = scan_content(scan_input, "sms")
+            result = scan_content(scan_input, 'sms')
+            result['phone_number'] = phone_number
+            result['content'] = message
+            result['scan_input'] = scan_input
 
-            result["phone_number"] = phone_number
-            result["content"] = message
-            result["scan_input"] = scan_input
+        else:
+            content = form.cleaned_data['content'].strip()
+
+            result = scan_content(content, scan_type)
+            result['content'] = content
+            result['scan_input'] = content
 
         save_scan_result(request.user, result)
 
     return render(
         request,
-        "scanner/scan.html",
+        TEMPLATE_MAP[scan_type],
         {
             "form": form,
             "result": result,
@@ -304,6 +298,8 @@ def qr_upload_view(request):
     decoded_content = None
     decode_error = None
 
+    form = QRUploadForm(request.POST or None, request.FILES or None)
+
     form = QRUploadForm(
         request.POST or None,
         request.FILES or None,
@@ -319,12 +315,10 @@ def qr_upload_view(request):
 
             inferred_type = infer_scan_type(decoded_content)
 
-            result = scan_content(
-                decoded_content,
-                inferred_type,
-            )
-
-            result["scan_type"] = f'QR {result["scan_type"]}'
+            result = scan_content(decoded_content, inferred_type)
+            result['scan_type'] = f'QR {result["scan_type"]}'
+            result['content'] = decoded_content
+            result['scan_input'] = decoded_content
 
             save_scan_result(request.user, result)
 
@@ -334,7 +328,7 @@ def qr_upload_view(request):
 
     return render(
         request,
-        "scanner/qr_upload.html",
+        'scanner/qr_scan.html',
         {
             "form": form,
             "result": result,
