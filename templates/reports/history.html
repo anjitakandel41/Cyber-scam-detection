@@ -1,0 +1,42 @@
+﻿{% extends 'dashboard/layout.html' %}
+
+{% block title %}Scan History{% endblock %}
+{% block page_heading %}Scan History{% endblock %}
+
+{% block content %}
+<div class="content-container">
+    <section class="dashboard-header">
+        <div>
+            <span class="section-kicker">Analysis</span>
+            <h1 class="fw-bold mt-2 mb-1">Scan history</h1>
+            <p class="text-muted-soft mb-0">Review your recent URL, email, SMS, and QR threat checks.</p>
+        </div>
+        <a class="btn btn-cyber" href="{% url 'scanner:url_scan' %}"><i class="bi bi-plus-circle me-2"></i>New scan</a>
+    </section>
+
+    <section class="activity-list">
+        {% for scan in scans %}
+            <article class="activity-item align-items-start">
+                <div>
+                    <div class="d-flex flex-wrap gap-2 align-items-center mb-2">
+                        <span class="risk-badge {% if scan.risk_score >= 70 %}status-high{% elif scan.risk_score >= 40 %}status-medium{% else %}status-low{% endif %}">{{ scan.classification }}</span>
+                        <strong>{{ scan.risk_score }}% risk</strong>
+                        <span class="text-muted-soft small">{{ scan.timestamp }}</span>
+                    </div>
+                    <p class="text-break mb-2">{{ scan.input|truncatechars:180 }}</p>
+                    <p class="text-muted-soft mb-0">{{ scan.recommendation|truncatechars:160 }}</p>
+                </div>
+                {% if scan.report_file %}
+                    <a class="btn btn-outline-cyber btn-sm flex-shrink-0" href="{{ scan.report_file.url }}" target="_blank" rel="noopener"><i class="bi bi-file-earmark-pdf me-1"></i>Report</a>
+                {% endif %}
+            </article>
+        {% empty %}
+            <article class="result-panel p-4 text-center">
+                <h2 class="h5 fw-bold">No scans yet</h2>
+                <p class="text-muted-soft mb-3">Run your first scan to start building a security timeline.</p>
+                <a class="btn btn-cyber" href="{% url 'scanner:url_scan' %}">Start scanning</a>
+            </article>
+        {% endfor %}
+    </section>
+</div>
+{% endblock %}

@@ -1,0 +1,52 @@
+﻿{% extends 'dashboard/layout.html' %}
+
+{% block title %}Reports{% endblock %}
+{% block page_heading %}Reports{% endblock %}
+
+{% block content %}
+<div class="content-container">
+    <section class="dashboard-header">
+        <div>
+            <span class="section-kicker">Analysis</span>
+            <h1 class="fw-bold mt-2 mb-1">Reports</h1>
+            <p class="text-muted-soft mb-0">Download generated PDF reports from your completed scans.</p>
+        </div>
+        <a class="btn btn-cyber" href="{% url 'scanner:url_scan' %}"><i class="bi bi-search me-2"></i>Run scan</a>
+    </section>
+
+    <section class="dashboard-table-card">
+        <div class="table-responsive">
+            <table class="table align-middle">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Classification</th>
+                        <th>Risk</th>
+                        <th>Input</th>
+                        <th class="text-end">Report</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for scan in scans %}
+                        <tr>
+                            <td>{{ scan.timestamp }}</td>
+                            <td><span class="risk-badge {% if scan.risk_score >= 70 %}status-high{% elif scan.risk_score >= 40 %}status-medium{% else %}status-low{% endif %}">{{ scan.classification }}</span></td>
+                            <td><strong>{{ scan.risk_score }}%</strong></td>
+                            <td class="text-break">{{ scan.input|truncatechars:90 }}</td>
+                            <td class="text-end">
+                                {% if scan.report_file %}
+                                    <a class="btn btn-outline-cyber btn-sm" href="{{ scan.report_file.url }}" target="_blank" rel="noopener"><i class="bi bi-download me-1"></i>PDF</a>
+                                {% else %}
+                                    <span class="text-muted-soft">Unavailable</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% empty %}
+                        <tr><td colspan="5" class="text-center text-muted-soft py-5">No generated reports yet.</td></tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+</div>
+{% endblock %}
