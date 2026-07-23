@@ -5,66 +5,239 @@
 {% block content %}
 <div class="content-container">
 
-    <h2 class="mb-4">
-        Gmail Spam Messages
-    </h2>
+    <!-- Page Header with Icon -->
+    <div class="page-header">
+        <div class="header-left">
+            <i class="fas fa-shield-virus" style="color: #dc3545; font-size: 2rem;"></i>
+            <h2 class="page-title">Gmail Spam Messages</h2>
+        </div>
+        <div class="header-right">
+            <span class="badge bg-secondary">Inbox</span>
+            <span class="badge bg-danger">0 Spam</span>
+        </div>
+    </div>
 
     {% if emails %}
 
     <div class="table-responsive">
-
         <table class="table table-hover">
-
             <thead>
                 <tr>
-                    <th>Sender</th>
-                    <th>Subject</th>
-                    <th>Date</th>
-                    <th></th>
+                    <th><i class="fas fa-user"></i> Sender</th>
+                    <th><i class="fas fa-envelope"></i> Subject</th>
+                    <th><i class="fas fa-calendar"></i> Date</th>
+                    <th class="text-center">Action</th>
                 </tr>
             </thead>
-
             <tbody>
-
             {% for email in emails %}
-
                 <tr>
-
-                    <td>{{ email.sender }}</td>
-
+                    <td><strong>{{ email.sender }}</strong></td>
                     <td>{{ email.subject }}</td>
-
                     <td>{{ email.date }}</td>
-
-                    <td>
-
-                        <a
-                            href="{% url 'scanner:scan_gmail_email' email.id %}"
-                            class="btn btn-danger btn-sm">
-
-                            Scan
-
+                    <td class="text-center">
+                        <a href="{% url 'scanner:scan_gmail_email' email.id %}" 
+                           class="btn btn-danger btn-sm">
+                            <i class="fas fa-shield-alt"></i> Scan
                         </a>
-
                     </td>
-
                 </tr>
-
             {% endfor %}
-
             </tbody>
-
         </table>
-
     </div>
 
     {% else %}
 
-        <div class="alert alert-info">
-            No spam emails found.
+    <!-- Enhanced Empty State Design -->
+    <div class="empty-state-container">
+        <div class="empty-state-icon">
+            <i class="fas fa-inbox" style="font-size: 5rem; color: #c0d0e0;"></i>
         </div>
+        <h3 class="empty-state-title">All Clear! ✨</h3>
+        <p class="empty-state-message">
+            No spam emails found in your Gmail inbox.
+        </p>
+        <div class="empty-state-actions">
+            <button class="btn btn-outline-primary btn-sm" onclick="location.reload();">
+                <i class="fas fa-sync"></i> Refresh
+            </button>
+            <button class="btn btn-outline-secondary btn-sm" onclick="window.location.href='/scanner/'">
+                <i class="fas fa-arrow-left"></i> Back to Scanner
+            </button>
+        </div>
+        <div class="empty-state-footer">
+            <i class="fas fa-check-circle" style="color: #28a745;"></i> 
+            Your inbox is clean and secure.
+        </div>
+    </div>
 
     {% endif %}
 
 </div>
+
+<style>
+    /* Custom Styles for Better Look */
+    .content-container {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 30px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    .page-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 25px;
+        padding-bottom: 15px;
+        border-bottom: 2px solid #f0f0f0;
+    }
+
+    .header-left {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .page-title {
+        margin: 0;
+        font-weight: 600;
+        color: #2c3e50;
+    }
+
+    .badge {
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-weight: 500;
+    }
+
+    .badge.bg-secondary {
+        background: #e9ecef;
+        color: #495057;
+    }
+
+    .badge.bg-danger {
+        background: #dc3545;
+        color: white;
+    }
+
+    .table thead th {
+        background: #f8f9fa;
+        border-bottom: 2px solid #dee2e6;
+        font-weight: 600;
+        color: #495057;
+        padding: 12px 15px;
+    }
+
+    .table tbody td {
+        padding: 12px 15px;
+        vertical-align: middle;
+    }
+
+    .btn-danger {
+        background: #dc3545;
+        border: none;
+        padding: 6px 16px;
+        border-radius: 20px;
+        transition: all 0.3s;
+    }
+
+    .btn-danger:hover {
+        background: #c82333;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 8px rgba(220, 53, 69, 0.3);
+    }
+
+    /* Empty State Styles */
+    .empty-state-container {
+        text-align: center;
+        padding: 50px 20px;
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        border-radius: 12px;
+        border: 2px dashed #dee2e6;
+    }
+
+    .empty-state-icon {
+        margin-bottom: 20px;
+    }
+
+    .empty-state-title {
+        color: #2c3e50;
+        font-size: 1.8rem;
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+
+    .empty-state-message {
+        color: #6c757d;
+        font-size: 1.1rem;
+        margin-bottom: 25px;
+    }
+
+    .empty-state-actions {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+    .btn-outline-primary {
+        border: 2px solid #007bff;
+        color: #007bff;
+        background: transparent;
+        padding: 8px 20px;
+        border-radius: 20px;
+        transition: all 0.3s;
+    }
+
+    .btn-outline-primary:hover {
+        background: #007bff;
+        color: white;
+    }
+
+    .btn-outline-secondary {
+        border: 2px solid #6c757d;
+        color: #6c757d;
+        background: transparent;
+        padding: 8px 20px;
+        border-radius: 20px;
+        transition: all 0.3s;
+    }
+
+    .btn-outline-secondary:hover {
+        background: #6c757d;
+        color: white;
+    }
+
+    .empty-state-footer {
+        color: #28a745;
+        font-weight: 500;
+        padding-top: 15px;
+        border-top: 1px solid #dee2e6;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+        .page-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        
+        .header-right {
+            width: 100%;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .empty-state-container {
+            padding: 30px 15px;
+        }
+        
+        .empty-state-title {
+            font-size: 1.4rem;
+        }
+    }
+</style>
 {% endblock %}

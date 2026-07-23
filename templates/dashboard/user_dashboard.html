@@ -6,7 +6,7 @@
 <style>
     .content-container {
         padding: 28px;
-        background: linear-gradient(135deg, #f8fafc, #eef6ff);
+        background: linear-gradient(135deg, #fafffe 0%, #f0f7f0 50%, #e8f5e9 100%);
         min-height: 100vh;
     }
 
@@ -23,40 +23,42 @@
     .chart-panel,
     .action-panel,
     .activity-panel {
-        background: rgba(255, 255, 255, 0.88);
+        background: rgba(255, 255, 255, 0.95);
         backdrop-filter: blur(14px);
-        border: 1px solid rgba(226, 232, 240, 0.9);
+        border: 1px solid rgba(200, 230, 201, 0.4);
         border-radius: 24px;
-        box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
     }
 
     .hero-left {
         padding: 34px;
-        background:
-            radial-gradient(circle at top right, rgba(37, 99, 235, 0.18), transparent 35%),
-            linear-gradient(135deg, #0f172a, #123c69);
-        color: white;
+        background: 
+            radial-gradient(circle at top right, rgba(200, 230, 201, 0.15), transparent 35%),
+            linear-gradient(135deg, #fafffe, #f0f7f0);
+        color: #1a1a1a;
+        border: 1px solid rgba(200, 230, 201, 0.3);
     }
 
     .section-kicker {
-        display: inline-flex;
-        align-items: center;
-        padding: 8px 14px;
-        border-radius: 999px;
-        background: rgba(255,255,255,0.14);
-        font-size: 13px;
-        margin-bottom: 18px;
+        display: block;
+        font-size: 1.6rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: #2e7d32;
+        margin-bottom: 4px;
     }
 
     .hero-left h1 {
         font-size: 38px;
         font-weight: 800;
         margin-bottom: 12px;
+        color: #1a1a1a;
     }
 
     .hero-left p {
         max-width: 650px;
-        color: #dbeafe;
+        color: #333333;
         font-size: 16px;
     }
 
@@ -68,7 +70,7 @@
     }
 
     .btn-cyber {
-        background: #14b8a6;
+        background: linear-gradient(135deg, #2e7d32, #388e3c);
         color: white;
         border: none;
         border-radius: 14px;
@@ -77,33 +79,40 @@
         text-decoration: none;
         display: inline-flex;
         align-items: center;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(46, 125, 50, 0.15);
     }
 
     .btn-cyber:hover {
-        background: #0f766e;
+        background: linear-gradient(135deg, #1b5e20, #2e7d32);
         color: white;
         transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(46, 125, 50, 0.25);
     }
 
     .btn-outline-cyber {
-        color: white;
-        border: 1px solid rgba(255,255,255,0.4);
+        color: #1a1a1a;
+        border: 1px solid rgba(46, 125, 50, 0.3);
         border-radius: 14px;
         padding: 12px 20px;
         font-weight: 700;
         text-decoration: none;
         display: inline-flex;
         align-items: center;
+        background: rgba(255, 255, 255, 0.8);
+        transition: all 0.3s ease;
     }
 
     .btn-outline-cyber:hover {
-        background: white;
-        color: #0f172a;
+        background: rgba(255, 255, 255, 0.95);
+        border-color: #2e7d32;
+        transform: translateY(-2px);
+        color: #1a1a1a;
     }
 
     .btn-outline-cyber-dark {
-        color: #0f172a;
-        border: 1px solid rgba(15,23,42,0.2);
+        color: #1a1a1a;
+        border: 1px solid rgba(46, 125, 50, 0.2);
         border-radius: 14px;
         padding: 12px 20px;
         font-weight: 700;
@@ -111,34 +120,69 @@
         display: inline-flex;
         align-items: center;
         background: white;
+        transition: all 0.3s ease;
     }
 
     .btn-outline-cyber-dark:hover {
-        background: #f8fafc;
-        border-color: #14b8a6;
+        background: #f5faf5;
+        border-color: #2e7d32;
         transform: translateY(-2px);
+        color: #1a1a1a;
     }
 
     .hero-card {
-        padding: 28px;
+        background: linear-gradient(135deg, #fafffe 0%, #f0f7f0 50%, #e8f5e9 100%) !important;
+        color: #1a1a1a !important;
+        border-radius: 28px;
+        padding: 2.5rem;
+        min-height: 370px;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        align-items: flex-start;
+        border: 1px solid rgba(200, 230, 201, 0.3);
+        position: relative;
+        overflow: hidden;
     }
 
-    .hero-icon {
-        width: 64px;
-        height: 64px;
-        border-radius: 20px;
-        display: grid;
-        place-items: center;
-        background: linear-gradient(135deg, #dcfce7, #ccfbf1);
-        color: #0f766e;
-        font-size: 32px;
-        margin-bottom: 18px;
+    .hero-card::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -30%;
+        width: 300px;
+        height: 300px;
+        background: rgba(165, 214, 167, 0.1);
+        border-radius: 50%;
     }
 
+    .hero-card h3 {
+        color: #1a1a1a !important;
+        font-size: 2.2rem;
+        font-weight: 800;
+    }
+
+    .hero-card p {
+        color: #333333 !important;
+    }
+
+    .hero-card .hero-icon {
+        width: 80px;
+        height: 80px;
+        border-radius: 22px;
+        background: rgba(46, 125, 50, 0.08);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        color: #2e7d32;
+        margin-bottom: 1.5rem;
+    }
+
+    .hero-card .status-pill {
+        background: #2e7d32;
+        color: white;
+    }
+    
     .status-pill,
     .risk-badge {
         padding: 7px 13px;
@@ -149,18 +193,18 @@
     }
 
     .status-low {
-        background: #dcfce7;
-        color: #15803d;
+        background: #e8f5e9;
+        color: #2e7d32;
     }
 
     .status-medium {
-        background: #fef3c7;
-        color: #b45309;
+        background: #fff3e0;
+        color: #e65100;
     }
 
     .status-high {
-        background: #fee2e2;
-        color: #b91c1c;
+        background: #ffebee;
+        color: #c62828;
     }
 
     .metric-grid {
@@ -171,7 +215,9 @@
 
     .metric-card {
         padding: 22px;
-        transition: 0.25s ease;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(200, 230, 201, 0.3);
+        background: rgba(255, 255, 255, 0.95);
     }
 
     .metric-card:hover,
@@ -179,13 +225,14 @@
     .action-panel:hover,
     .activity-panel:hover {
         transform: translateY(-4px);
-        box-shadow: 0 24px 50px rgba(15, 23, 42, 0.12);
+        box-shadow: 0 24px 50px rgba(0, 0, 0, 0.06);
+        border-color: #a5d6a7;
     }
 
     .metric-top {
         display: flex;
         justify-content: space-between;
-        color: #64748b;
+        color: #555555;
         font-weight: 700;
         font-size: 14px;
     }
@@ -193,12 +240,12 @@
     .metric-card strong {
         display: block;
         font-size: 34px;
-        color: #0f172a;
+        color: #1a1a1a;
         margin: 10px 0 4px;
     }
 
     .metric-card small {
-        color: #64748b;
+        color: #555555;
     }
 
     .analytics-grid {
@@ -213,6 +260,9 @@
     .activity-panel {
         padding: 24px;
         min-height: 360px;
+        border: 1px solid rgba(200, 230, 201, 0.3);
+        transition: all 0.3s ease;
+        background: rgba(255, 255, 255, 0.95);
     }
 
     .large-card {
@@ -230,12 +280,12 @@
         font-size: 20px;
         font-weight: 800;
         margin-bottom: 4px;
-        color: #0f172a;
+        color: #1a1a1a;
     }
 
     .panel-heading p {
         margin: 0;
-        color: #64748b;
+        color: #555555;
         font-size: 14px;
     }
 
@@ -243,8 +293,8 @@
         height: fit-content;
         padding: 7px 12px;
         border-radius: 999px;
-        background: #eff6ff;
-        color: #2563eb;
+        background: #e8f5e9;
+        color: #2e7d32;
         font-size: 12px;
         font-weight: 800;
     }
@@ -266,16 +316,17 @@
         text-decoration: none;
         padding: 16px;
         border-radius: 18px;
-        background: #f8fafc;
-        border: 1px solid #e2e8f0;
-        color: #0f172a;
-        transition: 0.25s ease;
+        background: #fafffe;
+        border: 1px solid #e8f5e9;
+        color: #1a1a1a;
+        transition: all 0.3s ease;
     }
 
     .quick-action-list a:hover {
-        background: #ecfeff;
-        border-color: #14b8a6;
+        background: #f5faf5;
+        border-color: #a5d6a7;
         transform: translateX(5px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
     }
 
     .quick-action-list i {
@@ -284,24 +335,25 @@
         display: grid;
         place-items: center;
         border-radius: 14px;
-        background: #e0f2fe;
-        color: #0369a1;
+        background: #e8f5e9;
+        color: #2e7d32;
         font-size: 20px;
     }
 
     .quick-action-list span {
         display: block;
         font-size: 13px;
-        color: #64748b;
+        color: #555555;
     }
 
     .quiz-score-box {
         margin-top: 18px;
         padding: 15px;
         border-radius: 18px;
-        background: linear-gradient(135deg, #f0fdf4, #ecfeff);
-        color: #0f172a;
+        background: linear-gradient(135deg, #f5faf5, #e8f5e9);
+        color: #1a1a1a;
         font-weight: 600;
+        border: 1px solid rgba(200, 230, 201, 0.3);
     }
 
     .activity-list {
@@ -316,24 +368,35 @@
         gap: 14px;
         padding: 15px;
         border-radius: 16px;
-        background: #f8fafc;
-        border: 1px solid #e2e8f0;
+        background: #fafffe;
+        border: 1px solid #e8f5e9;
+        transition: all 0.3s ease;
+    }
+
+    .activity-item:hover {
+        background: #f5faf5;
+        border-color: #a5d6a7;
+    }
+
+    .activity-item strong {
+        color: #1a1a1a;
     }
 
     .text-muted-soft {
-        color: #64748b;
+        color: #555555;
     }
 
     .empty-state {
         text-align: center;
         padding: 35px 10px;
-        color: #94a3b8;
+        color: #777777;
     }
 
     .empty-state i {
         font-size: 34px;
         display: block;
         margin-bottom: 8px;
+        color: #a5d6a7;
     }
 
     .quick-action-buttons {
@@ -403,7 +466,7 @@
                 <i class="bi bi-shield-check"></i>
             </div>
             <h3>Protection Status</h3>
-            <p class="text-muted-soft">Your account security activity is active and being monitored.</p>
+            <p>Your account security activity is active and being monitored.</p>
             <span class="status-pill status-low">Active</span>
         </div>
     </section>
@@ -552,7 +615,7 @@
                             <strong>{{ alert.status|title }}</strong>
                             <div class="text-muted-soft small">{{ alert.sent_at }}</div>
                         </div>
-                        <i class="bi bi-bell text-muted-soft"></i>
+                        <i class="bi bi-bell" style="color: #2e7d32;"></i>
                     </div>
                 {% empty %}
                     <div class="empty-state">
@@ -582,7 +645,7 @@
     const moduleData = JSON.parse(document.getElementById('module-chart-data').textContent);
     const riskData = JSON.parse(document.getElementById('risk-chart-data').textContent);
 
-    const gridColor = 'rgba(148, 163, 184, 0.22)';
+    const gridColor = 'rgba(46, 125, 50, 0.08)';
 
     new Chart(document.getElementById('activityChart'), {
         type: 'bar',
@@ -591,7 +654,7 @@
             datasets: [{
                 label: 'Actions',
                 data: activityData.values,
-                backgroundColor: '#14b8a6',
+                backgroundColor: 'rgba(46, 125, 50, 0.7)',
                 borderRadius: 12,
                 barThickness: 34
             }]
@@ -601,8 +664,15 @@
             maintainAspectRatio: false,
             plugins: { legend: { display: false } },
             scales: {
-                y: { beginAtZero: true, grid: { color: gridColor } },
-                x: { grid: { display: false } }
+                y: { 
+                    beginAtZero: true, 
+                    grid: { color: gridColor },
+                    ticks: { color: '#333333' }
+                },
+                x: { 
+                    grid: { display: false },
+                    ticks: { color: '#333333' }
+                }
             }
         }
     });
@@ -613,7 +683,7 @@
             labels: riskData.labels,
             datasets: [{
                 data: riskData.values,
-                backgroundColor: ['#22c55e', '#f59e0b', '#ef4444'],
+                backgroundColor: ['#66bb6a', '#ffb74d', '#ef5350'],
                 borderWidth: 0,
                 hoverOffset: 8
             }]
@@ -622,7 +692,12 @@
             responsive: true,
             maintainAspectRatio: false,
             cutout: '72%',
-            plugins: { legend: { position: 'bottom' } }
+            plugins: { 
+                legend: { 
+                    position: 'bottom',
+                    labels: { color: '#333333' }
+                } 
+            }
         }
     });
 
@@ -633,21 +708,27 @@
             datasets: [{
                 label: 'Usage',
                 data: moduleData.values,
-                borderColor: '#2563eb',
-                backgroundColor: 'rgba(37, 99, 235, 0.16)',
-                pointBackgroundColor: '#2563eb',
+                borderColor: '#2e7d32',
+                backgroundColor: 'rgba(46, 125, 50, 0.12)',
+                pointBackgroundColor: '#2e7d32',
                 pointRadius: 4
             }]
         },
         options: {
             responsive: true,
             maintainAspectRatio: false,
-            plugins: { legend: { display: false } },
+            plugins: { 
+                legend: { 
+                    display: false 
+                } 
+            },
             scales: {
                 r: {
                     beginAtZero: true,
                     grid: { color: gridColor },
-                    angleLines: { color: gridColor }
+                    angleLines: { color: gridColor },
+                    pointLabels: { color: '#333333' },
+                    ticks: { color: '#333333' }
                 }
             }
         }

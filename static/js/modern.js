@@ -39,9 +39,6 @@ class ModalManager {
 
         // Setup form submissions
         this.setupFormSubmissions();
-
-        // Setup password toggle
-        this.setupPasswordToggle();
     }
 
     setupFormSubmissions() {
@@ -218,23 +215,6 @@ class ModalManager {
         }
     }
 
-    setupPasswordToggle() {
-        const toggleBtns = document.querySelectorAll('.toggle-visibility');
-        toggleBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                const input = this.previousElementSibling;
-                const icon = this;
-
-                if (input.type === 'password') {
-                    input.type = 'text';
-                    icon.textContent = '👁️‍🗨️';
-                } else {
-                    input.type = 'password';
-                    icon.textContent = '👁️';
-                }
-            });
-        });
-    }
 }
 
 // ===== ACCORDION =====
@@ -451,7 +431,100 @@ class Navbar {
             navbar.style.backgroundColor = 'rgba(7, 17, 31, 0.75)';
         }
     }
+
 }
+
+// ===== LOGOUT CONFIRMATION FOR MODERN THEME =====
+document.addEventListener('DOMContentLoaded', () => {
+    const modalHTML = `
+    <div id="logoutConfirmModal" class="modal fade" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg">
+                <div class="modal-header border-bottom-0">
+                    <div>
+                        <h5 class="modal-title fw-bold">Confirm Logout</h5>
+                        <p class="text-muted mb-0">You are about to sign out of Cyber Scam Detection.</p>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body pt-0">
+                    <div class="alert alert-warning d-flex align-items-center mb-0" role="alert">
+                        <i class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2"></i>
+                        <div>
+                            Are you sure you want to logout? You will need to sign in again to access your dashboard.
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-top-0">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-danger" id="logoutConfirmBtn"><i class="bi bi-box-arrow-right me-1"></i>Logout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    `;
+
+    if (!document.getElementById('logoutConfirmModal')) {
+        document.body.insertAdjacentHTML('beforeend', modalHTML);
+    }
+
+    let pendingAction = null;
+
+    function showLogoutModal() {
+        const modalEl = document.getElementById('logoutConfirmModal');
+        if (!modalEl) return;
+
+        if (window.bootstrap && typeof bootstrap.Modal === 'function') {
+            const modal = new bootstrap.Modal(modalEl);
+            modal.show();
+            return;
+        }
+
+        if (pendingAction) {
+            if (pendingAction.type === 'form' && pendingAction.form) {
+                pendingAction.form.submit();
+            } else if (pendingAction.type === 'link' && pendingAction.href) {
+                window.location.href = pendingAction.href;
+            }
+        }
+    }
+
+    document.addEventListener('click', (event) => {
+        const trigger = event.target.closest('.logout-link, [data-logout], a[href*="logout"]');
+        if (!trigger) return;
+
+        const form = trigger.closest('form');
+        const href = trigger.tagName === 'A' ? trigger.getAttribute('href') : trigger.dataset.href || trigger.getAttribute('data-href');
+
+        if (form && form.getAttribute('action') && form.getAttribute('action').includes('logout')) {
+            event.preventDefault();
+            event.stopPropagation();
+            pendingAction = { type: 'form', form };
+            showLogoutModal();
+            return;
+        }
+
+        if (href && href.includes('logout')) {
+            event.preventDefault();
+            event.stopPropagation();
+            pendingAction = { type: 'link', href };
+            showLogoutModal();
+        }
+    });
+
+    const confirmBtn = document.getElementById('logoutConfirmBtn');
+    if (confirmBtn) {
+        confirmBtn.addEventListener('click', () => {
+            if (!pendingAction) return;
+            if (pendingAction.type === 'form' && pendingAction.form) {
+                pendingAction.form.submit();
+            } else if (pendingAction.type === 'link' && pendingAction.href) {
+                window.location.href = pendingAction.href;
+            }
+        });
+    }
+});
+
 
 // ===== FORM VALIDATION =====
 class FormValidator {
@@ -620,6 +693,8 @@ document.addEventListener('DOMContentLoaded', () => {
     new ScanInput();
     new ScrollAnimations();
     new ProfileForm();
+
+    // Theme switcher removed — site uses a single light theme
 
     // Set current year in footer
     const yearElement = document.querySelector('[data-year]');

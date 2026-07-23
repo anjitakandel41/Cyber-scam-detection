@@ -1,17 +1,20 @@
 from django.contrib.auth import views as auth_views
 from django.urls import path, reverse_lazy
 
-from .views import CustomLoginView, CustomLogoutView, RegisterView, verify_email
+from .views import CustomLoginView, CustomLogoutView, RegisterView
 
 app_name = 'users'
 
 urlpatterns = [
-   
-   
+    # Registration and Authentication
     path('register/', RegisterView.as_view(), name='register'),
     path('login/', CustomLoginView.as_view(), name='login'),
     path('logout/', CustomLogoutView.as_view(), name='logout'),
-    path('verify-email/<uidb64>/<token>/', verify_email, name='verify_email'),
+    
+    # REMOVED: Email verification URL - no longer needed
+    # path('verify-email/<uidb64>/<token>/', verify_email, name='verify_email'),
+    
+    # Password Reset URLs (Keep these)
     path(
         'password-reset/',
         auth_views.PasswordResetView.as_view(

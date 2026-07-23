@@ -1,19 +1,12 @@
 from django.contrib import messages
-from django.contrib.auth import get_user_model
+from django.contrib.auth import get_user_model, login
 from django.contrib.auth.views import LoginView, LogoutView
+from django.forms.forms import NON_FIELD_ERRORS
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
-from django.utils.encoding import force_str
-from django.utils.http import urlsafe_base64_decode
 from django.views.generic import CreateView
 
 from .forms import CustomUserCreationForm
-from .tokens import email_verification_token
-
-from django.template.loader import render_to_string
-from django.utils.encoding import force_bytes
-from django.utils.http import urlsafe_base64_encode
-from django.urls import reverse
 
 class RegisterView(CreateView):
     form_class = CustomUserCreationForm
@@ -21,66 +14,76 @@ class RegisterView(CreateView):
 
     def form_valid(self, form):
         user = form.save()
-
-        # Optional: require email verification
-        user.is_active = False
-        user.save()
-
-        self.send_verification_email(user)
-
+        
+        # User is already active (is_active = True from the form)
+        # No email verification needed
+        
         messages.success(
             self.request,
-            "Registration successful. Please check your email to verify your account."
+            f"Registration successful! Welcome {user.username}! You can now log in."
         )
-
+        
+        # Option 1: Redirect to login page (recommended)
         return redirect("users:login")
+        
+        # Option 2: Auto-login user (uncomment if you want this)
+        # login(self.request, user)
+        # return redirect("dashboard:user_dashboard")
 
-    def send_verification_email(self, user):
-        uid = urlsafe_base64_encode(force_bytes(user.pk))
-        token = email_verification_token.make_token(user)
+    def form_invalid(self, form):
+        # Display form errors as messages
+        for field, errors in form.errors.items():
+            for error in errors:
+                if field != '__all__':
+                    messages.error(self.request, f"{field.replace('_', ' ').title()}: {error}")
+                else:
+                    messages.error(self.request, error)
+        return super().form_invalid(form)
 
-        verification_url = self.request.build_absolute_uri(
-            reverse(
-                "users:verify_email",
-                kwargs={
-                    "uidb64": uid,
-                    "token": token,
-                },
-            )
-        )
-
-        subject = "Verify your AI Scam Detection account"
-
-        message = render_to_string(
-            "users/email_verification_email.html",
-            {
-                "user": user,
-                "verification_url": verification_url,
-            },
-        )
-
-        user.email_user(subject, message)
 
 class CustomLoginView(LoginView):
     template_name = "users/login.html"
     redirect_authenticated_user = True
 
     def form_valid(self, form):
+        user = form.get_user()
+        
+        # Check if user is active (should always be true now)
+        if not user.is_active:
+            messages.error(
+                self.request,
+                "Your account is not active. Please contact support."
+            )
+            return render(self.request, self.template_name, {
+                'form': form,
+                'error': 'Account not active'
+            })
+        
         messages.success(
             self.request,
-            f"Welcome back, {form.get_user().username}!"
+            f"Welcome back, {user.username}!"
         )
         return super().form_valid(form)
 
     def form_invalid(self, form):
-        messages.error(
-            self.request,
-            "Invalid username or password."
-        )
+        # Clear any existing non-field errors
+        if NON_FIELD_ERRORS in form._errors:
+            del form._errors[NON_FIELD_ERRORS]
+        
+        # Add custom error message
+        form.add_error(None, "Invalid username or password. Please try again.")
+        
+        # Display errors as messages
+        for field, errors in form.errors.items():
+            for error in errors:
+                if field != '__all__':
+                    messages.error(self.request, f"{field}: {error}")
+                else:
+                    messages.error(self.request, error)
+        
         return super().form_invalid(form)
 
     def get_success_url(self):
-
         redirect_url = self.get_redirect_url()
 
         if redirect_url:
@@ -88,7 +91,7 @@ class CustomLoginView(LoginView):
 
         user = self.request.user
 
-        if user.is_admin_role:
+        if hasattr(user, 'is_admin_role') and user.is_admin_role:
             return reverse_lazy("dashboard:admin_dashboard")
 
         return reverse_lazy("dashboard:user_dashboard")
@@ -98,36 +101,5 @@ class CustomLogoutView(LogoutView):
     next_page = reverse_lazy("users:login")
 
 
-def verify_email(request, uidb64, token):
-
-    User = get_user_model()
-
-    try:
-        uid = force_str(urlsafe_base64_decode(uidb64))
-        user = User.objects.get(pk=uid)
-
-    except (
-        TypeError,
-        ValueError,
-        OverflowError,
-        User.DoesNotExist,
-    ):
-        user = None
-
-    if user and email_verification_token.check_token(user, token):
-
-        user.is_active = True
-        user.save(update_fields=["is_active"])
-
-        messages.success(
-            request,
-            "Email verified successfully. Please login."
-        )
-
-        return redirect("users:login")
-
-    return render(
-        request,
-        "users/verification_invalid.html",
-        status=400,
-    )
+# REMOVED: verify_email function - no longer needed
+# REMOVED: send_verification_email method - no longer needed

@@ -1,6 +1,17 @@
-{% extends "base-modern.html" %}
+{% extends "base.html" %}
+{% load static %}
 
 {% block title %}Features - Cyber Scam Awareness & Detection System{% endblock %}
+
+<!-- Override navbar login section - EMPTY to hide login -->
+{% block navbar_login %}
+    <!-- Intentionally empty to hide login/authentication in navbar -->
+{% endblock %}
+
+<!-- Override auth modals section - EMPTY to hide modals -->
+{% block auth_modals %}
+    <!-- Intentionally empty to hide authentication modals -->
+{% endblock %}
 
 {% block content %}
 
@@ -165,7 +176,7 @@
 </section>
 
 <!-- Integration Section -->
-<section class="section">
+{% comment %} <section class="section">
     <div class="section-header">
         <h2 class="section-title">Integration Capabilities</h2>
         <p class="section-desc">Seamlessly integrate PhishGuard into your workflow</p>
@@ -196,12 +207,12 @@
             <a href="#" class="btn-primary" style="display: inline-block; margin-top: 1rem; padding: 0.6rem 1.5rem; border-radius: 8px; text-decoration: none; font-size: 0.9rem;">Download →</a>
         </div>
     </div>
-</section>
+</section> {% endcomment %}
 
 <!-- CTA Section -->
-<section class="section" style="text-align: center; background: linear-gradient(135deg, var(--dark-surface) 0%, var(--dark-surface-2) 100%); color: var(--light-text); border-radius: 16px; padding: 3rem 2rem;">
-    <h2 class="section-title" style="color: var(--light-text);">Ready to Get Protected?</h2>
-    <p class="section-desc" style="margin-bottom: 2rem; color: var(--muted-text);">Start using PhishGuard today and join millions of protected users worldwide.</p>
+<section class="section section-alt" style="text-align: center;">
+    <h2 class="section-title">Ready to Get Protected?</h2>
+    <p class="section-desc" style="margin-bottom: 2rem;">Start using PhishGuard today and join millions of protected users worldwide.</p>
     
     <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
         <a class="btn-primary" href="{% url 'scanner:url_scan' %}" style="border: none; cursor: pointer; text-decoration: none;"><i class="bi bi-shield-check me-2"></i>Start Free Today</a>

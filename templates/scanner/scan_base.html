@@ -12,14 +12,7 @@
             <p>{{ config.description }}</p>
         </div>
 
-        <div class="scanner-clean-form">
-            <div class="clean-form-title">
-                <span>Scan Form</span>
-                <h2>Submit Content</h2>
-            </div>
-
-            {% block scanner_form %}{% endblock %}
-        </div>
+        {% block scanner_form %}{% endblock %}
     </section>
 
     {% if result %}
@@ -103,4 +96,434 @@
     {% endif %}
 
 </div>
+
+<style>
+    /* Light Green Theme - Scanner Page */
+    .content-container {
+        padding: 28px;
+        background: linear-gradient(135deg, #fafffe 0%, #f0f7f0 50%, #e8f5e9 100%);
+        min-height: 100vh;
+    }
+
+    .scanner-clean-page {
+        max-width: 980px;
+        margin: 0 auto;
+    }
+
+    .scanner-clean-header {
+        margin-bottom: 28px;
+    }
+
+    .scanner-label {
+        display: inline-block;
+        font-size: 0.85rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: #2e7d32;
+        margin-bottom: 12px;
+        background: rgba(46, 125, 50, 0.08);
+        padding: 6px 14px;
+        border-radius: 20px;
+    }
+
+    .scanner-clean-header h1 {
+        font-size: 44px;
+        font-weight: 900;
+        letter-spacing: -0.04em;
+        color: #1a1a1a;
+        margin-bottom: 10px;
+    }
+
+    .scanner-clean-header p {
+        max-width: 680px;
+        color: #4caf50;
+        font-size: 16px;
+        line-height: 1.7;
+    }
+
+    /* Scanner Form */
+    .scanner-clean-form {
+        background: rgba(255, 255, 255, 0.95);
+        border: 1px solid #c8e6c9;
+        border-radius: 24px;
+        padding: 32px;
+        box-shadow: 0 18px 45px rgba(46, 125, 50, 0.06);
+        margin-bottom: 24px;
+    }
+
+    .clean-form-title {
+        margin-bottom: 24px;
+        padding-bottom: 18px;
+        border-bottom: 1px solid #c8e6c9;
+    }
+
+    .clean-form-title span {
+        color: #4caf50;
+        font-size: 13px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+    }
+
+    .clean-form-title h2 {
+        margin: 6px 0 0;
+        color: #1a1a1a;
+        font-size: 24px;
+        font-weight: 900;
+    }
+
+    /* Report Card */
+    .clean-report-card {
+        max-width: 980px;
+        margin: 34px auto 0;
+        background: rgba(255, 255, 255, 0.95);
+        border: 1px solid #c8e6c9;
+        border-radius: 26px;
+        padding: 34px;
+        box-shadow: 0 22px 55px rgba(46, 125, 50, 0.06);
+    }
+
+    .report-header {
+        text-align: center;
+        margin-bottom: 28px;
+    }
+
+    .report-header span {
+        color: #4caf50;
+        font-size: 13px;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+    }
+
+    .report-header h2 {
+        margin-top: 8px;
+        font-size: 38px;
+        font-weight: 950;
+        color: #1a1a1a;
+    }
+
+    .report-safe .report-header h2 {
+        color: #2e7d32;
+    }
+
+    .report-warning .report-header h2 {
+        color: #f9a825;
+    }
+
+    .report-danger .report-header h2 {
+        color: #c62828;
+    }
+
+    /* Risk Score */
+    .risk-score-area {
+        margin-bottom: 28px;
+    }
+
+    .risk-score-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        margin-bottom: 10px;
+    }
+
+    .risk-score-top span {
+        color: #4caf50;
+        font-weight: 800;
+    }
+
+    .risk-score-top strong {
+        font-size: 42px;
+        font-weight: 950;
+        color: #1a1a1a;
+        line-height: 1;
+    }
+
+    .risk-bar {
+        height: 16px;
+        border-radius: 999px;
+        background: #e8f5e9;
+        overflow: hidden;
+    }
+
+    .risk-bar-fill {
+        height: 100%;
+        border-radius: 999px;
+    }
+
+    .report-safe .risk-bar-fill {
+        background: #2e7d32;
+    }
+
+    .report-warning .risk-bar-fill {
+        background: #f9a825;
+    }
+
+    .report-danger .risk-bar-fill {
+        background: #c62828;
+    }
+
+    /* Report Meta Grid */
+    .report-meta-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+        margin-bottom: 30px;
+    }
+
+    .report-meta-grid div {
+        padding: 18px;
+        border-radius: 18px;
+        background: #f0f7f0;
+        border: 1px solid #c8e6c9;
+    }
+
+    .report-meta-grid span {
+        display: block;
+        margin-bottom: 8px;
+        color: #4caf50;
+        font-size: 13px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .report-meta-grid strong {
+        color: #1a1a1a;
+        font-size: 20px;
+        font-weight: 900;
+    }
+
+    /* Report Sections */
+    .report-section {
+        padding-top: 24px;
+        border-top: 1px solid #c8e6c9;
+        margin-top: 24px;
+    }
+
+    .report-section h3 {
+        margin-bottom: 16px;
+        color: #1a1a1a;
+        font-size: 21px;
+        font-weight: 900;
+    }
+
+    .clean-reason-list {
+        display: grid;
+    }
+
+    .clean-reason-item {
+        padding: 15px 0;
+        color: #1a1a1a;
+        font-weight: 600;
+        line-height: 1.6;
+        border-bottom: 1px solid #c8e6c9;
+    }
+
+    .clean-reason-item:last-child {
+        border-bottom: none;
+    }
+
+    .recommendation-clean {
+        background: #f0f7f0;
+        padding: 24px;
+        border-radius: 20px;
+        border: 1px solid #c8e6c9;
+    }
+
+    .recommendation-clean p {
+        margin: 0;
+        color: #1a1a1a;
+        line-height: 1.8;
+        font-weight: 600;
+    }
+
+    /* Report Actions */
+    .report-actions {
+        margin-top: 24px;
+    }
+
+    .clean-report-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 24px;
+        border-radius: 12px;
+        border: 1px solid #2e7d32;
+        color: #2e7d32;
+        font-weight: 900;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        background: transparent;
+        gap: 8px;
+    }
+
+    .clean-report-btn:hover {
+        background: #2e7d32;
+        color: #ffffff;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(46, 125, 50, 0.2);
+    }
+
+    .clean-report-btn i {
+        font-size: 1.1rem;
+    }
+
+    /* Scanner Form Fields */
+    .scanner-field {
+        margin-bottom: 18px;
+    }
+
+    .scanner-field label {
+        display: block;
+        margin-bottom: 8px;
+        color: #1a1a1a;
+        font-weight: 800;
+        font-size: 0.95rem;
+    }
+
+    .scanner-field input,
+    .scanner-field textarea,
+    .scanner-field select {
+        width: 100%;
+        padding: 14px 16px;
+        border: 2px solid #e8f5e9;
+        border-radius: 14px;
+        background: #fafffe;
+        color: #1a1a1a;
+        font-size: 15px;
+        transition: all 0.3s ease;
+    }
+
+    .scanner-field textarea {
+        min-height: 160px;
+        resize: vertical;
+    }
+
+    .scanner-field input:focus,
+    .scanner-field textarea:focus,
+    .scanner-field select:focus {
+        outline: none;
+        border-color: #66bb6a;
+        box-shadow: 0 0 0 4px rgba(46, 125, 50, 0.06);
+        background: #ffffff;
+    }
+
+    .btn-scan-pro {
+        width: 100%;
+        margin-top: 6px;
+        padding: 14px 18px;
+        border: none;
+        border-radius: 14px;
+        background: linear-gradient(135deg, #2e7d32, #388e3c);
+        color: #ffffff;
+        font-size: 16px;
+        font-weight: 900;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        box-shadow: 0 4px 20px rgba(46, 125, 50, 0.15);
+    }
+
+    .btn-scan-pro:hover {
+        background: linear-gradient(135deg, #1b5e20, #2e7d32);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 32px rgba(46, 125, 50, 0.25);
+    }
+
+    .btn-scan-pro:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        transform: none !important;
+    }
+
+    .btn-scan-pro .spinner {
+        display: none;
+        width: 20px;
+        height: 20px;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        border-top-color: white;
+        border-radius: 50%;
+        animation: spin 0.6s linear infinite;
+    }
+
+    .btn-scan-pro.loading .spinner {
+        display: inline-block;
+    }
+
+    .btn-scan-pro.loading .btn-text {
+        display: none;
+    }
+
+    @keyframes spin {
+        to { transform: rotate(360deg); }
+    }
+
+    .field-error {
+        margin-top: 6px;
+        color: #c62828;
+        font-size: 13px;
+        font-weight: 700;
+    }
+
+    .field-help {
+        margin-top: 6px;
+        color: #4caf50;
+        font-size: 13px;
+    }
+
+    /* Section Kicker */
+    .section-kicker {
+        display: block;
+        font-size: 1.6rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: #2e7d32;
+        margin-bottom: 4px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .scanner-clean-header h1 {
+            font-size: 34px;
+        }
+
+        .scanner-clean-form,
+        .clean-report-card {
+            padding: 24px;
+            border-radius: 20px;
+        }
+
+        .report-meta-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .risk-score-top strong {
+            font-size: 34px;
+        }
+
+        .content-container {
+            padding: 16px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .scanner-clean-header h1 {
+            font-size: 28px;
+        }
+
+        .clean-report-card {
+            padding: 18px;
+        }
+
+        .report-header h2 {
+            font-size: 28px;
+        }
+
+        .risk-score-top strong {
+            font-size: 28px;
+        }
+    }
+</style>
 {% endblock %}

@@ -1,159 +1,522 @@
 ﻿{% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Attempt Quiz{% endblock %}
 
+{% block extra_head %}
+<style>
+    .content-container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 2rem 1rem;
+    }
+
+    .panel {
+        background: white;
+        border-radius: 32px;
+        padding: 3rem;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.06);
+        animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .section-kicker {
+        display: inline-block;
+        background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+        color: #2e7d32;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        padding: 0.4rem 1rem;
+        border-radius: 20px;
+    }
+
+    .quiz-title {
+        font-size: 2.2rem;
+        font-weight: 800;
+        color: #1b5e20;
+        margin: 0.75rem 0 1.5rem 0;
+        letter-spacing: -0.5px;
+    }
+
+    /* Progress Section */
+    .progress-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0.75rem;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .progress-header h5 {
+        font-weight: 700;
+        color: #1b5e20;
+        margin: 0;
+        font-size: 1rem;
+    }
+
+    .progress-header .text-muted {
+        color: #7f8c8d !important;
+        font-size: 0.9rem;
+        font-weight: 500;
+    }
+
+    .progress-custom {
+        height: 8px;
+        border-radius: 10px;
+        background: #e8f5e9;
+        margin-bottom: 2rem;
+        overflow: hidden;
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+
+    .progress-custom .progress-bar {
+        background: linear-gradient(90deg, #2e7d32, #66bb6a);
+        border-radius: 10px;
+        transition: width 0.6s ease;
+        height: 100%;
+    }
+
+    /* Question Card */
+    .question-card {
+        background: #fafffe;
+        border: 2px solid #e8f5e9;
+        border-radius: 20px;
+        padding: 1.75rem;
+        margin-bottom: 1.5rem;
+        transition: all 0.3s ease;
+    }
+
+    .question-card:hover {
+        border-color: #a5d6a7;
+        box-shadow: 0 4px 20px rgba(46, 125, 50, 0.06);
+    }
+
+    .question-number {
+        display: inline-block;
+        background: linear-gradient(135deg, #2e7d32, #388e3c);
+        color: white;
+        font-weight: 700;
+        font-size: 0.85rem;
+        padding: 0.25rem 0.75rem;
+        border-radius: 12px;
+        margin-bottom: 0.75rem;
+    }
+
+    .question-text {
+        font-weight: 700;
+        font-size: 1.15rem;
+        color: #1b5e20;
+        margin-bottom: 1.5rem;
+        line-height: 1.6;
+    }
+
+    /* Choice Options */
+    .choice-option {
+        display: flex;
+        align-items: center;
+        padding: 0.85rem 1.25rem;
+        border: 2px solid #e8f5e9;
+        border-radius: 14px;
+        margin-bottom: 0.75rem;
+        cursor: pointer;
+        transition: all 0.25s ease;
+        background: white;
+    }
+
+    .choice-option:hover {
+        border-color: #81c784;
+        background: #fafffe;
+        transform: translateX(4px);
+        box-shadow: 0 2px 12px rgba(46, 125, 50, 0.08);
+    }
+
+    .choice-option.selected {
+        border-color: #2e7d32;
+        background: #e8f5e9;
+        box-shadow: 0 2px 12px rgba(46, 125, 50, 0.1);
+    }
+
+    .choice-option input[type="radio"] {
+        width: 20px;
+        height: 20px;
+        margin-right: 1rem;
+        flex-shrink: 0;
+        accent-color: #2e7d32;
+        cursor: pointer;
+    }
+
+    .choice-option .choice-label {
+        font-size: 1rem;
+        color: #1a2a3a;
+        cursor: pointer;
+        flex: 1;
+    }
+
+    /* Alert */
+    .alert-custom {
+        border: none;
+        border-radius: 14px;
+        padding: 0.75rem 1.25rem;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        font-size: 0.9rem;
+    }
+
+    .alert-custom-danger {
+        background: #ffebee;
+        color: #c62828;
+        border-left: 4px solid #dc3545;
+    }
+
+    .alert-custom-danger i {
+        color: #dc3545;
+    }
+
+    /* Buttons */
+    .btn-nav {
+        padding: 0.75rem 2.5rem;
+        font-weight: 600;
+        font-size: 1rem;
+        border-radius: 16px;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        min-width: 140px;
+        justify-content: center;
+    }
+
+    .btn-outline-custom {
+        background: transparent;
+        border: 2px solid #c8e6c9;
+        color: #2e7d32;
+    }
+
+    .btn-outline-custom:hover {
+        background: #e8f5e9;
+        border-color: #81c784;
+        transform: translateX(-3px);
+        box-shadow: 0 4px 16px rgba(46, 125, 50, 0.1);
+    }
+
+    .btn-primary-custom {
+        background: linear-gradient(135deg, #2e7d32, #388e3c);
+        border: none;
+        color: white;
+        box-shadow: 0 4px 20px rgba(46, 125, 50, 0.2);
+    }
+
+    .btn-primary-custom:hover {
+        transform: translateX(3px);
+        box-shadow: 0 8px 32px rgba(46, 125, 50, 0.3);
+        background: linear-gradient(135deg, #1b5e20, #2e7d32);
+        color: white;
+    }
+
+    .btn-success-custom {
+        background: linear-gradient(135deg, #1b5e20, #2e7d32);
+        border: none;
+        color: white;
+        box-shadow: 0 4px 20px rgba(46, 125, 50, 0.25);
+    }
+
+    .btn-success-custom:hover {
+        transform: scale(1.02);
+        box-shadow: 0 8px 32px rgba(46, 125, 50, 0.35);
+        color: white;
+    }
+
+    .btn-nav:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        transform: none !important;
+    }
+
+    /* Quiz Stats */
+    .quiz-stats {
+        display: flex;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        margin-top: 1.5rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid #e8f5e9;
+    }
+
+    .stat-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: #546e7a;
+        font-size: 0.9rem;
+    }
+
+    .stat-item i {
+        color: #2e7d32;
+        font-size: 1.1rem;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+        .panel {
+            padding: 1.5rem;
+        }
+
+        .quiz-title {
+            font-size: 1.75rem;
+        }
+
+        .question-card {
+            padding: 1.25rem;
+        }
+
+        .question-text {
+            font-size: 1rem;
+        }
+
+        .choice-option {
+            padding: 0.7rem 1rem;
+        }
+
+        .btn-nav {
+            padding: 0.6rem 1.5rem;
+            font-size: 0.9rem;
+            min-width: 100px;
+        }
+
+        .progress-header {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .quiz-stats {
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .panel {
+            padding: 1rem;
+            border-radius: 20px;
+        }
+
+        .btn-nav {
+            padding: 0.5rem 1rem;
+            font-size: 0.85rem;
+            min-width: 80px;
+        }
+
+        .choice-option input[type="radio"] {
+            width: 18px;
+            height: 18px;
+        }
+    }
+</style>
+{% endblock %}
+
 {% block content %}
-
 <div class="content-container">
-
     <section class="panel">
-
+        
+        <!-- Header -->
         <span class="section-kicker">
+            <i class="bi bi-shield-check me-1"></i>
             Training Session
         </span>
 
-        <h1 class="fw-bold mt-2 mb-4">
+        <h1 class="quiz-title">
+            <i class="bi bi-pencil-square me-2" style="color: #2e7d32;"></i>
             Cyber Security Quiz
         </h1>
 
         <!-- Progress -->
-
-        <div class="d-flex justify-content-between align-items-center mb-2">
-
-            <h5 class="fw-bold mb-0">
+        <div class="progress-header">
+            <h5>
+                <i class="bi bi-list-ol me-2"></i>
                 Page {{ current_page }} of {{ total_pages }}
             </h5>
-
             <span class="text-muted">
+                <i class="bi bi-question-circle me-1"></i>
                 Questions {{ page_obj.start_index }} - {{ page_obj.end_index }}
             </span>
-
         </div>
 
-        <div class="progress mb-5" style="height:10px;">
-
-            <div
-                class="progress-bar bg-success"
-                role="progressbar"
-                style="width: {{ progress }}%;">
-
+        <div class="progress-custom">
+            <div class="progress-bar" role="progressbar" style="width: {{ progress }}%;">
+                <span class="visually-hidden">{{ progress }}% Complete</span>
             </div>
-
         </div>
 
-        <form method="post">
-
+        <!-- Form -->
+        <form method="post" id="quizForm" novalidate>
             {% csrf_token %}
 
             {% for field in form %}
-
-            <div class="card shadow-sm border rounded-4 mb-4">
-
-                <div class="card-body p-4">
-
-                    <h4 class="fw-bold mb-4">
-
-                        {{ page_obj.start_index|add:forloop.counter0 }}.
-                        {{ field.label }}
-
-                    </h4>
-
-                    {% if field.errors %}
-
-                    <div class="alert alert-danger">
-
-                        {{ field.errors }}
-
-                    </div>
-
-                    {% endif %}
-
-                    {% for choice in field %}
-
-                    <label
-                        for="{{ choice.id_for_label }}"
-                        class="border rounded-3 p-3 mb-3 d-flex align-items-center"
-                        style="cursor:pointer;">
-
-                        <span
-                            class="me-4"
-                            style="transform:scale(1.8);">
-
-                            {{ choice.tag }}
-
-                        </span>
-
-                        <span
-                            class="fs-5">
-
-                            {{ choice.choice_label }}
-
-                        </span>
-
-                    </label>
-
-                    {% endfor %}
-
+            <div class="question-card" data-question="{{ forloop.counter }}">
+                <div class="question-number">
+                    Question {{ page_obj.start_index|add:forloop.counter0 }}
                 </div>
 
-            </div>
+                <div class="question-text">
+                    {{ field.label }}
+                </div>
 
+                {% if field.errors %}
+                <div class="alert-custom alert-custom-danger">
+                    <i class="bi bi-exclamation-circle"></i>
+                    {% for error in field.errors %}
+                        {{ error }}
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                <div class="choices-container">
+                    {% for choice in field %}
+                    <label class="choice-option" for="{{ choice.id_for_label }}">
+                        {{ choice.tag }}
+                        <span class="choice-label">{{ choice.choice_label }}</span>
+                    </label>
+                    {% endfor %}
+                </div>
+            </div>
             {% endfor %}
 
-            <!-- Buttons -->
-
-            <div class="d-flex justify-content-between mt-5">
-
+            <!-- Navigation Buttons -->
+            <div class="d-flex justify-content-between align-items-center mt-4">
                 {% if page_obj.has_previous %}
-
-                <button
-                    type="submit"
-                    name="previous"
-                    value="1"
-                    class="btn btn-outline-dark btn-lg px-5">
-
-                    ← Previous
-
+                <button type="submit" name="previous" value="1" class="btn-nav btn-outline-custom">
+                    <i class="bi bi-arrow-left"></i>
+                    Previous
                 </button>
-
                 {% else %}
-
                 <div></div>
-
                 {% endif %}
 
                 {% if page_obj.has_next %}
-
-                <button
-                    type="submit"
-                    name="next"
-                    value="1"
-                    class="btn btn-primary btn-lg px-5">
-
-                    Next →
-
+                <button type="submit" name="next" value="1" class="btn-nav btn-primary-custom">
+                    Next
+                    <i class="bi bi-arrow-right"></i>
                 </button>
-
                 {% else %}
-
-                <button
-                    type="submit"
-                    class="btn btn-success btn-lg px-5">
-
-                    <i class="bi bi-check-circle me-2"></i>
-
+                <button type="submit" class="btn-nav btn-success-custom" id="submitBtn">
+                    <i class="bi bi-check-circle"></i>
                     Submit Quiz
-
                 </button>
-
                 {% endif %}
-
             </div>
 
         </form>
 
-    </section>
+        <!-- Quiz Stats -->
+        <div class="quiz-stats">
+            <div class="stat-item">
+                <i class="bi bi-clock"></i>
+                <span>Estimated time: {{ total_pages }} min</span>
+            </div>
+            <div class="stat-item">
+                <i class="bi bi-check-circle"></i>
+                <span>Attempt all questions</span>
+            </div>
+            <div class="stat-item">
+                <i class="bi bi-shield-check"></i>
+                <span>Secure & encrypted</span>
+            </div>
+        </div>
 
+    </section>
 </div>
 
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Radio button selection highlighting
+    document.querySelectorAll('.choice-option input[type="radio"]').forEach(function(radio) {
+        radio.addEventListener('change', function() {
+            // Remove selected class from all options in this question
+            const parent = this.closest('.question-card');
+            parent.querySelectorAll('.choice-option').forEach(function(option) {
+                option.classList.remove('selected');
+            });
+            // Add selected class to the chosen option
+            this.closest('.choice-option').classList.add('selected');
+        });
+
+        // Check if already selected on load
+        if (radio.checked) {
+            radio.closest('.choice-option').classList.add('selected');
+        }
+    });
+
+    // Submit confirmation
+    const submitBtn = document.getElementById('submitBtn');
+    if (submitBtn) {
+        submitBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Check if all questions are answered
+            const totalQuestions = document.querySelectorAll('.question-card').length;
+            const answeredQuestions = document.querySelectorAll('.choice-option input[type="radio"]:checked').length;
+            
+            if (answeredQuestions < totalQuestions) {
+                const confirmSubmit = confirm(
+                    `You have answered ${answeredQuestions} out of ${totalQuestions} questions. 
+                    \nAre you sure you want to submit?`
+                );
+                if (confirmSubmit) {
+                    this.closest('form').submit();
+                }
+            } else {
+                const confirmSubmit = confirm(
+                    'You have answered all questions. Ready to submit your quiz?'
+                );
+                if (confirmSubmit) {
+                    this.closest('form').submit();
+                }
+            }
+        });
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+            const nextBtn = document.querySelector('button[name="next"]');
+            if (nextBtn && !nextBtn.disabled) {
+                e.preventDefault();
+                nextBtn.click();
+            }
+        } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+            const prevBtn = document.querySelector('button[name="previous"]');
+            if (prevBtn && !prevBtn.disabled) {
+                e.preventDefault();
+                prevBtn.click();
+            }
+        }
+    });
+
+    // Show progress indicator on form submit
+    document.getElementById('quizForm').addEventListener('submit', function() {
+        const buttons = this.querySelectorAll('button[type="submit"]');
+        buttons.forEach(function(btn) {
+            if (!btn.disabled) {
+                btn.disabled = true;
+                btn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...';
+            }
+        });
+    });
+});
+</script>
 {% endblock %}

@@ -5,7 +5,7 @@
     {% csrf_token %}
 
     <div class="scanner-field">
-        <label for="{{ form.content.id_for_label }}">URL</label>
+        <label for="{{ form.content.id_for_label }}"></label>
         {{ form.content }}
         {% if form.content.errors %}
             <div class="field-error">{{ form.content.errors }}</div>

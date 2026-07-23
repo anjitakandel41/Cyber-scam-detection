@@ -1,4 +1,4 @@
-{% extends "base-modern.html" %}
+{% extends "base.html" %}
 
 {% block title %}FAQ - Cyber Scam Awareness & Detection System{% endblock %}
 
@@ -108,7 +108,7 @@
         <div class="accordion-body">
             <div class="accordion-content">
                 <p><strong>NEVER share these with anyone:</strong></p>
-                <ul style="margin: 1rem 0 0 1.5rem; color: var(--accent);">
+                <ul style="margin: 1rem 0 0 1.5rem; color: var(--page-muted);">
                     <li>OTPs (One-Time Passwords)</li>
                     <li>CVV/CVC (Card security codes)</li>
                     <li>PINs (Personal Identification Numbers)</li>
@@ -256,8 +256,19 @@
     <h2 class="section-title">Still Have Questions?</h2>
     <p class="section-desc" style="margin-bottom: 2rem;">Contact our support team or visit our chatbot for instant assistance.</p>
     <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-        <a href="{% url 'chatbot:home' %}" class="btn-primary">💬 Chat with Our Chatbot</a>
-        <button class="btn-secondary" onclick="window.location.href='mailto:support@phishguard.com'">📧 Email Support</button>
+        <!-- Updated: Check if user is authenticated -->
+        {% if request.user.is_authenticated %}
+            <a href="{% url 'chatbot:home' %}" class="btn-primary">
+                <i class="bi bi-chat-dots me-2"></i>Chat with Our Chatbot
+            </a>
+        {% else %}
+            <button class="btn-primary" id="chatbotLoginBtn" style="cursor: pointer;">
+                <i class="bi bi-chat-dots me-2"></i>Chat with Our Chatbot
+            </button>
+        {% endif %}
+        <button class="btn-secondary" onclick="window.location.href='mailto:support@phishguard.com'">
+            <i class="bi bi-envelope me-2"></i>Email Support
+        </button>
     </div>
 </section>
 
@@ -265,7 +276,7 @@
 
 {% block scripts %}
 <script>
-// FAQ Accordion functionality is handled by modern.js
+// FAQ Accordion functionality
 document.addEventListener('DOMContentLoaded', function() {
     const headers = document.querySelectorAll('.accordion-header');
     headers.forEach(header => {
@@ -281,6 +292,24 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
+    // Handle Chatbot Login Button
+    const chatbotLoginBtn = document.getElementById('chatbotLoginBtn');
+    if (chatbotLoginBtn) {
+        chatbotLoginBtn.addEventListener('click', function() {
+            // Open the login modal
+            const authModal = document.getElementById('authModal');
+            if (authModal) {
+                authModal.classList.add('active');
+                // Show login form, hide register form
+                const loginContainer = document.getElementById('loginFormContainer');
+                const registerContainer = document.getElementById('registerFormContainer');
+                if (loginContainer) loginContainer.style.display = 'block';
+                if (registerContainer) registerContainer.style.display = 'none';
+                document.body.style.overflow = 'hidden';
+            }
+        });
+    }
 });
 </script>
 {% endblock %}

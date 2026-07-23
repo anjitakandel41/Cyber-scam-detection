@@ -1,17 +1,22 @@
 ﻿{% extends 'dashboard/layout.html' %}
 
 {% block title %}Reports{% endblock %}
-{% block page_heading %}Reports{% endblock %}
+{% comment %} {% block page_heading %}Reports{% endblock %} {% endcomment %}
 
 {% block content %}
 <div class="content-container">
     <section class="dashboard-header">
         <div>
-            <span class="section-kicker">Analysis</span>
-            <h1 class="fw-bold mt-2 mb-1">Reports</h1>
-            <p class="text-muted-soft mb-0">Download generated PDF reports from your completed scans.</p>
+            {% comment %} <span class="section-kicker">
+                <i class="bi bi-file-earmark-text me-1"></i>
+                Security Reports
+            </span> {% endcomment %}
+            <h1 class="fw-bold mt-2 mb-1" style="color: #1a1a1a;">Reports</h1>
+            <p class="text-muted-soft mb-0" style="color: #4caf50;">Download generated PDF reports from your completed scans.</p>
         </div>
-        <a class="btn btn-cyber" href="{% url 'scanner:url_scan' %}"><i class="bi bi-search me-2"></i>Run scan</a>
+        <a class="btn btn-cyber" href="{% url 'scanner:url_scan' %}" style="background: linear-gradient(135deg, #2e7d32, #388e3c); color: white; border: none; border-radius: 12px; padding: 10px 20px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(46, 125, 50, 0.15);">
+            <i class="bi bi-search me-2"></i>Run scan
+        </a>
     </section>
 
     <section class="dashboard-table-card">
@@ -19,34 +24,291 @@
             <table class="table align-middle">
                 <thead>
                     <tr>
-                        <th>Date</th>
-                        <th>Classification</th>
-                        <th>Risk</th>
-                        <th>Input</th>
-                        <th class="text-end">Report</th>
+                        <th style="color: #2e7d32; font-weight: 700; border-bottom: 2px solid #c8e6c9;">Date</th>
+                        <th style="color: #2e7d32; font-weight: 700; border-bottom: 2px solid #c8e6c9;">Classification</th>
+                        <th style="color: #2e7d32; font-weight: 700; border-bottom: 2px solid #c8e6c9;">Risk</th>
+                        <th style="color: #2e7d32; font-weight: 700; border-bottom: 2px solid #c8e6c9;">Input</th>
+                        <th class="text-end" style="color: #2e7d32; font-weight: 700; border-bottom: 2px solid #c8e6c9;">Report</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for scan in scans %}
                         <tr>
-                            <td>{{ scan.timestamp }}</td>
+                            <td style="color: #1a1a1a;">{{ scan.timestamp }}</td>
                             <td><span class="risk-badge {% if scan.risk_score >= 70 %}status-high{% elif scan.risk_score >= 40 %}status-medium{% else %}status-low{% endif %}">{{ scan.classification }}</span></td>
-                            <td><strong>{{ scan.risk_score }}%</strong></td>
-                            <td class="text-break">{{ scan.input|truncatechars:90 }}</td>
+                            <td><strong style="color: #1a1a1a;">{{ scan.risk_score }}%</strong></td>
+                            <td class="text-break" style="color: #1a1a1a;">{{ scan.input|truncatechars:90 }}</td>
                             <td class="text-end">
                                 {% if scan.report_file %}
-                                    <a class="btn btn-outline-cyber btn-sm" href="{{ scan.report_file.url }}" target="_blank" rel="noopener"><i class="bi bi-download me-1"></i>PDF</a>
+                                    <a class="btn btn-outline-cyber btn-sm" href="{{ scan.report_file.url }}" target="_blank" rel="noopener" style="border: 1px solid #2e7d32; color: #2e7d32; border-radius: 8px; padding: 5px 12px; font-weight: 600; text-decoration: none; transition: all 0.3s ease; display: inline-flex; align-items: center; background: transparent; font-size: 0.85rem;">
+                                        <i class="bi bi-download me-1"></i>PDF
+                                    </a>
                                 {% else %}
-                                    <span class="text-muted-soft">Unavailable</span>
+                                    <span class="text-muted-soft" style="color: #4caf50;">Unavailable</span>
                                 {% endif %}
                             </td>
                         </tr>
                     {% empty %}
-                        <tr><td colspan="5" class="text-center text-muted-soft py-5">No generated reports yet.</td></tr>
+                        <tr><td colspan="5" class="text-center py-5" style="color: #4caf50;">No generated reports yet.</td></tr>
                     {% endfor %}
                 </tbody>
             </table>
         </div>
     </section>
 </div>
+
+<style>
+    /* Light Green Theme - Reports Page */
+    .content-container {
+        padding: 28px;
+        background: linear-gradient(135deg, #fafffe 0%, #f0f7f0 50%, #e8f5e9 100%);
+        min-height: 100vh;
+    }
+
+    .dashboard-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        margin-bottom: 28px;
+        flex-wrap: wrap;
+    }
+
+    .section-kicker {
+        display: block;
+        font-size: 0.85rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: #2e7d32;
+        margin-bottom: 4px;
+        background: rgba(46, 125, 50, 0.08);
+        padding: 6px 14px;
+        border-radius: 20px;
+        display: inline-block;
+    }
+
+    .section-kicker i {
+        font-size: 0.9rem;
+    }
+
+    .text-muted-soft {
+        color: #4caf50 !important;
+        font-size: 1rem;
+        margin: 0;
+    }
+
+    .btn-cyber {
+        background: linear-gradient(135deg, #2e7d32, #388e3c);
+        color: white;
+        border: none;
+        border-radius: 12px;
+        padding: 10px 20px;
+        font-weight: 700;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(46, 125, 50, 0.15);
+    }
+
+    .btn-cyber:hover {
+        background: linear-gradient(135deg, #1b5e20, #2e7d32);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(46, 125, 50, 0.25);
+        color: white;
+    }
+
+    .btn-outline-cyber {
+        border: 1px solid #2e7d32;
+        color: #2e7d32;
+        border-radius: 8px;
+        padding: 5px 12px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        background: transparent;
+        font-size: 0.85rem;
+    }
+
+    .btn-outline-cyber:hover {
+        background: #2e7d32;
+        color: white !important;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(46, 125, 50, 0.15);
+    }
+
+    .btn-outline-cyber i {
+        font-size: 0.9rem;
+    }
+
+    /* Table Card */
+    .dashboard-table-card {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 24px;
+        border: 1px solid #c8e6c9;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(46, 125, 50, 0.04);
+    }
+
+    .dashboard-table-card .table {
+        margin-bottom: 0;
+    }
+
+    .dashboard-table-card .table thead th {
+        color: #2e7d32;
+        font-weight: 700;
+        border-bottom: 2px solid #c8e6c9;
+        padding: 16px 20px;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        background: #f0f7f0;
+    }
+
+    .dashboard-table-card .table tbody td {
+        padding: 16px 20px;
+        vertical-align: middle;
+        border-bottom: 1px solid #e8f5e9;
+        color: #1a1a1a;
+    }
+
+    .dashboard-table-card .table tbody tr:hover {
+        background: #f5faf5;
+    }
+
+    .dashboard-table-card .table tbody tr:last-child td {
+        border-bottom: none;
+    }
+
+    /* Risk Badges */
+    .risk-badge {
+        padding: 5px 12px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 800;
+        display: inline-block;
+        white-space: nowrap;
+    }
+
+    .status-low {
+        background: rgba(46, 125, 50, 0.12);
+        color: #2e7d32;
+    }
+
+    .status-medium {
+        background: rgba(255, 183, 77, 0.14);
+        color: #e65100;
+    }
+
+    .status-high {
+        background: rgba(239, 68, 68, 0.12);
+        color: #c62828;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .content-container {
+            padding: 16px;
+        }
+
+        .dashboard-header {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .dashboard-table-card .table thead th,
+        .dashboard-table-card .table tbody td {
+            padding: 12px 14px;
+        }
+
+        .dashboard-table-card .table thead th:last-child,
+        .dashboard-table-card .table tbody td:last-child {
+            padding-right: 14px;
+        }
+
+        .btn-cyber {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .btn-outline-cyber {
+            width: 100%;
+            justify-content: center;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .content-container {
+            padding: 12px;
+        }
+
+        .dashboard-table-card {
+            border-radius: 16px;
+        }
+
+        .dashboard-table-card .table thead th,
+        .dashboard-table-card .table tbody td {
+            padding: 10px 10px;
+            font-size: 0.85rem;
+        }
+
+        .risk-badge {
+            font-size: 11px;
+            padding: 4px 10px;
+        }
+
+        .section-kicker {
+            font-size: 0.75rem;
+        }
+
+        h1.fw-bold {
+            font-size: 1.5rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .dashboard-table-card .table thead {
+            display: none;
+        }
+
+        .dashboard-table-card .table tbody td {
+            display: block;
+            width: 100%;
+            padding: 8px 14px;
+            border: none;
+        }
+
+        .dashboard-table-card .table tbody td:before {
+            content: attr(data-label);
+            display: inline-block;
+            font-weight: 700;
+            color: #2e7d32;
+            width: 40%;
+            margin-right: 10px;
+        }
+
+        .dashboard-table-card .table tbody td:last-child {
+            border-bottom: 1px solid #e8f5e9;
+            padding-bottom: 12px;
+        }
+
+        .dashboard-table-card .table tbody tr:last-child td:last-child {
+            border-bottom: none;
+        }
+
+        /* Add data labels for mobile */
+        .dashboard-table-card .table tbody td:nth-child(1):before { content: "Date: "; }
+        .dashboard-table-card .table tbody td:nth-child(2):before { content: "Classification: "; }
+        .dashboard-table-card .table tbody td:nth-child(3):before { content: "Risk: "; }
+        .dashboard-table-card .table tbody td:nth-child(4):before { content: "Input: "; }
+        .dashboard-table-card .table tbody td:nth-child(5):before { content: "Report: "; }
+
+        .dashboard-table-card .table tbody td.text-end {
+            text-align: left !important;
+        }
+    }
+</style>
 {% endblock %}

@@ -1,81 +1,1049 @@
 {% load static %}
+{% load socialaccount %} 
 <!doctype html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#07111f">
-    <title>{% block title %}PhishGuard Cyber Defense{% endblock %}</title>
+    <meta name="theme-color" content="#f0f7f0">
+    <title>{% block title %}Cyber Scam Awareness & Detection System{% endblock %}</title>
+    
+    <!-- Preconnect CDNs -->
     <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-    <link href="{% static 'css/app.css' %}" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link href="{% static 'css/modern.css' %}" rel="stylesheet">
+    
+    <style>
+        /* ===== VARIABLES - LIGHT GREEN THEME ===== */
+        :root {
+            --primary-green: #2e7d32;
+            --primary-green-light: #43a047;
+            --primary-green-dark: #1b5e20;
+            --green-bg-lightest: #f5faf5;
+            --green-bg-light: #eaf5ea;
+            --green-bg-medium: #d4e8d4;
+            --green-bg-soft: #e8f5e9;
+            --text-dark: #1b5e20;
+            --text-muted: #4a7a5a;
+            --card-shadow: 0 30px 80px rgba(46, 125, 50, 0.06);
+            --card-shadow-hover: 0 40px 100px rgba(46, 125, 50, 0.08);
+            --border-color: #d4e8d4;
+            --navbar-bg: #2e7d32;
+            --navbar-text: #ffffff;
+            --navbar-hover: #a5d6a7;
+        }
+
+        /* ===== GLOBAL FIXES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #f5faf5 0%, #eaf5ea 40%, #d4e8d4 100%);
+            min-height: 100vh;
+            padding-top: 80px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* ===== BACKGROUND DECORATIONS - VERY LIGHT ===== */
+        body::before {
+            content: '';
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(46, 125, 50, 0.04) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -250px;
+            right: -200px;
+            animation: floatBg 10s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(46, 125, 50, 0.03) 0%, transparent 70%);
+            border-radius: 50%;
+            bottom: -200px;
+            left: -150px;
+            animation: floatBg 8s ease-in-out infinite reverse;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes floatBg {
+            0%, 100% {
+                transform: scale(1) translate(0, 0);
+                opacity: 0.5;
+            }
+            50% {
+                transform: scale(1.1) translate(30px, -30px);
+                opacity: 1;
+            }
+        }
+
+        /* ===== NAVBAR - GREEN BACKGROUND WITH WHITE TEXT ===== */
+        .modern-navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1030;
+            background: #2e7d32;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 2px 30px rgba(46, 125, 50, 0.15);
+        }
+
+        .modern-navbar.scrolled {
+            background: #1b5e20;
+            padding: 0.75rem 0;
+            box-shadow: 0 4px 40px rgba(46, 125, 50, 0.2);
+        }
+
+        .modern-navbar .container-fluid {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .modern-navbar .navbar-brand {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: #ffffff !important;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .modern-navbar .navbar-brand i {
+            font-size: 1.7rem;
+            color: #ffffff !important;
+        }
+
+        .modern-navbar .navbar-brand:hover {
+            color: #a5d6a7 !important;
+        }
+
+        .navbar-menu {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar-menu li {
+            display: inline-block;
+        }
+
+        .navbar-menu li a {
+            color: rgba(255, 255, 255, 0.9) !important;
+            text-decoration: none;
+            padding: 0.7rem 1.2rem;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            letter-spacing: 0.3px;
+        }
+
+        .navbar-menu li a:hover {
+            color: #ffffff !important;
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .navbar-menu .btn-login {
+            background: rgba(255, 255, 255, 0.12);
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            color: #ffffff !important;
+            padding: 0.7rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .navbar-menu .btn-login:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.3);
+            color: #ffffff !important;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-menu .btn-login-alt {
+            background: #ffffff;
+            color: #2e7d32 !important;
+            border: none;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .navbar-menu .btn-login-alt:hover {
+            background: #f5faf5;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            color: #1b5e20 !important;
+        }
+
+        .navbar-menu .btn-login-logout {
+            background: rgba(255, 255, 255, 0.12);
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            color: #ffffff !important;
+        }
+
+        .navbar-menu .btn-login-logout:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.3);
+            color: #ffffff !important;
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        .main-content {
+            position: relative;
+            z-index: 1;
+            min-height: calc(100vh - 200px);
+            padding: 0.5rem 0 2rem 0;
+        }
+
+        /* ===== SECTION SPACING - FIX FOR HIDDEN CONTENT ===== */
+        section, .panel, .card, .container, .content-container {
+            scroll-margin-top: 85px;
+        }
+
+        /* ===== FOOTER - LIGHT GREEN ===== */
+        .site-footer {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 2rem 1rem;
+            text-align: center;
+            border-top: 2px solid rgba(46, 125, 50, 0.06);
+            position: relative;
+            z-index: 1;
+            margin-top: 2rem;
+        }
+
+        .site-footer p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin: 0.25rem 0;
+        }
+
+        .site-footer p:first-child {
+            font-weight: 500;
+            color: var(--primary-green-dark);
+        }
+
+        .site-footer p:first-child span {
+            color: var(--primary-green);
+        }
+
+        /* ===== AUTH MODAL - LIGHT GREEN THEME ===== */
+        .auth-modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(6px);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .auth-modal-overlay.active {
+            display: flex;
+        }
+
+        .auth-modal-box {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            padding: 2.5rem;
+            max-width: 440px;
+            width: 90%;
+            position: relative;
+            box-shadow: 0 30px 60px rgba(46, 125, 50, 0.08);
+            animation: slideUp 0.4s ease;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .auth-modal-box::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .auth-modal-box::-webkit-scrollbar-track {
+            background: var(--green-bg-light);
+            border-radius: 10px;
+        }
+
+        .auth-modal-box::-webkit-scrollbar-thumb {
+            background: var(--primary-green);
+            border-radius: 10px;
+        }
+
+        .auth-modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: #6c757d;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .auth-modal-close:hover {
+            background: var(--green-bg-light);
+            color: var(--primary-green-dark);
+            transform: rotate(90deg);
+        }
+
+        .auth-modal-box h3 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            color: var(--primary-green-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .auth-modal-box .subtitle {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .auth-modal-box .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .auth-modal-box .form-group label {
+            font-weight: 600;
+            color: var(--primary-green-dark);
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+            display: block;
+        }
+
+        .auth-modal-box .form-control {
+            border-radius: 12px;
+            border: 2px solid var(--border-color);
+            padding: 0.7rem 1rem;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            background: var(--green-bg-lightest);
+            color: var(--text-dark);
+        }
+
+        .auth-modal-box .form-control:focus {
+            border-color: #43a047;
+            box-shadow: 0 0 0 4px rgba(46, 125, 50, 0.06);
+            background: #ffffff;
+        }
+
+        .auth-modal-box .btn-cyber {
+            background: linear-gradient(135deg, #2e7d32, #43a047);
+            color: #fff;
+            border: none;
+            padding: 0.75rem;
+            border-radius: 12px;
+            font-weight: 600;
+            width: 100%;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(46, 125, 50, 0.15);
+        }
+
+        .auth-modal-box .btn-cyber:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(46, 125, 50, 0.2);
+            background: linear-gradient(135deg, #1b5e20, #2e7d32);
+        }
+
+        .auth-switch-link {
+            color: var(--primary-green);
+            cursor: pointer;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .auth-switch-link:hover {
+            color: var(--primary-green-dark);
+            text-decoration: underline;
+        }
+
+        .auth-divider {
+            display: flex;
+            align-items: center;
+            margin: 1.5rem 0;
+            color: #8d9b7a;
+        }
+
+        .auth-divider::before,
+        .auth-divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .auth-divider span {
+            padding: 0 1rem;
+            font-size: 0.85rem;
+        }
+
+        .google-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 100%;
+            padding: 0.7rem;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            background: #fff;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: var(--text-dark);
+        }
+
+        .google-btn:hover {
+            background: var(--green-bg-light);
+            border-color: #43a047;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(46, 125, 50, 0.06);
+        }
+
+        .google-btn img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .password-toggle {
+            position: relative;
+        }
+
+        .password-toggle .toggle-btn {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #8d9b7a;
+            cursor: pointer;
+            padding: 0;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        .password-toggle .toggle-btn:hover {
+            color: var(--primary-green);
+        }
+
+        .password-toggle input {
+            padding-right: 45px;
+        }
+
+        .form-check-input:checked {
+            background-color: var(--primary-green);
+            border-color: var(--primary-green);
+        }
+
+        .form-check-label {
+            color: #37474f;
+            font-size: 0.9rem;
+        }
+
+        .text-muted-custom {
+            color: var(--text-muted);
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 992px) {
+            .modern-navbar .container-fluid {
+                padding: 0 1rem;
+            }
+
+            .modern-navbar .navbar-brand {
+                font-size: 1.2rem;
+            }
+
+            .navbar-menu li a {
+                padding: 0.5rem 0.9rem;
+                font-size: 0.9rem;
+            }
+
+            .navbar-menu .btn-login {
+                padding: 0.5rem 1.5rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding-top: 70px;
+            }
+
+            section, .panel, .card, .container, .content-container {
+                scroll-margin-top: 75px;
+            }
+
+            .modern-navbar {
+                padding: 0.6rem 0;
+            }
+
+            .modern-navbar .navbar-brand {
+                font-size: 1rem;
+            }
+
+            .modern-navbar .navbar-brand i {
+                font-size: 1.3rem;
+            }
+
+            .navbar-menu {
+                gap: 0.3rem;
+                flex-wrap: wrap;
+                justify-content: flex-end;
+            }
+
+            .navbar-menu li a {
+                padding: 0.35rem 0.7rem;
+                font-size: 0.8rem;
+            }
+
+            .navbar-menu .btn-login {
+                padding: 0.35rem 1rem;
+                font-size: 0.8rem;
+            }
+
+            .auth-modal-box {
+                padding: 2rem 1.5rem;
+                max-width: 95%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding-top: 65px;
+            }
+
+            .modern-navbar {
+                padding: 0.5rem 0;
+            }
+
+            .modern-navbar .navbar-brand {
+                font-size: 0.85rem;
+            }
+
+            .modern-navbar .navbar-brand i {
+                font-size: 1.1rem;
+            }
+
+            .navbar-menu li a {
+                padding: 0.25rem 0.5rem;
+                font-size: 0.7rem;
+            }
+
+            .navbar-menu .btn-login {
+                padding: 0.25rem 0.7rem;
+                font-size: 0.7rem;
+            }
+
+            .auth-modal-box {
+                padding: 1.5rem 1rem;
+                border-radius: 20px;
+            }
+        }
+
+        /* ===== UTILITY CLASSES ===== */
+        .text-green {
+            color: var(--primary-green);
+        }
+
+        .text-green-dark {
+            color: var(--primary-green-dark);
+        }
+
+        .bg-green-light {
+            background: var(--green-bg-light);
+        }
+
+        .shadow-green {
+            box-shadow: 0 4px 20px rgba(46, 125, 50, 0.08);
+        }
+
+        /* Alert styling */
+        .alert {
+            border-radius: 16px;
+            border: none;
+            padding: 1rem 1.25rem;
+        }
+
+        .alert-success {
+            background: var(--green-bg-light);
+            color: var(--primary-green-dark);
+        }
+
+        .alert-danger {
+            background: #ffebee;
+            color: #c62828;
+        }
+
+        .alert-warning {
+            background: #fff3e0;
+            color: #e65100;
+        }
+
+        .alert-info {
+            background: #e3f2fd;
+            color: #0d47a1;
+        }
+    </style>
+    
     {% block extra_head %}{% endblock %}
 </head>
 <body>
-    <div class="app-shell">
-        <nav class="navbar navbar-expand-lg navbar-dark site-navbar sticky-top">
-            <div class="container-fluid content-container">
-                <a class="navbar-brand d-flex align-items-center gap-2 fw-bold" href="{% url 'home' %}">
-                    <span class="brand-mark"><i class="bi bi-shield-lock-fill"></i></span>
-                    <span>Cyber Scam Detection System</span>
+    <!-- ===== NAVBAR - GREEN BACKGROUND WITH ALL WHITE TEXT ===== -->
+    <nav class="modern-navbar" id="navbar">
+        <div class="container-fluid">
+            <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                <a class="navbar-brand" href="{% url 'home' %}">
+                    <i class="bi bi-shield-lock-fill"></i>
+                    Cyber Scam Detection
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="mainNav">
-                    <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+                
+                <ul class="navbar-menu">
+                    <li><a href="{% url 'home' %}#home">Home</a></li>
+                    <li><a href="{% url 'home' %}#features">Features</a></li>
+                    <li><a href="{% url 'home' %}#about">About</a></li>
+                    <li><a href="{% url 'home' %}#faq">FAQ</a></li>
+                    
+                    <!-- AUTH SECTION -->
+                    {% block navbar_login %}
                         {% if request.user.is_authenticated %}
-                            {% if request.user.is_admin_role %}
-                                <li class="nav-item"><a class="nav-link" href="{% url 'dashboard:admin_dashboard' %}"><i class="bi bi-grid-1x2 me-1"></i>Admin</a></li>
-                            {% else %}
-                                <li class="nav-item"><a class="nav-link" href="{% url 'dashboard:user_dashboard' %}"><i class="bi bi-grid-1x2 me-1"></i>Dashboard</a></li>
-                            {% endif %}
-                            <li class="nav-item"><a class="nav-link" href="{% url 'scanner:home' %}"><i class="bi bi-search me-1"></i>Scanner</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{% url 'quiz:home' %}"><i class="bi bi-patch-question me-1"></i>Quiz</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{% url 'chatbot:home' %}"><i class="bi bi-chat-dots me-1"></i>Chatbot</a></li>
-                            <li class="nav-item ms-lg-2">
-                                <form method="post" action="{% url 'users:logout' %}">
+                            <li><a href="{% url 'dashboard:user_dashboard' %}" class="btn-login btn-login-alt">
+                                <i class="bi bi-grid-1x2 me-1"></i>Dashboard
+                            </a></li>
+                            <li>
+                                <form method="post" action="{% url 'users:logout' %}" style="display: inline;" id="logoutForm">
                                     {% csrf_token %}
-                                    <button class="btn btn-outline-light btn-sm" type="submit"><i class="bi bi-box-arrow-right me-1"></i>Logout</button>
+                                    <button type="button" class="btn-login btn-login-logout" id="logoutBtn">
+                                        <i class="bi bi-box-arrow-right me-1"></i>Logout
+                                    </button>
                                 </form>
                             </li>
                         {% else %}
-                            <li class="nav-item"><a class="nav-link" href="{% url 'home' %}#features">Features</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{% url 'home' %}#about">About</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{% url 'home' %}#faq">FAQ</a></li>
-                            <!-- <li class="nav-item"><a class="nav-link" href="{% url 'home' %}#contact">Contact</a></li> -->
-                            <li class="nav-item ms-lg-2"><a class="btn btn-outline-light btn-sm" href="{% url 'users:login' %}">Login</a></li>
-                            <li class="nav-item"><a class="btn btn-cyber btn-sm" href="{% url 'users:register' %}">Register</a></li>
+                            <li><button class="btn-login" id="showLoginModal">
+                                <i class="bi bi-box-arrow-in-right me-1"></i>Login
+                            </button></li>
                         {% endif %}
-                    </ul>
-                </div>
+                    {% endblock navbar_login %}
+                </ul>
             </div>
-        </nav>
+        </div>
+    </nav>
 
-        <main class="main-content {% block main_class %}{% endblock %}">
-            {% if messages %}
-                <div class="content-container mt-3">
-                    {% for message in messages %}
-                        <div class="alert alert-{{ message.tags|default:'info' }} alert-dismissible fade show" role="alert">
-                            {{ message }}
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="main-content">
+        {% if messages %}
+            <div style="max-width: 1200px; margin: 0 auto 1rem auto; padding: 0 1rem;">
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags|default:'info' }} alert-dismissible fade show" role="alert">
+                        <i class="bi bi-{% if message.tags == 'success' %}check-circle{% elif message.tags == 'error' %}x-circle{% elif message.tags == 'warning' %}exclamation-triangle{% else %}info-circle{% endif %} me-2"></i>
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+        
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- ===== FOOTER - LIGHT GREEN ===== -->
+    <footer class="site-footer">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <p>&copy; <span data-year></span> <span>Cyber Scam Awareness & Detection System</span>. All rights reserved.</p>
+            <p style="font-size: 0.9rem; margin: 0.5rem 0 0 0; color: #7f9f7f;">
+                <i class="bi bi-shield-check me-1" style="color: var(--primary-green);"></i>
+                Stay vigilant. Verify always. Report suspicious activity.
+            </p>
+        </div>
+    </footer>
+
+    <!-- ===== AUTH MODALS ===== -->
+    {% block auth_modals %}
+        <!-- Auth Modal (Login/Register) -->
+        <div class="auth-modal-overlay" id="authModal">
+            <div class="auth-modal-box">
+                <button class="auth-modal-close" id="closeAuthModal">&times;</button>
+                
+                <!-- Login Form -->
+                <div id="loginFormContainer">
+                    <div style="text-align: center; margin-bottom: 1.5rem;">
+                        <div style="background: linear-gradient(135deg, #2e7d32, #43a047); width: 70px; height: 70px; border-radius: 50%; display: inline-flex; justify-content: center; align-items: center; margin-bottom: 1rem; box-shadow: 0 8px 25px rgba(46, 125, 50, 0.15);">
+                            <i class="bi bi-shield-lock-fill text-white fs-1"></i>
                         </div>
-                    {% endfor %}
+                        <h3>Welcome Back</h3>
+                        <p class="subtitle">Login to access your AI Scam Detection Dashboard</p>
+                    </div>
+                    
+                    <form id="loginForm" method="post" action="{% url 'users:login' %}">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="id_login_username">Username or Email</label>
+                            <input type="text" name="username" id="id_login_username" class="form-control" placeholder="Enter your username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="id_login_password">Password</label>
+                            <div class="password-toggle">
+                                <input type="password" name="password" id="id_login_password" class="form-control" placeholder="Enter your password" required>
+                                <button type="button" class="toggle-btn" onclick="togglePassword('id_login_password', this)">
+                                    <i class="bi bi-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.2rem;">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="rememberMe">
+                                <label class="form-check-label" for="rememberMe">
+                                    Remember Me
+                                </label>
+                            </div>
+                            <a href="{% url 'users:password_reset' %}" class="auth-switch-link" style="font-size: 0.9rem;">Forgot Password?</a>
+                        </div>
+                        <button type="submit" class="btn-cyber">
+                            <i class="bi bi-box-arrow-in-right me-2"></i>Login
+                        </button>
+                    </form>
+                    
+                    <div class="auth-divider">
+                        <span>OR</span>
+                    </div>
+                    
+                    <a href="{% provider_login_url 'google' %}" class="google-btn">
+                        <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google">
+                        Continue with Google
+                    </a>
+                    
+                    <div style="text-align: center; margin-top: 1.5rem;">
+                        <span class="text-muted-custom">Don't have an account? </span>
+                        <a class="auth-switch-link" id="switchToRegister">Register</a>
+                    </div>
                 </div>
-            {% endif %}
-            {% block content %}{% endblock %}
-        </main>
-
-        <footer class="site-footer">
-            <div class="content-container d-flex flex-column flex-md-row justify-content-between gap-2">
-                <span>&copy; <span data-year></span> PhishGuard Cyber Defense</span>
-                <span>Scan smarter. Verify faster. Train continuously.</span>
+                
+                <!-- Register Form -->
+                <div id="registerFormContainer" style="display: none;">
+                    <div style="text-align: center; margin-bottom: 1.5rem;">
+                        <div style="background: linear-gradient(135deg, #2e7d32, #43a047); width: 70px; height: 70px; border-radius: 50%; display: inline-flex; justify-content: center; align-items: center; margin-bottom: 1rem; box-shadow: 0 8px 25px rgba(46, 125, 50, 0.15);">
+                            <i class="bi bi-person-plus-fill text-white fs-1"></i>
+                        </div>
+                        <h3>Create Account</h3>
+                        <p class="subtitle">Join the AI Scam Detection Platform</p>
+                    </div>
+                    
+                    <form id="registerForm" method="post" action="{% url 'users:register' %}">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="id_reg_username">Username</label>
+                            <input type="text" name="username" id="id_reg_username" class="form-control" placeholder="Choose a username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="id_reg_email">Email</label>
+                            <input type="email" name="email" id="id_reg_email" class="form-control" placeholder="Enter your email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="id_reg_password1">Password</label>
+                            <div class="password-toggle">
+                                <input type="password" name="password1" id="id_reg_password1" class="form-control" placeholder="Create a password" required>
+                                <button type="button" class="toggle-btn" onclick="togglePassword('id_reg_password1', this)">
+                                    <i class="bi bi-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="id_reg_password2">Confirm Password</label>
+                            <div class="password-toggle">
+                                <input type="password" name="password2" id="id_reg_password2" class="form-control" placeholder="Confirm your password" required>
+                                <button type="button" class="toggle-btn" onclick="togglePassword('id_reg_password2', this)">
+                                    <i class="bi bi-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" id="termsCheck" required>
+                            <label class="form-check-label" for="termsCheck">
+                                I agree to the <a href="#" class="auth-switch-link" style="font-weight: 600;">Terms</a> & <a href="#" class="auth-switch-link" style="font-weight: 600;">Privacy Policy</a>
+                            </label>
+                        </div>
+                        <button type="submit" class="btn-cyber">
+                            <i class="bi bi-person-plus-fill me-2"></i>Create Account
+                        </button>
+                    </form>
+                    
+                    <div class="auth-divider">
+                        <span>OR</span>
+                    </div>
+                    
+                    <a href="{% provider_login_url 'google' %}" class="google-btn">
+                        <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google">
+                        Continue with Google
+                    </a>
+                    
+                    <div style="text-align: center; margin-top: 1.5rem;">
+                        <span class="text-muted-custom">Already have an account? </span>
+                        <a class="auth-switch-link" id="switchToLogin">Sign In</a>
+                    </div>
+                </div>
             </div>
-        </footer>
-    </div>
+        </div>
+
+        <!-- Logout Confirmation Modal -->
+        <div class="auth-modal-overlay" id="logoutModal">
+            <div class="auth-modal-box" style="max-width: 400px;">
+                <button class="auth-modal-close" id="closeLogoutModal">&times;</button>
+                <div style="text-align: center;">
+                    <div style="font-size: 3rem; color: #ef4444; margin-bottom: 1rem;">
+                        <i class="bi bi-shield-exclamation"></i>
+                    </div>
+                    <h3 style="color: var(--primary-green-dark);">Confirm Logout</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Are you sure you want to logout? You will need to sign in again to access your dashboard.</p>
+                    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                        <button class="btn-cyber" id="cancelLogout" style="background: var(--green-bg-light); color: var(--primary-green-dark); width: auto; padding: 0.6rem 2rem; border: 2px solid var(--border-color); box-shadow: none;">
+                            Cancel
+                        </button>
+                        <button class="btn-cyber" id="confirmLogout" style="background: linear-gradient(135deg, #dc3545, #c82333); width: auto; padding: 0.6rem 2rem; box-shadow: 0 4px 15px rgba(220, 53, 69, 0.15);">
+                            <i class="bi bi-box-arrow-right me-2"></i>Logout
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endblock auth_modals %}
+
+    <!-- ===== SCRIPTS ===== -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="{% static 'js/app.js' %}"></script>
+    <script src="{% static 'js/modern.js' %}"></script>
+    
+    <script>
+        // ===== TOGGLE PASSWORD VISIBILITY =====
+        function togglePassword(inputId, button) {
+            const input = document.getElementById(inputId);
+            const icon = button.querySelector('i');
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.remove('bi-eye');
+                icon.classList.add('bi-eye-slash');
+            } else {
+                input.type = 'password';
+                icon.classList.remove('bi-eye-slash');
+                icon.classList.add('bi-eye');
+            }
+        }
+
+        // ===== NAVBAR SCROLL EFFECT =====
+        document.addEventListener('DOMContentLoaded', function() {
+            const navbar = document.getElementById('navbar');
+            
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+
+            // ===== AUTH MODAL =====
+            const authModal = document.getElementById('authModal');
+            const showLoginBtn = document.getElementById('showLoginModal');
+            const closeAuthBtn = document.getElementById('closeAuthModal');
+            const switchToRegister = document.getElementById('switchToRegister');
+            const switchToLogin = document.getElementById('switchToLogin');
+            const loginContainer = document.getElementById('loginFormContainer');
+            const registerContainer = document.getElementById('registerFormContainer');
+            
+            // ===== LOGOUT MODAL =====
+            const logoutModal = document.getElementById('logoutModal');
+            const logoutBtn = document.getElementById('logoutBtn');
+            const closeLogoutModal = document.getElementById('closeLogoutModal');
+            const cancelLogout = document.getElementById('cancelLogout');
+            const confirmLogout = document.getElementById('confirmLogout');
+            let logoutForm = null;
+            
+            if (logoutBtn) {
+                logoutForm = logoutBtn.closest('form');
+            }
+            
+            // Show Login Modal
+            if (showLoginBtn) {
+                showLoginBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    if (authModal) {
+                        authModal.classList.add('active');
+                        loginContainer.style.display = 'block';
+                        registerContainer.style.display = 'none';
+                        document.body.style.overflow = 'hidden';
+                    }
+                });
+            }
+            
+            // Close Auth Modal
+            function closeAuthModalFn() {
+                if (authModal) {
+                    authModal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            }
+            
+            if (closeAuthBtn) {
+                closeAuthBtn.addEventListener('click', closeAuthModalFn);
+            }
+            
+            // Close on overlay click
+            if (authModal) {
+                authModal.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        closeAuthModalFn();
+                    }
+                });
+            }
+            
+            // Switch to Register
+            if (switchToRegister) {
+                switchToRegister.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    loginContainer.style.display = 'none';
+                    registerContainer.style.display = 'block';
+                });
+            }
+            
+            // Switch to Login
+            if (switchToLogin) {
+                switchToLogin.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    loginContainer.style.display = 'block';
+                    registerContainer.style.display = 'none';
+                });
+            }
+            
+            // Show Logout Modal
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', function() {
+                    if (logoutModal) {
+                        logoutModal.style.display = 'flex';
+                        document.body.style.overflow = 'hidden';
+                    }
+                });
+            }
+            
+            // Close Logout Modal
+            function closeLogoutModalFn() {
+                if (logoutModal) {
+                    logoutModal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            }
+            
+            if (closeLogoutModal) {
+                closeLogoutModal.addEventListener('click', closeLogoutModalFn);
+            }
+            
+            if (cancelLogout) {
+                cancelLogout.addEventListener('click', closeLogoutModalFn);
+            }
+            
+            // Close logout modal on overlay click
+            if (logoutModal) {
+                logoutModal.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        closeLogoutModalFn();
+                    }
+                });
+            }
+            
+            // Confirm Logout - Submit the form
+            if (confirmLogout && logoutForm) {
+                confirmLogout.addEventListener('click', function() {
+                    logoutForm.submit();
+                });
+            }
+            
+            // Close modals with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    if (authModal && authModal.classList.contains('active')) {
+                        closeAuthModalFn();
+                    }
+                    if (logoutModal && logoutModal.style.display === 'flex') {
+                        closeLogoutModalFn();
+                    }
+                }
+            });
+            
+            // Auto-year in footer
+            const yearSpan = document.querySelector('[data-year]');
+            if (yearSpan) {
+                yearSpan.textContent = new Date().getFullYear();
+            }
+        });
+    </script>
+    
     {% block scripts %}{% endblock %}
 </body>
 </html>
