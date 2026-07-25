@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#f0f7f0">
+    <meta name="theme-color" content="#1A3A4A">
     <title>{% block title %}Cyber Scam Awareness & Detection System{% endblock %}</title>
     
     <!-- Preconnect CDNs -->
@@ -23,23 +23,147 @@
     <link href="{% static 'css/modern.css' %}" rel="stylesheet">
     
     <style>
-        /* ===== VARIABLES - LIGHT GREEN THEME ===== */
+        /* ===== NAVBAR FORCE WHITE TEXT - OVERRIDE EVERYTHING ===== */
+        .modern-navbar {
+            background: #1A3A4A !important;
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            padding: 0.8rem 0 !important;
+            border-bottom: 1px solid rgba(91, 155, 199, 0.15) !important;
+            box-shadow: 0 2px 30px rgba(0, 0, 0, 0.2) !important;
+        }
+
+        .modern-navbar.scrolled {
+            background: #0F2A3A !important;
+        }
+
+        .modern-navbar .navbar-brand {
+            color: #FFFFFF !important;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.3rem;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .modern-navbar .navbar-brand i {
+            color: #5B9BC7 !important;
+            font-size: 1.6rem;
+        }
+
+        .modern-navbar .navbar-brand:hover {
+            color: #5B9BC7 !important;
+        }
+
+        .modern-navbar .navbar-brand:hover i {
+            color: #7AB0D4 !important;
+        }
+
+        .navbar-menu li a {
+            color: #FFFFFF !important;
+            text-decoration: none;
+            padding: 0.6rem 1.1rem;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+        }
+
+        .navbar-menu li a:hover {
+            color: #FFFFFF !important;
+            background: rgba(91, 155, 199, 0.15);
+        }
+
+        .navbar-menu .btn-login {
+            background: rgba(91, 155, 199, 0.12) !important;
+            border: 1px solid rgba(91, 155, 199, 0.15) !important;
+            color: #FFFFFF !important;
+            padding: 0.6rem 1.8rem !important;
+            border-radius: 50px !important;
+            font-weight: 600 !important;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+
+        .navbar-menu .btn-login:hover {
+            background: rgba(91, 155, 199, 0.2) !important;
+            border-color: #5B9BC7 !important;
+            color: #FFFFFF !important;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(91, 155, 199, 0.15);
+        }
+
+        .navbar-menu .btn-login-alt {
+            background: #3A7CA5 !important;
+            color: #FFFFFF !important;
+            border: none !important;
+            box-shadow: 0 4px 20px rgba(58, 124, 165, 0.12);
+        }
+
+        .navbar-menu .btn-login-alt:hover {
+            background: #2A5F82 !important;
+            color: #FFFFFF !important;
+        }
+
+        .navbar-menu .btn-login-logout {
+            background: rgba(217, 83, 79, 0.12) !important;
+            border: 1px solid rgba(217, 83, 79, 0.15) !important;
+            color: #D9534F !important;
+        }
+
+        .navbar-menu .btn-login-logout:hover {
+            background: rgba(217, 83, 79, 0.2) !important;
+            border-color: #D9534F !important;
+            color: #D9534F !important;
+        }
+
+        /* Force white text on all navbar links - OVERRIDE Bootstrap */
+        .navbar-dark .navbar-nav .nav-link {
+            color: #FFFFFF !important;
+        }
+
+        .navbar-dark .navbar-nav .nav-link:hover {
+            color: #FFFFFF !important;
+        }
+
+        /* Force white on any link inside navbar */
+        .modern-navbar a,
+        .modern-navbar .nav-link,
+        .modern-navbar .navbar-nav .nav-link {
+            color: #FFFFFF !important;
+        }
+
+        .modern-navbar a:hover,
+        .modern-navbar .nav-link:hover,
+        .modern-navbar .navbar-nav .nav-link:hover {
+            color: #FFFFFF !important;
+        }
+
+        /* ===== VARIABLES - DARKER BLUE PROFESSIONAL THEME ===== */
         :root {
-            --primary-green: #2e7d32;
-            --primary-green-light: #43a047;
-            --primary-green-dark: #1b5e20;
-            --green-bg-lightest: #f5faf5;
-            --green-bg-light: #eaf5ea;
-            --green-bg-medium: #d4e8d4;
-            --green-bg-soft: #e8f5e9;
-            --text-dark: #1b5e20;
-            --text-muted: #4a7a5a;
-            --card-shadow: 0 30px 80px rgba(46, 125, 50, 0.06);
-            --card-shadow-hover: 0 40px 100px rgba(46, 125, 50, 0.08);
-            --border-color: #d4e8d4;
-            --navbar-bg: #2e7d32;
-            --navbar-text: #ffffff;
-            --navbar-hover: #a5d6a7;
+            --primary-blue: #3A7CA5;
+            --primary-blue-hover: #2A5F82;
+            --primary-blue-light: #D4E8F5;
+            --primary-blue-lighter: #EBF8FF;
+            --primary-blue-lightest: #F5FAFF;
+            --text-dark: #1A3A4A;
+            --text-muted: #4A6A7A;
+            --text-muted-light: #7A9AAA;
+            --card-shadow: 0 10px 30px rgba(58, 124, 165, 0.06);
+            --card-shadow-hover: 0 15px 40px rgba(58, 124, 165, 0.10);
+            --border-color: #C5D9E8;
+            --navbar-bg: #1A3A4A;
+            --navbar-text: #FFFFFF;
+            --navbar-hover: #2A5F82;
+            --navbar-icon: #5B9BC7;
+            --brand-color: #FFFFFF;
+            --brand-color-hover: #5B9BC7;
+            --success-color: #4CAF50;
+            --warning-color: #F4B400;
+            --danger-color: #D9534F;
         }
 
         /* ===== GLOBAL FIXES ===== */
@@ -55,20 +179,20 @@
 
         body {
             font-family: 'Inter', 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, #f5faf5 0%, #eaf5ea 40%, #d4e8d4 100%);
+            background: linear-gradient(135deg, #F5FAFF 0%, #EBF8FF 45%, #D4E8F5 100%);
             min-height: 100vh;
-            padding-top: 80px;
+            padding-top: 72px;
             position: relative;
             overflow-x: hidden;
         }
 
-        /* ===== BACKGROUND DECORATIONS - VERY LIGHT ===== */
+        /* ===== BACKGROUND DECORATIONS - LIGHT BLUE ===== */
         body::before {
             content: '';
             position: fixed;
             width: 600px;
             height: 600px;
-            background: radial-gradient(circle, rgba(46, 125, 50, 0.04) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(58, 124, 165, 0.04) 0%, transparent 70%);
             border-radius: 50%;
             top: -250px;
             right: -200px;
@@ -82,7 +206,7 @@
             position: fixed;
             width: 500px;
             height: 500px;
-            background: radial-gradient(circle, rgba(46, 125, 50, 0.03) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(58, 124, 165, 0.03) 0%, transparent 70%);
             border-radius: 50%;
             bottom: -200px;
             left: -150px;
@@ -102,129 +226,6 @@
             }
         }
 
-        /* ===== NAVBAR - GREEN BACKGROUND WITH WHITE TEXT ===== */
-        .modern-navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1030;
-            background: #2e7d32;
-            padding: 1rem 0;
-            transition: all 0.3s ease;
-            border-bottom: 2px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 2px 30px rgba(46, 125, 50, 0.15);
-        }
-
-        .modern-navbar.scrolled {
-            background: #1b5e20;
-            padding: 0.75rem 0;
-            box-shadow: 0 4px 40px rgba(46, 125, 50, 0.2);
-        }
-
-        .modern-navbar .container-fluid {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .modern-navbar .navbar-brand {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 700;
-            font-size: 1.4rem;
-            color: #ffffff !important;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .modern-navbar .navbar-brand i {
-            font-size: 1.7rem;
-            color: #ffffff !important;
-        }
-
-        .modern-navbar .navbar-brand:hover {
-            color: #a5d6a7 !important;
-        }
-
-        .navbar-menu {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        .navbar-menu li {
-            display: inline-block;
-        }
-
-        .navbar-menu li a {
-            color: rgba(255, 255, 255, 0.9) !important;
-            text-decoration: none;
-            padding: 0.7rem 1.2rem;
-            font-weight: 500;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            border-radius: 8px;
-            letter-spacing: 0.3px;
-        }
-
-        .navbar-menu li a:hover {
-            color: #ffffff !important;
-            background: rgba(255, 255, 255, 0.12);
-        }
-
-        .navbar-menu .btn-login {
-            background: rgba(255, 255, 255, 0.12);
-            border: 2px solid rgba(255, 255, 255, 0.15);
-            color: #ffffff !important;
-            padding: 0.7rem 2rem;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 1rem;
-            cursor: pointer;
-        }
-
-        .navbar-menu .btn-login:hover {
-            background: rgba(255, 255, 255, 0.2);
-            border-color: rgba(255, 255, 255, 0.3);
-            color: #ffffff !important;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .navbar-menu .btn-login-alt {
-            background: #ffffff;
-            color: #2e7d32 !important;
-            border: none;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-        }
-
-        .navbar-menu .btn-login-alt:hover {
-            background: #f5faf5;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-            color: #1b5e20 !important;
-        }
-
-        .navbar-menu .btn-login-logout {
-            background: rgba(255, 255, 255, 0.12);
-            border: 2px solid rgba(255, 255, 255, 0.15);
-            color: #ffffff !important;
-        }
-
-        .navbar-menu .btn-login-logout:hover {
-            background: rgba(255, 255, 255, 0.2);
-            border-color: rgba(255, 255, 255, 0.3);
-            color: #ffffff !important;
-        }
-
         /* ===== MAIN CONTENT ===== */
         .main-content {
             position: relative;
@@ -235,37 +236,37 @@
 
         /* ===== SECTION SPACING - FIX FOR HIDDEN CONTENT ===== */
         section, .panel, .card, .container, .content-container {
-            scroll-margin-top: 85px;
+            scroll-margin-top: 75px;
         }
 
-        /* ===== FOOTER - LIGHT GREEN ===== */
+        /* ===== FOOTER - LIGHT BLUE ===== */
         .site-footer {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(10px);
             padding: 2rem 1rem;
             text-align: center;
-            border-top: 2px solid rgba(46, 125, 50, 0.06);
+            border-top: 1px solid rgba(58, 124, 165, 0.08);
             position: relative;
             z-index: 1;
             margin-top: 2rem;
         }
 
         .site-footer p {
-            color: var(--text-muted);
+            color: #4A6A7A;
             font-size: 0.9rem;
             margin: 0.25rem 0;
         }
 
         .site-footer p:first-child {
             font-weight: 500;
-            color: var(--primary-green-dark);
+            color: #1A3A4A;
         }
 
         .site-footer p:first-child span {
-            color: var(--primary-green);
+            color: #3A7CA5;
         }
 
-        /* ===== AUTH MODAL - LIGHT GREEN THEME ===== */
+        /* ===== AUTH MODAL - LIGHT BLUE THEME ===== */
         .auth-modal-overlay {
             display: none;
             position: fixed;
@@ -273,7 +274,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.4);
+            background: rgba(0, 0, 0, 0.25);
             backdrop-filter: blur(6px);
             z-index: 9999;
             justify-content: center;
@@ -286,17 +287,18 @@
         }
 
         .auth-modal-box {
-            background: rgba(255, 255, 255, 0.98);
+            background: #FFFFFF;
             backdrop-filter: blur(10px);
             border-radius: 24px;
             padding: 2.5rem;
             max-width: 440px;
             width: 90%;
             position: relative;
-            box-shadow: 0 30px 60px rgba(46, 125, 50, 0.08);
+            box-shadow: 0 30px 60px rgba(58, 124, 165, 0.08);
             animation: slideUp 0.4s ease;
             max-height: 90vh;
             overflow-y: auto;
+            border: 1px solid #C5D9E8;
         }
 
         .auth-modal-box::-webkit-scrollbar {
@@ -304,12 +306,12 @@
         }
 
         .auth-modal-box::-webkit-scrollbar-track {
-            background: var(--green-bg-light);
+            background: #EBF8FF;
             border-radius: 10px;
         }
 
         .auth-modal-box::-webkit-scrollbar-thumb {
-            background: var(--primary-green);
+            background: #3A7CA5;
             border-radius: 10px;
         }
 
@@ -320,7 +322,7 @@
             background: none;
             border: none;
             font-size: 1.8rem;
-            color: #6c757d;
+            color: #7A9AAA;
             cursor: pointer;
             transition: all 0.3s ease;
             padding: 0;
@@ -333,20 +335,20 @@
         }
 
         .auth-modal-close:hover {
-            background: var(--green-bg-light);
-            color: var(--primary-green-dark);
+            background: #EBF8FF;
+            color: #1A3A4A;
             transform: rotate(90deg);
         }
 
         .auth-modal-box h3 {
             font-family: 'Poppins', sans-serif;
             font-weight: 700;
-            color: var(--primary-green-dark);
+            color: #1A3A4A;
             margin-bottom: 0.5rem;
         }
 
         .auth-modal-box .subtitle {
-            color: var(--text-muted);
+            color: #4A6A7A;
             font-size: 0.95rem;
             margin-bottom: 1.5rem;
         }
@@ -357,7 +359,7 @@
 
         .auth-modal-box .form-group label {
             font-weight: 600;
-            color: var(--primary-green-dark);
+            color: #1A3A4A;
             font-size: 0.9rem;
             margin-bottom: 0.3rem;
             display: block;
@@ -365,22 +367,22 @@
 
         .auth-modal-box .form-control {
             border-radius: 12px;
-            border: 2px solid var(--border-color);
+            border: 1px solid #C5D9E8;
             padding: 0.7rem 1rem;
             transition: all 0.3s ease;
             font-size: 0.95rem;
-            background: var(--green-bg-lightest);
-            color: var(--text-dark);
+            background: #FFFFFF;
+            color: #1A3A4A;
         }
 
         .auth-modal-box .form-control:focus {
-            border-color: #43a047;
-            box-shadow: 0 0 0 4px rgba(46, 125, 50, 0.06);
-            background: #ffffff;
+            border-color: #3A7CA5;
+            box-shadow: 0 0 0 4px rgba(58, 124, 165, 0.15);
+            background: #FFFFFF;
         }
 
         .auth-modal-box .btn-cyber {
-            background: linear-gradient(135deg, #2e7d32, #43a047);
+            background: linear-gradient(135deg, #3A7CA5, #2A5F82);
             color: #fff;
             border: none;
             padding: 0.75rem;
@@ -389,24 +391,24 @@
             width: 100%;
             transition: all 0.3s ease;
             font-size: 1rem;
-            box-shadow: 0 4px 15px rgba(46, 125, 50, 0.15);
+            box-shadow: 0 4px 15px rgba(58, 124, 165, 0.15);
         }
 
         .auth-modal-box .btn-cyber:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(46, 125, 50, 0.2);
-            background: linear-gradient(135deg, #1b5e20, #2e7d32);
+            box-shadow: 0 8px 25px rgba(58, 124, 165, 0.25);
+            background: linear-gradient(135deg, #2A5F82, #1A4A6A);
         }
 
         .auth-switch-link {
-            color: var(--primary-green);
+            color: #3A7CA5;
             cursor: pointer;
             font-weight: 600;
             text-decoration: none;
         }
 
         .auth-switch-link:hover {
-            color: var(--primary-green-dark);
+            color: #2A5F82;
             text-decoration: underline;
         }
 
@@ -414,14 +416,14 @@
             display: flex;
             align-items: center;
             margin: 1.5rem 0;
-            color: #8d9b7a;
+            color: #7A9AAA;
         }
 
         .auth-divider::before,
         .auth-divider::after {
             content: '';
             flex: 1;
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 1px solid #C5D9E8;
         }
 
         .auth-divider span {
@@ -436,20 +438,20 @@
             gap: 0.5rem;
             width: 100%;
             padding: 0.7rem;
-            border: 2px solid var(--border-color);
+            border: 1px solid #C5D9E8;
             border-radius: 12px;
-            background: #fff;
+            background: #FFFFFF;
             font-weight: 500;
             transition: all 0.3s ease;
             text-decoration: none;
-            color: var(--text-dark);
+            color: #1A3A4A;
         }
 
         .google-btn:hover {
-            background: var(--green-bg-light);
-            border-color: #43a047;
+            background: #EBF8FF;
+            border-color: #3A7CA5;
             transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(46, 125, 50, 0.06);
+            box-shadow: 0 4px 15px rgba(58, 124, 165, 0.06);
         }
 
         .google-btn img {
@@ -468,7 +470,7 @@
             transform: translateY(-50%);
             background: none;
             border: none;
-            color: #8d9b7a;
+            color: #7A9AAA;
             cursor: pointer;
             padding: 0;
             font-size: 1.1rem;
@@ -476,7 +478,7 @@
         }
 
         .password-toggle .toggle-btn:hover {
-            color: var(--primary-green);
+            color: #3A7CA5;
         }
 
         .password-toggle input {
@@ -484,17 +486,17 @@
         }
 
         .form-check-input:checked {
-            background-color: var(--primary-green);
-            border-color: var(--primary-green);
+            background-color: #3A7CA5;
+            border-color: #3A7CA5;
         }
 
         .form-check-label {
-            color: #37474f;
+            color: #4A6A7A;
             font-size: 0.9rem;
         }
 
         .text-muted-custom {
-            color: var(--text-muted);
+            color: #4A6A7A;
         }
 
         /* ===== ANIMATIONS ===== */
@@ -516,60 +518,64 @@
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 992px) {
+            body {
+                padding-top: 65px;
+            }
+
             .modern-navbar .container-fluid {
                 padding: 0 1rem;
             }
 
             .modern-navbar .navbar-brand {
-                font-size: 1.2rem;
+                font-size: 1.1rem;
             }
 
             .navbar-menu li a {
-                padding: 0.5rem 0.9rem;
-                font-size: 0.9rem;
+                padding: 0.4rem 0.8rem;
+                font-size: 0.85rem;
             }
 
             .navbar-menu .btn-login {
-                padding: 0.5rem 1.5rem;
-                font-size: 0.9rem;
+                padding: 0.4rem 1.2rem;
+                font-size: 0.85rem;
             }
         }
 
         @media (max-width: 768px) {
             body {
-                padding-top: 70px;
+                padding-top: 60px;
             }
 
             section, .panel, .card, .container, .content-container {
-                scroll-margin-top: 75px;
+                scroll-margin-top: 65px;
             }
 
             .modern-navbar {
-                padding: 0.6rem 0;
+                padding: 0.5rem 0 !important;
             }
 
             .modern-navbar .navbar-brand {
-                font-size: 1rem;
+                font-size: 0.95rem;
             }
 
             .modern-navbar .navbar-brand i {
-                font-size: 1.3rem;
+                font-size: 1.2rem;
             }
 
             .navbar-menu {
-                gap: 0.3rem;
+                gap: 0.2rem;
                 flex-wrap: wrap;
                 justify-content: flex-end;
             }
 
             .navbar-menu li a {
-                padding: 0.35rem 0.7rem;
-                font-size: 0.8rem;
+                padding: 0.3rem 0.6rem;
+                font-size: 0.75rem;
             }
 
             .navbar-menu .btn-login {
-                padding: 0.35rem 1rem;
-                font-size: 0.8rem;
+                padding: 0.3rem 0.8rem !important;
+                font-size: 0.75rem;
             }
 
             .auth-modal-box {
@@ -580,29 +586,29 @@
 
         @media (max-width: 480px) {
             body {
-                padding-top: 65px;
+                padding-top: 55px;
             }
 
             .modern-navbar {
-                padding: 0.5rem 0;
+                padding: 0.4rem 0 !important;
             }
 
             .modern-navbar .navbar-brand {
-                font-size: 0.85rem;
+                font-size: 0.8rem;
             }
 
             .modern-navbar .navbar-brand i {
-                font-size: 1.1rem;
+                font-size: 1rem;
             }
 
             .navbar-menu li a {
-                padding: 0.25rem 0.5rem;
-                font-size: 0.7rem;
+                padding: 0.2rem 0.4rem;
+                font-size: 0.65rem;
             }
 
             .navbar-menu .btn-login {
-                padding: 0.25rem 0.7rem;
-                font-size: 0.7rem;
+                padding: 0.2rem 0.6rem !important;
+                font-size: 0.65rem;
             }
 
             .auth-modal-box {
@@ -612,23 +618,23 @@
         }
 
         /* ===== UTILITY CLASSES ===== */
-        .text-green {
-            color: var(--primary-green);
+        .text-primary-blue {
+            color: #3A7CA5;
         }
 
-        .text-green-dark {
-            color: var(--primary-green-dark);
+        .text-dark-blue {
+            color: #1A3A4A;
         }
 
-        .bg-green-light {
-            background: var(--green-bg-light);
+        .bg-light-blue {
+            background: #EBF8FF;
         }
 
-        .shadow-green {
-            box-shadow: 0 4px 20px rgba(46, 125, 50, 0.08);
+        .shadow-blue {
+            box-shadow: 0 4px 20px rgba(58, 124, 165, 0.06);
         }
 
-        /* Alert styling */
+        /* Alert styling - Light Blue theme */
         .alert {
             border-radius: 16px;
             border: none;
@@ -636,30 +642,34 @@
         }
 
         .alert-success {
-            background: var(--green-bg-light);
-            color: var(--primary-green-dark);
+            background: #E8F5E9;
+            color: #2E7D32;
+            border: 1px solid #C8E6C9;
         }
 
         .alert-danger {
-            background: #ffebee;
-            color: #c62828;
+            background: #FDE8E8;
+            color: #D9534F;
+            border: 1px solid #F5C6C6;
         }
 
         .alert-warning {
-            background: #fff3e0;
-            color: #e65100;
+            background: #FEF7E0;
+            color: #F4B400;
+            border: 1px solid #FCE8A0;
         }
 
         .alert-info {
-            background: #e3f2fd;
-            color: #0d47a1;
+            background: #EBF8FF;
+            color: #3A7CA5;
+            border: 1px solid #C5D9E8;
         }
     </style>
     
     {% block extra_head %}{% endblock %}
 </head>
 <body>
-    <!-- ===== NAVBAR - GREEN BACKGROUND WITH ALL WHITE TEXT ===== -->
+    <!-- ===== NAVBAR - DARK BACKGROUND WITH WHITE TEXT ===== -->
     <nav class="modern-navbar" id="navbar">
         <div class="container-fluid">
             <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
@@ -716,12 +726,12 @@
         {% block content %}{% endblock %}
     </main>
 
-    <!-- ===== FOOTER - LIGHT GREEN ===== -->
+    <!-- ===== FOOTER - LIGHT BLUE ===== -->
     <footer class="site-footer">
         <div style="max-width: 1200px; margin: 0 auto;">
             <p>&copy; <span data-year></span> <span>Cyber Scam Awareness & Detection System</span>. All rights reserved.</p>
-            <p style="font-size: 0.9rem; margin: 0.5rem 0 0 0; color: #7f9f7f;">
-                <i class="bi bi-shield-check me-1" style="color: var(--primary-green);"></i>
+            <p style="font-size: 0.9rem; margin: 0.5rem 0 0 0; color: #7A9AAA;">
+                <i class="bi bi-shield-check me-1" style="color: #3A7CA5;"></i>
                 Stay vigilant. Verify always. Report suspicious activity.
             </p>
         </div>
@@ -737,7 +747,7 @@
                 <!-- Login Form -->
                 <div id="loginFormContainer">
                     <div style="text-align: center; margin-bottom: 1.5rem;">
-                        <div style="background: linear-gradient(135deg, #2e7d32, #43a047); width: 70px; height: 70px; border-radius: 50%; display: inline-flex; justify-content: center; align-items: center; margin-bottom: 1rem; box-shadow: 0 8px 25px rgba(46, 125, 50, 0.15);">
+                        <div style="background: linear-gradient(135deg, #3A7CA5, #2A5F82); width: 70px; height: 70px; border-radius: 50%; display: inline-flex; justify-content: center; align-items: center; margin-bottom: 1rem; box-shadow: 0 8px 25px rgba(58, 124, 165, 0.15);">
                             <i class="bi bi-shield-lock-fill text-white fs-1"></i>
                         </div>
                         <h3>Welcome Back</h3>
@@ -791,7 +801,7 @@
                 <!-- Register Form -->
                 <div id="registerFormContainer" style="display: none;">
                     <div style="text-align: center; margin-bottom: 1.5rem;">
-                        <div style="background: linear-gradient(135deg, #2e7d32, #43a047); width: 70px; height: 70px; border-radius: 50%; display: inline-flex; justify-content: center; align-items: center; margin-bottom: 1rem; box-shadow: 0 8px 25px rgba(46, 125, 50, 0.15);">
+                        <div style="background: linear-gradient(135deg, #3A7CA5, #2A5F82); width: 70px; height: 70px; border-radius: 50%; display: inline-flex; justify-content: center; align-items: center; margin-bottom: 1rem; box-shadow: 0 8px 25px rgba(58, 124, 165, 0.15);">
                             <i class="bi bi-person-plus-fill text-white fs-1"></i>
                         </div>
                         <h3>Create Account</h3>
@@ -859,16 +869,16 @@
             <div class="auth-modal-box" style="max-width: 400px;">
                 <button class="auth-modal-close" id="closeLogoutModal">&times;</button>
                 <div style="text-align: center;">
-                    <div style="font-size: 3rem; color: #ef4444; margin-bottom: 1rem;">
+                    <div style="font-size: 3rem; color: #D9534F; margin-bottom: 1rem;">
                         <i class="bi bi-shield-exclamation"></i>
                     </div>
-                    <h3 style="color: var(--primary-green-dark);">Confirm Logout</h3>
-                    <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Are you sure you want to logout? You will need to sign in again to access your dashboard.</p>
+                    <h3 style="color: #1A3A4A;">Confirm Logout</h3>
+                    <p style="color: #4A6A7A; margin-bottom: 1.5rem;">Are you sure you want to logout? You will need to sign in again to access your dashboard.</p>
                     <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                        <button class="btn-cyber" id="cancelLogout" style="background: var(--green-bg-light); color: var(--primary-green-dark); width: auto; padding: 0.6rem 2rem; border: 2px solid var(--border-color); box-shadow: none;">
+                        <button class="btn-cyber" id="cancelLogout" style="background: #EBF8FF; color: #1A3A4A; width: auto; padding: 0.6rem 2rem; border: 1px solid #C5D9E8; box-shadow: none;">
                             Cancel
                         </button>
-                        <button class="btn-cyber" id="confirmLogout" style="background: linear-gradient(135deg, #dc3545, #c82333); width: auto; padding: 0.6rem 2rem; box-shadow: 0 4px 15px rgba(220, 53, 69, 0.15);">
+                        <button class="btn-cyber" id="confirmLogout" style="background: linear-gradient(135deg, #D9534F, #C9302C); width: auto; padding: 0.6rem 2rem; box-shadow: 0 4px 15px rgba(217, 83, 79, 0.15);">
                             <i class="bi bi-box-arrow-right me-2"></i>Logout
                         </button>
                     </div>

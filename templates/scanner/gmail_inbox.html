@@ -8,11 +8,11 @@
     <!-- Page Header with Icon -->
     <div class="page-header">
         <div class="header-left">
-            <i class="fas fa-shield-virus" style="color: #dc3545; font-size: 2rem;"></i>
+            <i class="bi bi-shield-check" style="color: #3A7CA5; font-size: 2rem;"></i>
             <h2 class="page-title">Gmail Spam Messages</h2>
         </div>
         <div class="header-right">
-            <span class="badge bg-secondary">Inbox</span>
+            <span class="badge bg-soft">Inbox</span>
             <span class="badge bg-danger">0 Spam</span>
         </div>
     </div>
@@ -23,9 +23,9 @@
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th><i class="fas fa-user"></i> Sender</th>
-                    <th><i class="fas fa-envelope"></i> Subject</th>
-                    <th><i class="fas fa-calendar"></i> Date</th>
+                    <th><i class="bi bi-person"></i> Sender</th>
+                    <th><i class="bi bi-envelope"></i> Subject</th>
+                    <th><i class="bi bi-calendar"></i> Date</th>
                     <th class="text-center">Action</th>
                 </tr>
             </thead>
@@ -37,8 +37,8 @@
                     <td>{{ email.date }}</td>
                     <td class="text-center">
                         <a href="{% url 'scanner:scan_gmail_email' email.id %}" 
-                           class="btn btn-danger btn-sm">
-                            <i class="fas fa-shield-alt"></i> Scan
+                           class="btn btn-scan">
+                            <i class="bi bi-shield-check"></i> Scan
                         </a>
                     </td>
                 </tr>
@@ -52,7 +52,7 @@
     <!-- Enhanced Empty State Design -->
     <div class="empty-state-container">
         <div class="empty-state-icon">
-            <i class="fas fa-inbox" style="font-size: 5rem; color: #c0d0e0;"></i>
+            <i class="bi bi-inbox" style="font-size: 5rem; color: #C5D9E8;"></i>
         </div>
         <h3 class="empty-state-title">All Clear! ✨</h3>
         <p class="empty-state-message">
@@ -60,14 +60,14 @@
         </p>
         <div class="empty-state-actions">
             <button class="btn btn-outline-primary btn-sm" onclick="location.reload();">
-                <i class="fas fa-sync"></i> Refresh
+                <i class="bi bi-arrow-clockwise"></i> Refresh
             </button>
             <button class="btn btn-outline-secondary btn-sm" onclick="window.location.href='/scanner/'">
-                <i class="fas fa-arrow-left"></i> Back to Scanner
+                <i class="bi bi-arrow-left"></i> Back to Scanner
             </button>
         </div>
         <div class="empty-state-footer">
-            <i class="fas fa-check-circle" style="color: #28a745;"></i> 
+            <i class="bi bi-check-circle-fill" style="color: #4CAF50;"></i> 
             Your inbox is clean and secure.
         </div>
     </div>
@@ -77,12 +77,15 @@
 </div>
 
 <style>
-    /* Custom Styles for Better Look */
+    /* ===== CUSTOM STYLES - LIGHT BLUE THEME ===== */
     .content-container {
         background: #ffffff;
-        border-radius: 12px;
+        border-radius: 16px;
         padding: 30px;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        box-shadow: 0 18px 45px rgba(58, 124, 165, 0.06);
+        border: 1px solid #C5D9E8;
+        max-width: 1200px;
+        margin: 2rem auto;
     }
 
     .page-header {
@@ -91,7 +94,7 @@
         align-items: center;
         margin-bottom: 25px;
         padding-bottom: 15px;
-        border-bottom: 2px solid #f0f0f0;
+        border-bottom: 2px solid #EBF8FF;
     }
 
     .header-left {
@@ -102,75 +105,129 @@
 
     .page-title {
         margin: 0;
-        font-weight: 600;
-        color: #2c3e50;
+        font-weight: 700;
+        color: #1A3A4A;
+        font-size: 1.6rem;
     }
 
     .badge {
-        padding: 6px 12px;
+        padding: 6px 14px;
         border-radius: 20px;
-        font-weight: 500;
+        font-weight: 600;
+        font-size: 0.8rem;
     }
 
-    .badge.bg-secondary {
-        background: #e9ecef;
-        color: #495057;
+    .badge.bg-soft {
+        background: #EBF8FF;
+        color: #3A7CA5;
     }
 
     .badge.bg-danger {
-        background: #dc3545;
-        color: white;
+        background: #FDE8E8;
+        color: #D9534F;
+    }
+
+    /* ===== TABLE STYLES ===== */
+    .table {
+        margin-bottom: 0;
+        border-collapse: separate;
+        border-spacing: 0;
     }
 
     .table thead th {
-        background: #f8f9fa;
-        border-bottom: 2px solid #dee2e6;
+        background: #F5FAFF;
+        border-bottom: 2px solid #C5D9E8;
         font-weight: 600;
-        color: #495057;
-        padding: 12px 15px;
+        color: #1A3A4A;
+        padding: 14px 16px;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .table thead th i {
+        color: #3A7CA5;
+        margin-right: 6px;
     }
 
     .table tbody td {
-        padding: 12px 15px;
+        padding: 14px 16px;
         vertical-align: middle;
+        color: #1A3A4A;
+        border-bottom: 1px solid #EBF8FF;
     }
 
-    .btn-danger {
-        background: #dc3545;
+    .table tbody tr {
+        transition: all 0.3s ease;
+    }
+
+    .table tbody tr:hover {
+        background: #F5FAFF;
+        transform: scale(1.002);
+    }
+
+    .table tbody tr:last-child td {
+        border-bottom: none;
+    }
+
+    .table tbody td strong {
+        color: #1A3A4A;
+    }
+
+    /* ===== SCAN BUTTON ===== */
+    .btn-scan {
+        background: #3A7CA5;
+        color: #ffffff;
         border: none;
-        padding: 6px 16px;
+        padding: 6px 18px;
         border-radius: 20px;
-        transition: all 0.3s;
+        font-size: 0.85rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
     }
 
-    .btn-danger:hover {
-        background: #c82333;
-        transform: translateY(-1px);
-        box-shadow: 0 4px 8px rgba(220, 53, 69, 0.3);
+    .btn-scan:hover {
+        background: #2A5F82;
+        color: #ffffff;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(58, 124, 165, 0.2);
+        text-decoration: none;
     }
 
-    /* Empty State Styles */
+    .btn-scan i {
+        font-size: 0.9rem;
+    }
+
+    /* ===== EMPTY STATE ===== */
     .empty-state-container {
         text-align: center;
-        padding: 50px 20px;
-        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-        border-radius: 12px;
-        border: 2px dashed #dee2e6;
+        padding: 60px 20px;
+        background: linear-gradient(135deg, #F5FAFF 0%, #EBF8FF 100%);
+        border-radius: 16px;
+        border: 2px dashed #C5D9E8;
     }
 
     .empty-state-icon {
         margin-bottom: 20px;
     }
 
+    .empty-state-icon i {
+        color: #C5D9E8 !important;
+    }
+
     .empty-state-title {
-        color: #2c3e50;
+        color: #1A3A4A;
         font-size: 1.8rem;
-        font-weight: 600;
+        font-weight: 700;
         margin-bottom: 10px;
     }
 
     .empty-state-message {
-        color: #6c757d;
+        color: #4A6A7A;
         font-size: 1.1rem;
         margin-bottom: 25px;
     }
@@ -180,49 +237,73 @@
         gap: 10px;
         justify-content: center;
         margin-bottom: 20px;
+        flex-wrap: wrap;
+    }
+
+    .empty-state-actions .btn {
+        padding: 8px 22px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
     }
 
     .btn-outline-primary {
-        border: 2px solid #007bff;
-        color: #007bff;
+        border: 2px solid #3A7CA5;
+        color: #3A7CA5;
         background: transparent;
-        padding: 8px 20px;
-        border-radius: 20px;
-        transition: all 0.3s;
     }
 
     .btn-outline-primary:hover {
-        background: #007bff;
-        color: white;
+        background: #3A7CA5;
+        color: #ffffff;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(58, 124, 165, 0.15);
     }
 
     .btn-outline-secondary {
-        border: 2px solid #6c757d;
-        color: #6c757d;
+        border: 2px solid #C5D9E8;
+        color: #4A6A7A;
         background: transparent;
-        padding: 8px 20px;
-        border-radius: 20px;
-        transition: all 0.3s;
     }
 
     .btn-outline-secondary:hover {
-        background: #6c757d;
-        color: white;
+        background: #EBF8FF;
+        color: #1A3A4A;
+        transform: translateY(-2px);
+        border-color: #3A7CA5;
     }
 
     .empty-state-footer {
-        color: #28a745;
+        color: #4CAF50;
         font-weight: 500;
         padding-top: 15px;
-        border-top: 1px solid #dee2e6;
+        border-top: 1px solid #C5D9E8;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
     }
 
-    /* Mobile Responsive */
+    .empty-state-footer i {
+        font-size: 1.2rem;
+    }
+
+    /* ===== RESPONSIVE ===== */
     @media (max-width: 768px) {
+        .content-container {
+            padding: 20px 16px;
+            border-radius: 12px;
+            margin: 1rem;
+        }
+
         .page-header {
             flex-direction: column;
             align-items: flex-start;
-            gap: 10px;
+            gap: 12px;
         }
         
         .header-right {
@@ -232,11 +313,77 @@
         }
         
         .empty-state-container {
-            padding: 30px 15px;
+            padding: 40px 15px;
         }
         
         .empty-state-title {
             font-size: 1.4rem;
+        }
+
+        .empty-state-message {
+            font-size: 1rem;
+        }
+
+        .table thead th {
+            font-size: 0.75rem;
+            padding: 10px 12px;
+        }
+
+        .table tbody td {
+            padding: 10px 12px;
+            font-size: 0.9rem;
+        }
+
+        .btn-scan {
+            padding: 4px 12px;
+            font-size: 0.8rem;
+        }
+
+        .btn-scan span {
+            display: none;
+        }
+
+        .page-title {
+            font-size: 1.3rem;
+        }
+
+        .empty-state-actions {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .empty-state-actions .btn {
+            width: 100%;
+            justify-content: center;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .content-container {
+            padding: 16px 12px;
+            margin: 0.5rem;
+        }
+
+        .page-title {
+            font-size: 1.1rem;
+        }
+
+        .table {
+            font-size: 0.85rem;
+        }
+
+        .table thead th,
+        .table tbody td {
+            padding: 8px 10px;
+        }
+
+        .empty-state-title {
+            font-size: 1.2rem;
+        }
+
+        .badge {
+            font-size: 0.7rem;
+            padding: 4px 10px;
         }
     }
 </style>

@@ -7,50 +7,133 @@
 <div class="content-container">
     <section class="dashboard-header">
         <div>
-            <span class="section-kicker">Account</span>
-            <h1 class="fw-bold mt-2 mb-1">Profile</h1>
-            <p class="text-muted-soft mb-0">Your CyberShield AI account details and workspace shortcuts.</p>
+            <span class="section-kicker" style="color: #3A7CA5;">Account</span>
+            <h1 class="fw-bold mt-2 mb-1" style="color: #1A3A4A;">Profile</h1>
+            <p class="text-muted-soft mb-0" style="color: #4A6A7A;">Your CyberShield AI account details and workspace shortcuts.</p>
         </div>
-        <a class="btn btn-cyber" href="{{ dashboard_url }}"><i class="bi bi-grid-1x2 me-2"></i>Dashboard</a>
+        <a class="btn btn-cyber" href="{{ dashboard_url }}" style="background: #3A7CA5; border: none; color: white; padding: 0.6rem 1.5rem; border-radius: 8px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; transition: all 0.3s ease;">
+            <i class="bi bi-grid-1x2 me-2"></i>Dashboard
+        </a>
     </section>
 
     <section class="profile-grid">
-        <article class="profile-card">
-            <div class="profile-avatar-lg mb-3">{{ profile_user.username|default:'U'|first|upper }}</div>
-            <h2 class="h4 fw-bold mb-1">{{ profile_user.get_full_name|default:profile_user.username }}</h2>
-            <p class="text-muted-soft mb-3">{{ profile_user.email|default:'No email added' }}</p>
-            <span class="risk-badge status-low">{% if profile_user.is_admin_role %}Administrator{% else %}User Account{% endif %}</span>
+        <article class="profile-card" style="background: #FFFFFF; border: 1px solid #C5D9E8; border-radius: 16px; padding: 2rem; box-shadow: 0 10px 30px rgba(58, 124, 165, 0.04); transition: all 0.3s ease;">
+            <div class="profile-avatar-lg mb-3" style="width: 80px; height: 80px; background: linear-gradient(135deg, #3A7CA5, #2A5F82); border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 2rem; color: white; font-weight: 700; box-shadow: 0 8px 25px rgba(58, 124, 165, 0.15);">{{ profile_user.username|default:'U'|first|upper }}</div>
+            <h2 class="h4 fw-bold mb-1" style="color: #1A3A4A;">{{ profile_user.get_full_name|default:profile_user.username }}</h2>
+            <p class="text-muted-soft mb-3" style="color: #4A6A7A;">{{ profile_user.email|default:'No email added' }}</p>
+            <span class="risk-badge status-low" style="background: rgba(58, 124, 165, 0.1); color: #3A7CA5; padding: 0.3rem 1rem; border-radius: 20px; font-size: 0.85rem; font-weight: 600; display: inline-block;">{% if profile_user.is_admin_role %}Administrator{% else %}User Account{% endif %}</span>
         </article>
 
-        <article class="profile-card">
-            <h2 class="h5 fw-bold mb-3">Account information</h2>
+        <article class="profile-card" style="background: #FFFFFF; border: 1px solid #C5D9E8; border-radius: 16px; padding: 2rem; box-shadow: 0 10px 30px rgba(58, 124, 165, 0.04); transition: all 0.3s ease;">
+            <h2 class="h5 fw-bold mb-3" style="color: #1A3A4A;">Account information</h2>
             <div class="row g-3">
                 <div class="col-md-6">
-                    <span class="text-muted-soft d-block">Username</span>
-                    <strong>{{ profile_user.username }}</strong>
+                    <span class="text-muted-soft d-block" style="color: #4A6A7A; font-size: 0.85rem;">Username</span>
+                    <strong style="color: #1A3A4A;">{{ profile_user.username }}</strong>
                 </div>
                 <div class="col-md-6">
-                    <span class="text-muted-soft d-block">Email</span>
-                    <strong>{{ profile_user.email|default:'Not provided' }}</strong>
+                    <span class="text-muted-soft d-block" style="color: #4A6A7A; font-size: 0.85rem;">Email</span>
+                    <strong style="color: #1A3A4A;">{{ profile_user.email|default:'Not provided' }}</strong>
                 </div>
                 <div class="col-md-6">
-                    <span class="text-muted-soft d-block">Role</span>
-                    <strong>{{ profile_user.get_role_display }}</strong>
+                    <span class="text-muted-soft d-block" style="color: #4A6A7A; font-size: 0.85rem;">Role</span>
+                    <strong style="color: #1A3A4A;">{{ profile_user.get_role_display }}</strong>
                 </div>
                 <div class="col-md-6">
-                    <span class="text-muted-soft d-block">Joined</span>
-                    <strong>{{ profile_user.date_joined }}</strong>
+                    <span class="text-muted-soft d-block" style="color: #4A6A7A; font-size: 0.85rem;">Joined</span>
+                    <strong style="color: #1A3A4A;">{{ profile_user.date_joined }}</strong>
                 </div>
                 <div class="col-md-6">
-                    <span class="text-muted-soft d-block">Last login</span>
-                    <strong>{{ profile_user.last_login|default:'Not recorded' }}</strong>
+                    <span class="text-muted-soft d-block" style="color: #4A6A7A; font-size: 0.85rem;">Last login</span>
+                    <strong style="color: #1A3A4A;">{{ profile_user.last_login|default:'Not recorded' }}</strong>
                 </div>
                 <div class="col-md-6">
-                    <span class="text-muted-soft d-block">Status</span>
-                    <strong>{% if profile_user.is_active %}Active{% else %}Inactive{% endif %}</strong>
+                    <span class="text-muted-soft d-block" style="color: #4A6A7A; font-size: 0.85rem;">Status</span>
+                    <strong style="color: #1A3A4A;">{% if profile_user.is_active %}Active{% else %}Inactive{% endif %}</strong>
                 </div>
             </div>
         </article>
     </section>
 </div>
+
+<style>
+    /* Additional styles for profile page */
+    .profile-grid {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 1.5rem;
+        margin-top: 1.5rem;
+    }
+
+    .profile-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .profile-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 15px 40px rgba(58, 124, 165, 0.08) !important;
+    }
+
+    .profile-avatar-lg {
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(135deg, #3A7CA5, #2A5F82);
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        color: white;
+        font-weight: 700;
+        box-shadow: 0 8px 25px rgba(58, 124, 165, 0.15);
+    }
+
+    .risk-badge.status-low {
+        background: rgba(58, 124, 165, 0.1);
+        color: #3A7CA5;
+        padding: 0.3rem 1rem;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        display: inline-block;
+    }
+
+    .text-muted-soft {
+        color: #4A6A7A;
+    }
+
+    .btn-cyber {
+        background: #3A7CA5;
+        border: none;
+        color: white;
+        padding: 0.6rem 1.5rem;
+        border-radius: 8px;
+        font-weight: 600;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: all 0.3s ease;
+    }
+
+    .btn-cyber:hover {
+        background: #2A5F82;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(58, 124, 165, 0.2);
+        color: white;
+        text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+        .profile-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .dashboard-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+    }
+</style>
 {% endblock %}

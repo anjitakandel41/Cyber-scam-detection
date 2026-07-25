@@ -11,10 +11,10 @@
                 <i class="bi bi-file-earmark-text me-1"></i>
                 Security Reports
             </span> {% endcomment %}
-            <h1 class="fw-bold mt-2 mb-1" style="color: #1a1a1a;">Reports</h1>
-            <p class="text-muted-soft mb-0" style="color: #4caf50;">Download generated PDF reports from your completed scans.</p>
+            <h1 class="fw-bold mt-2 mb-1" style="color: #1A3A4A;">Reports</h1>
+            <p class="text-muted-soft mb-0" style="color: #4A6A7A;">Download generated PDF reports from your completed scans.</p>
         </div>
-        <a class="btn btn-cyber" href="{% url 'scanner:url_scan' %}" style="background: linear-gradient(135deg, #2e7d32, #388e3c); color: white; border: none; border-radius: 12px; padding: 10px 20px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(46, 125, 50, 0.15);">
+        <a class="btn btn-cyber" href="{% url 'scanner:url_scan' %}" style="background: linear-gradient(135deg, #3A7CA5, #2A5F82); color: white; border: none; border-radius: 12px; padding: 10px 20px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(58, 124, 165, 0.15);">
             <i class="bi bi-search me-2"></i>Run scan
         </a>
     </section>
@@ -24,32 +24,32 @@
             <table class="table align-middle">
                 <thead>
                     <tr>
-                        <th style="color: #2e7d32; font-weight: 700; border-bottom: 2px solid #c8e6c9;">Date</th>
-                        <th style="color: #2e7d32; font-weight: 700; border-bottom: 2px solid #c8e6c9;">Classification</th>
-                        <th style="color: #2e7d32; font-weight: 700; border-bottom: 2px solid #c8e6c9;">Risk</th>
-                        <th style="color: #2e7d32; font-weight: 700; border-bottom: 2px solid #c8e6c9;">Input</th>
-                        <th class="text-end" style="color: #2e7d32; font-weight: 700; border-bottom: 2px solid #c8e6c9;">Report</th>
+                        <th style="color: #3A7CA5; font-weight: 700; border-bottom: 2px solid #C5D9E8;">Date</th>
+                        <th style="color: #3A7CA5; font-weight: 700; border-bottom: 2px solid #C5D9E8;">Classification</th>
+                        <th style="color: #3A7CA5; font-weight: 700; border-bottom: 2px solid #C5D9E8;">Risk</th>
+                        <th style="color: #3A7CA5; font-weight: 700; border-bottom: 2px solid #C5D9E8;">Input</th>
+                        <th class="text-end" style="color: #3A7CA5; font-weight: 700; border-bottom: 2px solid #C5D9E8;">Report</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for scan in scans %}
                         <tr>
-                            <td style="color: #1a1a1a;">{{ scan.timestamp }}</td>
+                            <td style="color: #1A3A4A;">{{ scan.timestamp }}</td>
                             <td><span class="risk-badge {% if scan.risk_score >= 70 %}status-high{% elif scan.risk_score >= 40 %}status-medium{% else %}status-low{% endif %}">{{ scan.classification }}</span></td>
-                            <td><strong style="color: #1a1a1a;">{{ scan.risk_score }}%</strong></td>
-                            <td class="text-break" style="color: #1a1a1a;">{{ scan.input|truncatechars:90 }}</td>
+                            <td><strong style="color: #1A3A4A;">{{ scan.risk_score }}%</strong></td>
+                            <td class="text-break" style="color: #1A3A4A;">{{ scan.input|truncatechars:90 }}</td>
                             <td class="text-end">
                                 {% if scan.report_file %}
-                                    <a class="btn btn-outline-cyber btn-sm" href="{{ scan.report_file.url }}" target="_blank" rel="noopener" style="border: 1px solid #2e7d32; color: #2e7d32; border-radius: 8px; padding: 5px 12px; font-weight: 600; text-decoration: none; transition: all 0.3s ease; display: inline-flex; align-items: center; background: transparent; font-size: 0.85rem;">
+                                    <a class="btn btn-outline-cyber btn-sm" href="{{ scan.report_file.url }}" target="_blank" rel="noopener" style="border: 1px solid #3A7CA5; color: #3A7CA5; border-radius: 8px; padding: 5px 12px; font-weight: 600; text-decoration: none; transition: all 0.3s ease; display: inline-flex; align-items: center; background: transparent; font-size: 0.85rem;">
                                         <i class="bi bi-download me-1"></i>PDF
                                     </a>
                                 {% else %}
-                                    <span class="text-muted-soft" style="color: #4caf50;">Unavailable</span>
+                                    <span class="text-muted-soft" style="color: #4A6A7A;">Unavailable</span>
                                 {% endif %}
                             </td>
                         </tr>
                     {% empty %}
-                        <tr><td colspan="5" class="text-center py-5" style="color: #4caf50;">No generated reports yet.</td></tr>
+                        <tr><td colspan="5" class="text-center py-5" style="color: #4A6A7A;">No generated reports yet.</td></tr>
                     {% endfor %}
                 </tbody>
             </table>
@@ -58,10 +58,10 @@
 </div>
 
 <style>
-    /* Light Green Theme - Reports Page */
+    /* Light Blue Theme - Reports Page */
     .content-container {
         padding: 28px;
-        background: linear-gradient(135deg, #fafffe 0%, #f0f7f0 50%, #e8f5e9 100%);
+        background: linear-gradient(135deg, #F5FAFF 0%, #EBF8FF 50%, #D4E8F5 100%);
         min-height: 100vh;
     }
 
@@ -80,9 +80,9 @@
         font-weight: 800;
         text-transform: uppercase;
         letter-spacing: 2px;
-        color: #2e7d32;
+        color: #3A7CA5;
         margin-bottom: 4px;
-        background: rgba(46, 125, 50, 0.08);
+        background: rgba(58, 124, 165, 0.08);
         padding: 6px 14px;
         border-radius: 20px;
         display: inline-block;
@@ -93,13 +93,13 @@
     }
 
     .text-muted-soft {
-        color: #4caf50 !important;
+        color: #4A6A7A !important;
         font-size: 1rem;
         margin: 0;
     }
 
     .btn-cyber {
-        background: linear-gradient(135deg, #2e7d32, #388e3c);
+        background: linear-gradient(135deg, #3A7CA5, #2A5F82);
         color: white;
         border: none;
         border-radius: 12px;
@@ -109,19 +109,19 @@
         display: inline-flex;
         align-items: center;
         transition: all 0.3s ease;
-        box-shadow: 0 4px 15px rgba(46, 125, 50, 0.15);
+        box-shadow: 0 4px 15px rgba(58, 124, 165, 0.15);
     }
 
     .btn-cyber:hover {
-        background: linear-gradient(135deg, #1b5e20, #2e7d32);
+        background: linear-gradient(135deg, #2A5F82, #1A4A6A);
         transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(46, 125, 50, 0.25);
+        box-shadow: 0 8px 25px rgba(58, 124, 165, 0.25);
         color: white;
     }
 
     .btn-outline-cyber {
-        border: 1px solid #2e7d32;
-        color: #2e7d32;
+        border: 1px solid #3A7CA5;
+        color: #3A7CA5;
         border-radius: 8px;
         padding: 5px 12px;
         font-weight: 600;
@@ -134,10 +134,10 @@
     }
 
     .btn-outline-cyber:hover {
-        background: #2e7d32;
+        background: #3A7CA5;
         color: white !important;
         transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(46, 125, 50, 0.15);
+        box-shadow: 0 8px 25px rgba(58, 124, 165, 0.15);
     }
 
     .btn-outline-cyber i {
@@ -148,9 +148,9 @@
     .dashboard-table-card {
         background: rgba(255, 255, 255, 0.95);
         border-radius: 24px;
-        border: 1px solid #c8e6c9;
+        border: 1px solid #C5D9E8;
         overflow: hidden;
-        box-shadow: 0 2px 8px rgba(46, 125, 50, 0.04);
+        box-shadow: 0 2px 8px rgba(58, 124, 165, 0.04);
     }
 
     .dashboard-table-card .table {
@@ -158,25 +158,25 @@
     }
 
     .dashboard-table-card .table thead th {
-        color: #2e7d32;
+        color: #3A7CA5;
         font-weight: 700;
-        border-bottom: 2px solid #c8e6c9;
+        border-bottom: 2px solid #C5D9E8;
         padding: 16px 20px;
         font-size: 0.85rem;
         text-transform: uppercase;
         letter-spacing: 0.5px;
-        background: #f0f7f0;
+        background: #F5FAFF;
     }
 
     .dashboard-table-card .table tbody td {
         padding: 16px 20px;
         vertical-align: middle;
-        border-bottom: 1px solid #e8f5e9;
-        color: #1a1a1a;
+        border-bottom: 1px solid #EBF8FF;
+        color: #1A3A4A;
     }
 
     .dashboard-table-card .table tbody tr:hover {
-        background: #f5faf5;
+        background: #F5FAFF;
     }
 
     .dashboard-table-card .table tbody tr:last-child td {
@@ -194,18 +194,18 @@
     }
 
     .status-low {
-        background: rgba(46, 125, 50, 0.12);
-        color: #2e7d32;
+        background: rgba(58, 124, 165, 0.12);
+        color: #3A7CA5;
     }
 
     .status-medium {
-        background: rgba(255, 183, 77, 0.14);
-        color: #e65100;
+        background: rgba(244, 180, 0, 0.14);
+        color: #F4B400;
     }
 
     .status-high {
-        background: rgba(239, 68, 68, 0.12);
-        color: #c62828;
+        background: rgba(217, 83, 79, 0.12);
+        color: #D9534F;
     }
 
     /* Responsive */
@@ -285,13 +285,13 @@
             content: attr(data-label);
             display: inline-block;
             font-weight: 700;
-            color: #2e7d32;
+            color: #3A7CA5;
             width: 40%;
             margin-right: 10px;
         }
 
         .dashboard-table-card .table tbody td:last-child {
-            border-bottom: 1px solid #e8f5e9;
+            border-bottom: 1px solid #EBF8FF;
             padding-bottom: 12px;
         }
 

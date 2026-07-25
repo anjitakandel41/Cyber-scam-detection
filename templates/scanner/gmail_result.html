@@ -4,81 +4,263 @@
 
 {% block content %}
 
+<style>
+    /* Gmail Scan Result Styles - Light Blue Theme */
+    .content-container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 2rem 1rem;
+    }
+
+    .result-card {
+        background: #ffffff !important;
+        border: 1px solid #C5D9E8 !important;
+        border-radius: 16px !important;
+        box-shadow: 0 18px 45px rgba(58, 124, 165, 0.06) !important;
+        padding: 2rem !important;
+        transition: all 0.3s ease;
+    }
+
+    .result-card:hover {
+        box-shadow: 0 25px 60px rgba(58, 124, 165, 0.10) !important;
+    }
+
+    .result-title {
+        color: #1A3A4A !important;
+        font-weight: 700 !important;
+        font-size: 1.8rem !important;
+        margin-bottom: 1.5rem !important;
+        padding-bottom: 1rem !important;
+        border-bottom: 2px solid #EBF8FF !important;
+    }
+
+    .result-label {
+        color: #4A6A7A !important;
+        font-weight: 600 !important;
+        font-size: 0.85rem !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.5px !important;
+        margin-bottom: 0.25rem !important;
+        display: block !important;
+    }
+
+    .result-value {
+        color: #1A3A4A !important;
+        font-size: 1.1rem !important;
+        margin-bottom: 1.25rem !important;
+        padding: 0.75rem 1rem !important;
+        background: #F5FAFF !important;
+        border-radius: 8px !important;
+        border-left: 3px solid #3A7CA5 !important;
+        word-break: break-word;
+    }
+
+    .result-value.risk-score {
+        font-size: 3rem !important;
+        font-weight: 800 !important;
+        background: transparent !important;
+        border-left: none !important;
+        padding: 0 !important;
+        margin-bottom: 0.5rem !important;
+    }
+
+    .result-divider {
+        border: none !important;
+        height: 1px !important;
+        background: linear-gradient(to right, #C5D9E8, transparent) !important;
+        margin: 1.5rem 0 !important;
+    }
+
+    /* Risk Score Colors */
+    .risk-low {
+        color: #4CAF50 !important;
+    }
+
+    .risk-medium {
+        color: #F4B400 !important;
+    }
+
+    .risk-high {
+        color: #D9534F !important;
+    }
+
+    .risk-badge {
+        display: inline-block !important;
+        padding: 0.3rem 1rem !important;
+        border-radius: 20px !important;
+        font-weight: 600 !important;
+        font-size: 0.9rem !important;
+    }
+
+    .risk-badge.low {
+        background: rgba(76, 175, 80, 0.12) !important;
+        color: #4CAF50 !important;
+    }
+
+    .risk-badge.medium {
+        background: rgba(244, 180, 0, 0.12) !important;
+        color: #F4B400 !important;
+    }
+
+    .risk-badge.high {
+        background: rgba(217, 83, 79, 0.12) !important;
+        color: #D9534F !important;
+    }
+
+    .btn-back {
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 0.5rem !important;
+        padding: 0.8rem 2rem !important;
+        background: #3A7CA5 !important;
+        color: #ffffff !important;
+        border: none !important;
+        border-radius: 8px !important;
+        font-weight: 600 !important;
+        text-decoration: none !important;
+        transition: all 0.3s ease !important;
+        margin-top: 1.5rem !important;
+    }
+
+    .btn-back:hover {
+        background: #2A5F82 !important;
+        transform: translateY(-2px) !important;
+        box-shadow: 0 8px 25px rgba(58, 124, 165, 0.25) !important;
+        color: #ffffff !important;
+        text-decoration: none !important;
+    }
+
+    .btn-back i {
+        font-size: 1.1rem !important;
+    }
+
+    @media (max-width: 768px) {
+        .content-container {
+            padding: 1rem;
+        }
+
+        .result-card {
+            padding: 1.5rem !important;
+        }
+
+        .result-title {
+            font-size: 1.4rem !important;
+        }
+
+        .result-value.risk-score {
+            font-size: 2.5rem !important;
+        }
+
+        .btn-back {
+            width: 100% !important;
+            justify-content: center !important;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .result-card {
+            padding: 1rem !important;
+        }
+
+        .result-title {
+            font-size: 1.2rem !important;
+        }
+
+        .result-value {
+            font-size: 1rem !important;
+            padding: 0.5rem 0.75rem !important;
+        }
+
+        .result-value.risk-score {
+            font-size: 2rem !important;
+        }
+    }
+</style>
+
 <div class="content-container">
 
-    <h2 class="mb-4">
-        Gmail Scan Result
-    </h2>
+    <div class="result-card">
 
-    <div class="card shadow">
+        <h2 class="result-title">
+            <i class="bi bi-envelope-check" style="color: #3A7CA5; margin-right: 0.75rem;"></i>
+            Gmail Scan Result
+        </h2>
 
-        <div class="card-body">
-
-            <h5>
-                Sender
-            </h5>
-
-            <p>
-                {{ result.sender }}
-            </p>
-
-            <h5>
-                Subject
-            </h5>
-
-            <p>
-                {{ result.subject }}
-            </p>
-
-            <hr>
-
-            <h5>
-                Risk Score
-            </h5>
-
-            <h2>
-                {{ result.risk_score }}%
-            </h2>
-
-            <hr>
-
-            <h5>
-                Classification
-            </h5>
-
-            <p>
-                {{ result.label }}
-            </p>
-
-            <hr>
-
-            <h5>
-                Explanation
-            </h5>
-
-            <p>
-                {{ result.explanation }}
-            </p>
-
-            <hr>
-
-            <h5>
-                Recommendation
-            </h5>
-
-            <p>
-                {{ result.recommendation }}
-            </p>
-
-            <a
-                href="{% url 'scanner:gmail_inbox' %}"
-                class="btn btn-primary">
-
-                Back to Spam Inbox
-
-            </a>
-
+        <!-- Sender -->
+        <span class="result-label">
+            <i class="bi bi-person" style="color: #3A7CA5; margin-right: 0.5rem;"></i>
+            Sender
+        </span>
+        <div class="result-value">
+            {{ result.sender }}
         </div>
+
+        <!-- Subject -->
+        <span class="result-label">
+            <i class="bi bi-tag" style="color: #3A7CA5; margin-right: 0.5rem;"></i>
+            Subject
+        </span>
+        <div class="result-value">
+            {{ result.subject }}
+        </div>
+
+        <hr class="result-divider">
+
+        <!-- Risk Score -->
+        <span class="result-label">
+            <i class="bi bi-speedometer2" style="color: #3A7CA5; margin-right: 0.5rem;"></i>
+            Risk Score
+        </span>
+        <div class="result-value risk-score 
+            {% if result.risk_score >= 70 %}risk-high
+            {% elif result.risk_score >= 40 %}risk-medium
+            {% else %}risk-low{% endif %}">
+            {{ result.risk_score }}%
+        </div>
+
+        <hr class="result-divider">
+
+        <!-- Classification -->
+        <span class="result-label">
+            <i class="bi bi-tag" style="color: #3A7CA5; margin-right: 0.5rem;"></i>
+            Classification
+        </span>
+        <div class="result-value">
+            <span class="risk-badge 
+                {% if result.risk_score >= 70 %}high
+                {% elif result.risk_score >= 40 %}medium
+                {% else %}low{% endif %}">
+                {{ result.label }}
+            </span>
+        </div>
+
+        <hr class="result-divider">
+
+        <!-- Explanation -->
+        <span class="result-label">
+            <i class="bi bi-list-check" style="color: #3A7CA5; margin-right: 0.5rem;"></i>
+            Explanation
+        </span>
+        <div class="result-value">
+            {{ result.explanation }}
+        </div>
+
+        <hr class="result-divider">
+
+        <!-- Recommendation -->
+        <span class="result-label">
+            <i class="bi bi-lightbulb" style="color: #3A7CA5; margin-right: 0.5rem;"></i>
+            Recommendation
+        </span>
+        <div class="result-value" style="border-left-color: #F4B400 !important;">
+            {{ result.recommendation }}
+        </div>
+
+        <!-- Back Button -->
+        <a href="{% url 'scanner:gmail_inbox' %}" class="btn-back">
+            <i class="bi bi-arrow-left"></i>
+            Back to Spam Inbox
+        </a>
 
     </div>
 

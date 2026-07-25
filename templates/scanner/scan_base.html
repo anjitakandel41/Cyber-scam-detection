@@ -87,6 +87,7 @@
             {% if result.report_url %}
                 <div class="report-actions">
                     <a class="clean-report-btn" href="{{ result.report_url }}" target="_blank" rel="noopener">
+                        <i class="bi bi-file-earmark-pdf"></i>
                         Download PDF Report
                     </a>
                 </div>
@@ -98,10 +99,10 @@
 </div>
 
 <style>
-    /* Light Green Theme - Scanner Page */
+    /* Light Blue Theme - Scanner Page */
     .content-container {
         padding: 28px;
-        background: linear-gradient(135deg, #fafffe 0%, #f0f7f0 50%, #e8f5e9 100%);
+        background: linear-gradient(135deg, #F5FAFF 0%, #EBF8FF 50%, #D4E8F5 100%);
         min-height: 100vh;
     }
 
@@ -120,9 +121,9 @@
         font-weight: 800;
         text-transform: uppercase;
         letter-spacing: 2px;
-        color: #2e7d32;
+        color: #3A7CA5;
         margin-bottom: 12px;
-        background: rgba(46, 125, 50, 0.08);
+        background: rgba(58, 124, 165, 0.08);
         padding: 6px 14px;
         border-radius: 20px;
     }
@@ -131,13 +132,13 @@
         font-size: 44px;
         font-weight: 900;
         letter-spacing: -0.04em;
-        color: #1a1a1a;
+        color: #1A3A4A;
         margin-bottom: 10px;
     }
 
     .scanner-clean-header p {
         max-width: 680px;
-        color: #4caf50;
+        color: #4A6A7A;
         font-size: 16px;
         line-height: 1.7;
     }
@@ -145,21 +146,21 @@
     /* Scanner Form */
     .scanner-clean-form {
         background: rgba(255, 255, 255, 0.95);
-        border: 1px solid #c8e6c9;
+        border: 1px solid #C5D9E8;
         border-radius: 24px;
         padding: 32px;
-        box-shadow: 0 18px 45px rgba(46, 125, 50, 0.06);
+        box-shadow: 0 18px 45px rgba(58, 124, 165, 0.06);
         margin-bottom: 24px;
     }
 
     .clean-form-title {
         margin-bottom: 24px;
         padding-bottom: 18px;
-        border-bottom: 1px solid #c8e6c9;
+        border-bottom: 1px solid #C5D9E8;
     }
 
     .clean-form-title span {
-        color: #4caf50;
+        color: #4A6A7A;
         font-size: 13px;
         font-weight: 800;
         text-transform: uppercase;
@@ -168,7 +169,7 @@
 
     .clean-form-title h2 {
         margin: 6px 0 0;
-        color: #1a1a1a;
+        color: #1A3A4A;
         font-size: 24px;
         font-weight: 900;
     }
@@ -178,10 +179,10 @@
         max-width: 980px;
         margin: 34px auto 0;
         background: rgba(255, 255, 255, 0.95);
-        border: 1px solid #c8e6c9;
+        border: 1px solid #C5D9E8;
         border-radius: 26px;
         padding: 34px;
-        box-shadow: 0 22px 55px rgba(46, 125, 50, 0.06);
+        box-shadow: 0 22px 55px rgba(58, 124, 165, 0.06);
     }
 
     .report-header {
@@ -190,7 +191,7 @@
     }
 
     .report-header span {
-        color: #4caf50;
+        color: #4A6A7A;
         font-size: 13px;
         font-weight: 900;
         letter-spacing: 0.08em;
@@ -201,19 +202,19 @@
         margin-top: 8px;
         font-size: 38px;
         font-weight: 950;
-        color: #1a1a1a;
+        color: #1A3A4A;
     }
 
     .report-safe .report-header h2 {
-        color: #2e7d32;
+        color: #4CAF50;
     }
 
     .report-warning .report-header h2 {
-        color: #f9a825;
+        color: #F4B400;
     }
 
     .report-danger .report-header h2 {
-        color: #c62828;
+        color: #D9534F;
     }
 
     /* Risk Score */
@@ -229,21 +230,21 @@
     }
 
     .risk-score-top span {
-        color: #4caf50;
+        color: #4A6A7A;
         font-weight: 800;
     }
 
     .risk-score-top strong {
         font-size: 42px;
         font-weight: 950;
-        color: #1a1a1a;
+        color: #1A3A4A;
         line-height: 1;
     }
 
     .risk-bar {
         height: 16px;
         border-radius: 999px;
-        background: #e8f5e9;
+        background: #EBF8FF;
         overflow: hidden;
     }
 
@@ -253,15 +254,15 @@
     }
 
     .report-safe .risk-bar-fill {
-        background: #2e7d32;
+        background: #4CAF50;
     }
 
     .report-warning .risk-bar-fill {
-        background: #f9a825;
+        background: #F4B400;
     }
 
     .report-danger .risk-bar-fill {
-        background: #c62828;
+        background: #D9534F;
     }
 
     /* Report Meta Grid */
@@ -275,14 +276,14 @@
     .report-meta-grid div {
         padding: 18px;
         border-radius: 18px;
-        background: #f0f7f0;
-        border: 1px solid #c8e6c9;
+        background: #F5FAFF;
+        border: 1px solid #C5D9E8;
     }
 
     .report-meta-grid span {
         display: block;
         margin-bottom: 8px;
-        color: #4caf50;
+        color: #4A6A7A;
         font-size: 13px;
         font-weight: 800;
         text-transform: uppercase;
@@ -290,7 +291,7 @@
     }
 
     .report-meta-grid strong {
-        color: #1a1a1a;
+        color: #1A3A4A;
         font-size: 20px;
         font-weight: 900;
     }
@@ -298,13 +299,13 @@
     /* Report Sections */
     .report-section {
         padding-top: 24px;
-        border-top: 1px solid #c8e6c9;
+        border-top: 1px solid #C5D9E8;
         margin-top: 24px;
     }
 
     .report-section h3 {
         margin-bottom: 16px;
-        color: #1a1a1a;
+        color: #1A3A4A;
         font-size: 21px;
         font-weight: 900;
     }
@@ -315,10 +316,10 @@
 
     .clean-reason-item {
         padding: 15px 0;
-        color: #1a1a1a;
+        color: #1A3A4A;
         font-weight: 600;
         line-height: 1.6;
-        border-bottom: 1px solid #c8e6c9;
+        border-bottom: 1px solid #C5D9E8;
     }
 
     .clean-reason-item:last-child {
@@ -326,15 +327,15 @@
     }
 
     .recommendation-clean {
-        background: #f0f7f0;
+        background: #F5FAFF;
         padding: 24px;
         border-radius: 20px;
-        border: 1px solid #c8e6c9;
+        border: 1px solid #C5D9E8;
     }
 
     .recommendation-clean p {
         margin: 0;
-        color: #1a1a1a;
+        color: #1A3A4A;
         line-height: 1.8;
         font-weight: 600;
     }
@@ -350,20 +351,22 @@
         justify-content: center;
         padding: 12px 24px;
         border-radius: 12px;
-        border: 1px solid #2e7d32;
-        color: #2e7d32;
+        border: 1px solid #3A7CA5;
+        color: #3A7CA5;
         font-weight: 900;
         text-decoration: none;
         transition: all 0.3s ease;
         background: transparent;
         gap: 8px;
+        cursor: pointer;
     }
 
     .clean-report-btn:hover {
-        background: #2e7d32;
+        background: #3A7CA5;
         color: #ffffff;
         transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(46, 125, 50, 0.2);
+        box-shadow: 0 8px 25px rgba(58, 124, 165, 0.2);
+        text-decoration: none;
     }
 
     .clean-report-btn i {
@@ -378,7 +381,7 @@
     .scanner-field label {
         display: block;
         margin-bottom: 8px;
-        color: #1a1a1a;
+        color: #1A3A4A;
         font-weight: 800;
         font-size: 0.95rem;
     }
@@ -388,10 +391,10 @@
     .scanner-field select {
         width: 100%;
         padding: 14px 16px;
-        border: 2px solid #e8f5e9;
+        border: 2px solid #C5D9E8;
         border-radius: 14px;
-        background: #fafffe;
-        color: #1a1a1a;
+        background: #FFFFFF;
+        color: #1A3A4A;
         font-size: 15px;
         transition: all 0.3s ease;
     }
@@ -405,9 +408,9 @@
     .scanner-field textarea:focus,
     .scanner-field select:focus {
         outline: none;
-        border-color: #66bb6a;
-        box-shadow: 0 0 0 4px rgba(46, 125, 50, 0.06);
-        background: #ffffff;
+        border-color: #3A7CA5;
+        box-shadow: 0 0 0 4px rgba(58, 124, 165, 0.06);
+        background: #FFFFFF;
     }
 
     .btn-scan-pro {
@@ -416,19 +419,19 @@
         padding: 14px 18px;
         border: none;
         border-radius: 14px;
-        background: linear-gradient(135deg, #2e7d32, #388e3c);
+        background: linear-gradient(135deg, #3A7CA5, #5B9BC7);
         color: #ffffff;
         font-size: 16px;
         font-weight: 900;
         transition: all 0.3s ease;
         cursor: pointer;
-        box-shadow: 0 4px 20px rgba(46, 125, 50, 0.15);
+        box-shadow: 0 4px 20px rgba(58, 124, 165, 0.15);
     }
 
     .btn-scan-pro:hover {
-        background: linear-gradient(135deg, #1b5e20, #2e7d32);
+        background: linear-gradient(135deg, #2A5F82, #3A7CA5);
         transform: translateY(-2px);
-        box-shadow: 0 8px 32px rgba(46, 125, 50, 0.25);
+        box-shadow: 0 8px 32px rgba(58, 124, 165, 0.25);
     }
 
     .btn-scan-pro:disabled {
@@ -461,14 +464,14 @@
 
     .field-error {
         margin-top: 6px;
-        color: #c62828;
+        color: #D9534F;
         font-size: 13px;
         font-weight: 700;
     }
 
     .field-help {
         margin-top: 6px;
-        color: #4caf50;
+        color: #4A6A7A;
         font-size: 13px;
     }
 
@@ -479,7 +482,7 @@
         font-weight: 800;
         text-transform: uppercase;
         letter-spacing: 2px;
-        color: #2e7d32;
+        color: #3A7CA5;
         margin-bottom: 4px;
     }
 

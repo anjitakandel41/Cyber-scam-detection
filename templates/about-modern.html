@@ -4,30 +4,169 @@
 
 {% block content %}
 
+<style>
+    /* Dark Blue Button Styles */
+    .btn-dark-blue {
+        background: #2A5F82;
+        color: white;
+        border: none;
+        padding: 0.8rem 2rem;
+        border-radius: 8px;
+        font-weight: 600;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+    .btn-dark-blue:hover {
+        background: #1A4A6A;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(42, 95, 130, 0.3);
+        color: white;
+        text-decoration: none;
+    }
+
+    .btn-dark-blue-outline {
+        background: transparent;
+        color: #2A5F82;
+        border: 2px solid #2A5F82;
+        padding: 0.8rem 2rem;
+        border-radius: 8px;
+        font-weight: 600;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+    .btn-dark-blue-outline:hover {
+        background: #2A5F82;
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(42, 95, 130, 0.2);
+        text-decoration: none;
+    }
+
+    .btn-dark-blue i,
+    .btn-dark-blue-outline i {
+        font-size: 1.1rem;
+    }
+
+    /* Section styles */
+    .about-section {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .mission-vision-section {
+        background: linear-gradient(135deg, rgba(58, 124, 165, 0.06) 0%, rgba(42, 95, 130, 0.06) 100%);
+        border-radius: 16px;
+        padding: 3rem 2rem;
+        max-width: 1200px;
+        margin: 2rem auto;
+    }
+
+    .core-values-section {
+        max-width: 1000px;
+        margin: 2rem auto;
+        background: rgba(235, 248, 255, 0.5);
+        border-radius: 16px;
+        padding: 3rem 2rem;
+    }
+
+    .cta-section {
+        text-align: center;
+        background: rgba(235, 248, 255, 0.5);
+        border-radius: 16px;
+        padding: 3rem 2rem;
+        max-width: 900px;
+        margin: 0 auto;
+        border: 1px solid #C5D9E8;
+    }
+
+    .cta-section .btn-group {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+        .mission-vision-section {
+            padding: 2rem 1rem;
+        }
+
+        .mission-vision-section > div {
+            grid-template-columns: 1fr !important;
+            gap: 2rem !important;
+        }
+
+        .core-values-section {
+            padding: 2rem 1rem;
+        }
+
+        .core-values-section > div {
+            grid-template-columns: 1fr !important;
+        }
+
+        .cta-section {
+            padding: 2rem 1rem;
+        }
+
+        .cta-section .btn-group {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .cta-section .btn-group a,
+        .cta-section .btn-group button {
+            width: 100%;
+            justify-content: center;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .about-section {
+            padding: 0 1rem;
+        }
+
+        .btn-dark-blue,
+        .btn-dark-blue-outline {
+            padding: 0.7rem 1.5rem;
+            font-size: 0.95rem;
+        }
+    }
+</style>
+
 <section class="section" style="margin-top: 2rem;">
-    <div style="max-width: 900px; margin: 0 auto;">
+    <div class="about-section">
         <div class="section-header">
-            <span class="section-kicker">Who We Are</span>
-            <h1 class="section-title">Cyber Scam Awareness & Detection System</h1>
+            <span class="section-kicker" style="color: #3A7CA5;">Who We Are</span>
+            <h1 class="section-title" style="color: #1A3A4A;">Cyber Scam Awareness & Detection System</h1>
         </div>
 
-        <p style="font-size: 1.1rem; line-height: 1.8; margin: 2rem 0; color: var(--page-muted);">
+        <p style="font-size: 1.1rem; line-height: 1.8; margin: 2rem 0; color: #4A6A7A;">
             In an increasingly digital world, cybercriminals have become more sophisticated. Every day, millions of phishing emails are sent, malicious links are clicked, and personal data is stolen. We created this system to level the playing field and empower ordinary people with enterprise-grade security tools.
         </p>
     </div>
 </section>
 
-<section class="section" style="background: linear-gradient(135deg, rgba(24,214,195,0.08) 0%, rgba(91,141,239,0.08) 100%); border-radius: 16px; padding: 3rem 2rem; max-width: 1200px; margin: 2rem auto;">
+<section class="section mission-vision-section">
     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; max-width: 1000px; margin: 0 auto;">
         <div>
-            <h3 style="font-size: 1.3rem; font-weight: 700; color: var(--page-text); margin-bottom: 1rem;">🎯 Our Mission</h3>
-            <p style="color: var(--page-muted); line-height: 1.8;">
+            <h3 style="font-size: 1.3rem; font-weight: 700; color: #1A3A4A; margin-bottom: 1rem;">🎯 Our Mission</h3>
+            <p style="color: #4A6A7A; line-height: 1.8;">
                 To provide free, accessible, and powerful cybersecurity tools that enable individuals and organizations to detect and prevent online fraud before it happens. We believe security should be a right, not a privilege.
             </p>
         </div>
         <div>
-            <h3 style="font-size: 1.3rem; font-weight: 700; color: var(--page-text); margin-bottom: 1rem;">🚀 Our Vision</h3>
-            <p style="color: var(--page-muted); line-height: 1.8;">
+            <h3 style="font-size: 1.3rem; font-weight: 700; color: #1A3A4A; margin-bottom: 1rem;">🚀 Our Vision</h3>
+            <p style="color: #4A6A7A; line-height: 1.8;">
                 A safer digital world where users are informed, equipped, and confident in their online decisions. We envision a future where scam attempts fail because people know how to spot and report them.
             </p>
         </div>
@@ -37,20 +176,20 @@
 <section class="section">
     <div style="max-width: 900px; margin: 0 auto;">
         <div class="section-header">
-            <span class="section-kicker">Why It Matters</span>
-            <h2 class="section-title">The Growing Threat</h2>
+            <span class="section-kicker" style="color: #3A7CA5;">Why It Matters</span>
+            <h2 class="section-title" style="color: #1A3A4A;">The Growing Threat</h2>
         </div>
 
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0;">
             <div class="card">
-                <h3 style="color: var(--accent); font-weight: 700; margin-bottom: 0.5rem;">📊 The Numbers</h3>
-                <p style="color: var(--page-muted); line-height: 1.8;">
+                <h3 style="color: #3A7CA5; font-weight: 700; margin-bottom: 0.5rem;">📊 The Numbers</h3>
+                <p style="color: #4A6A7A; line-height: 1.8;">
                     Every day, over 3.5 million phishing emails are sent globally. In 2023 alone, cybercriminals stole over ₹1 lakh crore through online fraud. The average victim loses ₹50,000 to scams.
                 </p>
             </div>
             <div class="card">
-                <h3 style="color: var(--secondary); font-weight: 700; margin-bottom: 0.5rem;">🛡️ Our Solution</h3>
-                <p style="color: var(--page-muted); line-height: 1.8;">
+                <h3 style="color: #2A5F82; font-weight: 700; margin-bottom: 0.5rem;">🛡️ Our Solution</h3>
+                <p style="color: #4A6A7A; line-height: 1.8;">
                     Our AI-powered detection system analyzes multiple threat vectors simultaneously, achieving 99.2% accuracy in identifying phishing and fraud attempts. We level the playing field for average users.
                 </p>
             </div>
@@ -61,60 +200,71 @@
 <section class="section">
     <div style="max-width: 900px; margin: 0 auto;">
         <div class="section-header">
-            <h2 class="section-title">Our Technology</h2>
+            <h2 class="section-title" style="color: #1A3A4A;">Our Technology</h2>
         </div>
 
         <div class="grid grid-3" style="margin-top: 2rem;">
             <div class="card">
                 <div class="card-icon">🤖</div>
-                <h3 class="card-title">Machine Learning</h3>
-                <p class="card-text">Trained on millions of threat samples to identify new phishing patterns in real-time.</p>
+                <h3 class="card-title" style="color: #1A3A4A;">Machine Learning</h3>
+                <p class="card-text" style="color: #4A6A7A;">Trained on millions of threat samples to identify new phishing patterns in real-time.</p>
             </div>
 
             <div class="card">
                 <div class="card-icon">🔬</div>
-                <h3 class="card-title">Advanced Analytics</h3>
-                <p class="card-text">Multi-layer analysis: domain reputation, content analysis, SSL certificates, and more.</p>
+                <h3 class="card-title" style="color: #1A3A4A;">Advanced Analytics</h3>
+                <p class="card-text" style="color: #4A6A7A;">Multi-layer analysis: domain reputation, content analysis, SSL certificates, and more.</p>
             </div>
 
             <div class="card">
                 <div class="card-icon">🌍</div>
-                <h3 class="card-title">Threat Intelligence</h3>
-                <p class="card-text">Real-time feeds from global security organizations and community reports.</p>
+                <h3 class="card-title" style="color: #1A3A4A;">Threat Intelligence</h3>
+                <p class="card-text" style="color: #4A6A7A;">Real-time feeds from global security organizations and community reports.</p>
             </div>
         </div>
     </div>
 </section>
 
-<section class="section section-alt" style="max-width: 1000px; margin: 2rem auto;">
+<section class="section core-values-section">
     <div class="section-header">
-        <h2 class="section-title">Core Values</h2>
+        <h2 class="section-title" style="color: #1A3A4A;">Core Values</h2>
     </div>
 
     <div class="grid grid-2" style="margin-top: 2rem;">
         <div>
-            <h3 style="font-weight: 700; margin-bottom: 1rem; font-size: 1.2rem;">🔒 Security First</h3>
-            <p style="color: var(--muted-text);">Your privacy and data are paramount. We never sell or share user information. All scans are processed securely.</p>
+            <h3 style="font-weight: 700; margin-bottom: 1rem; font-size: 1.2rem; color: #1A3A4A;">🔒 Security First</h3>
+            <p style="color: #4A6A7A;">Your privacy and data are paramount. We never sell or share user information. All scans are processed securely.</p>
         </div>
         <div>
-            <h3 style="font-weight: 700; margin-bottom: 1rem; font-size: 1.2rem;">🎓 Education</h3>
-            <p style="color: var(--muted-text);">Knowledge is power. We educate users about threats, best practices, and how to stay safe online.</p>
+            <h3 style="font-weight: 700; margin-bottom: 1rem; font-size: 1.2rem; color: #1A3A4A;">🎓 Education</h3>
+            <p style="color: #4A6A7A;">Knowledge is power. We educate users about threats, best practices, and how to stay safe online.</p>
         </div>
         <div>
-            <h3 style="font-weight: 700; margin-bottom: 1rem; font-size: 1.2rem;">🤝 Community</h3>
-            <p style="color: var(--muted-text);">We believe in collective security. Community reports and threat sharing make us all safer.</p>
+            <h3 style="font-weight: 700; margin-bottom: 1rem; font-size: 1.2rem; color: #1A3A4A;">🤝 Community</h3>
+            <p style="color: #4A6A7A;">We believe in collective security. Community reports and threat sharing make us all safer.</p>
         </div>
         <div>
-            <h3 style="font-weight: 700; margin-bottom: 1rem; font-size: 1.2rem;">📈 Continuous Improvement</h3>
-            <p style="color: var(--muted-text);">Threats evolve daily. We continuously update our systems to detect new attack vectors.</p>
+            <h3 style="font-weight: 700; margin-bottom: 1rem; font-size: 1.2rem; color: #1A3A4A;">📈 Continuous Improvement</h3>
+            <p style="color: #4A6A7A;">Threats evolve daily. We continuously update our systems to detect new attack vectors.</p>
         </div>
     </div>
 </section>
 
-<!-- <section class="section" style="text-align: center;">
-    <h2 class="section-title">Ready to Get Started?</h2>
-    <p class="section-desc" style="margin-bottom: 2rem;">Join our community and start protecting yourself today.</p>
-    <button class="btn-primary" id="loginBtn"><i class="bi bi-shield-check me-2"></i></button>
-</section> -->
+<!-- CTA Section with DARK BLUE buttons -->
+{% comment %} <section class="section cta-section">
+    <h2 class="section-title" style="color: #1A3A4A;">Ready to Get Started?</h2>
+    <p class="section-desc" style="margin-bottom: 2rem; color: #4A6A7A;">Join our community and start protecting yourself today.</p>
+     <div class="btn-group">
+        <a href="{% url 'scanner:url_scan' %}" class="btn-dark-blue">
+            <i class="bi bi-shield-check"></i>Learn More
+        </a>
+        <a href="{% url 'scanner:url_scan' %}" class="btn-dark-blue">
+            <i class="bi bi-shield-check"></i>Start Scanning
+        </a> 
+        <button class="btn-dark-blue-outline" onclick="document.body.scrollTop = 0; document.documentElement.scrollTop = 0;">
+            <i class="bi bi-arrow-up"></i>Back to Top
+        </button>
+    </div>
+</section> {% endcomment %}
 
 {% endblock %}

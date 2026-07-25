@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#e8f5e9">
+    <meta name="theme-color" content="#F5FAFF">
     <title>{% block title %}CyberScam Detection{% endblock %}</title>
     <link rel="preconnect" href="https://cdn.jsdelivr.net">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -15,31 +15,31 @@
 </head>
 <body class="dashboard-body">
     <div class="logged-in-shell">
-        <!-- ===== SIDEBAR - FIXED POSITION ===== -->
-        <aside class="dashboard-sidebar" id="dashboardSidebar" aria-label="CyberShield AI navigation" style="background: linear-gradient(180deg, #e8f5e9 0%, #c8e6c9 50%, #a5d6a7 100%); border-right: 2px solid #66bb6a; position: fixed; top: 0; left: 0; bottom: 0; width: 260px; overflow-y: auto; z-index: 1040; height: 100vh;">
-            <div class="sidebar-brand" style="border-bottom: 2px solid rgba(46, 125, 50, 0.2);">
-                <a href="/dashboard/" class="brand-link" aria-label="CyberShield AI dashboard">
-                    <span class="brand-mark" style="background: linear-gradient(135deg, #1b5e20, #2e7d32);">
-                        <i class="bi bi-shield-lock-fill" style="color: #ffffff;"></i>
+        <!-- ===== SIDEBAR - DARK ===== -->
+        <aside class="dashboard-sidebar" id="dashboardSidebar" aria-label="CyberShield AI navigation" style="background: linear-gradient(180deg, #1A3A4A 0%, #2A4A5A 50%, #1A3A4A 100%); border-right: 2px solid #3A7CA5; position: fixed; top: 0; left: 0; bottom: 0; width: 260px; overflow-y: auto; z-index: 1040; height: 100vh;">
+            <div class="sidebar-brand" style="border-bottom: 2px solid rgba(91, 155, 199, 0.15);">
+                <a href="/dashboard/" class="brand-link" aria-label="CyberShield AI dashboard" style="display: flex; align-items: center; gap: 12px; text-decoration: none; white-space: nowrap;">
+                    <span class="brand-mark" style="background: linear-gradient(135deg, #2A5F82, #3A7CA5); width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(58, 124, 165, 0.2); flex-shrink: 0;">
+                        <i class="bi bi-shield-lock-fill" style="color: #ffffff; font-size: 1.4rem;"></i>
                     </span>
-                    <span>
-                        <strong style="color: #1a1a1a;">CyberScam Detection</strong>
-                        <small style="color: #1b5e20;">Threat Defense</small>
+                    <span style="display: flex; flex-direction: column; line-height: 1.2;">
+                        <strong style="color: #ffffff; font-size: 1.1rem; font-weight: 700; display: block; white-space: nowrap;">CyberScam Detection</strong>
+                        <small style="color: #5B9BC7; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">Threat Defense</small>
                     </span>
                 </a>
                 <button class="sidebar-close d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#dashboardSidebarPanel" aria-label="Close navigation">
-                    <i class="bi bi-x-lg" style="color: #1a1a1a;"></i>
+                    <i class="bi bi-x-lg" style="color: #D4E8F5;"></i>
                 </button>
             </div>
 
             <div class="sidebar-panel collapse show" id="dashboardSidebarPanel">
                 <nav class="sidebar-nav">
-                    <p class="sidebar-heading" style="color: #1b5e20; border-bottom-color: rgba(46, 125, 50, 0.2);">Dashboard</p>
+                    <p class="sidebar-heading" style="color: #5B9BC7; border-bottom-color: rgba(91, 155, 199, 0.15);">Dashboard</p>
                     <a class="sidebar-link {% if request.path == '/dashboard/' or request.path == '/dashboard/user/' %}active{% endif %}" href="/dashboard/">
                         <i class="bi bi-grid-1x2-fill"></i><span>Dashboard</span>
                     </a>
 
-                    <p class="sidebar-heading" style="color: #1b5e20; border-bottom-color: rgba(46, 125, 50, 0.2);">Threat Detection</p>
+                    <p class="sidebar-heading" style="color: #5B9BC7; border-bottom-color: rgba(91, 155, 199, 0.15);">Threat Detection</p>
                     <a class="sidebar-link {% if request.path == '/scanner/url/' %}active{% endif %}" href="{% url 'scanner:url_scan' %}">
                         <i class="bi bi-link-45deg"></i><span>URL Scanner</span>
                     </a>
@@ -53,7 +53,7 @@
                         <i class="bi bi-qr-code-scan"></i><span>QR Scanner</span>
                     </a>
 
-                    <p class="sidebar-heading" style="color: #1b5e20; border-bottom-color: rgba(46, 125, 50, 0.2);">Analysis</p>
+                    <p class="sidebar-heading" style="color: #5B9BC7; border-bottom-color: rgba(91, 155, 199, 0.15);">Analysis</p>
                     <a class="sidebar-link {% if request.path == '/reports/' %}active{% endif %}" href="{% url 'reports:home' %}">
                         <i class="bi bi-file-earmark-bar-graph"></i><span>Reports</span>
                     </a>
@@ -61,7 +61,7 @@
                         <i class="bi bi-clock-history"></i><span>Scan History</span>
                     </a>
 
-                    <p class="sidebar-heading" style="color: #1b5e20; border-bottom-color: rgba(46, 125, 50, 0.2);">Learning</p>
+                    <p class="sidebar-heading" style="color: #5B9BC7; border-bottom-color: rgba(91, 155, 199, 0.15);">Learning</p>
                     <a class="sidebar-link {% if request.path == '/quiz/' or request.path == '/quiz/attempt/' or request.path|slice:':13' == '/quiz/result/' %}active{% endif %}" href="{% url 'quiz:home' %}">
                         <i class="bi bi-patch-question"></i><span>Awareness Quiz</span>
                     </a>
@@ -69,7 +69,7 @@
                         <i class="bi bi-robot"></i><span>AI Assistant</span>
                     </a>
 
-                    <p class="sidebar-heading" style="color: #1b5e20; border-bottom-color: rgba(46, 125, 50, 0.2);">Account</p>
+                    <p class="sidebar-heading" style="color: #5B9BC7; border-bottom-color: rgba(91, 155, 199, 0.15);">Account</p>
                     <a class="sidebar-link {% if request.path == '/accounts/profile/' %}active{% endif %}" href="{% url 'account_profile' %}">
                         <i class="bi bi-person-circle"></i><span>Profile</span>
                     </a>
@@ -80,35 +80,36 @@
             </div>
         </aside>
 
-        <!-- ===== MAIN CONTENT - WITH LEFT MARGIN FOR FIXED SIDEBAR ===== -->
+        <!-- ===== MAIN CONTENT - LIGHT ===== -->
         <div class="dashboard-main-wrap" style="margin-left: 260px;">
-            <header class="dashboard-topbar" style="background: linear-gradient(135deg, #fafffe 0%, #dcedc8 100%); border-bottom: 2px solid #66bb6a; position: sticky; top: 0; z-index: 1030; padding: 12px 24px;">
+            <header class="dashboard-topbar" style="background: #FFFFFF; border-bottom: 2px solid #C5D9E8; position: sticky; top: 0; z-index: 1030; padding: 12px 24px; box-shadow: 0 2px 10px rgba(0,0,0,0.04);">
                 <button class="topbar-menu d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#dashboardSidebarPanel" aria-controls="dashboardSidebarPanel" aria-expanded="true" aria-label="Toggle navigation">
-                    <i class="bi bi-list" style="color: #1a1a1a; font-size: 1.5rem;"></i>
+                    <i class="bi bi-list" style="color: #1A3A4A; font-size: 1.5rem;"></i>
                 </button>
-                <div class="topbar-title">
-                    <span class="section-kicker" style="color: #1b5e20;">Secure Workspace</span>
-                    <strong style="color: #1a1a1a;">{% block page_heading %}CyberScam Detection{% endblock %}</strong>
+                <div class="topbar-title" style="display: flex; align-items: center; gap: 12px;">
+                    <span class="section-kicker" style="color: #3A7CA5; font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin: 0;">Secure Workspace</span>
+                    <span style="color: #C5D9E8; font-size: 1.2rem;">|</span>
+                    <strong style="color: #1A3A4A; font-size: 1.1rem;">{% block page_heading %}CyberScam Detection{% endblock %}</strong>
                 </div>
                 <div class="topbar-actions" style="display: flex; align-items: center; gap: 16px;">
-                    <a class="topbar-icon" href="{% url 'chatbot:home' %}" aria-label="Open AI assistant" style="color: #1b5e20; background: rgba(46, 125, 50, 0.1); border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; text-decoration: none;">
+                    <a class="topbar-icon" href="{% url 'chatbot:home' %}" aria-label="Open AI assistant" style="color: #3A7CA5; background: rgba(58, 124, 165, 0.08); border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; text-decoration: none;">
                         <i class="bi bi-chat-dots" style="font-size: 1.2rem;"></i>
                     </a>
-                    <a class="user-chip" href="{% url 'account_profile' %}" style="background: #c8e6c9; border: 2px solid #66bb6a; padding: 6px 14px 6px 6px; border-radius: 50px; display: flex; align-items: center; gap: 10px; text-decoration: none; transition: all 0.3s ease;">
-                        <span class="user-avatar" style="background: linear-gradient(135deg, #1b5e20, #2e7d32); color: white; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px;">{{ request.user.username|default:'U'|first|upper }}</span>
+                    <a class="user-chip" href="{% url 'account_profile' %}" style="background: rgba(58, 124, 165, 0.06); border: 2px solid #C5D9E8; padding: 6px 14px 6px 6px; border-radius: 50px; display: flex; align-items: center; gap: 10px; text-decoration: none; transition: all 0.3s ease;">
+                        <span class="user-avatar" style="background: linear-gradient(135deg, #2A5F82, #3A7CA5); color: white; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px;">{{ request.user.username|default:'U'|first|upper }}</span>
                         <span class="user-meta">
-                            <strong style="color: #1a1a1a; display: block; font-size: 14px;">{{ request.user.get_full_name|default:request.user.username }}</strong>
-                            <small style="color: #1b5e20; font-size: 11px;">{% if request.user.is_admin_role %}Administrator{% else %}User Account{% endif %}</small>
+                            <strong style="color: #1A3A4A; display: block; font-size: 14px;">{{ request.user.get_full_name|default:request.user.username }}</strong>
+                            <small style="color: #4A6A7A; font-size: 11px;">{% if request.user.is_admin_role %}Administrator{% else %}User Account{% endif %}</small>
                         </span>
                     </a>
                 </div>
             </header>
 
-            <main class="dashboard-content {% block main_class %}{% endblock %}" style="background: linear-gradient(135deg, #fafffe 0%, #dcedc8 100%); padding: 20px 24px; min-height: calc(100vh - 80px);">
+            <main class="dashboard-content {% block main_class %}{% endblock %}" style="background: linear-gradient(135deg, #F5FAFF 0%, #EBF8FF 100%); padding: 24px; min-height: calc(100vh - 80px);">
                 {% if messages %}
                     <div class="content-container pt-3">
                         {% for message in messages %}
-                            <div class="alert alert-{{ message.tags|default:'info' }} alert-dismissible fade show" role="alert" style="border-left: 4px solid #2e7d32; background: #e8f5e9; color: #1b5e20;">
+                            <div class="alert alert-{{ message.tags|default:'info' }} alert-dismissible fade show" role="alert" style="border-left: 4px solid #3A7CA5; background: rgba(58, 124, 165, 0.06); color: #1A3A4A;">
                                 {{ message }}
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
@@ -123,33 +124,33 @@
     <!-- Logout confirmation modal -->
     <div id="logoutConfirmModal" class="modal fade" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content border-0 shadow-lg" style="border-radius: 20px; border: 2px solid #66bb6a;">
-                <div class="modal-header border-bottom-0" style="background: #c8e6c9; border-radius: 20px 20px 0 0;">
+            <div class="modal-content border-0 shadow-lg" style="border-radius: 20px; border: 2px solid #3A7CA5; background: #FFFFFF;">
+                <div class="modal-header border-bottom-0" style="background: #EBF8FF; border-radius: 20px 20px 0 0;">
                     <div>
-                        <h5 class="modal-title fw-bold" style="color: #1b5e20;">
+                        <h5 class="modal-title fw-bold" style="color: #1A3A4A;">
                             <i class="bi bi-shield-lock-fill text-danger me-2"></i>
                             Confirm Logout
                         </h5>
-                        <p class="text-muted mb-0" style="color: #1b5e20 !important;">You are about to sign out of Cyber Scam Detection.</p>
+                        <p class="text-muted mb-0" style="color: #4A6A7A !important;">You are about to sign out of Cyber Scam Detection.</p>
                     </div>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body pt-0" style="background: #fafffe;">
-                    <div class="alert d-flex align-items-center mb-0" role="alert" style="background: #e8f5e9; border-left: 4px solid #2e7d32; color: #1b5e20;">
-                        <i class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" style="color: #2e7d32;"></i>
+                <div class="modal-body pt-0" style="background: #FFFFFF;">
+                    <div class="alert d-flex align-items-center mb-0" role="alert" style="background: #EBF8FF; border-left: 4px solid #3A7CA5; color: #1A3A4A;">
+                        <i class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" style="color: #3A7CA5;"></i>
                         <div>
                             Are you sure you want to logout? You will need to sign in again to access your dashboard.
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer border-top-0" style="background: #fafffe; border-radius: 0 0 20px 20px;">
-                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" style="border-radius: 12px; font-weight: 600; border-color: #66bb6a; color: #2e7d32;">
+                <div class="modal-footer border-top-0" style="background: #FFFFFF; border-radius: 0 0 20px 20px;">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" style="border-radius: 12px; font-weight: 600; border-color: #C5D9E8; color: #4A6A7A; background: transparent;">
                         <i class="bi bi-x-circle me-1"></i>Cancel
                     </button>
                     <form id="logoutForm" method="post" action="{% url 'users:logout' %}" style="display: none;">
                         {% csrf_token %}
                     </form>
-                    <button type="button" class="btn btn-danger" id="logoutConfirmBtn" style="border-radius: 12px; background: linear-gradient(135deg, #dc3545, #b02a37); border: none; font-weight: 600;">
+                    <button type="button" class="btn btn-danger" id="logoutConfirmBtn" style="border-radius: 12px; background: linear-gradient(135deg, #D9534F, #C9302C); border: none; font-weight: 600;">
                         <i class="bi bi-box-arrow-right me-1"></i>Logout
                     </button>
                 </div>
@@ -204,7 +205,7 @@
                 }
             });
 
-            // ===== FIX: Prevent auto-scrolling on page load =====
+            // ===== FIX: PREVENT AUTO-SCROLLING ON PAGE LOAD =====
             // Store scroll position before page unload
             window.addEventListener('beforeunload', function() {
                 sessionStorage.setItem('scrollPosition', window.scrollY);
@@ -213,29 +214,14 @@
             // Restore scroll position after page load
             const savedScroll = sessionStorage.getItem('scrollPosition');
             if (savedScroll !== null && !window.location.hash) {
-                window.scrollTo(0, parseInt(savedScroll));
-                sessionStorage.removeItem('scrollPosition');
-            }
-
-            // ===== FIX: Prevent sidebar from expanding/collapsing on click =====
-            // Ensure sidebar panel stays in its current state
-            const sidebarPanel = document.getElementById('dashboardSidebarPanel');
-            if (sidebarPanel) {
-                // Don't auto-toggle on link clicks
-                sidebarPanel.addEventListener('click', function(e) {
-                    // If clicking a link, don't toggle the collapse
-                    if (e.target.closest('a') || e.target.closest('button')) {
-                        // Let the default behavior happen, but don't toggle sidebar
-                        return;
-                    }
+                requestAnimationFrame(function() {
+                    window.scrollTo(0, parseInt(savedScroll));
                 });
             }
 
-            // ===== FIX: Prevent page from jumping to top on link click =====
-            document.querySelectorAll('.sidebar-link').forEach(function(link) {
+            // ===== FIX: Store scroll position before navigation =====
+            document.querySelectorAll('.sidebar-link, .user-chip, .topbar-icon').forEach(function(link) {
                 link.addEventListener('click', function(e) {
-                    // Don't prevent default, just let it navigate
-                    // But store current scroll position before navigation
                     sessionStorage.setItem('scrollPosition', window.scrollY);
                 });
             });
@@ -249,11 +235,17 @@
             }
         });
 
-        // ===== FIX: Prevent page from jumping to top on page load =====
-        // This runs immediately to prevent any auto-scrolling
+        // ===== FIX: Prevent page from jumping to top =====
         (function() {
             if (history.scrollRestoration) {
                 history.scrollRestoration = 'manual';
+            }
+            
+            const savedScroll = sessionStorage.getItem('scrollPosition');
+            if (savedScroll !== null) {
+                setTimeout(function() {
+                    window.scrollTo(0, parseInt(savedScroll));
+                }, 10);
             }
         })();
     </script>
@@ -263,7 +255,7 @@
 </html>
 
 <style>
-    /* ===== FIXED SIDEBAR - NO MOVEMENT ===== */
+    /* ===== FIXED SIDEBAR - DARK ===== */
     .dashboard-sidebar {
         position: fixed;
         top: 0;
@@ -277,18 +269,17 @@
         scroll-behavior: smooth;
     }
 
-    /* Hide scrollbar but keep functionality */
     .dashboard-sidebar::-webkit-scrollbar {
         width: 4px;
     }
 
     .dashboard-sidebar::-webkit-scrollbar-track {
-        background: rgba(46, 125, 50, 0.05);
+        background: rgba(91, 155, 199, 0.05);
         border-radius: 4px;
     }
 
     .dashboard-sidebar::-webkit-scrollbar-thumb {
-        background: #81c784;
+        background: #3A7CA5;
         border-radius: 4px;
     }
 
@@ -297,9 +288,9 @@
         min-height: 100vh;
     }
 
-    /* ===== SIDEBAR LINKS - GREEN THEME ===== */
+    /* ===== SIDEBAR LINKS - DARK THEME ===== */
     .sidebar-link {
-        color: #1a1a1a !important;
+        color: #D4E8F5 !important;
         transition: all 0.3s ease;
         display: flex;
         align-items: center;
@@ -317,7 +308,7 @@
     }
 
     .sidebar-link i {
-        color: #2e7d32 !important;
+        color: #5B9BC7 !important;
         transition: all 0.3s ease;
         width: 20px;
         text-align: center;
@@ -326,24 +317,24 @@
     }
 
     .sidebar-link:not(.active):hover {
-        background: rgba(46, 125, 50, 0.12) !important;
-        color: #1b5e20 !important;
+        background: rgba(91, 155, 199, 0.12) !important;
+        color: #ffffff !important;
         transform: translateX(4px);
     }
 
     .sidebar-link:not(.active):hover i {
-        color: #1b5e20 !important;
+        color: #7AB0D4 !important;
     }
 
     .sidebar-link.active {
-        background: rgba(46, 125, 50, 0.18) !important;
-        color: #1b5e20 !important;
-        border-right: 3px solid #1b5e20 !important;
+        background: rgba(58, 124, 165, 0.18) !important;
+        color: #ffffff !important;
+        border-right: 3px solid #3A7CA5 !important;
         font-weight: 600;
     }
 
     .sidebar-link.active i {
-        color: #1b5e20 !important;
+        color: #7AB0D4 !important;
     }
 
     .sidebar-heading {
@@ -353,236 +344,44 @@
         letter-spacing: 1.5px;
         padding: 12px 16px 8px;
         margin: 0;
-        color: #1b5e20;
-        border-bottom: 1px solid rgba(46, 125, 50, 0.15);
+        color: #5B9BC7;
+        border-bottom: 1px solid rgba(91, 155, 199, 0.12);
     }
 
-    .sidebar-brand {
-        padding: 20px 16px;
-        border-bottom: 2px solid rgba(46, 125, 50, 0.15);
-    }
-
-    .brand-link {
+    /* ===== TOPBAR ===== */
+    .topbar-title {
         display: flex;
         align-items: center;
         gap: 12px;
-        text-decoration: none;
     }
 
-    .brand-mark {
-        width: 44px;
-        height: 44px;
-        border-radius: 12px;
-        background: linear-gradient(135deg, #1b5e20, #2e7d32);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 4px 15px rgba(46, 125, 50, 0.2);
-        flex-shrink: 0;
-    }
-
-    .brand-mark i {
-        font-size: 1.4rem;
-        color: #ffffff;
-    }
-
-    .brand-link strong {
-        font-size: 1.1rem;
-        font-weight: 700;
-        color: #1a1a1a;
-        display: block;
-        line-height: 1.2;
-    }
-
-    .brand-link small {
-        font-size: 0.7rem;
-        color: #1b5e20;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        font-weight: 600;
-    }
-
-    /* ===== LOGOUT LINK ===== */
-    .sidebar-link.logout-link {
-        background: none;
-        border: none;
-        width: 100%;
-        text-align: left;
-        cursor: pointer;
-        color: #c62828 !important;
-        transition: all 0.3s ease;
-        padding: 10px 16px;
-        border-radius: 8px;
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        font-weight: 500;
-    }
-
-    .sidebar-link.logout-link i {
-        color: #c62828 !important;
-        width: 20px;
-        text-align: center;
-    }
-
-    .sidebar-link.logout-link:hover {
-        background: rgba(198, 40, 40, 0.1) !important;
-        color: #b71c1c !important;
-        transform: translateX(4px);
-    }
-
-    .sidebar-link.logout-link:hover i {
-        color: #b71c1c !important;
-    }
-
-    /* ===== SECTION KICKER ===== */
     .section-kicker {
-        display: block;
-        font-size: 1.6rem;
-        font-weight: 800;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        color: #1b5e20;
-        margin-bottom: 4px;
-    }
-
-    /* ===== CHAT CARDS ===== */
-    .chat-card {
-        background: #ffffff;
-        border: 1px solid #a5d6a7;
-        border-radius: 20px;
-        padding: 24px;
-        margin-bottom: 24px;
-        box-shadow: 0 2px 8px rgba(46, 125, 50, 0.06);
-        transition: all 0.3s ease;
-    }
-
-    .chat-card:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(46, 125, 50, 0.08);
-        border-color: #66bb6a;
-    }
-
-    .chat-label {
-        display: block;
-        font-size: 13px;
+        display: inline-block;
+        font-size: 1rem;
         font-weight: 700;
         text-transform: uppercase;
         letter-spacing: 1px;
-        color: #2e7d32;
-        margin-bottom: 10px;
+        color: #3A7CA5;
+        margin: 0;
     }
 
-    .chat-question, .chat-answer {
-        color: #1a1a1a;
+    /* ===== USER CHIP ===== */
+    .user-chip:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(58, 124, 165, 0.08);
+        border-color: #3A7CA5 !important;
     }
 
-    /* ===== HISTORY CARD ===== */
-    .history-card {
-        background: #ffffff;
-        border: 1px solid #a5d6a7;
-        border-radius: 20px;
-        padding: 24px;
-        transition: all 0.3s ease;
-        box-shadow: 0 2px 8px rgba(46, 125, 50, 0.04);
-    }
-
-    .history-card:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 18px 40px rgba(46, 125, 50, 0.1);
-        border-color: #66bb6a;
+    .topbar-icon:hover {
+        background: rgba(58, 124, 165, 0.15) !important;
+        transform: scale(1.05);
     }
 
     /* ===== MODAL ===== */
     .modal-content {
         border-radius: 20px;
-        border: 2px solid #66bb6a;
-    }
-
-    .btn-danger {
-        background: linear-gradient(135deg, #dc3545, #b02a37);
-        border: none;
-        border-radius: 12px;
-        padding: 0.6rem 1.5rem;
-        font-weight: 600;
-        transition: all 0.3s ease;
-    }
-
-    .btn-danger:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(220, 53, 69, 0.3);
-    }
-
-    .btn-outline-secondary {
-        border-radius: 12px;
-        font-weight: 600;
-        transition: all 0.3s ease;
-        border-color: #66bb6a;
-        color: #2e7d32;
-    }
-
-    .btn-outline-secondary:hover {
-        transform: translateY(-2px);
-        background: #e8f5e9;
-        border-color: #66bb6a;
-        color: #1b5e20;
-    }
-
-    /* ===== ALERTS ===== */
-    .alert-success {
-        background: #e8f5e9;
-        border-color: #81c784;
-        color: #1b5e20;
-    }
-
-    .alert-info {
-        background: #e3f2fd;
-        border-color: #81c784;
-        color: #0d47a1;
-    }
-
-    .alert-warning {
-        background: #fff3e0;
-        border-color: #ffb74d;
-        color: #e65100;
-    }
-
-    .alert-danger {
-        background: #ffebee;
-        border-color: #ef9a9a;
-        color: #c62828;
-    }
-
-    /* ===== SCROLLBAR ===== */
-    .dashboard-content::-webkit-scrollbar {
-        width: 8px;
-    }
-
-    .dashboard-content::-webkit-scrollbar-track {
-        background: #e8f5e9;
-        border-radius: 4px;
-    }
-
-    .dashboard-content::-webkit-scrollbar-thumb {
-        background: #81c784;
-        border-radius: 4px;
-    }
-
-    .dashboard-content::-webkit-scrollbar-thumb:hover {
-        background: #66bb6a;
-    }
-
-    /* ===== USER CHIP HOVER ===== */
-    .user-chip:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 15px rgba(46, 125, 50, 0.15);
-        border-color: #66bb6a !important;
-    }
-
-    /* ===== TOPBAR ICON HOVER ===== */
-    .topbar-icon:hover {
-        background: rgba(46, 125, 50, 0.2) !important;
-        transform: scale(1.05);
+        border: 2px solid #3A7CA5;
+        background: #FFFFFF;
     }
 
     /* ===== RESPONSIVE ===== */
@@ -601,14 +400,11 @@
     }
 
     @media (max-width: 768px) {
-        .section-kicker {
-            font-size: 1.2rem;
+        .topbar-title .section-kicker {
+            display: none;
         }
-        .modal-dialog {
-            margin: 1rem;
-        }
-        .brand-link strong {
-            font-size: 0.95rem;
+        .topbar-title span[style*="color: #C5D9E8"] {
+            display: none;
         }
         .user-chip .user-meta {
             display: none;
@@ -637,6 +433,9 @@
         }
         .brand-mark i {
             font-size: 1.1rem;
+        }
+        .topbar-title strong {
+            font-size: 0.9rem;
         }
     }
 </style>

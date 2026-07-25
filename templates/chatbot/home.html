@@ -11,17 +11,17 @@
 
             <div class="col-lg-5">
                 <span class="section-kicker">Guided Support</span>
-                <h1 class="fw-bold mt-2">Phishing Awareness Chatbot</h1>
+                <h1 class="fw-bold mt-2" style="color: #1A3A4A;">Phishing Awareness Chatbot</h1>
 
-                <p class="text-muted-soft">
+                <p class="text-muted-soft" style="color: #4A6A7A;">
                     Ask about phishing emails, suspicious links, QR codes,
                     SMS scams, passwords, OTPs, and reporting steps.
                 </p>
 
                 <div class="activity-list">
-                    <div class="activity-item">How do I identify a phishing email?</div>
-                    <div class="activity-item">What should I do with a high-risk scan?</div>
-                    <div class="activity-item">Should I share my OTP?</div>
+                    <div class="activity-item">🔍 How do I identify a phishing email?</div>
+                    <div class="activity-item">⚠️ What should I do with a high-risk scan?</div>
+                    <div class="activity-item">🔐 Should I share my OTP?</div>
                 </div>
             </div>
 
@@ -31,7 +31,7 @@
 
                     {% for field in form %}
                         <div>
-                            <label class="form-label fw-semibold">
+                            <label class="form-label fw-semibold" style="color: #1A3A4A;">
                                 {{ field.label }}
                             </label>
 
@@ -47,7 +47,7 @@
 
                     <button class="btn btn-cyber btn-lg">
                         <i class="bi bi-send me-2"></i>
-                        Send
+                        Send Message
                     </button>
                 </form>
             </div>
@@ -86,9 +86,9 @@
     {% else %}
 
         <article class="result-panel p-4">
-            <h2 class="h5 fw-bold">Start a Conversation</h2>
+            <h2 class="h5 fw-bold" style="color: #1A3A4A;">Start a Conversation</h2>
 
-            <p class="text-muted-soft mb-0">
+            <p class="text-muted-soft mb-0" style="color: #4A6A7A;">
                 Ask a phishing awareness question to get practical guidance.
             </p>
         </article>
@@ -98,9 +98,107 @@
 </div>
 
 <style>
-    /* ===== LIGHT GREEN SEND BUTTON ===== */
+    /* ===== LIGHT BLUE THEME - CHATBOT ===== */
+    .content-container {
+        padding: 28px;
+        background: linear-gradient(135deg, #F5FAFF 0%, #EBF8FF 50%, #D4E8F5 100%);
+        min-height: 100vh;
+    }
+
+    .panel {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(14px);
+        border: 1px solid #C5D9E8;
+        border-radius: 24px;
+        padding: 2rem;
+        box-shadow: 0 20px 40px rgba(58, 124, 165, 0.04);
+        transition: all 0.3s ease;
+    }
+
+    .panel:hover {
+        box-shadow: 0 30px 60px rgba(58, 124, 165, 0.06);
+    }
+
+    .section-kicker {
+        display: inline-block;
+        font-size: 0.85rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: #3A7CA5;
+        margin-bottom: 4px;
+        background: rgba(58, 124, 165, 0.08);
+        padding: 6px 14px;
+        border-radius: 20px;
+    }
+
+    .text-muted-soft {
+        color: #4A6A7A !important;
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+
+    /* Activity List */
+    .activity-list {
+        display: grid;
+        gap: 10px;
+        margin-top: 1.5rem;
+    }
+
+    .activity-item {
+        padding: 12px 16px;
+        border-radius: 14px;
+        background: #F5FAFF;
+        border: 1px solid #EBF8FF;
+        color: #1A3A4A;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        cursor: default;
+    }
+
+    .activity-item:hover {
+        background: #EBF8FF;
+        border-color: #C5D9E8;
+        transform: translateX(4px);
+    }
+
+    /* Form */
+    .form-label {
+        color: #1A3A4A;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+    }
+
+    .form-control,
+    textarea.form-control {
+        border: 2px solid #C5D9E8;
+        border-radius: 14px;
+        padding: 0.9rem 1.2rem;
+        background: #FFFFFF;
+        color: #1A3A4A;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        min-height: 60px;
+        resize: vertical;
+        width: 100%;
+    }
+
+    .form-control:focus,
+    textarea.form-control:focus {
+        border-color: #3A7CA5;
+        box-shadow: 0 0 0 4px rgba(58, 124, 165, 0.06);
+        background: #FFFFFF;
+        outline: none;
+    }
+
+    .form-control::placeholder,
+    textarea.form-control::placeholder {
+        color: #7A9AAA;
+    }
+
+    /* ===== SEND BUTTON ===== */
     .btn-cyber {
-        background: linear-gradient(135deg, #4caf50, #66bb6a);
+        background: linear-gradient(135deg, #3A7CA5, #2A5F82);
         color: #fff;
         border: none;
         padding: 0.9rem 2rem;
@@ -108,7 +206,7 @@
         font-weight: 600;
         font-size: 1.1rem;
         transition: all 0.3s ease;
-        box-shadow: 0 4px 20px rgba(76, 175, 80, 0.25);
+        box-shadow: 0 4px 20px rgba(58, 124, 165, 0.2);
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -116,6 +214,7 @@
         cursor: pointer;
         position: relative;
         overflow: hidden;
+        width: 100%;
     }
 
     .btn-cyber::before {
@@ -135,8 +234,8 @@
 
     .btn-cyber:hover {
         transform: translateY(-2px);
-        box-shadow: 0 8px 30px rgba(76, 175, 80, 0.35);
-        background: linear-gradient(135deg, #43a047, #4caf50);
+        box-shadow: 0 8px 30px rgba(58, 124, 165, 0.3);
+        background: linear-gradient(135deg, #2A5F82, #1A4A6A);
         color: #fff;
     }
 
@@ -153,6 +252,178 @@
     .btn-cyber i {
         font-size: 1.2rem;
     }
+
+    /* Chat Cards */
+    .chat-card {
+        background: rgba(255, 255, 255, 0.95);
+        border: 1px solid #C5D9E8;
+        border-radius: 20px;
+        padding: 24px;
+        margin-bottom: 20px;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 8px rgba(58, 124, 165, 0.04);
+    }
+
+    .chat-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 18px 40px rgba(58, 124, 165, 0.08);
+        border-color: #3A7CA5;
+    }
+
+    .chat-section {
+        margin-bottom: 16px;
+    }
+
+    .chat-section:last-child {
+        margin-bottom: 0;
+    }
+
+    .chat-label {
+        display: inline-block;
+        font-size: 0.7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        color: #3A7CA5;
+        margin-bottom: 6px;
+        background: rgba(58, 124, 165, 0.06);
+        padding: 2px 12px;
+        border-radius: 12px;
+    }
+
+    .chat-question {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #1A3A4A;
+        padding: 12px 16px;
+        background: #F5FAFF;
+        border-radius: 12px;
+        border-left: 3px solid #3A7CA5;
+        line-height: 1.6;
+    }
+
+    .chat-answer {
+        font-size: 1rem;
+        color: #1A3A4A;
+        padding: 12px 16px;
+        background: #EBF8FF;
+        border-radius: 12px;
+        line-height: 1.8;
+        border-left: 3px solid #5B9BC7;
+    }
+
+    /* Result Panel */
+    .result-panel {
+        background: rgba(255, 255, 255, 0.95);
+        border: 1px solid #C5D9E8;
+        border-radius: 20px;
+        padding: 1.5rem;
+        text-align: center;
+        box-shadow: 0 2px 8px rgba(58, 124, 165, 0.04);
+    }
+
+    .result-panel h2 {
+        color: #1A3A4A;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+    }
+
+    .result-panel .text-muted-soft {
+        color: #4A6A7A !important;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 992px) {
+        .panel {
+            padding: 1.5rem;
+        }
+
+        .col-lg-5 {
+            margin-bottom: 1rem;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .content-container {
+            padding: 16px;
+        }
+
+        .panel {
+            padding: 1.25rem;
+            border-radius: 18px;
+        }
+
+        .section-kicker {
+            font-size: 0.75rem;
+        }
+
+        h1.fw-bold {
+            font-size: 1.6rem;
+        }
+
+        .chat-card {
+            padding: 18px;
+            border-radius: 16px;
+        }
+
+        .chat-question,
+        .chat-answer {
+            padding: 10px 14px;
+            font-size: 0.95rem;
+        }
+
+        .form-control,
+        textarea.form-control {
+            padding: 0.75rem 1rem;
+            font-size: 0.95rem;
+            min-height: 50px;
+        }
+
+        .btn-cyber {
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+        }
+
+        .activity-item {
+            padding: 10px 14px;
+            font-size: 0.9rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .content-container {
+            padding: 12px;
+        }
+
+        .panel {
+            padding: 1rem;
+            border-radius: 14px;
+        }
+
+        h1.fw-bold {
+            font-size: 1.3rem;
+        }
+
+        .chat-card {
+            padding: 14px;
+            border-radius: 14px;
+        }
+
+        .chat-question,
+        .chat-answer {
+            padding: 8px 12px;
+            font-size: 0.9rem;
+        }
+
+        .activity-item {
+            padding: 8px 12px;
+            font-size: 0.85rem;
+        }
+
+        .result-panel {
+            padding: 1rem;
+        }
+    }
 </style>
 
 <script>
@@ -167,6 +438,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                 <span>Sending...</span>
             `;
+        });
+    }
+
+    // Auto-resize textarea
+    const textarea = document.querySelector('textarea');
+    if (textarea) {
+        textarea.addEventListener('input', function() {
+            this.style.height = 'auto';
+            this.style.height = this.scrollHeight + 'px';
         });
     }
 });

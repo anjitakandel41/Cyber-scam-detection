@@ -3,6 +3,287 @@
 {% block title %}{{ config.title }}{% endblock %}
 
 {% block content %}
+<style>
+    /* Scanner page specific styles - Light Blue Theme */
+    .panel {
+        background: #ffffff !important;
+        border: 1px solid #C5D9E8 !important;
+        border-radius: 16px !important;
+        padding: 2rem !important;
+        box-shadow: 0 18px 45px rgba(58, 124, 165, 0.06) !important;
+    }
+
+    .section-kicker {
+        color: #3A7CA5 !important;
+        font-weight: 700;
+        letter-spacing: 0;
+        text-transform: uppercase;
+        font-size: 0.78rem;
+        display: block;
+        margin-bottom: 0.5rem;
+    }
+
+    .text-muted-soft {
+        color: #4A6A7A !important;
+    }
+
+    .scanner-tabs .nav-link {
+        border-radius: 8px;
+        color: #4A6A7A !important;
+        border: 1px solid #C5D9E8 !important;
+        padding: 0.6rem 1.2rem;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        text-decoration: none;
+    }
+
+    .scanner-tabs .nav-link:hover {
+        background: #EBF8FF !important;
+        border-color: #3A7CA5 !important;
+        color: #3A7CA5 !important;
+    }
+
+    .scanner-tabs .nav-link.active {
+        color: #ffffff !important;
+        background: #3A7CA5 !important;
+        border-color: #3A7CA5 !important;
+    }
+
+    .scanner-tabs .nav-link i {
+        margin-right: 0.25rem;
+    }
+
+    .bg-light {
+        background: #F5FAFF !important;
+        border: 1px solid #C5D9E8 !important;
+        border-radius: 12px !important;
+    }
+
+    .bg-light strong {
+        color: #1A3A4A !important;
+    }
+
+    .bg-light p {
+        color: #4A6A7A !important;
+    }
+
+    /* Form Styles */
+    .form-label {
+        color: #1A3A4A !important;
+        font-weight: 600 !important;
+        margin-bottom: 0.5rem !important;
+    }
+
+    .form-control {
+        border: 1px solid #C5D9E8 !important;
+        border-radius: 8px !important;
+        padding: 0.7rem 1rem !important;
+        background: #ffffff !important;
+        color: #1A3A4A !important;
+        transition: all 0.3s ease !important;
+    }
+
+    .form-control:focus {
+        border-color: #3A7CA5 !important;
+        box-shadow: 0 0 0 4px rgba(58, 124, 165, 0.1) !important;
+        background: #ffffff !important;
+    }
+
+    textarea.form-control {
+        min-height: 120px !important;
+        resize: vertical !important;
+    }
+
+    .btn-cyber {
+        background: linear-gradient(135deg, #3A7CA5, #5B9BC7) !important;
+        color: #ffffff !important;
+        border: none !important;
+        border-radius: 8px !important;
+        padding: 0.8rem 1.5rem !important;
+        font-weight: 600 !important;
+        transition: all 0.3s ease !important;
+        cursor: pointer !important;
+    }
+
+    .btn-cyber:hover {
+        transform: translateY(-2px) !important;
+        box-shadow: 0 8px 25px rgba(58, 124, 165, 0.25) !important;
+        background: linear-gradient(135deg, #2A5F82, #3A7CA5) !important;
+        color: #ffffff !important;
+    }
+
+    /* Score Card */
+    .score-card {
+        border-radius: 12px !important;
+        padding: 1.5rem !important;
+        color: #ffffff !important;
+        height: 100% !important;
+    }
+
+    .score-card.low {
+        background: linear-gradient(135deg, #3A7CA5, #5B9BC7) !important;
+    }
+
+    .score-card.medium {
+        background: linear-gradient(135deg, #F4B400, #F4B400) !important;
+    }
+
+    .score-card.high {
+        background: linear-gradient(135deg, #D9534F, #D9534F) !important;
+    }
+
+    .score-card .text-uppercase {
+        font-size: 0.8rem !important;
+        opacity: 0.9 !important;
+    }
+
+    .score-card strong {
+        font-size: 2.8rem !important;
+        font-weight: 700 !important;
+        display: block !important;
+        line-height: 1.2 !important;
+    }
+
+    /* Result Panel */
+    .result-panel {
+        background: #ffffff !important;
+        border: 1px solid #C5D9E8 !important;
+        border-radius: 12px !important;
+        padding: 1.5rem !important;
+        box-shadow: 0 18px 45px rgba(58, 124, 165, 0.04) !important;
+        height: 100% !important;
+    }
+
+    .result-panel .text-muted-soft {
+        color: #4A6A7A !important;
+        font-size: 0.85rem !important;
+    }
+
+    .result-panel strong.fs-3 {
+        color: #1A3A4A !important;
+        font-size: 1.8rem !important;
+    }
+
+    .result-panel h2.h5 {
+        color: #1A3A4A !important;
+        font-weight: 700 !important;
+        font-size: 1.1rem !important;
+        margin-top: 0.5rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+
+    .result-panel hr {
+        border-color: #C5D9E8 !important;
+        opacity: 0.5 !important;
+        margin: 1rem 0 !important;
+    }
+
+    .risk-badge {
+        border-radius: 999px !important;
+        padding: 0.3rem 1rem !important;
+        font-weight: 700 !important;
+        font-size: 0.85rem !important;
+        display: inline-block !important;
+    }
+
+    .risk-badge.status-low {
+        background: rgba(58, 124, 165, 0.12) !important;
+        color: #3A7CA5 !important;
+    }
+
+    .risk-badge.status-medium {
+        background: rgba(244, 180, 0, 0.14) !important;
+        color: #F4B400 !important;
+    }
+
+    .risk-badge.status-high {
+        background: rgba(217, 83, 79, 0.14) !important;
+        color: #D9534F !important;
+    }
+
+    .reason-list {
+        padding-left: 1.2rem !important;
+        margin-bottom: 0 !important;
+        color: #4A6A7A !important;
+    }
+
+    .reason-list li {
+        margin-bottom: 0.3rem !important;
+        color: #4A6A7A !important;
+    }
+
+    .btn-outline-cyber {
+        border: 1px solid #3A7CA5 !important;
+        color: #3A7CA5 !important;
+        background: transparent !important;
+        border-radius: 8px !important;
+        padding: 0.6rem 1.2rem !important;
+        font-weight: 600 !important;
+        text-decoration: none !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 0.5rem !important;
+        transition: all 0.3s ease !important;
+    }
+
+    .btn-outline-cyber:hover {
+        background: #3A7CA5 !important;
+        color: #ffffff !important;
+        transform: translateY(-2px) !important;
+        box-shadow: 0 8px 25px rgba(58, 124, 165, 0.15) !important;
+        text-decoration: none !important;
+    }
+
+    .btn-outline-cyber i {
+        font-size: 1.1rem !important;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .panel {
+            padding: 1.5rem !important;
+        }
+
+        .scanner-tabs {
+            gap: 0.5rem !important;
+            flex-wrap: wrap !important;
+        }
+
+        .scanner-tabs .nav-link {
+            padding: 0.5rem 1rem !important;
+            font-size: 0.85rem !important;
+        }
+
+        .score-card strong {
+            font-size: 2.2rem !important;
+        }
+
+        .result-panel {
+            padding: 1.2rem !important;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .panel {
+            padding: 1rem !important;
+        }
+
+        .scanner-tabs .nav-link {
+            padding: 0.4rem 0.8rem !important;
+            font-size: 0.8rem !important;
+        }
+
+        .btn-cyber {
+            padding: 0.7rem 1rem !important;
+            font-size: 0.9rem !important;
+        }
+
+        .score-card strong {
+            font-size: 2rem !important;
+        }
+    }
+</style>
+
 <div class="content-container">
 
     <section class="panel">
@@ -12,7 +293,7 @@
             <div class="col-lg-5">
                 <span class="section-kicker">Threat Scanner</span>
 
-                <h1 class="fw-bold mt-2">
+                <h1 class="fw-bold mt-2" style="color: #1A3A4A !important;">
                     {{ config.title }}
                 </h1>
 
@@ -43,8 +324,8 @@
                 </div>
 
                 <div class="p-3 rounded border bg-light mt-3">
-                    <strong>
-                        <i class="bi bi-info-circle me-1"></i>
+                    <strong style="color: #1A3A4A !important;">
+                        <i class="bi bi-info-circle me-1" style="color: #3A7CA5 !important;"></i>
                         What happens next
                     </strong>
 

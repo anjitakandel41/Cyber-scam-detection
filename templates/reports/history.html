@@ -12,13 +12,13 @@
                 <i class="bi bi-clock-history me-1"></i>
                 Security Logs
             </span> {% endcomment %}
-            <h1 class="fw-bold mt-2 mb-2" style="color: #1a1a1a;">Recent Security Scans</h1>
-            <p class="text-muted-soft" style="color: #4caf50;">
+            <h1 class="fw-bold mt-2 mb-2" style="color: #1A3A4A;">Recent Security Scans</h1>
+            <p class="text-muted-soft" style="color: #4A6A7A;">
                 Review all URL, Email, SMS, and QR code scans performed by your account.
             </p>
         </div>
 
-        <a class="btn btn-cyber" href="{% url 'scanner:url_scan' %}" style="background: linear-gradient(135deg, #2e7d32, #388e3c); color: white; border: none; border-radius: 12px; padding: 10px 20px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(46, 125, 50, 0.15);">
+        <a class="btn btn-cyber" href="{% url 'scanner:url_scan' %}" style="background: linear-gradient(135deg, #3A7CA5, #2A5F82); color: white; border: none; border-radius: 12px; padding: 10px 20px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(58, 124, 165, 0.15);">
             <i class="bi bi-plus-circle me-2"></i>
             New Scan
         </a>
@@ -38,21 +38,21 @@
                         {{ scan.classification }}
                     </span>
 
-                    <span class="history-risk" style="color: #1a1a1a; font-weight: 700;">
+                    <span class="history-risk" style="color: #1A3A4A; font-weight: 700;">
                         {{ scan.risk_score }}% Risk
                     </span>
 
-                    <span class="history-date" style="color: #4caf50;">
+                    <span class="history-date" style="color: #4A6A7A;">
                         {{ scan.timestamp }}
                     </span>
 
                 </div>
 
-                <div class="history-input" style="color: #1a1a1a;">
+                <div class="history-input" style="color: #1A3A4A;">
                     {{ scan.input|truncatechars:180 }}
                 </div>
 
-                <div class="history-recommendation" style="color: #1a1a1a;">
+                <div class="history-recommendation" style="color: #1A3A4A;">
                     {{ scan.recommendation|truncatechars:160 }}
                 </div>
 
@@ -63,7 +63,7 @@
                 <a class="btn btn-outline-cyber"
                    href="{{ scan.report_file.url }}"
                    target="_blank"
-                   style="border: 1px solid #2e7d32; color: #2e7d32; border-radius: 10px; padding: 8px 16px; font-weight: 600; text-decoration: none; transition: all 0.3s ease; display: inline-flex; align-items: center; background: transparent;">
+                   style="border: 1px solid #3A7CA5; color: #3A7CA5; border-radius: 10px; padding: 8px 16px; font-weight: 600; text-decoration: none; transition: all 0.3s ease; display: inline-flex; align-items: center; background: transparent;">
 
                     <i class="bi bi-file-earmark-pdf me-2"></i>
                     View Report
@@ -76,20 +76,20 @@
 
         {% empty %}
 
-        <article class="empty-history" style="background: rgba(255, 255, 255, 0.95); border-radius: 24px; padding: 60px 30px; text-align: center; border: 1px solid #c8e6c9;">
+        <article class="empty-history" style="background: rgba(255, 255, 255, 0.95); border-radius: 24px; padding: 60px 30px; text-align: center; border: 1px solid #C5D9E8;">
 
-            <i class="bi bi-shield-x display-4 mb-3" style="color: #a5d6a7; font-size: 4rem;"></i>
+            <i class="bi bi-shield-x display-4 mb-3" style="color: #C5D9E8; font-size: 4rem;"></i>
 
-            <h3 style="color: #1a1a1a; font-size: 1.8rem; font-weight: 700; margin-bottom: 15px;">No Scan History</h3>
+            <h3 style="color: #1A3A4A; font-size: 1.8rem; font-weight: 700; margin-bottom: 15px;">No Scan History</h3>
 
-            <p style="color: #4caf50; margin-bottom: 25px;">
+            <p style="color: #4A6A7A; margin-bottom: 25px;">
                 Start scanning suspicious URLs, Emails, SMS messages or QR codes
                 to build your security history.
             </p>
 
             <a class="btn btn-cyber"
                href="{% url 'scanner:url_scan' %}"
-               style="background: linear-gradient(135deg, #2e7d32, #388e3c); color: white; border: none; border-radius: 12px; padding: 12px 24px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(46, 125, 50, 0.15);">
+               style="background: linear-gradient(135deg, #3A7CA5, #2A5F82); color: white; border: none; border-radius: 12px; padding: 12px 24px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(58, 124, 165, 0.15);">
 
                 Start Scanning
 
@@ -104,10 +104,10 @@
 </div>
 
 <style>
-    /* Light Green Theme - Scan History */
+    /* Light Blue Theme - Scan History */
     .content-container {
         padding: 28px;
-        background: linear-gradient(135deg, #fafffe 0%, #f0f7f0 50%, #e8f5e9 100%);
+        background: linear-gradient(135deg, #F5FAFF 0%, #EBF8FF 50%, #D4E8F5 100%);
         min-height: 100vh;
     }
 
@@ -126,9 +126,9 @@
         font-weight: 800;
         text-transform: uppercase;
         letter-spacing: 2px;
-        color: #2e7d32;
+        color: #3A7CA5;
         margin-bottom: 4px;
-        background: rgba(46, 125, 50, 0.08);
+        background: rgba(58, 124, 165, 0.08);
         padding: 6px 14px;
         border-radius: 20px;
         display: inline-block;
@@ -139,13 +139,13 @@
     }
 
     .text-muted-soft {
-        color: #4caf50 !important;
+        color: #4A6A7A !important;
         font-size: 1rem;
         margin: 0;
     }
 
     .btn-cyber {
-        background: linear-gradient(135deg, #2e7d32, #388e3c);
+        background: linear-gradient(135deg, #3A7CA5, #2A5F82);
         color: white;
         border: none;
         border-radius: 12px;
@@ -155,19 +155,19 @@
         display: inline-flex;
         align-items: center;
         transition: all 0.3s ease;
-        box-shadow: 0 4px 15px rgba(46, 125, 50, 0.15);
+        box-shadow: 0 4px 15px rgba(58, 124, 165, 0.15);
     }
 
     .btn-cyber:hover {
-        background: linear-gradient(135deg, #1b5e20, #2e7d32);
+        background: linear-gradient(135deg, #2A5F82, #1A4A6A);
         transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(46, 125, 50, 0.25);
+        box-shadow: 0 8px 25px rgba(58, 124, 165, 0.25);
         color: white;
     }
 
     .btn-outline-cyber {
-        border: 1px solid #2e7d32;
-        color: #2e7d32;
+        border: 1px solid #3A7CA5;
+        color: #3A7CA5;
         border-radius: 10px;
         padding: 8px 16px;
         font-weight: 600;
@@ -179,10 +179,10 @@
     }
 
     .btn-outline-cyber:hover {
-        background: #2e7d32;
+        background: #3A7CA5;
         color: white !important;
         transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(46, 125, 50, 0.15);
+        box-shadow: 0 8px 25px rgba(58, 124, 165, 0.15);
     }
 
     .btn-outline-cyber i {
@@ -198,7 +198,7 @@
 
     .history-card {
         background: rgba(255, 255, 255, 0.95);
-        border: 1px solid #c8e6c9;
+        border: 1px solid #C5D9E8;
         border-radius: 24px;
         padding: 24px;
         display: flex;
@@ -206,13 +206,13 @@
         align-items: center;
         gap: 30px;
         transition: all 0.3s ease;
-        box-shadow: 0 2px 8px rgba(46, 125, 50, 0.04);
+        box-shadow: 0 2px 8px rgba(58, 124, 165, 0.04);
     }
 
     .history-card:hover {
         transform: translateY(-3px);
-        box-shadow: 0 18px 40px rgba(46, 125, 50, 0.08);
-        border-color: #81c784;
+        box-shadow: 0 18px 40px rgba(58, 124, 165, 0.08);
+        border-color: #3A7CA5;
     }
 
     .history-content {
@@ -230,17 +230,17 @@
 
     .history-risk {
         font-weight: 700;
-        color: #1a1a1a;
+        color: #1A3A4A;
         font-size: 0.95rem;
     }
 
     .history-date {
-        color: #4caf50;
+        color: #4A6A7A;
         font-size: 0.9rem;
     }
 
     .history-input {
-        color: #1a1a1a;
+        color: #1A3A4A;
         font-size: 1rem;
         line-height: 1.8;
         margin-bottom: 12px;
@@ -248,15 +248,15 @@
     }
 
     .history-recommendation {
-        color: #1a1a1a;
+        color: #1A3A4A;
         font-size: 0.95rem;
         font-weight: 400;
         line-height: 1.8;
         margin-top: 8px;
         padding: 12px 16px;
-        background: #f0f7f0;
+        background: #F5FAFF;
         border-radius: 12px;
-        border-left: 3px solid #2e7d32;
+        border-left: 3px solid #3A7CA5;
     }
 
     .history-action {
@@ -273,18 +273,18 @@
     }
 
     .status-low {
-        background: rgba(46, 125, 50, 0.12);
-        color: #2e7d32;
+        background: rgba(58, 124, 165, 0.12);
+        color: #3A7CA5;
     }
 
     .status-medium {
-        background: rgba(255, 183, 77, 0.14);
-        color: #e65100;
+        background: rgba(244, 180, 0, 0.14);
+        color: #F4B400;
     }
 
     .status-high {
-        background: rgba(239, 68, 68, 0.12);
-        color: #c62828;
+        background: rgba(217, 83, 79, 0.12);
+        color: #D9534F;
     }
 
     /* Empty State */
@@ -293,25 +293,25 @@
         border-radius: 24px;
         padding: 60px 30px;
         text-align: center;
-        border: 1px solid #c8e6c9;
+        border: 1px solid #C5D9E8;
     }
 
     .empty-history i {
-        color: #a5d6a7;
+        color: #C5D9E8;
         font-size: 4rem;
         display: block;
         margin-bottom: 1rem;
     }
 
     .empty-history h3 {
-        color: #1a1a1a;
+        color: #1A3A4A;
         font-size: 1.8rem;
         font-weight: 700;
         margin-bottom: 15px;
     }
 
     .empty-history p {
-        color: #4caf50;
+        color: #4A6A7A;
         margin-bottom: 25px;
         font-size: 1rem;
     }
