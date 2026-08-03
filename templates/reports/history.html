@@ -18,9 +18,14 @@
             </p>
         </div>
 
-        <a class="btn btn-cyber" href="{% url 'scanner:url_scan' %}" style="background: linear-gradient(135deg, #3A7CA5, #2A5F82); color: white; border: none; border-radius: 12px; padding: 10px 20px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(58, 124, 165, 0.15);">
-            <i class="bi bi-plus-circle me-2"></i>
-            New Scan
+        <a class="btn btn-cyber" href="{% if is_view_mode %}{% url 'users:login' %}{% else %}{% url 'scanner:url_scan' %}{% endif %}" style="background: linear-gradient(135deg, #3A7CA5, #2A5F82); color: white; border: none; border-radius: 12px; padding: 10px 20px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(58, 124, 165, 0.15);">
+            {% if is_view_mode %}
+                <i class="bi bi-box-arrow-in-right me-2"></i>
+                Log in to scan
+            {% else %}
+                <i class="bi bi-plus-circle me-2"></i>
+                New Scan
+            {% endif %}
         </a>
     </section>
 
@@ -58,7 +63,17 @@
 
             </div>
 
-            {% if scan.report_file %}
+            {% if is_view_mode %}
+            {# Report access is locked until the owner starts a real session. #}
+            <div class="history-action">
+                <span class="btn btn-outline-cyber locked-feature"
+                      title="{{ view_mode_message }}"
+                      style="border: 1px solid #C5D9E8; color: #4A6A7A; border-radius: 10px; padding: 8px 16px; font-weight: 600; display: inline-flex; align-items: center; background: transparent;">
+                    <i class="bi bi-lock-fill me-2"></i>
+                    Report locked
+                </span>
+            </div>
+            {% elif scan.report_file %}
             <div class="history-action">
                 <a class="btn btn-outline-cyber"
                    href="{{ scan.report_file.url }}"
@@ -88,10 +103,10 @@
             </p>
 
             <a class="btn btn-cyber"
-               href="{% url 'scanner:url_scan' %}"
+               href="{% if is_view_mode %}{% url 'users:login' %}{% else %}{% url 'scanner:url_scan' %}{% endif %}"
                style="background: linear-gradient(135deg, #3A7CA5, #2A5F82); color: white; border: none; border-radius: 12px; padding: 12px 24px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(58, 124, 165, 0.15);">
 
-                Start Scanning
+                {% if is_view_mode %}Log in to start scanning{% else %}Start Scanning{% endif %}
 
             </a>
 

@@ -20,11 +20,14 @@ from django.conf.urls.static import static
 from django.urls import include, path
 from django.views.generic import TemplateView
 from users.profile_views import account_profile
+from users.views import home as home_view
 from reports.views import history as scan_history
 
 urlpatterns = [
     # Modern website pages
-    path('', TemplateView.as_view(template_name='home-modern.html'), name='home'),
+    # `home_view` sends a remembered browser straight to its read-only dashboard
+    # on the first visit of a session; brand-new visitors get the landing page.
+    path('', home_view, name='home'),
     path('features/', TemplateView.as_view(template_name='features-modern.html'), name='features'),
     path('about/', TemplateView.as_view(template_name='about-modern.html'), name='about'),
     path('faq/', TemplateView.as_view(template_name='faq-modern.html'), name='faq'),

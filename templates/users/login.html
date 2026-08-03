@@ -457,6 +457,18 @@
             <p class="auth-subtitle">Sign in to your account to continue</p>
         </div>
 
+        {% if remembered_user %}
+            {# This browser is remembered; the dashboard is available read-only. #}
+            <div class="auth-alert auth-alert-info">
+                <i class="bi bi-eye"></i>
+                <span>
+                    This device remembers <strong>{{ remembered_user.username }}</strong>.
+                    Sign in to unlock scanning and reports, or
+                    <a href="{% url 'dashboard:user_dashboard' %}">keep browsing in view-only mode</a>.
+                </span>
+            </div>
+        {% endif %}
+
         <!-- Messages -->
         {% if messages %}
             {% for message in messages %}

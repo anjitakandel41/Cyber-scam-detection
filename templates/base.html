@@ -698,6 +698,14 @@
                                     </button>
                                 </form>
                             </li>
+                        {% elif is_view_mode %}
+                            {# Remembered browser, no session: offer the read-only dashboard. #}
+                            <li><a href="{% url 'dashboard:user_dashboard' %}" class="btn-login btn-login-alt">
+                                <i class="bi bi-eye me-1"></i>View Dashboard
+                            </a></li>
+                            <li><button class="btn-login" id="showLoginModal">
+                                <i class="bi bi-box-arrow-in-right me-1"></i>Login
+                            </button></li>
                         {% else %}
                             <li><button class="btn-login" id="showLoginModal">
                                 <i class="bi bi-box-arrow-in-right me-1"></i>Login

@@ -1,12 +1,14 @@
-from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
+
+from users.decorators import session_required
 
 from alerts.services import send_high_risk_alert
 
 from .forms import ScanForm, QRUploadForm
 from .ml.phishing_detector import scan_content
+from .ml.hybrid_engine import scan_passive_content
 from .models import ScanResult
-from .qr_decoder import QRDecodeError, decode_qr_upload, infer_scan_type
+from .qr_decoder import QRDecodeError, decode_qr_upload, extract_qr_content
 from .report_generator import generate_scan_report
 import base64
 
@@ -44,11 +46,11 @@ TEMPLATE_MAP = {
 }
 
 
-@login_required
+@session_required
 def scanner_home(request):
     return redirect('scanner:url_scan')
 
-@login_required
+@session_required
 def gmail_inbox(request):
     """
     Display the latest Gmail emails of the logged-in user.
@@ -107,7 +109,7 @@ def gmail_inbox(request):
         },
     )
 
-@login_required
+@session_required
 def scan_gmail_email(request, message_id):
 
     service = get_gmail_service(request.user)
@@ -205,7 +207,95 @@ def save_scan_result(user, result):
     return scan_result
 
 
-@login_required
+def _format_qr_details(qr_data):
+    details = qr_data.get('extracted', {})
+    lines = [f"QR Type: {qr_data.get('type', 'text').title()}"]
+    for key, value in details.items():
+        if isinstance(value, list):
+            value = ', '.join(value) if value else 'None'
+        elif isinstance(value, bool):
+            value = 'Yes' if value else 'No'
+        elif value == '':
+            value = 'Not provided'
+        lines.append(f"{key.replace('_', ' ').title()}: {value}")
+    return '\n'.join(lines)
+
+
+def scan_qr_content(decoded_content):
+    qr_data = extract_qr_content(decoded_content)
+    qr_type = qr_data['type']
+    details = qr_data['extracted']
+
+    if qr_type == 'url':
+        result = scan_content(details['url'], 'url')
+    elif qr_type == 'email':
+        result = scan_content(details.get('scan_text', decoded_content), 'email')
+    elif qr_type == 'sms':
+        result = scan_content(details.get('scan_text', decoded_content), 'sms')
+    elif qr_type == 'text':
+        result = scan_content(details.get('text', decoded_content), 'text')
+    elif qr_type == 'wifi':
+        reasons = [
+            f"Wi-Fi network decoded. SSID: {details.get('ssid') or 'Not provided'}.",
+            f"Encryption type: {details.get('encryption') or 'Unknown'}.",
+            f"Password protected: {'Yes' if details.get('has_password') else 'No'}.",
+            f"Hidden network: {'Yes' if details.get('hidden') else 'No'}.",
+        ]
+        risk = 20
+        if details.get('encryption') in {'NOPASS', 'WEP'}:
+            risk = 45 if details.get('encryption') == 'NOPASS' else 35
+            reasons.append('Open or weak Wi-Fi encryption can expose traffic on untrusted networks.')
+        result = scan_passive_content(_format_qr_details(qr_data), 'wifi', reasons, risk, 78)
+    elif qr_type == 'contact':
+        reasons = [
+            f"Contact QR decoded for {details.get('name') or 'an unnamed contact'}.",
+            "Embedded emails and websites were extracted for validation.",
+        ]
+        nested_scores = []
+        for url in details.get('urls', [])[:2]:
+            nested = scan_content(url, 'url')
+            nested_scores.append(nested['risk_score'])
+            reasons.extend([f"Website check: {reason}" for reason in nested['explanation'][:3]])
+        for email in details.get('emails', [])[:2]:
+            nested = scan_content(f"From: {email}\n\nContact card email validation.", 'email')
+            nested_scores.append(nested['risk_score'])
+        risk = max(nested_scores) if nested_scores else 12
+        result = scan_passive_content(_format_qr_details(qr_data), 'contact', reasons, risk, 74)
+    elif qr_type == 'payment':
+        reasons = [
+            f"Payment QR decoded. Provider: {details.get('provider') or 'Unknown'}.",
+            f"Merchant: {details.get('merchant') or 'Not provided'}.",
+            f"Amount: {details.get('amount') or 'Not provided'} {details.get('currency') or ''}".strip(),
+            "Payment QR codes require human verification of merchant identity and amount before payment.",
+        ]
+        risk = 25
+        if not details.get('merchant'):
+            risk += 10
+            reasons.append('Merchant identity is missing or could not be verified from the QR content.')
+        result = scan_passive_content(_format_qr_details(qr_data), 'payment', reasons, risk, 68)
+    elif qr_type == 'product':
+        if details.get('url'):
+            result = scan_content(details['url'], 'url')
+            result['explanation'].insert(0, 'Product QR contains a URL, so the complete URL scanner was used.')
+        else:
+            reasons = [
+                f"Product identifier decoded: {details.get('product_id') or 'Not provided'}.",
+                "No URL was present, so there is no web destination to classify.",
+                "Validate the product ID against the official manufacturer, retailer, or inventory system.",
+            ]
+            result = scan_passive_content(_format_qr_details(qr_data), 'product', reasons, 10, 72)
+    else:
+        result = scan_content(decoded_content, 'text')
+
+    result['scan_type'] = f"QR {qr_type.title()}"
+    result['qr_type'] = qr_type
+    result['qr_details'] = details
+    result['content'] = decoded_content
+    result['scan_input'] = _format_qr_details(qr_data)
+    return result
+
+
+@session_required
 def scan_view(request, scan_type):
     config = SCAN_CONFIG.get(scan_type)
 
@@ -291,7 +381,7 @@ Message:
     )
 
 
-@login_required
+@session_required
 def qr_upload_view(request):
 
     result = None
@@ -313,12 +403,7 @@ def qr_upload_view(request):
                 form.cleaned_data["qr_image"]
             )
 
-            inferred_type = infer_scan_type(decoded_content)
-
-            result = scan_content(decoded_content, inferred_type)
-            result['scan_type'] = f'QR {result["scan_type"]}'
-            result['content'] = decoded_content
-            result['scan_input'] = decoded_content
+            result = scan_qr_content(decoded_content)
 
             save_scan_result(request.user, result)
 

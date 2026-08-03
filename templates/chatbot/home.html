@@ -26,6 +26,16 @@
             </div>
 
             <div class="col-lg-7">
+                {% if is_view_mode %}
+                    {# Read-only: sending a message would store data for a visitor
+                       who is not authenticated, so the composer is replaced. #}
+                    <div class="alert alert-warning" role="alert">
+                        <i class="bi bi-lock-fill me-2"></i>
+                        You can read your previous conversation in view-only mode.
+                        <a href="{% url 'users:login' %}" class="fw-bold text-decoration-underline">Log in again</a>
+                        to ask the assistant a new question.
+                    </div>
+                {% else %}
                 <form method="post" class="d-grid gap-3">
                     {% csrf_token %}
 
@@ -50,6 +60,7 @@
                         Send Message
                     </button>
                 </form>
+                {% endif %}
             </div>
 
         </div>

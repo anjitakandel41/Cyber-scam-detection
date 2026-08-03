@@ -1,11 +1,13 @@
-﻿from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.urls import reverse
 
+from .decorators import view_mode_allowed
+from .remember import get_display_user
 
-@login_required
+
+@view_mode_allowed
 def account_profile(request):
-    user = request.user
+    user = get_display_user(request)
     return render(
         request,
         'users/profile.html',

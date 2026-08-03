@@ -73,6 +73,10 @@ MIDDLEWARE = [
     "allauth.account.middleware.AccountMiddleware",
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    # Must come after AuthenticationMiddleware: puts a previously-used browser
+    # into read-only "view mode" without ever authenticating it.
+    'users.middleware.RememberedDeviceMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -87,6 +91,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'users.context_processors.view_mode',
             ],
         },
     },
@@ -168,6 +173,22 @@ AUTH_USER_MODEL = 'users.CustomUser'
 LOGIN_URL = 'users:login'
 LOGIN_REDIRECT_URL = 'dashboard:user_dashboard'
 LOGOUT_REDIRECT_URL = 'users:login'
+
+# ---------------------------------------------------------------------------
+# "Remember Dashboard" / view mode
+# ---------------------------------------------------------------------------
+# After logout the browser keeps a signed, HttpOnly cookie that re-opens the
+# owner's dashboard READ-ONLY. It is not a login: scans, report generation,
+# deletions and account settings all still require a real session.
+VIEW_MODE_ENABLED = True
+REMEMBERED_DEVICE_COOKIE_NAME = 'csd_remembered_device'
+REMEMBERED_DEVICE_MAX_AGE = 60 * 60 * 24 * 30  # 30 days
+
+# Session cookie hardening (unchanged behaviour in DEBUG, hardened in production)
+SESSION_COOKIE_HTTPONLY = True
+SESSION_COOKIE_SAMESITE = 'Lax'
+SESSION_COOKIE_SECURE = not DEBUG
+CSRF_COOKIE_SECURE = not DEBUG
 
 EMAIL_BACKEND = os.getenv('EMAIL_BACKEND', 'django.core.mail.backends.smtp.EmailBackend')
 EMAIL_HOST = os.getenv('EMAIL_HOST', 'smtp.gmail.com')

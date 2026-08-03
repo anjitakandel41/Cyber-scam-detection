@@ -6,7 +6,8 @@ from chatbot.models import ChatMessage
 from quiz.models import Question, QuizAttempt
 from scanner.models import ScanResult
 from users.models import CustomUser
-from users.decorators import admin_required, user_required
+from users.decorators import admin_required, user_or_view_mode_required
+from users.remember import get_display_user
 
 
 def _last_seven_days():
@@ -66,11 +67,14 @@ def admin_dashboard(request):
     return render(request, 'dashboard/admin_dashboard.html', context)
 
 
-@user_required
+@user_or_view_mode_required
 def user_dashboard(request):
-    user_scans = ScanResult.objects.filter(user=request.user)
-    user_alerts = Alert.objects.filter(user=request.user)
-    latest_attempt = QuizAttempt.objects.filter(user=request.user).first()
+    # In view mode this is the remembered user; otherwise it is request.user.
+    display_user = get_display_user(request)
+
+    user_scans = ScanResult.objects.filter(user=display_user)
+    user_alerts = Alert.objects.filter(user=display_user)
+    latest_attempt = QuizAttempt.objects.filter(user=display_user).first()
     quiz_progress = f'{latest_attempt.percentage}%' if latest_attempt else '0%'
     days = _last_seven_days()
     labels = [day.strftime('%b %d') for day in days]
@@ -82,7 +86,7 @@ def user_dashboard(request):
             {'label': 'Reports Created', 'value': user_scans.exclude(report_file='').count(), 'note': 'Generated PDF reports'},
             {'label': 'Quiz Progress', 'value': quiz_progress, 'note': 'Latest quiz score'},
             {'label': 'Alerts', 'value': user_alerts.count(), 'note': 'Email alerts created'},
-            {'label': 'Chat Messages', 'value': ChatMessage.objects.filter(user=request.user).count(), 'note': 'Awareness chatbot usage'},
+            {'label': 'Chat Messages', 'value': ChatMessage.objects.filter(user=display_user).count(), 'note': 'Awareness chatbot usage'},
         ],
         'activity_chart': {
             'labels': labels,
@@ -97,8 +101,8 @@ def user_dashboard(request):
                 user_scans.count(),
                 user_alerts.count(),
                 user_scans.exclude(report_file='').count(),
-                QuizAttempt.objects.filter(user=request.user).count(),
-                ChatMessage.objects.filter(user=request.user).count(),
+                QuizAttempt.objects.filter(user=display_user).count(),
+                ChatMessage.objects.filter(user=display_user).count(),
             ],
         },
         'risk_chart': {

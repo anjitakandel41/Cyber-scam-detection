@@ -40,17 +40,25 @@
                     </a>
 
                     <p class="sidebar-heading" style="color: #5B9BC7; border-bottom-color: rgba(91, 155, 199, 0.15);">Threat Detection</p>
-                    <a class="sidebar-link {% if request.path == '/scanner/url/' %}active{% endif %}" href="{% url 'scanner:url_scan' %}">
-                        <i class="bi bi-link-45deg"></i><span>URL Scanner</span>
+                    {% comment %}
+                        In view mode the scanners are locked. The links still point at the
+                        real URLs -- users/decorators.py bounces them to the login page --
+                        but they are visibly marked so the restriction is not a surprise.
+                    {% endcomment %}
+                    <a class="sidebar-link {% if is_view_mode %}locked-feature{% endif %} {% if request.path == '/scanner/url/' %}active{% endif %}" href="{% url 'scanner:url_scan' %}"{% if is_view_mode %} title="{{ view_mode_message }}"{% endif %}>
+                        <i class="bi bi-link-45deg"></i><span>URL Scanner</span>{% if is_view_mode %}<i class="bi bi-lock-fill"></i>{% endif %}
                     </a>
-                    <a class="sidebar-link {% if request.path == '/scanner/email/' %}active{% endif %}" href="{% url 'scanner:email_scan' %}">
-                        <i class="bi bi-envelope-check"></i><span>Email Scanner</span>
+                    <a class="sidebar-link {% if is_view_mode %}locked-feature{% endif %} {% if request.path == '/scanner/email/' %}active{% endif %}" href="{% url 'scanner:email_scan' %}"{% if is_view_mode %} title="{{ view_mode_message }}"{% endif %}>
+                        <i class="bi bi-envelope-check"></i><span>Email Scanner</span>{% if is_view_mode %}<i class="bi bi-lock-fill"></i>{% endif %}
                     </a>
-                    <a class="sidebar-link {% if request.path == '/scanner/sms/' %}active{% endif %}" href="{% url 'scanner:sms_scan' %}">
-                        <i class="bi bi-chat-left-text"></i><span>SMS Analyzer</span>
+                    <a class="sidebar-link {% if is_view_mode %}locked-feature{% endif %} {% if request.path == '/scanner/sms/' %}active{% endif %}" href="{% url 'scanner:sms_scan' %}"{% if is_view_mode %} title="{{ view_mode_message }}"{% endif %}>
+                        <i class="bi bi-chat-left-text"></i><span>SMS Analyzer</span>{% if is_view_mode %}<i class="bi bi-lock-fill"></i>{% endif %}
                     </a>
-                    <a class="sidebar-link {% if request.path == '/scanner/qr/' %}active{% endif %}" href="{% url 'scanner:qr_upload' %}">
-                        <i class="bi bi-qr-code-scan"></i><span>QR Scanner</span>
+                    <a class="sidebar-link {% if is_view_mode %}locked-feature{% endif %} {% if request.path == '/scanner/qr/' %}active{% endif %}" href="{% url 'scanner:qr_upload' %}"{% if is_view_mode %} title="{{ view_mode_message }}"{% endif %}>
+                        <i class="bi bi-qr-code-scan"></i><span>QR Scanner</span>{% if is_view_mode %}<i class="bi bi-lock-fill"></i>{% endif %}
+                    </a>
+                    <a class="sidebar-link {% if is_view_mode %}locked-feature{% endif %} {% if request.path == '/scanner/gmail/' %}active{% endif %}" href="{% url 'scanner:gmail_inbox' %}"{% if is_view_mode %} title="{{ view_mode_message }}"{% endif %}>
+                        <i class="bi bi-google"></i><span>Gmail Scanner</span>{% if is_view_mode %}<i class="bi bi-lock-fill"></i>{% endif %}
                     </a>
 
                     <p class="sidebar-heading" style="color: #5B9BC7; border-bottom-color: rgba(91, 155, 199, 0.15);">Analysis</p>
@@ -73,9 +81,22 @@
                     <a class="sidebar-link {% if request.path == '/accounts/profile/' %}active{% endif %}" href="{% url 'account_profile' %}">
                         <i class="bi bi-person-circle"></i><span>Profile</span>
                     </a>
-                    <button class="sidebar-link logout-link" type="button" id="showLogoutModal">
-                        <i class="bi bi-box-arrow-right"></i><span>Logout</span>
-                    </button>
+                    {% if is_view_mode %}
+                        {# No session to end -- offer to sign back in, or to wipe this device's memory. #}
+                        <a class="sidebar-link" href="{% url 'users:login' %}">
+                            <i class="bi bi-box-arrow-in-right"></i><span>Log in again</span>
+                        </a>
+                        <form method="post" action="{% url 'users:forget_device' %}">
+                            {% csrf_token %}
+                            <button class="sidebar-link logout-link" type="submit">
+                                <i class="bi bi-x-circle"></i><span>Forget this device</span>
+                            </button>
+                        </form>
+                    {% else %}
+                        <button class="sidebar-link logout-link" type="button" id="showLogoutModal">
+                            <i class="bi bi-box-arrow-right"></i><span>Logout</span>
+                        </button>
+                    {% endif %}
                 </nav>
             </div>
         </aside>
@@ -96,16 +117,17 @@
                         <i class="bi bi-chat-dots" style="font-size: 1.2rem;"></i>
                     </a>
                     <a class="user-chip" href="{% url 'account_profile' %}" style="background: rgba(58, 124, 165, 0.06); border: 2px solid #C5D9E8; padding: 6px 14px 6px 6px; border-radius: 50px; display: flex; align-items: center; gap: 10px; text-decoration: none; transition: all 0.3s ease;">
-                        <span class="user-avatar" style="background: linear-gradient(135deg, #2A5F82, #3A7CA5); color: white; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px;">{{ request.user.username|default:'U'|first|upper }}</span>
+                        <span class="user-avatar" style="background: linear-gradient(135deg, #2A5F82, #3A7CA5); color: white; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px;">{{ display_user.username|default:'U'|first|upper }}</span>
                         <span class="user-meta">
-                            <strong style="color: #1A3A4A; display: block; font-size: 14px;">{{ request.user.get_full_name|default:request.user.username }}</strong>
-                            <small style="color: #4A6A7A; font-size: 11px;">{% if request.user.is_admin_role %}Administrator{% else %}User Account{% endif %}</small>
+                            <strong style="color: #1A3A4A; display: block; font-size: 14px;">{{ display_user.get_full_name|default:display_user.username }}</strong>
+                            <small style="color: #4A6A7A; font-size: 11px;">{% if is_view_mode %}View-only{% elif request.user.is_admin_role %}Administrator{% else %}User Account{% endif %}</small>
                         </span>
                     </a>
                 </div>
             </header>
 
             <main class="dashboard-content {% block main_class %}{% endblock %}" style="background: linear-gradient(135deg, #F5FAFF 0%, #EBF8FF 100%); padding: 24px; min-height: calc(100vh - 80px);">
+                {% include 'partials/view_mode_banner.html' %}
                 {% if messages %}
                     <div class="content-container pt-3">
                         {% for message in messages %}

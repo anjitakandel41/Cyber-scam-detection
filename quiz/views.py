@@ -4,13 +4,16 @@ from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from django.shortcuts import get_object_or_404, redirect, render
 
+from users.decorators import session_required, view_mode_allowed
+from users.remember import get_display_user
+
 from .forms import QuizAttemptForm
 from .models import Question, QuizAnswer, QuizAttempt
 
 QUESTIONS_PER_PAGE = 10
 
 
-@login_required
+@view_mode_allowed
 def quiz_home(request):
     """
     Quiz Home Page
@@ -18,7 +21,7 @@ def quiz_home(request):
 
     latest_attempt = (
         QuizAttempt.objects.filter(
-            user=request.user
+            user=get_display_user(request)
         )
         .order_by("-completed_at")
         .first()
@@ -72,7 +75,7 @@ def get_questions(request):
         is_active=True
     ).order_by("id")
 
-@login_required
+@session_required("Please log in again to take the awareness quiz.")
 def attempt_quiz(request, page=1):
     """
     Quiz with pagination.
@@ -232,7 +235,7 @@ def attempt_quiz(request, page=1):
         },
     )
 
-@login_required
+@view_mode_allowed
 def quiz_result(request, attempt_id):
     """
     Display quiz result.
@@ -243,7 +246,7 @@ def quiz_result(request, attempt_id):
             "answers__question"
         ),
         pk=attempt_id,
-        user=request.user,
+        user=get_display_user(request),
     )
 
     wrong_answers = attempt.answers.filter(
@@ -260,7 +263,7 @@ def quiz_result(request, attempt_id):
     )
 
 
-@login_required
+@session_required("Please log in again to retry the awareness quiz.")
 def retry_quiz(request, attempt_id):
     """
     Retry only incorrect questions.

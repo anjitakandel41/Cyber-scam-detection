@@ -53,6 +53,39 @@
                 </div>
             </div>
         </article>
+
+        <article class="profile-card" style="background: rgba(255, 255, 255, 0.95); border: 1px solid #C5D9E8; border-radius: 20px; padding: 1.5rem; margin-top: 1.5rem;">
+            <h3 class="h6 fw-bold mb-3" style="color: #1A3A4A;">
+                <i class="bi bi-shield-lock me-2" style="color: #3A7CA5;"></i>Account security
+            </h3>
+
+            {% if is_view_mode %}
+                {# Security settings always require a live authenticated session. #}
+                <p class="mb-3" style="color: #4A6A7A; font-size: 0.9rem;">
+                    Security settings are locked in view-only mode.
+                </p>
+                <a class="btn btn-cyber" href="{% url 'users:login' %}"
+                   style="background: linear-gradient(135deg, #3A7CA5, #2A5F82); color: white; border: none; border-radius: 12px; padding: 10px 20px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center;">
+                    <i class="bi bi-box-arrow-in-right me-2"></i>Log in to manage security
+                </a>
+            {% else %}
+                <p class="mb-3" style="color: #4A6A7A; font-size: 0.9rem;">
+                    Changing your password signs every remembered device out of view-only mode.
+                </p>
+                <a class="btn btn-outline-cyber" href="{% url 'users:password_reset' %}"
+                   style="border: 1px solid #3A7CA5; color: #3A7CA5; border-radius: 12px; padding: 9px 20px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; background: transparent;">
+                    <i class="bi bi-key me-2"></i>Change password
+                </a>
+
+                <form method="post" action="{% url 'users:forget_device' %}" class="d-inline">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-outline-cyber"
+                            style="border: 1px solid #C5D9E8; color: #4A6A7A; border-radius: 12px; padding: 9px 20px; font-weight: 600; background: transparent;">
+                        <i class="bi bi-x-circle me-2"></i>Forget this device
+                    </button>
+                </form>
+            {% endif %}
+        </article>
     </section>
 </div>
 

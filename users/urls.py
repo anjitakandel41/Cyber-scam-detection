@@ -1,7 +1,7 @@
 from django.contrib.auth import views as auth_views
 from django.urls import path, reverse_lazy
 
-from .views import CustomLoginView, CustomLogoutView, RegisterView
+from .views import CustomLoginView, CustomLogoutView, RegisterView, forget_device_view
 
 app_name = 'users'
 
@@ -10,7 +10,10 @@ urlpatterns = [
     path('register/', RegisterView.as_view(), name='register'),
     path('login/', CustomLoginView.as_view(), name='login'),
     path('logout/', CustomLogoutView.as_view(), name='logout'),
-    
+
+    # "Remember Dashboard": drop this browser's view-only memory
+    path('forget-device/', forget_device_view, name='forget_device'),
+
     # REMOVED: Email verification URL - no longer needed
     # path('verify-email/<uidb64>/<token>/', verify_email, name='verify_email'),
     

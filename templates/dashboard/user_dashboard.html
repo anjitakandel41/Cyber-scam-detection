@@ -441,7 +441,7 @@
                 Personal Security Workspace
             </span>
 
-            <h1>Welcome back, {{ request.user.username }}</h1>
+            <h1>Welcome back, {{ display_user.username }}</h1>
 
             <p>
                 Track scam scans, alerts, risk levels, reports, and quiz progress from your personal cyber safety dashboard.
@@ -449,15 +449,28 @@
 
             <!-- Quick Action Buttons -->
             <div class="quick-action-buttons">
-                <a class="btn-cyber" href="{% url 'scanner:home' %}">
-                    <i class="bi bi-search me-2"></i>Run Scan
-                </a>
-                <a class="btn-outline-cyber-dark" href="{% url 'scanner:gmail_inbox' %}">
-                    <i class="bi bi-envelope-fill me-2"></i>Scan Gmail Spam
-                </a>
-                <a class="btn-outline-cyber-dark" href="{% url 'quiz:home' %}">
-                    <i class="bi bi-patch-question me-2"></i>Quiz
-                </a>
+                {% if is_view_mode %}
+                    {# Scanning needs a real session: send the visitor to login instead. #}
+                    <a class="btn-cyber" href="{% url 'users:login' %}">
+                        <i class="bi bi-box-arrow-in-right me-2"></i>Log in to run a scan
+                    </a>
+                    <a class="btn-outline-cyber-dark" href="{% url 'scan_history' %}">
+                        <i class="bi bi-clock-history me-2"></i>View Scan History
+                    </a>
+                    <a class="btn-outline-cyber-dark" href="{% url 'reports:home' %}">
+                        <i class="bi bi-file-earmark-bar-graph me-2"></i>View Reports
+                    </a>
+                {% else %}
+                    <a class="btn-cyber" href="{% url 'scanner:home' %}">
+                        <i class="bi bi-search me-2"></i>Run Scan
+                    </a>
+                    <a class="btn-outline-cyber-dark" href="{% url 'scanner:gmail_inbox' %}">
+                        <i class="bi bi-envelope-fill me-2"></i>Scan Gmail Spam
+                    </a>
+                    <a class="btn-outline-cyber-dark" href="{% url 'quiz:home' %}">
+                        <i class="bi bi-patch-question me-2"></i>Quiz
+                    </a>
+                {% endif %}
             </div>
         </div>
 
@@ -531,19 +544,29 @@
             </div>
 
             <div class="quick-action-list">
-                <a href="{% url 'scanner:home' %}">
-                    <i class="bi bi-search"></i>
-                    <div>
-                        <strong>Run a new scan</strong>
-                        <span>Check URL, email, SMS, or QR risk.</span>
-                    </div>
-                </a>
+                {% if is_view_mode %}
+                    <a href="{% url 'users:login' %}">
+                        <i class="bi bi-lock-fill"></i>
+                        <div>
+                            <strong>Run a new scan</strong>
+                            <span>{{ view_mode_message }}</span>
+                        </div>
+                    </a>
+                {% else %}
+                    <a href="{% url 'scanner:home' %}">
+                        <i class="bi bi-search"></i>
+                        <div>
+                            <strong>Run a new scan</strong>
+                            <span>Check URL, email, SMS, or QR risk.</span>
+                        </div>
+                    </a>
+                {% endif %}
 
                 <a href="{% url 'quiz:home' %}">
                     <i class="bi bi-patch-question"></i>
                     <div>
                         <strong>Open awareness quiz</strong>
-                        <span>Improve scam detection knowledge.</span>
+                        <span>{% if is_view_mode %}Review your past quiz results.{% else %}Improve scam detection knowledge.{% endif %}</span>
                     </div>
                 </a>
 

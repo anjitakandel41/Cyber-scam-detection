@@ -43,11 +43,17 @@ def check_virustotal(url):
         suspicious = stats.get("suspicious", 0)
 
         score = min((malicious * 25) + (suspicious * 10), 100)
+        if malicious or suspicious:
+            message = (
+                f"VirusTotal reported {malicious} malicious and "
+                f"{suspicious} suspicious engine result(s)."
+            )
+        else:
+            message = "VirusTotal found no known malicious or suspicious reports."
 
         return {
             "score": score,
-            # "message": f"VirusTotal found {malicious} malicious and {suspicious} suspicious reports."
-              "message": "No known threats were found in VirusTotal's global database."
+            "message": message
         }
 
     except Exception as e:

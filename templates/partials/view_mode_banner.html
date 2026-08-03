@@ -1,0 +1,135 @@
+{% comment %}
+Read-only "view mode" banner.
+
+Rendered whenever this browser is remembered but has no authenticated session.
+Purely informational -- the real enforcement lives in users/decorators.py.
+{% endcomment %}
+{% if is_view_mode %}
+<div class="view-mode-banner" role="status" aria-live="polite">
+    <div class="view-mode-banner__icon">
+        <i class="bi bi-eye-fill"></i>
+    </div>
+
+    <div class="view-mode-banner__text">
+        <strong>View-only mode &mdash; welcome back, {{ display_user.get_full_name|default:display_user.username }}.</strong>
+        <span>
+            You are seeing your saved dashboard, history and reports.
+            Scanning, report generation and account settings are locked until you log in again.
+        </span>
+    </div>
+
+    <div class="view-mode-banner__actions">
+        <a class="view-mode-btn view-mode-btn--primary" href="{% url 'users:login' %}">
+            <i class="bi bi-box-arrow-in-right me-1"></i>Log in again
+        </a>
+
+        <form method="post" action="{% url 'users:forget_device' %}" class="d-inline">
+            {% csrf_token %}
+            <button type="submit" class="view-mode-btn view-mode-btn--ghost">
+                <i class="bi bi-x-circle me-1"></i>Not you?
+            </button>
+        </form>
+    </div>
+</div>
+
+<style>
+    .view-mode-banner {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        flex-wrap: wrap;
+        background: #FEF7E0;
+        border: 1px solid #FCE8A0;
+        border-left: 5px solid #F4B400;
+        border-radius: 14px;
+        padding: 14px 18px;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 15px rgba(244, 180, 0, 0.08);
+    }
+
+    .view-mode-banner__icon {
+        width: 42px;
+        height: 42px;
+        flex-shrink: 0;
+        border-radius: 50%;
+        background: rgba(244, 180, 0, 0.18);
+        color: #A67C00;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+    }
+
+    .view-mode-banner__text {
+        flex: 1 1 320px;
+        min-width: 240px;
+        line-height: 1.45;
+    }
+
+    .view-mode-banner__text strong {
+        display: block;
+        color: #1A3A4A;
+        font-size: 0.98rem;
+    }
+
+    .view-mode-banner__text span {
+        color: #4A6A7A;
+        font-size: 0.88rem;
+    }
+
+    .view-mode-banner__actions {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .view-mode-btn {
+        border: none;
+        border-radius: 10px;
+        padding: 8px 16px;
+        font-weight: 600;
+        font-size: 0.85rem;
+        text-decoration: none;
+        white-space: nowrap;
+        transition: all 0.25s ease;
+        cursor: pointer;
+    }
+
+    .view-mode-btn--primary {
+        background: linear-gradient(135deg, #3A7CA5, #2A5F82);
+        color: #FFFFFF;
+        box-shadow: 0 4px 15px rgba(58, 124, 165, 0.18);
+    }
+
+    .view-mode-btn--primary:hover {
+        color: #FFFFFF;
+        transform: translateY(-1px);
+        box-shadow: 0 6px 20px rgba(58, 124, 165, 0.28);
+    }
+
+    .view-mode-btn--ghost {
+        background: transparent;
+        color: #4A6A7A;
+        border: 1px solid #C5D9E8;
+    }
+
+    .view-mode-btn--ghost:hover {
+        background: #FFFFFF;
+        color: #D9534F;
+        border-color: #D9534F;
+    }
+
+    /* Locked navigation / action items while in view mode */
+    .locked-feature {
+        opacity: 0.55;
+        cursor: not-allowed;
+        position: relative;
+    }
+
+    .locked-feature .bi-lock-fill {
+        margin-left: auto;
+        font-size: 0.8rem;
+    }
+</style>
+{% endif %}

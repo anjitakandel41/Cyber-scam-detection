@@ -32,7 +32,12 @@
         </div>
         <div class="d-flex flex-wrap gap-2 mt-4">
             {% if total_questions %}
-                <a class="btn btn-cyber btn-lg" href="{% url 'quiz:attempt' %}"><i class="bi bi-play-circle me-2"></i>Attempt quiz</a>
+                {% if is_view_mode %}
+                    {# Taking a quiz stores answers, so it needs a real session. #}
+                    <a class="btn btn-cyber btn-lg" href="{% url 'users:login' %}"><i class="bi bi-box-arrow-in-right me-2"></i>Log in to attempt quiz</a>
+                {% else %}
+                    <a class="btn btn-cyber btn-lg" href="{% url 'quiz:attempt' %}"><i class="bi bi-play-circle me-2"></i>Attempt quiz</a>
+                {% endif %}
                 {% if latest_attempt %}
                     <a class="btn btn-outline-cyber btn-lg" href="{% url 'quiz:result' latest_attempt.pk %}"><i class="bi bi-clipboard-check me-2"></i>View latest score</a>
                 {% endif %}
