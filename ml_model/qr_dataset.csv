@@ -1,0 +1,1721 @@
+content,qr_type,label
+SMSTO:+977-9821232457:The invoice has been received and marked paid.,sms,0
+SMSTO:+977-9830804224:Thank you for your payment. No further action is required.,sms,0
+SMSTO:+977-9818852650:Your delivery is scheduled for tomorrow afternoon.,sms,0
+WIFI:T:WPA;S:CampusGuest105;P:StrongPass1052026;;,wifi,0
+"mailto:verify@google-login.example.net?subject=Refund failed: update card now&body=Congratulations, you won a cash prize. Claim reward immediately",email,1
+mailto:support@google-login.example.net?subject=Refund failed: update card now&body=KYC expired. Confirm wallet PIN and OTP to continue,email,1
+mailto:billing@wikipedia.org?subject=Library book reminder&body=Thank you for your payment. No further action is required.,email,0
+SMSTO:+977-9829881959:Your OTP is 123456. Do not share it with anyone.,sms,0
+SMSTO:+977-9828555963:The invoice has been received and marked paid.,sms,0
+WIFI:T:WPA;S:CampusGuest84;P:StrongPass842026;;,wifi,0
+https://github.com/status/1962,url,0
+SMSTO:+977-9836664201:Your delivery is scheduled for tomorrow afternoon.,sms,0
+https://github.com/receipt/1268,url,0
+"BEGIN:VCARD
+FN:Student 53
+EMAIL:student53@university.edu.np
+URL:https://university.edu.np/profile/53
+END:VCARD",contact,0
+https://docs.djangoproject.com/status/1684,url,0
+WIFI:T:WPA;S:CampusGuest71;P:StrongPass712026;;,wifi,0
+http://10.8.4.22/claim-prize/2900?session=57241,url,1
+mailto:security@192.168.45.12?subject=Your wallet is blocked&body=Security alert. Update password within 24 hours,email,1
+http://paypal-security.example.ru/claim-prize/2661?session=51662,url,1
+https://hospital.org.np/receipt/1479,url,0
+https://city-services.example/course/1387,url,0
+https://company-intranet.example/docs/1430,url,0
+WIFI:T:WPA;S:CampusGuest104;P:StrongPass1042026;;,wifi,0
+mailto:security@np-prize-claim.test?subject=Urgent account verification required&body=Customs fee pending. Pay now to release your parcel,email,1
+SMSTO:DELIVERY:KYC expired. Confirm wallet PIN and OTP to continue: http://np-prize-claim.test/verify/5383,sms,1
+https://company-intranet.example/receipt/1134,url,0
+SMSTO:DELIVERY:KYC expired. Confirm wallet PIN and OTP to continue: http://10.8.4.22/verify/5388,sms,1
+SMSTO:+977-9895303152:The invoice has been received and marked paid.,sms,0
+mailto:noreply@store-receipts.example?subject=Course update&body=The invoice has been received and marked paid.,email,0
+WIFI:T:WPA;S:CampusGuest106;P:StrongPass1062026;;,wifi,0
+"BEGIN:VCARD
+FN:Student 78
+EMAIL:student78@university.edu.np
+URL:https://university.edu.np/profile/78
+END:VCARD",contact,0
+SMSTO:+977-9800000000:Security alert. Update password within 24 hours: http://paypal-security.example.ru/verify/5118,sms,1
+mailto:support@coursera.org?subject=Password changed successfully&body=Your appointment is confirmed for Friday at 10:00 AM.,email,0
+mailto:admin@mozilla.org?subject=Password changed successfully&body=Your OTP is 123456. Do not share it with anyone.,email,0
+SMSTO:+977-9864033353:The invoice has been received and marked paid.,sms,0
+https://library.example/docs/1733,url,0
+SMSTO:BANKALERT:URGENT: your bank account is blocked. Verify login now: http://192.168.45.12/verify/5801,sms,1
+mailto:billing@github.com?subject=Course update&body=Your delivery is scheduled for tomorrow afternoon.,email,0
+mailto:billing@wikipedia.org?subject=Project status summary&body=Your delivery is scheduled for tomorrow afternoon.,email,0
+"mailto:security@192.168.45.12?subject=Your wallet is blocked&body=Congratulations, you won a cash prize. Claim reward immediately",email,1
+mailto:support@secure-login-check.test?subject=Final warning: confirm your password&body=URGENT: your bank account is blocked. Verify login now,email,1
+mailto:noreply@nepalbank.com.np?subject=Library book reminder&body=Thank you for your payment. No further action is required.,email,0
+SMSTO:WALLET:Security alert. Update password within 24 hours: http://google-login.example.net/verify/5585,sms,1
+WIFI:T:WPA;S:CampusGuest81;P:StrongPass812026;;,wifi,0
+SMSTO:+977-9845943456:The invoice has been received and marked paid.,sms,0
+SMSTO:+977-9833485502:Your appointment is confirmed for Friday at 10:00 AM.,sms,0
+WIFI:T:WPA;S:CampusGuest102;P:StrongPass1022026;;,wifi,0
+SMSTO:+977-9860922531:Your appointment is confirmed for Friday at 10:00 AM.,sms,0
+mailto:support@docs.djangoproject.com?subject=Appointment reminder&body=Class starts tomorrow. Please bring your notebook.,email,0
+SMSTO:WALLET:Customs fee pending. Pay now to release your parcel: http://delivery-fee-pay.test/verify/5343,sms,1
+mailto:noreply@nrb.org.np?subject=Appointment reminder&body=The invoice has been received and marked paid.,email,0
+http://account-verify-now.test/pay-fee/2663?session=64516,url,1
+http://192.168.45.12/login-update/2199?session=54642,url,1
+mailto:billing@khanacademy.org?subject=Password changed successfully&body=The invoice has been received and marked paid.,email,0
+mailto:billing@github.com?subject=Password changed successfully&body=Thank you for your payment. No further action is required.,email,0
+http://google-login.example.net/pay-fee/2725?session=73373,url,1
+WIFI:T:WPA;S:CampusGuest10;P:StrongPass102026;;,wifi,0
+SMSTO:+977-9888083792:Your delivery is scheduled for tomorrow afternoon.,sms,0
+https://library.example/course/1620,url,0
+http://account-verify-now.test/verify-account/2507?session=58819,url,1
+WIFI:T:WPA;S:CampusGuest7;P:StrongPass72026;;,wifi,0
+SMSTO:WALLET:Security alert. Update password within 24 hours: http://account-verify-now.test/verify/5537,sms,1
+https://paypal-security.example.ru/claim-prize/2179?session=12246,url,1
+SMSTO:+977-9838633439:Thank you for your payment. No further action is required.,sms,0
+mailto:support@mozilla.org?subject=Meeting notes&body=Your delivery is scheduled for tomorrow afternoon.,email,0
+"SMSTO:BANKALERT:Congratulations, you won a cash prize. Claim reward immediately: http://192.168.45.12/verify/5919",sms,1
+http://10.8.4.22/verify-account/2452?session=48654,url,1
+https://store-receipts.example/notice/1166,url,0
+https://mozilla.org/profile/1834,url,0
+SMSTO:+977-9849305644:Thank you for your payment. No further action is required.,sms,0
+https://openai.com/receipt/1517,url,0
+mailto:security@account-verify-now.test?subject=Urgent account verification required&body=Refund failed. Enter card details to receive money,email,1
+"BEGIN:VCARD
+FN:Student 74
+EMAIL:student74@university.edu.np
+URL:https://university.edu.np/profile/74
+END:VCARD",contact,0
+mailto:verify@paypal-security.example.ru?subject=Prize claim pending&body=Security alert. Update password within 24 hours,email,1
+mailto:verify@bank-support-update.test?subject=Prize claim pending&body=Refund failed. Enter card details to receive money,email,1
+mailto:reward@khalti-refund.test?subject=Urgent account verification required&body=URGENT: your bank account is blocked. Verify login now,email,1
+https://khalti-refund.test/login-update/2835?session=11276,url,1
+mailto:admin@ird.gov.np?subject=Receipt for your recent purchase&body=The invoice has been received and marked paid.,email,0
+SMSTO:+977-9888537126:Your appointment is confirmed for Friday at 10:00 AM.,sms,0
+mailto:verify@192.168.45.12?subject=Final warning: confirm your password&body=URGENT: your bank account is blocked. Verify login now,email,1
+https://192.168.45.12/pay-fee/2236?session=81256,url,1
+SMSTO:+977-9800000000:Customs fee pending. Pay now to release your parcel: http://10.8.4.22/verify/5935,sms,1
+SMSTO:+977-9874331966:The invoice has been received and marked paid.,sms,0
+"BEGIN:VCARD
+FN:Student 41
+EMAIL:student41@university.edu.np
+URL:https://university.edu.np/profile/41
+END:VCARD",contact,0
+"SMSTO:DELIVERY:Congratulations, you won a cash prize. Claim reward immediately: http://account-verify-now.test/verify/5762",sms,1
+WIFI:T:WPA;S:CampusGuest37;P:StrongPass372026;;,wifi,0
+https://google-login.example.net/pay-fee/2415?session=60905,url,1
+WIFI:T:WPA;S:CampusGuest65;P:StrongPass652026;;,wifi,0
+mailto:reward@google-login.example.net?subject=Prize claim pending&body=Refund failed. Enter card details to receive money,email,1
+https://delivery-fee-pay.test/pay-fee/2983?session=91681,url,1
+https://coursera.org/help/1050,url,0
+https://wikipedia.org/help/1352,url,0
+"BEGIN:VCARD
+FN:Student 9
+EMAIL:student9@university.edu.np
+URL:https://university.edu.np/profile/9
+END:VCARD",contact,0
+https://nepalbank.com.np/help/1018,url,0
+https://store-receipts.example/notice/1192,url,0
+mailto:noreply@library.example?subject=Password changed successfully&body=Class starts tomorrow. Please bring your notebook.,email,0
+mailto:security@secure-login-check.test?subject=Final warning: confirm your password&body=Customs fee pending. Pay now to release your parcel,email,1
+SMSTO:DELIVERY:Security alert. Update password within 24 hours: http://bank-support-update.test/verify/5122,sms,1
+https://delivery-fee-pay.test/verify-account/2563?session=93928,url,1
+SMSTO:BANKALERT:Security alert. Update password within 24 hours: http://account-verify-now.test/verify/5379,sms,1
+http://bit.ly/login-update105,url,1
+"BEGIN:VCARD
+FN:Student 89
+EMAIL:student89@university.edu.np
+URL:https://university.edu.np/profile/89
+END:VCARD",contact,0
+http://192.168.45.12/login-update/2486?session=84264,url,1
+https://github.com/course/1386,url,0
+SMSTO:+977-9864127552:The invoice has been received and marked paid.,sms,0
+https://khanacademy.org/course/1245,url,0
+WIFI:T:WPA;S:CampusGuest107;P:StrongPass1072026;;,wifi,0
+SMSTO:+977-9824694269:Your delivery is scheduled for tomorrow afternoon.,sms,0
+http://delivery-fee-pay.test/wallet-kyc/2669?session=94182,url,1
+mailto:verify@esewa-bonus-claim.test?subject=Final warning: confirm your password&body=Security alert. Update password within 24 hours,email,1
+http://bit.ly/wallet-kyc539,url,1
+SMSTO:+977-9815971136:Class starts tomorrow. Please bring your notebook.,sms,0
+mailto:support@khalti-refund.test?subject=Refund failed: update card now&body=Customs fee pending. Pay now to release your parcel,email,1
+mailto:security@wallet-kyc-alert.test?subject=Prize claim pending&body=Security alert. Update password within 24 hours,email,1
+SMSTO:DELIVERY:Customs fee pending. Pay now to release your parcel: http://account-verify-now.test/verify/5240,sms,1
+https://np-prize-claim.test/verify-account/2073?session=67983,url,1
+https://company-intranet.example/help/1739,url,0
+WIFI:T:WPA;S:CampusGuest117;P:StrongPass1172026;;,wifi,0
+"BEGIN:VCARD
+FN:Student 73
+EMAIL:student73@university.edu.np
+URL:https://university.edu.np/profile/73
+END:VCARD",contact,0
+"mailto:verify@esewa-bonus-claim.test?subject=Prize claim pending&body=Congratulations, you won a cash prize. Claim reward immediately",email,1
+https://company-intranet.example/docs/1117,url,0
+mailto:admin@coursera.org?subject=Appointment reminder&body=Thank you for your payment. No further action is required.,email,0
+http://delivery-fee-pay.test/login-update/2636?session=76046,url,1
+mailto:reward@paypal-security.example.ru?subject=Urgent account verification required&body=Refund failed. Enter card details to receive money,email,1
+SMSTO:+977-9800000000:KYC expired. Confirm wallet PIN and OTP to continue: http://secure-login-check.test/verify/5996,sms,1
+"SMSTO:BANKALERT:Congratulations, you won a cash prize. Claim reward immediately: http://10.8.4.22/verify/5396",sms,1
+https://secure-login-check.test/pay-fee/2149?session=64592,url,1
+WIFI:T:WPA;S:CampusGuest8;P:StrongPass82026;;,wifi,0
+https://nrb.org.np/profile/1902,url,0
+"BEGIN:VCARD
+FN:Student 115
+EMAIL:student115@university.edu.np
+URL:https://university.edu.np/profile/115
+END:VCARD",contact,0
+https://bank-support-update.test/login-update/2295?session=42447,url,1
+mailto:noreply@khanacademy.org?subject=Password changed successfully&body=Your appointment is confirmed for Friday at 10:00 AM.,email,0
+"BEGIN:VCARD
+FN:Student 67
+EMAIL:student67@university.edu.np
+URL:https://university.edu.np/profile/67
+END:VCARD",contact,0
+SMSTO:+977-9863394430:Your appointment is confirmed for Friday at 10:00 AM.,sms,0
+SMSTO:WALLET:KYC expired. Confirm wallet PIN and OTP to continue: http://wallet-kyc-alert.test/verify/5565,sms,1
+SMSTO:+977-9819492312:Your appointment is confirmed for Friday at 10:00 AM.,sms,0
+mailto:support@wikipedia.org?subject=Receipt for your recent purchase&body=Your delivery is scheduled for tomorrow afternoon.,email,0
+SMSTO:BANKALERT:Customs fee pending. Pay now to release your parcel: http://paypal-security.example.ru/verify/5060,sms,1
+SMSTO:+977-9862627379:Your OTP is 123456. Do not share it with anyone.,sms,0
+mailto:support@google-login.example.net?subject=Final warning: confirm your password&body=URGENT: your bank account is blocked. Verify login now,email,1
+https://np-prize-claim.test/pay-fee/2517?session=94245,url,1
+WIFI:T:WPA;S:CampusGuest61;P:StrongPass612026;;,wifi,0
+SMSTO:+977-9800000000:URGENT: your bank account is blocked. Verify login now: http://khalti-refund.test/verify/5384,sms,1
+https://docs.djangoproject.com/status/1079,url,0
+mailto:noreply@company-intranet.example?subject=Appointment reminder&body=Your OTP is 123456. Do not share it with anyone.,email,0
+"BEGIN:VCARD
+FN:Student 17
+EMAIL:student17@university.edu.np
+URL:https://university.edu.np/profile/17
+END:VCARD",contact,0
+"BEGIN:VCARD
+FN:Student 82
+EMAIL:student82@university.edu.np
+URL:https://university.edu.np/profile/82
+END:VCARD",contact,0
+mailto:noreply@openai.com?subject=Receipt for your recent purchase&body=Your delivery is scheduled for tomorrow afternoon.,email,0
+"BEGIN:VCARD
+FN:Student 13
+EMAIL:student13@university.edu.np
+URL:https://university.edu.np/profile/13
+END:VCARD",contact,0
+https://city-services.example/docs/1471,url,0
+SMSTO:WALLET:URGENT: your bank account is blocked. Verify login now: http://esewa-bonus-claim.test/verify/5047,sms,1
+SMSTO:+977-9868638880:The invoice has been received and marked paid.,sms,0
+https://coursera.org/receipt/1128,url,0
+mailto:noreply@hospital.org.np?subject=Library book reminder&body=Thank you for your payment. No further action is required.,email,0
+mailto:verify@esewa-bonus-claim.test?subject=Unusual login detected&body=Customs fee pending. Pay now to release your parcel,email,1
+https://library.example/notice/1026,url,0
+SMSTO:+977-9817207367:Your appointment is confirmed for Friday at 10:00 AM.,sms,0
+http://bit.ly/claim-prize462,url,1
+WIFI:T:WPA;S:CampusGuest115;P:StrongPass1152026;;,wifi,0
+http://paypal-security.example.ru/verify-account/2886?session=23405,url,1
+"BEGIN:VCARD
+FN:Student 51
+EMAIL:student51@university.edu.np
+URL:https://university.edu.np/profile/51
+END:VCARD",contact,0
+mailto:noreply@mozilla.org?subject=Project status summary&body=Class starts tomorrow. Please bring your notebook.,email,0
+WIFI:T:WPA;S:CampusGuest111;P:StrongPass1112026;;,wifi,0
+http://google-login.example.net/pay-fee/2977?session=41760,url,1
+mailto:verify@wallet-kyc-alert.test?subject=Prize claim pending&body=URGENT: your bank account is blocked. Verify login now,email,1
+https://store-receipts.example/help/1279,url,0
+http://192.168.45.12/verify-account/2333?session=75481,url,1
+WIFI:T:WPA;S:CampusGuest34;P:StrongPass342026;;,wifi,0
+"BEGIN:VCARD
+FN:Student 32
+EMAIL:student32@university.edu.np
+URL:https://university.edu.np/profile/32
+END:VCARD",contact,0
+http://wallet-kyc-alert.test/wallet-kyc/2984?session=40603,url,1
+mailto:reward@bank-support-update.test?subject=Unusual login detected&body=KYC expired. Confirm wallet PIN and OTP to continue,email,1
+WIFI:T:WPA;S:CampusGuest90;P:StrongPass902026;;,wifi,0
+https://company-intranet.example/status/1286,url,0
+SMSTO:BANKALERT:URGENT: your bank account is blocked. Verify login now: http://wallet-kyc-alert.test/verify/5615,sms,1
+https://secure-login-check.test/verify-account/2128?session=70686,url,1
+mailto:support@esewa-bonus-claim.test?subject=Urgent account verification required&body=Refund failed. Enter card details to receive money,email,1
+"SMSTO:BANKALERT:Congratulations, you won a cash prize. Claim reward immediately: http://khalti-refund.test/verify/5632",sms,1
+SMSTO:+977-9846939031:Your OTP is 123456. Do not share it with anyone.,sms,0
+https://paypal-security.example.ru/claim-prize/2865?session=27709,url,1
+https://university.edu.np/profile/1338,url,0
+SMSTO:+977-9890110065:Thank you for your payment. No further action is required.,sms,0
+http://wallet-kyc-alert.test/claim-prize/2443?session=41194,url,1
+https://google-login.example.net/verify-account/2117?session=98181,url,1
+https://library.example/help/1730,url,0
+https://ird.gov.np/course/1539,url,0
+SMSTO:+977-9849274257:Your appointment is confirmed for Friday at 10:00 AM.,sms,0
+https://city-services.example/help/1419,url,0
+"BEGIN:VCARD
+FN:Student 21
+EMAIL:student21@university.edu.np
+URL:https://university.edu.np/profile/21
+END:VCARD",contact,0
+mailto:verify@wallet-kyc-alert.test?subject=Your wallet is blocked&body=KYC expired. Confirm wallet PIN and OTP to continue,email,1
+SMSTO:BANKALERT:Security alert. Update password within 24 hours: http://paypal-security.example.ru/verify/5457,sms,1
+WIFI:T:WPA;S:CampusGuest101;P:StrongPass1012026;;,wifi,0
+SMSTO:+977-9800000000:Security alert. Update password within 24 hours: http://secure-login-check.test/verify/5248,sms,1
+SMSTO:+977-9832779572:Your appointment is confirmed for Friday at 10:00 AM.,sms,0
+SMSTO:+977-9843907858:The invoice has been received and marked paid.,sms,0
+http://bit.ly/claim-prize588,url,1
+http://10.8.4.22/pay-fee/2701?session=48096,url,1
+"BEGIN:VCARD
+FN:Student 119
+EMAIL:student119@university.edu.np
+URL:https://university.edu.np/profile/119
+END:VCARD",contact,0
+WIFI:T:WPA;S:CampusGuest73;P:StrongPass732026;;,wifi,0
+mailto:verify@10.8.4.22?subject=Unusual login detected&body=KYC expired. Confirm wallet PIN and OTP to continue,email,1
+SMSTO:+977-9880064547:Your delivery is scheduled for tomorrow afternoon.,sms,0
+mailto:admin@coursera.org?subject=Library book reminder&body=Your appointment is confirmed for Friday at 10:00 AM.,email,0
+SMSTO:+977-9800000000:KYC expired. Confirm wallet PIN and OTP to continue: http://delivery-fee-pay.test/verify/5729,sms,1
+mailto:noreply@store-receipts.example?subject=Monthly statement is available&body=Your delivery is scheduled for tomorrow afternoon.,email,0
+SMSTO:WALLET:Customs fee pending. Pay now to release your parcel: http://192.168.45.12/verify/5422,sms,1
+https://coursera.org/docs/1369,url,0
+mailto:support@company-intranet.example?subject=Course update&body=Class starts tomorrow. Please bring your notebook.,email,0
+WIFI:T:WPA;S:CampusGuest3;P:StrongPass32026;;,wifi,0
+http://wallet-kyc-alert.test/pay-fee/2195?session=84277,url,1
+https://company-intranet.example/receipt/1726,url,0
+http://bit.ly/login-update546,url,1
+SMSTO:BANKALERT:KYC expired. Confirm wallet PIN and OTP to continue: http://khalti-refund.test/verify/5678,sms,1
+WIFI:T:WPA;S:CampusGuest92;P:StrongPass922026;;,wifi,0
+https://wikipedia.org/docs/1236,url,0
+https://10.8.4.22/verify-account/2219?session=42990,url,1
+SMSTO:+977-9882329391:Your delivery is scheduled for tomorrow afternoon.,sms,0
+"BEGIN:VCARD
+FN:Student 64
+EMAIL:student64@university.edu.np
+URL:https://university.edu.np/profile/64
+END:VCARD",contact,0
+mailto:billing@docs.djangoproject.com?subject=Meeting notes&body=The invoice has been received and marked paid.,email,0
+mailto:support@account-verify-now.test?subject=Final warning: confirm your password&body=URGENT: your bank account is blocked. Verify login now,email,1
+https://docs.djangoproject.com/receipt/1604,url,0
+mailto:admin@nrb.org.np?subject=Monthly statement is available&body=Thank you for your payment. No further action is required.,email,0
+https://paypal-security.example.ru/verify-account/2355?session=85582,url,1
+SMSTO:+977-9821458649:Your delivery is scheduled for tomorrow afternoon.,sms,0
+mailto:noreply@store-receipts.example?subject=Appointment reminder&body=Thank you for your payment. No further action is required.,email,0
+mailto:support@wallet-kyc-alert.test?subject=Your wallet is blocked&body=KYC expired. Confirm wallet PIN and OTP to continue,email,1
+http://bit.ly/claim-prize623,url,1
+http://khalti-refund.test/verify-account/2741?session=64344,url,1
+"BEGIN:VCARD
+FN:Student 44
+EMAIL:student44@university.edu.np
+URL:https://university.edu.np/profile/44
+END:VCARD",contact,0
+"BEGIN:VCARD
+FN:Student 7
+EMAIL:student7@university.edu.np
+URL:https://university.edu.np/profile/7
+END:VCARD",contact,0
+https://np-prize-claim.test/verify-account/2879?session=91962,url,1
+https://bank-support-update.test/wallet-kyc/2303?session=52318,url,1
+SMSTO:+977-9835414238:Class starts tomorrow. Please bring your notebook.,sms,0
+https://10.8.4.22/claim-prize/2285?session=21401,url,1
+https://store-receipts.example/receipt/1258,url,0
+SMSTO:DELIVERY:Security alert. Update password within 24 hours: http://account-verify-now.test/verify/5451,sms,1
+https://np-prize-claim.test/wallet-kyc/2792?session=97773,url,1
+"mailto:support@google-login.example.net?subject=Urgent account verification required&body=Congratulations, you won a cash prize. Claim reward immediately",email,1
+SMSTO:+977-9831720358:Your appointment is confirmed for Friday at 10:00 AM.,sms,0
+mailto:support@secure-login-check.test?subject=Urgent account verification required&body=Customs fee pending. Pay now to release your parcel,email,1
+SMSTO:DELIVERY:Refund failed. Enter card details to receive money: http://account-verify-now.test/verify/5981,sms,1
+http://bit.ly/login-update770,url,1
+mailto:admin@docs.djangoproject.com?subject=Course update&body=Thank you for your payment. No further action is required.,email,0
+SMSTO:+977-9842358410:Thank you for your payment. No further action is required.,sms,0
+http://np-prize-claim.test/claim-prize/2643?session=18130,url,1
+SMSTO:+977-9879767584:Your OTP is 123456. Do not share it with anyone.,sms,0
+SMSTO:DELIVERY:Security alert. Update password within 24 hours: http://np-prize-claim.test/verify/5003,sms,1
+mailto:billing@library.example?subject=Appointment reminder&body=Thank you for your payment. No further action is required.,email,0
+https://company-intranet.example/course/1689,url,0
+mailto:verify@192.168.45.12?subject=Prize claim pending&body=KYC expired. Confirm wallet PIN and OTP to continue,email,1
+mailto:verify@account-verify-now.test?subject=Your wallet is blocked&body=URGENT: your bank account is blocked. Verify login now,email,1
+https://store-receipts.example/help/1895,url,0
+mailto:verify@np-prize-claim.test?subject=Prize claim pending&body=Refund failed. Enter card details to receive money,email,1
+SMSTO:+977-9875646323:Thank you for your payment. No further action is required.,sms,0
+SMSTO:BANKALERT:Refund failed. Enter card details to receive money: http://192.168.45.12/verify/5105,sms,1
+https://company-intranet.example/course/1250,url,0
+https://github.com/help/1353,url,0
+https://khanacademy.org/help/1742,url,0
+https://khanacademy.org/profile/1255,url,0
+SMSTO:+977-9864430657:Your delivery is scheduled for tomorrow afternoon.,sms,0
+https://company-intranet.example/notice/1557,url,0
+http://paypal-security.example.ru/claim-prize/2827?session=45311,url,1
+SMSTO:+977-9881182754:Your OTP is 123456. Do not share it with anyone.,sms,0
+https://bank-support-update.test/verify-account/2607?session=68220,url,1
+SMSTO:+977-9888593150:The invoice has been received and marked paid.,sms,0
+http://delivery-fee-pay.test/claim-prize/2100?session=44282,url,1
+SMSTO:WALLET:Refund failed. Enter card details to receive money: http://delivery-fee-pay.test/verify/5577,sms,1
+WIFI:T:WPA;S:CampusGuest51;P:StrongPass512026;;,wifi,0
+http://secure-login-check.test/claim-prize/2274?session=73518,url,1
+mailto:verify@secure-login-check.test?subject=Final warning: confirm your password&body=KYC expired. Confirm wallet PIN and OTP to continue,email,1
+SMSTO:+977-9857788337:Your OTP is 123456. Do not share it with anyone.,sms,0
+SMSTO:BANKALERT:URGENT: your bank account is blocked. Verify login now: http://google-login.example.net/verify/5098,sms,1
+mailto:support@hospital.org.np?subject=Project status summary&body=Thank you for your payment. No further action is required.,email,0
+mailto:noreply@ird.gov.np?subject=Library book reminder&body=Your delivery is scheduled for tomorrow afternoon.,email,0
+http://paypal-security.example.ru/verify-account/2580?session=43540,url,1
+WIFI:T:WPA;S:CampusGuest35;P:StrongPass352026;;,wifi,0
+https://library.example/status/1540,url,0
+SMSTO:+977-9856883986:Thank you for your payment. No further action is required.,sms,0
+https://openai.com/profile/1780,url,0
+"mailto:support@bank-support-update.test?subject=Unusual login detected&body=Congratulations, you won a cash prize. Claim reward immediately",email,1
+https://khalti-refund.test/login-update/2317?session=19283,url,1
+mailto:verify@esewa-bonus-claim.test?subject=Final warning: confirm your password&body=KYC expired. Confirm wallet PIN and OTP to continue,email,1
+mailto:billing@docs.djangoproject.com?subject=Library book reminder&body=Your delivery is scheduled for tomorrow afternoon.,email,0
+https://city-services.example/help/1361,url,0
+https://mozilla.org/profile/1401,url,0
+http://bit.ly/verify-account966,url,1
+https://store-receipts.example/notice/1373,url,0
+https://mozilla.org/notice/1945,url,0
+https://10.8.4.22/claim-prize/2368?session=52899,url,1
+mailto:billing@city-services.example?subject=Library book reminder&body=Your appointment is confirmed for Friday at 10:00 AM.,email,0
+https://docs.djangoproject.com/status/1532,url,0
+mailto:admin@mozilla.org?subject=Password changed successfully&body=The invoice has been received and marked paid.,email,0
+SMSTO:WALLET:KYC expired. Confirm wallet PIN and OTP to continue: http://secure-login-check.test/verify/5042,sms,1
+WIFI:T:WPA;S:CampusGuest55;P:StrongPass552026;;,wifi,0
+mailto:support@np-prize-claim.test?subject=Final warning: confirm your password&body=Refund failed. Enter card details to receive money,email,1
+"BEGIN:VCARD
+FN:Student 88
+EMAIL:student88@university.edu.np
+URL:https://university.edu.np/profile/88
+END:VCARD",contact,0
+mailto:noreply@library.example?subject=Library book reminder&body=Your delivery is scheduled for tomorrow afternoon.,email,0
+mailto:support@openai.com?subject=Library book reminder&body=Your appointment is confirmed for Friday at 10:00 AM.,email,0
+SMSTO:+977-9838311272:Thank you for your payment. No further action is required.,sms,0
+https://khanacademy.org/profile/1295,url,0
+WIFI:T:WPA;S:CampusGuest64;P:StrongPass642026;;,wifi,0
+SMSTO:+977-9800000000:URGENT: your bank account is blocked. Verify login now: http://secure-login-check.test/verify/5724,sms,1
+mailto:billing@nrb.org.np?subject=Project status summary&body=Your delivery is scheduled for tomorrow afternoon.,email,0
+WIFI:T:WPA;S:CampusGuest12;P:StrongPass122026;;,wifi,0
+SMSTO:+977-9818768924:Your OTP is 123456. Do not share it with anyone.,sms,0
+WIFI:T:WPA;S:CampusGuest32;P:StrongPass322026;;,wifi,0
+SMSTO:BANKALERT:KYC expired. Confirm wallet PIN and OTP to continue: http://secure-login-check.test/verify/5332,sms,1
+WIFI:T:WPA;S:CampusGuest17;P:StrongPass172026;;,wifi,0
+WIFI:T:WPA;S:CampusGuest99;P:StrongPass992026;;,wifi,0
+mailto:noreply@mozilla.org?subject=Receipt for your recent purchase&body=Your appointment is confirmed for Friday at 10:00 AM.,email,0
+mailto:reward@account-verify-now.test?subject=Urgent account verification required&body=KYC expired. Confirm wallet PIN and OTP to continue,email,1
+mailto:noreply@library.example?subject=Receipt for your recent purchase&body=Thank you for your payment. No further action is required.,email,0
+SMSTO:DELIVERY:URGENT: your bank account is blocked. Verify login now: http://google-login.example.net/verify/5526,sms,1
+SMSTO:+977-9800000000:Customs fee pending. Pay now to release your parcel: http://paypal-security.example.ru/verify/5338,sms,1
+SMSTO:DELIVERY:Refund failed. Enter card details to receive money: http://delivery-fee-pay.test/verify/5369,sms,1
+"SMSTO:BANKALERT:Congratulations, you won a cash prize. Claim reward immediately: http://delivery-fee-pay.test/verify/5001",sms,1
+"mailto:security@192.168.45.12?subject=Urgent account verification required&body=Congratulations, you won a cash prize. Claim reward immediately",email,1
+WIFI:T:WPA;S:CampusGuest88;P:StrongPass882026;;,wifi,0
+mailto:noreply@github.com?subject=Meeting notes&body=Class starts tomorrow. Please bring your notebook.,email,0
+http://esewa-bonus-claim.test/login-update/2617?session=54742,url,1
+WIFI:T:WPA;S:CampusGuest26;P:StrongPass262026;;,wifi,0
+https://khanacademy.org/course/1570,url,0
+mailto:admin@university.edu.np?subject=Project status summary&body=Thank you for your payment. No further action is required.,email,0
+https://nepalbank.com.np/profile/1417,url,0
+"BEGIN:VCARD
+FN:Student 77
+EMAIL:student77@university.edu.np
+URL:https://university.edu.np/profile/77
+END:VCARD",contact,0
+mailto:security@wallet-kyc-alert.test?subject=Final warning: confirm your password&body=Customs fee pending. Pay now to release your parcel,email,1
+SMSTO:WALLET:KYC expired. Confirm wallet PIN and OTP to continue: http://192.168.45.12/verify/5895,sms,1
+mailto:support@store-receipts.example?subject=Course update&body=Your appointment is confirmed for Friday at 10:00 AM.,email,0
+"SMSTO:WALLET:Congratulations, you won a cash prize. Claim reward immediately: http://paypal-security.example.ru/verify/5619",sms,1
+mailto:security@khalti-refund.test?subject=Unusual login detected&body=Refund failed. Enter card details to receive money,email,1
+mailto:reward@paypal-security.example.ru?subject=Prize claim pending&body=URGENT: your bank account is blocked. Verify login now,email,1
+https://nepalbank.com.np/status/1916,url,0
+mailto:noreply@khanacademy.org?subject=Library book reminder&body=Thank you for your payment. No further action is required.,email,0
+mailto:admin@openai.com?subject=Meeting notes&body=Class starts tomorrow. Please bring your notebook.,email,0
+WIFI:T:WPA;S:CampusGuest83;P:StrongPass832026;;,wifi,0
+SMSTO:+977-9823228017:The invoice has been received and marked paid.,sms,0
+https://company-intranet.example/help/1525,url,0
+SMSTO:DELIVERY:Security alert. Update password within 24 hours: http://wallet-kyc-alert.test/verify/5690,sms,1
+https://khanacademy.org/course/1443,url,0
+SMSTO:+977-9800000000:Security alert. Update password within 24 hours: http://google-login.example.net/verify/5824,sms,1
+WIFI:T:WPA;S:CampusGuest69;P:StrongPass692026;;,wifi,0
+https://openai.com/status/1747,url,0
+mailto:verify@account-verify-now.test?subject=Your wallet is blocked&body=Security alert. Update password within 24 hours,email,1
+mailto:reward@bank-support-update.test?subject=Your wallet is blocked&body=Customs fee pending. Pay now to release your parcel,email,1
+"BEGIN:VCARD
+FN:Student 70
+EMAIL:student70@university.edu.np
+URL:https://university.edu.np/profile/70
+END:VCARD",contact,0
+https://khalti-refund.test/wallet-kyc/2326?session=66280,url,1
+mailto:noreply@openai.com?subject=Meeting notes&body=Your delivery is scheduled for tomorrow afternoon.,email,0
+"SMSTO:+977-9800000000:Congratulations, you won a cash prize. Claim reward immediately: http://esewa-bonus-claim.test/verify/5900",sms,1
+SMSTO:+977-9824519890:Class starts tomorrow. Please bring your notebook.,sms,0
+"BEGIN:VCARD
+FN:Student 4
+EMAIL:student4@university.edu.np
+URL:https://university.edu.np/profile/4
+END:VCARD",contact,0
+http://account-verify-now.test/login-update/2906?session=75525,url,1
+SMSTO:+977-9826979106:Your appointment is confirmed for Friday at 10:00 AM.,sms,0
+mailto:support@wallet-kyc-alert.test?subject=Prize claim pending&body=KYC expired. Confirm wallet PIN and OTP to continue,email,1
+mailto:support@khanacademy.org?subject=Password changed successfully&body=Your appointment is confirmed for Friday at 10:00 AM.,email,0
+http://bit.ly/wallet-kyc798,url,1
+SMSTO:WALLET:KYC expired. Confirm wallet PIN and OTP to continue: http://192.168.45.12/verify/5178,sms,1
+mailto:support@github.com?subject=Project status summary&body=Your appointment is confirmed for Friday at 10:00 AM.,email,0
+WIFI:T:WPA;S:CampusGuest114;P:StrongPass1142026;;,wifi,0
+https://esewa-bonus-claim.test/wallet-kyc/2296?session=28634,url,1
+https://city-services.example/status/1601,url,0
+https://openai.com/help/1450,url,0
+"BEGIN:VCARD
+FN:Student 87
+EMAIL:student87@university.edu.np
+URL:https://university.edu.np/profile/87
+END:VCARD",contact,0
+mailto:billing@library.example?subject=Project status summary&body=Thank you for your payment. No further action is required.,email,0
+WIFI:T:WPA;S:CampusGuest45;P:StrongPass452026;;,wifi,0
+SMSTO:+977-9800000000:Security alert. Update password within 24 hours: http://khalti-refund.test/verify/5550,sms,1
+http://account-verify-now.test/verify-account/2391?session=99922,url,1
+https://wikipedia.org/docs/1803,url,0
+"SMSTO:BANKALERT:Congratulations, you won a cash prize. Claim reward immediately: http://esewa-bonus-claim.test/verify/5525",sms,1
+SMSTO:+977-9871786427:Your delivery is scheduled for tomorrow afternoon.,sms,0
+http://khalti-refund.test/pay-fee/2535?session=99091,url,1
+https://google-login.example.net/login-update/2358?session=30618,url,1
+SMSTO:+977-9852806362:The invoice has been received and marked paid.,sms,0
+WIFI:T:WPA;S:CampusGuest77;P:StrongPass772026;;,wifi,0
+SMSTO:WALLET:KYC expired. Confirm wallet PIN and OTP to continue: http://account-verify-now.test/verify/5790,sms,1
+mailto:support@google-login.example.net?subject=Prize claim pending&body=Security alert. Update password within 24 hours,email,1
+WIFI:T:WPA;S:CampusGuest47;P:StrongPass472026;;,wifi,0
+SMSTO:DELIVERY:Security alert. Update password within 24 hours: http://khalti-refund.test/verify/5966,sms,1
+mailto:reward@paypal-security.example.ru?subject=Urgent account verification required&body=Refund failed. Enter card details to receive money,email,1
+https://store-receipts.example/profile/1979,url,0
+https://esewa-bonus-claim.test/verify-account/2102?session=50213,url,1
+mailto:admin@hospital.org.np?subject=Monthly statement is available&body=Your appointment is confirmed for Friday at 10:00 AM.,email,0
+http://khalti-refund.test/login-update/2568?session=99881,url,1
+"BEGIN:VCARD
+FN:Student 106
+EMAIL:student106@university.edu.np
+URL:https://university.edu.np/profile/106
+END:VCARD",contact,0
+https://openai.com/profile/1299,url,0
+"BEGIN:VCARD
+FN:Student 83
+EMAIL:student83@university.edu.np
+URL:https://university.edu.np/profile/83
+END:VCARD",contact,0
+mailto:billing@openai.com?subject=Meeting notes&body=The invoice has been received and marked paid.,email,0
+SMSTO:+977-9864839596:Your delivery is scheduled for tomorrow afternoon.,sms,0
+http://account-verify-now.test/verify-account/2464?session=32391,url,1
+https://coursera.org/status/1513,url,0
+SMSTO:+977-9800000000:Customs fee pending. Pay now to release your parcel: http://account-verify-now.test/verify/5193,sms,1
+"BEGIN:VCARD
+FN:Student 58
+EMAIL:student58@university.edu.np
+URL:https://university.edu.np/profile/58
+END:VCARD",contact,0
+SMSTO:+977-9813984125:The invoice has been received and marked paid.,sms,0
+mailto:billing@nepalbank.com.np?subject=Monthly statement is available&body=Thank you for your payment. No further action is required.,email,0
+https://company-intranet.example/status/1187,url,0
+http://bit.ly/pay-fee532,url,1
+mailto:verify@khalti-refund.test?subject=Refund failed: update card now&body=Refund failed. Enter card details to receive money,email,1
+mailto:billing@hospital.org.np?subject=Course update&body=The invoice has been received and marked paid.,email,0
+https://company-intranet.example/notice/1193,url,0
+mailto:security@paypal-security.example.ru?subject=Refund failed: update card now&body=Customs fee pending. Pay now to release your parcel,email,1
+mailto:support@hospital.org.np?subject=Monthly statement is available&body=Your delivery is scheduled for tomorrow afternoon.,email,0
+http://np-prize-claim.test/wallet-kyc/2496?session=39878,url,1
+mailto:noreply@wikipedia.org?subject=Library book reminder&body=Your OTP is 123456. Do not share it with anyone.,email,0
+"BEGIN:VCARD
+FN:Student 12
+EMAIL:student12@university.edu.np
+URL:https://university.edu.np/profile/12
+END:VCARD",contact,0
+https://company-intranet.example/profile/1858,url,0
+SMSTO:WALLET:Refund failed. Enter card details to receive money: http://paypal-security.example.ru/verify/5772,sms,1
+https://university.edu.np/docs/1514,url,0
+"BEGIN:VCARD
+FN:Student 91
+EMAIL:student91@university.edu.np
+URL:https://university.edu.np/profile/91
+END:VCARD",contact,0
+mailto:support@google-login.example.net?subject=Unusual login detected&body=Security alert. Update password within 24 hours,email,1
+SMSTO:+977-9867062863:The invoice has been received and marked paid.,sms,0
+SMSTO:BANKALERT:KYC expired. Confirm wallet PIN and OTP to continue: http://192.168.45.12/verify/5562,sms,1
+WIFI:T:WPA;S:CampusGuest0;P:StrongPass02026;;,wifi,0
+SMSTO:+977-9867930109:Thank you for your payment. No further action is required.,sms,0
+mailto:billing@company-intranet.example?subject=Course update&body=Your appointment is confirmed for Friday at 10:00 AM.,email,0
+mailto:admin@ird.gov.np?subject=Course update&body=Thank you for your payment. No further action is required.,email,0
+WIFI:T:WPA;S:CampusGuest113;P:StrongPass1132026;;,wifi,0
+http://bit.ly/verify-account455,url,1
+SMSTO:BANKALERT:Refund failed. Enter card details to receive money: http://delivery-fee-pay.test/verify/5040,sms,1
+SMSTO:DELIVERY:Customs fee pending. Pay now to release your parcel: http://delivery-fee-pay.test/verify/5513,sms,1
+SMSTO:+977-9843715633:Your OTP is 123456. Do not share it with anyone.,sms,0
+"mailto:security@np-prize-claim.test?subject=Urgent account verification required&body=Congratulations, you won a cash prize. Claim reward immediately",email,1
+https://nrb.org.np/notice/1028,url,0
+SMSTO:WALLET:Customs fee pending. Pay now to release your parcel: http://192.168.45.12/verify/5698,sms,1
+WIFI:T:WPA;S:CampusGuest16;P:StrongPass162026;;,wifi,0
+mailto:reward@delivery-fee-pay.test?subject=Your wallet is blocked&body=KYC expired. Confirm wallet PIN and OTP to continue,email,1
+http://10.8.4.22/login-update/2402?session=53456,url,1
+http://10.8.4.22/claim-prize/2467?session=94130,url,1
+"BEGIN:VCARD
+FN:Student 112
+EMAIL:student112@university.edu.np
+URL:https://university.edu.np/profile/112
+END:VCARD",contact,0
+WIFI:T:WPA;S:CampusGuest59;P:StrongPass592026;;,wifi,0
+"BEGIN:VCARD
+FN:Student 61
+EMAIL:student61@university.edu.np
+URL:https://university.edu.np/profile/61
+END:VCARD",contact,0
+https://library.example/status/1695,url,0
+"BEGIN:VCARD
+FN:Student 54
+EMAIL:student54@university.edu.np
+URL:https://university.edu.np/profile/54
+END:VCARD",contact,0
+http://google-login.example.net/login-update/2164?session=12125,url,1
+https://coursera.org/docs/1538,url,0
+mailto:reward@khalti-refund.test?subject=Urgent account verification required&body=URGENT: your bank account is blocked. Verify login now,email,1
+mailto:noreply@ird.gov.np?subject=Meeting notes&body=The invoice has been received and marked paid.,email,0
+SMSTO:BANKALERT:URGENT: your bank account is blocked. Verify login now: http://np-prize-claim.test/verify/5508,sms,1
+https://paypal-security.example.ru/claim-prize/2018?session=73300,url,1
+mailto:support@wallet-kyc-alert.test?subject=Your wallet is blocked&body=Security alert. Update password within 24 hours,email,1
+https://khalti-refund.test/verify-account/2440?session=84381,url,1
+https://secure-login-check.test/login-update/2788?session=35525,url,1
+WIFI:T:WPA;S:CampusGuest62;P:StrongPass622026;;,wifi,0
+mailto:admin@khanacademy.org?subject=Library book reminder&body=Your appointment is confirmed for Friday at 10:00 AM.,email,0
+"BEGIN:VCARD
+FN:Student 66
+EMAIL:student66@university.edu.np
+URL:https://university.edu.np/profile/66
+END:VCARD",contact,0
+https://np-prize-claim.test/verify-account/2365?session=25650,url,1
+https://city-services.example/receipt/1457,url,0
+https://openai.com/receipt/1529,url,0
+mailto:reward@bank-support-update.test?subject=Prize claim pending&body=Customs fee pending. Pay now to release your parcel,email,1
+http://khalti-refund.test/login-update/2778?session=40116,url,1
+"BEGIN:VCARD
+FN:Student 31
+EMAIL:student31@university.edu.np
+URL:https://university.edu.np/profile/31
+END:VCARD",contact,0
+mailto:security@10.8.4.22?subject=Prize claim pending&body=URGENT: your bank account is blocked. Verify login now,email,1
+https://city-services.example/course/1292,url,0
+mailto:admin@docs.djangoproject.com?subject=Monthly statement is available&body=The invoice has been received and marked paid.,email,0
+https://delivery-fee-pay.test/login-update/2131?session=34704,url,1
+http://esewa-bonus-claim.test/verify-account/2782?session=29048,url,1
+WIFI:T:WPA;S:CampusGuest24;P:StrongPass242026;;,wifi,0
+mailto:support@esewa-bonus-claim.test?subject=Unusual login detected&body=KYC expired. Confirm wallet PIN and OTP to continue,email,1
+SMSTO:+977-9813003845:Your delivery is scheduled for tomorrow afternoon.,sms,0
+SMSTO:+977-9877973150:Your delivery is scheduled for tomorrow afternoon.,sms,0
+mailto:support@store-receipts.example?subject=Password changed successfully&body=The invoice has been received and marked paid.,email,0
+SMSTO:BANKALERT:Customs fee pending. Pay now to release your parcel: http://wallet-kyc-alert.test/verify/5968,sms,1
+SMSTO:+977-9800000000:URGENT: your bank account is blocked. Verify login now: http://delivery-fee-pay.test/verify/5914,sms,1
+https://paypal-security.example.ru/login-update/2613?session=54676,url,1
+"SMSTO:DELIVERY:Congratulations, you won a cash prize. Claim reward immediately: http://192.168.45.12/verify/5173",sms,1
+http://bank-support-update.test/pay-fee/2155?session=72835,url,1
+SMSTO:DELIVERY:URGENT: your bank account is blocked. Verify login now: http://paypal-security.example.ru/verify/5468,sms,1
+SMSTO:DELIVERY:Security alert. Update password within 24 hours: http://np-prize-claim.test/verify/5696,sms,1
+https://paypal-security.example.ru/pay-fee/2664?session=22051,url,1
+WIFI:T:WPA;S:CampusGuest67;P:StrongPass672026;;,wifi,0
+https://bank-support-update.test/pay-fee/2423?session=57026,url,1
+"BEGIN:VCARD
+FN:Student 103
+EMAIL:student103@university.edu.np
+URL:https://university.edu.np/profile/103
+END:VCARD",contact,0
+WIFI:T:WPA;S:CampusGuest25;P:StrongPass252026;;,wifi,0
+mailto:noreply@wikipedia.org?subject=Receipt for your recent purchase&body=Your delivery is scheduled for tomorrow afternoon.,email,0
+"SMSTO:+977-9800000000:Congratulations, you won a cash prize. Claim reward immediately: http://10.8.4.22/verify/5282",sms,1
+SMSTO:BANKALERT:Security alert. Update password within 24 hours: http://192.168.45.12/verify/5597,sms,1
+https://city-services.example/status/1583,url,0
+mailto:billing@docs.djangoproject.com?subject=Monthly statement is available&body=Your delivery is scheduled for tomorrow afternoon.,email,0
+http://khalti-refund.test/pay-fee/2256?session=68926,url,1
+SMSTO:+977-9872857546:Your delivery is scheduled for tomorrow afternoon.,sms,0
+SMSTO:+977-9838805562:Thank you for your payment. No further action is required.,sms,0
+https://city-services.example/docs/1477,url,0
+https://university.edu.np/course/1408,url,0
+https://university.edu.np/help/1886,url,0
+"BEGIN:VCARD
+FN:Student 90
+EMAIL:student90@university.edu.np
+URL:https://university.edu.np/profile/90
+END:VCARD",contact,0
+"mailto:security@esewa-bonus-claim.test?subject=Refund failed: update card now&body=Congratulations, you won a cash prize. Claim reward immediately",email,1
+"BEGIN:VCARD
+FN:Student 81
+EMAIL:student81@university.edu.np
+URL:https://university.edu.np/profile/81
+END:VCARD",contact,0
+https://esewa-bonus-claim.test/verify-account/2934?session=83140,url,1
+mailto:support@store-receipts.example?subject=Password changed successfully&body=The invoice has been received and marked paid.,email,0
+mailto:support@secure-login-check.test?subject=Prize claim pending&body=Refund failed. Enter card details to receive money,email,1
+mailto:support@delivery-fee-pay.test?subject=Refund failed: update card now&body=Security alert. Update password within 24 hours,email,1
+SMSTO:+977-9810046077:Your OTP is 123456. Do not share it with anyone.,sms,0
+https://esewa-bonus-claim.test/pay-fee/2129?session=79721,url,1
+SMSTO:DELIVERY:Customs fee pending. Pay now to release your parcel: http://bank-support-update.test/verify/5289,sms,1
+mailto:support@nrb.org.np?subject=Receipt for your recent purchase&body=Class starts tomorrow. Please bring your notebook.,email,0
+mailto:noreply@library.example?subject=Password changed successfully&body=Class starts tomorrow. Please bring your notebook.,email,0
+https://docs.djangoproject.com/notice/1707,url,0
+mailto:reward@delivery-fee-pay.test?subject=Refund failed: update card now&body=Security alert. Update password within 24 hours,email,1
+https://nepalbank.com.np/status/1729,url,0
+mailto:billing@ird.gov.np?subject=Monthly statement is available&body=Your appointment is confirmed for Friday at 10:00 AM.,email,0
+SMSTO:DELIVERY:URGENT: your bank account is blocked. Verify login now: http://google-login.example.net/verify/5925,sms,1
+"SMSTO:WALLET:Congratulations, you won a cash prize. Claim reward immediately: http://secure-login-check.test/verify/5880",sms,1
+"BEGIN:VCARD
+FN:Student 69
+EMAIL:student69@university.edu.np
+URL:https://university.edu.np/profile/69
+END:VCARD",contact,0
+https://mozilla.org/docs/1600,url,0
+"mailto:security@bank-support-update.test?subject=Unusual login detected&body=Congratulations, you won a cash prize. Claim reward immediately",email,1
+https://city-services.example/profile/1217,url,0
+https://esewa-bonus-claim.test/wallet-kyc/2123?session=60132,url,1
+WIFI:T:WPA;S:CampusGuest19;P:StrongPass192026;;,wifi,0
+"BEGIN:VCARD
+FN:Student 48
+EMAIL:student48@university.edu.np
+URL:https://university.edu.np/profile/48
+END:VCARD",contact,0
+https://192.168.45.12/wallet-kyc/2186?session=82443,url,1
+SMSTO:+977-9840082312:Class starts tomorrow. Please bring your notebook.,sms,0
+https://bank-support-update.test/verify-account/2727?session=58422,url,1
+https://github.com/docs/1406,url,0
+SMSTO:+977-9800000000:URGENT: your bank account is blocked. Verify login now: http://bank-support-update.test/verify/5716,sms,1
+mailto:support@google-login.example.net?subject=Final warning: confirm your password&body=Security alert. Update password within 24 hours,email,1
+https://khalti-refund.test/login-update/2855?session=20494,url,1
+mailto:reward@192.168.45.12?subject=Your wallet is blocked&body=URGENT: your bank account is blocked. Verify login now,email,1
+WIFI:T:WPA;S:CampusGuest70;P:StrongPass702026;;,wifi,0
+SMSTO:+977-9800000000:URGENT: your bank account is blocked. Verify login now: http://delivery-fee-pay.test/verify/5783,sms,1
+mailto:security@esewa-bonus-claim.test?subject=Refund failed: update card now&body=URGENT: your bank account is blocked. Verify login now,email,1
+mailto:noreply@coursera.org?subject=Meeting notes&body=Your appointment is confirmed for Friday at 10:00 AM.,email,0
+"BEGIN:VCARD
+FN:Student 19
+EMAIL:student19@university.edu.np
+URL:https://university.edu.np/profile/19
+END:VCARD",contact,0
+mailto:support@mozilla.org?subject=Library book reminder&body=Your delivery is scheduled for tomorrow afternoon.,email,0
+mailto:verify@192.168.45.12?subject=Urgent account verification required&body=KYC expired. Confirm wallet PIN and OTP to continue,email,1
+https://docs.djangoproject.com/course/1243,url,0
+SMSTO:+977-9828517985:Your delivery is scheduled for tomorrow afternoon.,sms,0
+mailto:billing@city-services.example?subject=Meeting notes&body=Your appointment is confirmed for Friday at 10:00 AM.,email,0
+SMSTO:+977-9865525803:Your OTP is 123456. Do not share it with anyone.,sms,0
+"SMSTO:DELIVERY:Congratulations, you won a cash prize. Claim reward immediately: http://192.168.45.12/verify/5078",sms,1
+SMSTO:+977-9875625144:Your OTP is 123456. Do not share it with anyone.,sms,0
+SMSTO:DELIVERY:Security alert. Update password within 24 hours: http://google-login.example.net/verify/5065,sms,1
+mailto:noreply@store-receipts.example?subject=Appointment reminder&body=Class starts tomorrow. Please bring your notebook.,email,0
+http://bit.ly/wallet-kyc518,url,1
+http://bank-support-update.test/pay-fee/2964?session=93084,url,1
+https://coursera.org/course/1909,url,0
+https://github.com/receipt/1153,url,0
+WIFI:T:WPA;S:CampusGuest30;P:StrongPass302026;;,wifi,0
+https://openai.com/profile/1731,url,0
+WIFI:T:WPA;S:CampusGuest109;P:StrongPass1092026;;,wifi,0
+WIFI:T:WPA;S:CampusGuest1;P:StrongPass12026;;,wifi,0
+"BEGIN:VCARD
+FN:Student 95
+EMAIL:student95@university.edu.np
+URL:https://university.edu.np/profile/95
+END:VCARD",contact,0
+https://bank-support-update.test/pay-fee/2810?session=33957,url,1
+mailto:billing@company-intranet.example?subject=Receipt for your recent purchase&body=Your delivery is scheduled for tomorrow afternoon.,email,0
+SMSTO:BANKALERT:Refund failed. Enter card details to receive money: http://np-prize-claim.test/verify/5416,sms,1
+SMSTO:+977-9800000000:Customs fee pending. Pay now to release your parcel: http://delivery-fee-pay.test/verify/5545,sms,1
+mailto:noreply@store-receipts.example?subject=Course update&body=Your delivery is scheduled for tomorrow afternoon.,email,0
+mailto:billing@city-services.example?subject=Receipt for your recent purchase&body=The invoice has been received and marked paid.,email,0
+http://esewa-bonus-claim.test/verify-account/2899?session=43202,url,1
+SMSTO:+977-9810854347:The invoice has been received and marked paid.,sms,0
+SMSTO:WALLET:KYC expired. Confirm wallet PIN and OTP to continue: http://10.8.4.22/verify/5957,sms,1
+http://google-login.example.net/verify-account/2758?session=72373,url,1
+mailto:admin@nepalbank.com.np?subject=Appointment reminder&body=Class starts tomorrow. Please bring your notebook.,email,0
+SMSTO:BANKALERT:KYC expired. Confirm wallet PIN and OTP to continue: http://google-login.example.net/verify/5997,sms,1
+https://university.edu.np/docs/1659,url,0
+"BEGIN:VCARD
+FN:Student 57
+EMAIL:student57@university.edu.np
+URL:https://university.edu.np/profile/57
+END:VCARD",contact,0
+mailto:reward@wallet-kyc-alert.test?subject=Urgent account verification required&body=KYC expired. Confirm wallet PIN and OTP to continue,email,1
+https://np-prize-claim.test/pay-fee/2292?session=77425,url,1
+https://city-services.example/help/1494,url,0
+https://10.8.4.22/claim-prize/2223?session=95332,url,1
+mailto:verify@192.168.45.12?subject=Urgent account verification required&body=Refund failed. Enter card details to receive money,email,1
+WIFI:T:WPA;S:CampusGuest22;P:StrongPass222026;;,wifi,0
+WIFI:T:WPA;S:CampusGuest21;P:StrongPass212026;;,wifi,0
+https://10.8.4.22/pay-fee/2508?session=33276,url,1
+"BEGIN:VCARD
+FN:Student 23
+EMAIL:student23@university.edu.np
+URL:https://university.edu.np/profile/23
+END:VCARD",contact,0
+https://library.example/status/1336,url,0
+"BEGIN:VCARD
+FN:Student 84
+EMAIL:student84@university.edu.np
+URL:https://university.edu.np/profile/84
+END:VCARD",contact,0
+mailto:security@khalti-refund.test?subject=Urgent account verification required&body=URGENT: your bank account is blocked. Verify login now,email,1
+"BEGIN:VCARD
+FN:Student 80
+EMAIL:student80@university.edu.np
+URL:https://university.edu.np/profile/80
+END:VCARD",contact,0
+WIFI:T:WPA;S:CampusGuest89;P:StrongPass892026;;,wifi,0
+WIFI:T:WPA;S:CampusGuest76;P:StrongPass762026;;,wifi,0
+https://hospital.org.np/profile/1047,url,0
+SMSTO:+977-9800000000:Security alert. Update password within 24 hours: http://esewa-bonus-claim.test/verify/5650,sms,1
+SMSTO:BANKALERT:KYC expired. Confirm wallet PIN and OTP to continue: http://paypal-security.example.ru/verify/5942,sms,1
+SMSTO:DELIVERY:URGENT: your bank account is blocked. Verify login now: http://10.8.4.22/verify/5400,sms,1
+SMSTO:+977-9800000000:URGENT: your bank account is blocked. Verify login now: http://10.8.4.22/verify/5540,sms,1
+"BEGIN:VCARD
+FN:Student 108
+EMAIL:student108@university.edu.np
+URL:https://university.edu.np/profile/108
+END:VCARD",contact,0
+"SMSTO:+977-9800000000:Congratulations, you won a cash prize. Claim reward immediately: http://paypal-security.example.ru/verify/5798",sms,1
+mailto:noreply@ird.gov.np?subject=Password changed successfully&body=Thank you for your payment. No further action is required.,email,0
+"mailto:security@esewa-bonus-claim.test?subject=Refund failed: update card now&body=Congratulations, you won a cash prize. Claim reward immediately",email,1
+http://bit.ly/verify-account602,url,1
+SMSTO:WALLET:URGENT: your bank account is blocked. Verify login now: http://delivery-fee-pay.test/verify/5875,sms,1
+https://docs.djangoproject.com/notice/1232,url,0
+WIFI:T:WPA;S:CampusGuest94;P:StrongPass942026;;,wifi,0
+http://np-prize-claim.test/verify-account/2359?session=39937,url,1
+mailto:support@nepalbank.com.np?subject=Project status summary&body=Your appointment is confirmed for Friday at 10:00 AM.,email,0
+mailto:billing@library.example?subject=Course update&body=Your appointment is confirmed for Friday at 10:00 AM.,email,0
+https://khalti-refund.test/verify-account/2566?session=68237,url,1
+SMSTO:+977-9884188311:Your delivery is scheduled for tomorrow afternoon.,sms,0
+"SMSTO:BANKALERT:Congratulations, you won a cash prize. Claim reward immediately: http://account-verify-now.test/verify/5527",sms,1
+SMSTO:DELIVERY:KYC expired. Confirm wallet PIN and OTP to continue: http://khalti-refund.test/verify/5818,sms,1
+mailto:admin@docs.djangoproject.com?subject=Monthly statement is available&body=Your OTP is 123456. Do not share it with anyone.,email,0
+mailto:billing@hospital.org.np?subject=Library book reminder&body=Thank you for your payment. No further action is required.,email,0
+https://ird.gov.np/profile/1273,url,0
+https://bank-support-update.test/login-update/2953?session=12844,url,1
+https://ird.gov.np/receipt/1520,url,0
+mailto:billing@city-services.example?subject=Course update&body=The invoice has been received and marked paid.,email,0
+https://nrb.org.np/help/1767,url,0
+mailto:admin@wikipedia.org?subject=Project status summary&body=Class starts tomorrow. Please bring your notebook.,email,0
+mailto:support@khalti-refund.test?subject=Your wallet is blocked&body=Customs fee pending. Pay now to release your parcel,email,1
+https://paypal-security.example.ru/pay-fee/2051?session=83783,url,1
+WIFI:T:WPA;S:CampusGuest14;P:StrongPass142026;;,wifi,0
+https://docs.djangoproject.com/help/1131,url,0
+SMSTO:+977-9811089156:Your appointment is confirmed for Friday at 10:00 AM.,sms,0
+"BEGIN:VCARD
+FN:Student 111
+EMAIL:student111@university.edu.np
+URL:https://university.edu.np/profile/111
+END:VCARD",contact,0
+https://wikipedia.org/receipt/1328,url,0
+https://esewa-bonus-claim.test/pay-fee/2522?session=49121,url,1
+https://mozilla.org/notice/1083,url,0
+"BEGIN:VCARD
+FN:Student 93
+EMAIL:student93@university.edu.np
+URL:https://university.edu.np/profile/93
+END:VCARD",contact,0
+https://nrb.org.np/notice/1997,url,0
+http://10.8.4.22/claim-prize/2300?session=22208,url,1
+mailto:support@hospital.org.np?subject=Course update&body=Thank you for your payment. No further action is required.,email,0
+https://university.edu.np/docs/1878,url,0
+http://np-prize-claim.test/login-update/2555?session=60272,url,1
+mailto:reward@bank-support-update.test?subject=Prize claim pending&body=Customs fee pending. Pay now to release your parcel,email,1
+"BEGIN:VCARD
+FN:Student 109
+EMAIL:student109@university.edu.np
+URL:https://university.edu.np/profile/109
+END:VCARD",contact,0
+mailto:support@10.8.4.22?subject=Refund failed: update card now&body=Refund failed. Enter card details to receive money,email,1
+https://delivery-fee-pay.test/verify-account/2096?session=97720,url,1
+http://esewa-bonus-claim.test/pay-fee/2412?session=92674,url,1
+SMSTO:+977-9800000000:Customs fee pending. Pay now to release your parcel: http://wallet-kyc-alert.test/verify/5498,sms,1
+mailto:support@github.com?subject=Receipt for your recent purchase&body=Your appointment is confirmed for Friday at 10:00 AM.,email,0
+SMSTO:+977-9831448964:Class starts tomorrow. Please bring your notebook.,sms,0
+http://google-login.example.net/wallet-kyc/2324?session=21362,url,1
+WIFI:T:WPA;S:CampusGuest43;P:StrongPass432026;;,wifi,0
+http://bank-support-update.test/verify-account/2768?session=85757,url,1
+"mailto:reward@bank-support-update.test?subject=Final warning: confirm your password&body=Congratulations, you won a cash prize. Claim reward immediately",email,1
+SMSTO:WALLET:Security alert. Update password within 24 hours: http://bank-support-update.test/verify/5950,sms,1
+mailto:admin@nrb.org.np?subject=Library book reminder&body=Your delivery is scheduled for tomorrow afternoon.,email,0
+mailto:security@delivery-fee-pay.test?subject=Prize claim pending&body=Security alert. Update password within 24 hours,email,1
+WIFI:T:WPA;S:CampusGuest108;P:StrongPass1082026;;,wifi,0
+https://khanacademy.org/status/1584,url,0
+"mailto:reward@khalti-refund.test?subject=Unusual login detected&body=Congratulations, you won a cash prize. Claim reward immediately",email,1
+mailto:reward@delivery-fee-pay.test?subject=Unusual login detected&body=KYC expired. Confirm wallet PIN and OTP to continue,email,1
+http://khalti-refund.test/login-update/2197?session=75639,url,1
+"BEGIN:VCARD
+FN:Student 117
+EMAIL:student117@university.edu.np
+URL:https://university.edu.np/profile/117
+END:VCARD",contact,0
+SMSTO:+977-9892362416:Class starts tomorrow. Please bring your notebook.,sms,0
+mailto:verify@esewa-bonus-claim.test?subject=Prize claim pending&body=URGENT: your bank account is blocked. Verify login now,email,1
+https://nepalbank.com.np/notice/1759,url,0
+"SMSTO:DELIVERY:Congratulations, you won a cash prize. Claim reward immediately: http://np-prize-claim.test/verify/5205",sms,1
+http://secure-login-check.test/wallet-kyc/2993?session=43483,url,1
+mailto:admin@nepalbank.com.np?subject=Meeting notes&body=Class starts tomorrow. Please bring your notebook.,email,0
+SMSTO:+977-9873768236:Thank you for your payment. No further action is required.,sms,0
+SMSTO:+977-9873753876:Your appointment is confirmed for Friday at 10:00 AM.,sms,0
+WIFI:T:WPA;S:CampusGuest11;P:StrongPass112026;;,wifi,0
+SMSTO:+977-9832509513:Class starts tomorrow. Please bring your notebook.,sms,0
+https://paypal-security.example.ru/login-update/2215?session=32216,url,1
+mailto:support@10.8.4.22?subject=Final warning: confirm your password&body=Refund failed. Enter card details to receive money,email,1
+https://khanacademy.org/status/1856,url,0
+mailto:noreply@hospital.org.np?subject=Meeting notes&body=Your delivery is scheduled for tomorrow afternoon.,email,0
+"mailto:verify@np-prize-claim.test?subject=Your wallet is blocked&body=Congratulations, you won a cash prize. Claim reward immediately",email,1
+SMSTO:DELIVERY:Security alert. Update password within 24 hours: http://account-verify-now.test/verify/5252,sms,1
+https://nrb.org.np/notice/1598,url,0
+SMSTO:+977-9890291375:Your OTP is 123456. Do not share it with anyone.,sms,0
+SMSTO:+977-9843324269:Class starts tomorrow. Please bring your notebook.,sms,0
+WIFI:T:WPA;S:CampusGuest87;P:StrongPass872026;;,wifi,0
+SMSTO:WALLET:URGENT: your bank account is blocked. Verify login now: http://khalti-refund.test/verify/5014,sms,1
+mailto:support@np-prize-claim.test?subject=Refund failed: update card now&body=Security alert. Update password within 24 hours,email,1
+"BEGIN:VCARD
+FN:Student 15
+EMAIL:student15@university.edu.np
+URL:https://university.edu.np/profile/15
+END:VCARD",contact,0
+SMSTO:+977-9846971875:The invoice has been received and marked paid.,sms,0
+https://library.example/docs/1371,url,0
+http://bit.ly/claim-prize609,url,1
+mailto:billing@university.edu.np?subject=Password changed successfully&body=Your appointment is confirmed for Friday at 10:00 AM.,email,0
+https://ird.gov.np/course/1319,url,0
+mailto:support@wallet-kyc-alert.test?subject=Unusual login detected&body=Refund failed. Enter card details to receive money,email,1
+"BEGIN:VCARD
+FN:Student 24
+EMAIL:student24@university.edu.np
+URL:https://university.edu.np/profile/24
+END:VCARD",contact,0
+WIFI:T:WPA;S:CampusGuest82;P:StrongPass822026;;,wifi,0
+WIFI:T:WPA;S:CampusGuest36;P:StrongPass362026;;,wifi,0
+"BEGIN:VCARD
+FN:Student 27
+EMAIL:student27@university.edu.np
+URL:https://university.edu.np/profile/27
+END:VCARD",contact,0
+SMSTO:+977-9857217126:Your OTP is 123456. Do not share it with anyone.,sms,0
+https://company-intranet.example/docs/1762,url,0
+"mailto:reward@bank-support-update.test?subject=Unusual login detected&body=Congratulations, you won a cash prize. Claim reward immediately",email,1
+http://account-verify-now.test/login-update/2839?session=38241,url,1
+SMSTO:+977-9861040801:Class starts tomorrow. Please bring your notebook.,sms,0
+mailto:billing@university.edu.np?subject=Course update&body=Thank you for your payment. No further action is required.,email,0
+mailto:billing@github.com?subject=Password changed successfully&body=Class starts tomorrow. Please bring your notebook.,email,0
+http://paypal-security.example.ru/claim-prize/2426?session=74282,url,1
+http://bit.ly/wallet-kyc616,url,1
+https://github.com/profile/1101,url,0
+SMSTO:+977-9832026463:Thank you for your payment. No further action is required.,sms,0
+"BEGIN:VCARD
+FN:Student 34
+EMAIL:student34@university.edu.np
+URL:https://university.edu.np/profile/34
+END:VCARD",contact,0
+mailto:verify@np-prize-claim.test?subject=Refund failed: update card now&body=KYC expired. Confirm wallet PIN and OTP to continue,email,1
+mailto:support@khalti-refund.test?subject=Unusual login detected&body=Security alert. Update password within 24 hours,email,1
+mailto:billing@ird.gov.np?subject=Meeting notes&body=Thank you for your payment. No further action is required.,email,0
+https://store-receipts.example/course/1439,url,0
+WIFI:T:WPA;S:CampusGuest97;P:StrongPass972026;;,wifi,0
+WIFI:T:WPA;S:CampusGuest53;P:StrongPass532026;;,wifi,0
+WIFI:T:WPA;S:CampusGuest52;P:StrongPass522026;;,wifi,0
+SMSTO:+977-9853872657:The invoice has been received and marked paid.,sms,0
+https://wallet-kyc-alert.test/pay-fee/2657?session=10739,url,1
+https://paypal-security.example.ru/claim-prize/2299?session=69597,url,1
+https://google-login.example.net/login-update/2143?session=82856,url,1
+"BEGIN:VCARD
+FN:Student 2
+EMAIL:student2@university.edu.np
+URL:https://university.edu.np/profile/2
+END:VCARD",contact,0
+http://khalti-refund.test/login-update/2351?session=31473,url,1
+SMSTO:DELIVERY:Security alert. Update password within 24 hours: http://khalti-refund.test/verify/5532,sms,1
+SMSTO:+977-9833840467:Your OTP is 123456. Do not share it with anyone.,sms,0
+http://np-prize-claim.test/claim-prize/2460?session=22571,url,1
+http://192.168.45.12/verify-account/2382?session=67014,url,1
+"mailto:support@delivery-fee-pay.test?subject=Refund failed: update card now&body=Congratulations, you won a cash prize. Claim reward immediately",email,1
+SMSTO:+977-9861036278:Your OTP is 123456. Do not share it with anyone.,sms,0
+https://wallet-kyc-alert.test/claim-prize/2711?session=70666,url,1
+"BEGIN:VCARD
+FN:Student 110
+EMAIL:student110@university.edu.np
+URL:https://university.edu.np/profile/110
+END:VCARD",contact,0
+https://coursera.org/profile/1169,url,0
+mailto:noreply@nrb.org.np?subject=Course update&body=Thank you for your payment. No further action is required.,email,0
+mailto:support@khalti-refund.test?subject=Urgent account verification required&body=KYC expired. Confirm wallet PIN and OTP to continue,email,1
+"mailto:reward@google-login.example.net?subject=Refund failed: update card now&body=Congratulations, you won a cash prize. Claim reward immediately",email,1
+https://mozilla.org/notice/1230,url,0
+"SMSTO:DELIVERY:Congratulations, you won a cash prize. Claim reward immediately: http://10.8.4.22/verify/5749",sms,1
+"BEGIN:VCARD
+FN:Student 97
+EMAIL:student97@university.edu.np
+URL:https://university.edu.np/profile/97
+END:VCARD",contact,0
+"BEGIN:VCARD
+FN:Student 39
+EMAIL:student39@university.edu.np
+URL:https://university.edu.np/profile/39
+END:VCARD",contact,0
+WIFI:T:WPA;S:CampusGuest91;P:StrongPass912026;;,wifi,0
+https://paypal-security.example.ru/login-update/2715?session=92132,url,1
+mailto:noreply@coursera.org?subject=Appointment reminder&body=The invoice has been received and marked paid.,email,0
+https://nrb.org.np/notice/1954,url,0
+http://bit.ly/wallet-kyc651,url,1
+"BEGIN:VCARD
+FN:Student 102
+EMAIL:student102@university.edu.np
+URL:https://university.edu.np/profile/102
+END:VCARD",contact,0
+mailto:admin@ird.gov.np?subject=Project status summary&body=Your OTP is 123456. Do not share it with anyone.,email,0
+"BEGIN:VCARD
+FN:Student 8
+EMAIL:student8@university.edu.np
+URL:https://university.edu.np/profile/8
+END:VCARD",contact,0
+SMSTO:DELIVERY:Refund failed. Enter card details to receive money: http://bank-support-update.test/verify/5294,sms,1
+WIFI:T:WPA;S:CampusGuest78;P:StrongPass782026;;,wifi,0
+mailto:verify@account-verify-now.test?subject=Urgent account verification required&body=Security alert. Update password within 24 hours,email,1
+mailto:billing@nepalbank.com.np?subject=Password changed successfully&body=Thank you for your payment. No further action is required.,email,0
+SMSTO:+977-9810406262:Class starts tomorrow. Please bring your notebook.,sms,0
+"SMSTO:BANKALERT:Congratulations, you won a cash prize. Claim reward immediately: http://wallet-kyc-alert.test/verify/5424",sms,1
+SMSTO:WALLET:Refund failed. Enter card details to receive money: http://bank-support-update.test/verify/5560,sms,1
+mailto:noreply@city-services.example?subject=Monthly statement is available&body=Your OTP is 123456. Do not share it with anyone.,email,0
+"BEGIN:VCARD
+FN:Student 101
+EMAIL:student101@university.edu.np
+URL:https://university.edu.np/profile/101
+END:VCARD",contact,0
+http://paypal-security.example.ru/pay-fee/2005?session=26912,url,1
+mailto:support@nepalbank.com.np?subject=Monthly statement is available&body=Class starts tomorrow. Please bring your notebook.,email,0
+SMSTO:WALLET:KYC expired. Confirm wallet PIN and OTP to continue: http://bank-support-update.test/verify/5130,sms,1
+mailto:verify@10.8.4.22?subject=Prize claim pending&body=Security alert. Update password within 24 hours,email,1
+http://account-verify-now.test/login-update/2677?session=99837,url,1
+mailto:admin@city-services.example?subject=Course update&body=Your OTP is 123456. Do not share it with anyone.,email,0
+https://mozilla.org/receipt/1137,url,0
+"BEGIN:VCARD
+FN:Student 96
+EMAIL:student96@university.edu.np
+URL:https://university.edu.np/profile/96
+END:VCARD",contact,0
+SMSTO:BANKALERT:Refund failed. Enter card details to receive money: http://esewa-bonus-claim.test/verify/5753,sms,1
+mailto:support@secure-login-check.test?subject=Final warning: confirm your password&body=Security alert. Update password within 24 hours,email,1
+SMSTO:+977-9835719895:Your OTP is 123456. Do not share it with anyone.,sms,0
+SMSTO:+977-9800000000:KYC expired. Confirm wallet PIN and OTP to continue: http://paypal-security.example.ru/verify/5941,sms,1
+WIFI:T:WPA;S:CampusGuest44;P:StrongPass442026;;,wifi,0
+https://hospital.org.np/docs/1334,url,0
+https://github.com/profile/1002,url,0
+https://nrb.org.np/notice/1863,url,0
+SMSTO:+977-9829413864:Class starts tomorrow. Please bring your notebook.,sms,0
+mailto:verify@192.168.45.12?subject=Refund failed: update card now&body=URGENT: your bank account is blocked. Verify login now,email,1
+https://nepalbank.com.np/docs/1158,url,0
+WIFI:T:WPA;S:CampusGuest56;P:StrongPass562026;;,wifi,0
+"SMSTO:BANKALERT:Congratulations, you won a cash prize. Claim reward immediately: http://wallet-kyc-alert.test/verify/5541",sms,1
+SMSTO:+977-9821332672:The invoice has been received and marked paid.,sms,0
+mailto:reward@10.8.4.22?subject=Urgent account verification required&body=Refund failed. Enter card details to receive money,email,1
+http://bit.ly/pay-fee133,url,1
+SMSTO:DELIVERY:KYC expired. Confirm wallet PIN and OTP to continue: http://10.8.4.22/verify/5491,sms,1
+https://library.example/docs/1262,url,0
+SMSTO:WALLET:Customs fee pending. Pay now to release your parcel: http://10.8.4.22/verify/5837,sms,1
+SMSTO:DELIVERY:Customs fee pending. Pay now to release your parcel: http://esewa-bonus-claim.test/verify/5010,sms,1
+mailto:verify@esewa-bonus-claim.test?subject=Your wallet is blocked&body=Refund failed. Enter card details to receive money,email,1
+https://company-intranet.example/notice/1313,url,0
+SMSTO:WALLET:Refund failed. Enter card details to receive money: http://esewa-bonus-claim.test/verify/5291,sms,1
+"BEGIN:VCARD
+FN:Student 60
+EMAIL:student60@university.edu.np
+URL:https://university.edu.np/profile/60
+END:VCARD",contact,0
+mailto:admin@city-services.example?subject=Library book reminder&body=Your OTP is 123456. Do not share it with anyone.,email,0
+SMSTO:WALLET:Refund failed. Enter card details to receive money: http://paypal-security.example.ru/verify/5447,sms,1
+"mailto:support@paypal-security.example.ru?subject=Final warning: confirm your password&body=Congratulations, you won a cash prize. Claim reward immediately",email,1
+mailto:verify@secure-login-check.test?subject=Urgent account verification required&body=Customs fee pending. Pay now to release your parcel,email,1
+mailto:noreply@wikipedia.org?subject=Project status summary&body=Thank you for your payment. No further action is required.,email,0
+mailto:admin@company-intranet.example?subject=Project status summary&body=Thank you for your payment. No further action is required.,email,0
+mailto:verify@192.168.45.12?subject=Urgent account verification required&body=Customs fee pending. Pay now to release your parcel,email,1
+"BEGIN:VCARD
+FN:Student 113
+EMAIL:student113@university.edu.np
+URL:https://university.edu.np/profile/113
+END:VCARD",contact,0
+SMSTO:DELIVERY:Refund failed. Enter card details to receive money: http://wallet-kyc-alert.test/verify/5202,sms,1
+mailto:noreply@company-intranet.example?subject=Meeting notes&body=Your appointment is confirmed for Friday at 10:00 AM.,email,0
+"BEGIN:VCARD
+FN:Student 6
+EMAIL:student6@university.edu.np
+URL:https://university.edu.np/profile/6
+END:VCARD",contact,0
+mailto:billing@hospital.org.np?subject=Library book reminder&body=The invoice has been received and marked paid.,email,0
+SMSTO:+977-9810283548:Your appointment is confirmed for Friday at 10:00 AM.,sms,0
+https://docs.djangoproject.com/docs/1020,url,0
+"BEGIN:VCARD
+FN:Student 71
+EMAIL:student71@university.edu.np
+URL:https://university.edu.np/profile/71
+END:VCARD",contact,0
+mailto:billing@company-intranet.example?subject=Appointment reminder&body=Your OTP is 123456. Do not share it with anyone.,email,0
+mailto:verify@10.8.4.22?subject=Your wallet is blocked&body=Customs fee pending. Pay now to release your parcel,email,1
+https://nrb.org.np/docs/1554,url,0
+http://secure-login-check.test/pay-fee/2737?session=67658,url,1
+SMSTO:+977-9811693235:Thank you for your payment. No further action is required.,sms,0
+WIFI:T:WPA;S:CampusGuest74;P:StrongPass742026;;,wifi,0
+https://library.example/receipt/1983,url,0
+http://bit.ly/login-update812,url,1
+"SMSTO:WALLET:Congratulations, you won a cash prize. Claim reward immediately: http://wallet-kyc-alert.test/verify/5459",sms,1
+SMSTO:+977-9833150209:The invoice has been received and marked paid.,sms,0
+https://docs.djangoproject.com/notice/1840,url,0
+WIFI:T:WPA;S:CampusGuest41;P:StrongPass412026;;,wifi,0
+http://esewa-bonus-claim.test/pay-fee/2438?session=59595,url,1
+WIFI:T:WPA;S:CampusGuest15;P:StrongPass152026;;,wifi,0
+WIFI:T:WPA;S:CampusGuest29;P:StrongPass292026;;,wifi,0
+"SMSTO:WALLET:Congratulations, you won a cash prize. Claim reward immediately: http://account-verify-now.test/verify/5444",sms,1
+https://google-login.example.net/claim-prize/2290?session=88231,url,1
+SMSTO:+977-9854620779:Thank you for your payment. No further action is required.,sms,0
+WIFI:T:WPA;S:CampusGuest18;P:StrongPass182026;;,wifi,0
+SMSTO:BANKALERT:Security alert. Update password within 24 hours: http://192.168.45.12/verify/5640,sms,1
+"mailto:security@account-verify-now.test?subject=Your wallet is blocked&body=Congratulations, you won a cash prize. Claim reward immediately",email,1
+SMSTO:+977-9891020593:Your OTP is 123456. Do not share it with anyone.,sms,0
+mailto:verify@google-login.example.net?subject=Prize claim pending&body=URGENT: your bank account is blocked. Verify login now,email,1
+"BEGIN:VCARD
+FN:Student 46
+EMAIL:student46@university.edu.np
+URL:https://university.edu.np/profile/46
+END:VCARD",contact,0
+SMSTO:BANKALERT:Customs fee pending. Pay now to release your parcel: http://bank-support-update.test/verify/5211,sms,1
+"BEGIN:VCARD
+FN:Student 104
+EMAIL:student104@university.edu.np
+URL:https://university.edu.np/profile/104
+END:VCARD",contact,0
+WIFI:T:WPA;S:CampusGuest68;P:StrongPass682026;;,wifi,0
+SMSTO:+977-9847855437:The invoice has been received and marked paid.,sms,0
+https://store-receipts.example/docs/1629,url,0
+https://khanacademy.org/status/1850,url,0
+https://university.edu.np/docs/1764,url,0
+"BEGIN:VCARD
+FN:Student 94
+EMAIL:student94@university.edu.np
+URL:https://university.edu.np/profile/94
+END:VCARD",contact,0
+"BEGIN:VCARD
+FN:Student 62
+EMAIL:student62@university.edu.np
+URL:https://university.edu.np/profile/62
+END:VCARD",contact,0
+https://company-intranet.example/notice/1770,url,0
+SMSTO:+977-9822472749:Your OTP is 123456. Do not share it with anyone.,sms,0
+https://openai.com/notice/1843,url,0
+SMSTO:+977-9829310301:The invoice has been received and marked paid.,sms,0
+https://coursera.org/docs/1748,url,0
+mailto:verify@delivery-fee-pay.test?subject=Refund failed: update card now&body=KYC expired. Confirm wallet PIN and OTP to continue,email,1
+WIFI:T:WPA;S:CampusGuest118;P:StrongPass1182026;;,wifi,0
+https://10.8.4.22/wallet-kyc/2277?session=74054,url,1
+SMSTO:+977-9868397609:The invoice has been received and marked paid.,sms,0
+mailto:admin@docs.djangoproject.com?subject=Monthly statement is available&body=Your delivery is scheduled for tomorrow afternoon.,email,0
+WIFI:T:WPA;S:CampusGuest72;P:StrongPass722026;;,wifi,0
+https://wallet-kyc-alert.test/login-update/2632?session=88974,url,1
+https://khanacademy.org/notice/1504,url,0
+http://khalti-refund.test/verify-account/2132?session=96533,url,1
+WIFI:T:WPA;S:CampusGuest75;P:StrongPass752026;;,wifi,0
+mailto:admin@wikipedia.org?subject=Meeting notes&body=Class starts tomorrow. Please bring your notebook.,email,0
+https://university.edu.np/course/1070,url,0
+mailto:support@192.168.45.12?subject=Refund failed: update card now&body=KYC expired. Confirm wallet PIN and OTP to continue,email,1
+https://np-prize-claim.test/pay-fee/2795?session=55544,url,1
+https://company-intranet.example/profile/1324,url,0
+SMSTO:BANKALERT:KYC expired. Confirm wallet PIN and OTP to continue: http://delivery-fee-pay.test/verify/5315,sms,1
+https://esewa-bonus-claim.test/pay-fee/2013?session=83874,url,1
+https://city-services.example/receipt/1885,url,0
+https://hospital.org.np/profile/1530,url,0
+https://wallet-kyc-alert.test/login-update/2166?session=40149,url,1
+WIFI:T:WPA;S:CampusGuest23;P:StrongPass232026;;,wifi,0
+mailto:verify@secure-login-check.test?subject=Urgent account verification required&body=Security alert. Update password within 24 hours,email,1
+SMSTO:+977-9833475742:The invoice has been received and marked paid.,sms,0
+SMSTO:DELIVERY:Refund failed. Enter card details to receive money: http://delivery-fee-pay.test/verify/5516,sms,1
+https://mozilla.org/status/1208,url,0
+mailto:reward@bank-support-update.test?subject=Unusual login detected&body=Security alert. Update password within 24 hours,email,1
+mailto:verify@secure-login-check.test?subject=Prize claim pending&body=KYC expired. Confirm wallet PIN and OTP to continue,email,1
+mailto:noreply@store-receipts.example?subject=Monthly statement is available&body=The invoice has been received and marked paid.,email,0
+SMSTO:+977-9870656527:Your delivery is scheduled for tomorrow afternoon.,sms,0
+"BEGIN:VCARD
+FN:Student 5
+EMAIL:student5@university.edu.np
+URL:https://university.edu.np/profile/5
+END:VCARD",contact,0
+mailto:billing@wikipedia.org?subject=Meeting notes&body=Your delivery is scheduled for tomorrow afternoon.,email,0
+"BEGIN:VCARD
+FN:Student 3
+EMAIL:student3@university.edu.np
+URL:https://university.edu.np/profile/3
+END:VCARD",contact,0
+"SMSTO:BANKALERT:Congratulations, you won a cash prize. Claim reward immediately: http://khalti-refund.test/verify/5073",sms,1
+mailto:reward@wallet-kyc-alert.test?subject=Unusual login detected&body=KYC expired. Confirm wallet PIN and OTP to continue,email,1
+SMSTO:+977-9875135201:Your OTP is 123456. Do not share it with anyone.,sms,0
+"mailto:verify@np-prize-claim.test?subject=Urgent account verification required&body=Congratulations, you won a cash prize. Claim reward immediately",email,1
+SMSTO:+977-9874993537:Thank you for your payment. No further action is required.,sms,0
+https://hospital.org.np/profile/1893,url,0
+WIFI:T:WPA;S:CampusGuest6;P:StrongPass62026;;,wifi,0
+http://secure-login-check.test/wallet-kyc/2038?session=84747,url,1
+"mailto:verify@delivery-fee-pay.test?subject=Unusual login detected&body=Congratulations, you won a cash prize. Claim reward immediately",email,1
+SMSTO:DELIVERY:Refund failed. Enter card details to receive money: http://paypal-security.example.ru/verify/5558,sms,1
+SMSTO:+977-9848809347:Class starts tomorrow. Please bring your notebook.,sms,0
+mailto:verify@paypal-security.example.ru?subject=Unusual login detected&body=URGENT: your bank account is blocked. Verify login now,email,1
+SMSTO:+977-9822429110:Your appointment is confirmed for Friday at 10:00 AM.,sms,0
+mailto:reward@secure-login-check.test?subject=Final warning: confirm your password&body=KYC expired. Confirm wallet PIN and OTP to continue,email,1
+https://ird.gov.np/profile/1524,url,0
+"BEGIN:VCARD
+FN:Student 118
+EMAIL:student118@university.edu.np
+URL:https://university.edu.np/profile/118
+END:VCARD",contact,0
+WIFI:T:WPA;S:CampusGuest9;P:StrongPass92026;;,wifi,0
+mailto:reward@google-login.example.net?subject=Refund failed: update card now&body=Refund failed. Enter card details to receive money,email,1
+mailto:noreply@library.example?subject=Monthly statement is available&body=Your appointment is confirmed for Friday at 10:00 AM.,email,0
+SMSTO:+977-9867121045:Your OTP is 123456. Do not share it with anyone.,sms,0
+https://openai.com/receipt/1364,url,0
+https://docs.djangoproject.com/notice/1154,url,0
+http://delivery-fee-pay.test/login-update/2327?session=46302,url,1
+WIFI:T:WPA;S:CampusGuest63;P:StrongPass632026;;,wifi,0
+SMSTO:+977-9800000000:KYC expired. Confirm wallet PIN and OTP to continue: http://secure-login-check.test/verify/5049,sms,1
+"BEGIN:VCARD
+FN:Student 35
+EMAIL:student35@university.edu.np
+URL:https://university.edu.np/profile/35
+END:VCARD",contact,0
+"mailto:verify@np-prize-claim.test?subject=Your wallet is blocked&body=Congratulations, you won a cash prize. Claim reward immediately",email,1
+mailto:support@company-intranet.example?subject=Course update&body=Your appointment is confirmed for Friday at 10:00 AM.,email,0
+https://mozilla.org/help/1809,url,0
+mailto:support@nrb.org.np?subject=Project status summary&body=Your delivery is scheduled for tomorrow afternoon.,email,0
+mailto:noreply@nepalbank.com.np?subject=Meeting notes&body=Thank you for your payment. No further action is required.,email,0
+http://wallet-kyc-alert.test/verify-account/2081?session=63334,url,1
+WIFI:T:WPA;S:CampusGuest20;P:StrongPass202026;;,wifi,0
+http://np-prize-claim.test/claim-prize/2439?session=33292,url,1
+mailto:reward@192.168.45.12?subject=Your wallet is blocked&body=Security alert. Update password within 24 hours,email,1
+"mailto:verify@np-prize-claim.test?subject=Unusual login detected&body=Congratulations, you won a cash prize. Claim reward immediately",email,1
+WIFI:T:WPA;S:CampusGuest85;P:StrongPass852026;;,wifi,0
+http://bank-support-update.test/pay-fee/2541?session=99220,url,1
+http://bank-support-update.test/claim-prize/2985?session=21247,url,1
+https://wikipedia.org/help/1649,url,0
+"BEGIN:VCARD
+FN:Student 38
+EMAIL:student38@university.edu.np
+URL:https://university.edu.np/profile/38
+END:VCARD",contact,0
+"BEGIN:VCARD
+FN:Student 26
+EMAIL:student26@university.edu.np
+URL:https://university.edu.np/profile/26
+END:VCARD",contact,0
+"BEGIN:VCARD
+FN:Student 55
+EMAIL:student55@university.edu.np
+URL:https://university.edu.np/profile/55
+END:VCARD",contact,0
+https://esewa-bonus-claim.test/wallet-kyc/2145?session=64568,url,1
+https://nrb.org.np/docs/1813,url,0
+SMSTO:+977-9800000000:Security alert. Update password within 24 hours: http://account-verify-now.test/verify/5855,sms,1
+https://hospital.org.np/status/1048,url,0
+"BEGIN:VCARD
+FN:Student 29
+EMAIL:student29@university.edu.np
+URL:https://university.edu.np/profile/29
+END:VCARD",contact,0
+mailto:noreply@docs.djangoproject.com?subject=Meeting notes&body=Thank you for your payment. No further action is required.,email,0
+SMSTO:+977-9824885782:The invoice has been received and marked paid.,sms,0
+mailto:noreply@mozilla.org?subject=Monthly statement is available&body=Class starts tomorrow. Please bring your notebook.,email,0
+SMSTO:+977-9889096412:Your appointment is confirmed for Friday at 10:00 AM.,sms,0
+mailto:verify@delivery-fee-pay.test?subject=Your wallet is blocked&body=Customs fee pending. Pay now to release your parcel,email,1
+https://mozilla.org/receipt/1466,url,0
+mailto:reward@paypal-security.example.ru?subject=Unusual login detected&body=URGENT: your bank account is blocked. Verify login now,email,1
+https://delivery-fee-pay.test/wallet-kyc/2817?session=74330,url,1
+https://university.edu.np/help/1267,url,0
+https://khanacademy.org/status/1220,url,0
+WIFI:T:WPA;S:CampusGuest2;P:StrongPass22026;;,wifi,0
+WIFI:T:WPA;S:CampusGuest100;P:StrongPass1002026;;,wifi,0
+WIFI:T:WPA;S:CampusGuest5;P:StrongPass52026;;,wifi,0
+WIFI:T:WPA;S:CampusGuest33;P:StrongPass332026;;,wifi,0
+mailto:verify@paypal-security.example.ru?subject=Refund failed: update card now&body=Refund failed. Enter card details to receive money,email,1
+"SMSTO:WALLET:Congratulations, you won a cash prize. Claim reward immediately: http://np-prize-claim.test/verify/5832",sms,1
+mailto:billing@github.com?subject=Password changed successfully&body=Your OTP is 123456. Do not share it with anyone.,email,0
+mailto:reward@secure-login-check.test?subject=Final warning: confirm your password&body=Customs fee pending. Pay now to release your parcel,email,1
+SMSTO:DELIVERY:Refund failed. Enter card details to receive money: http://bank-support-update.test/verify/5769,sms,1
+mailto:support@10.8.4.22?subject=Refund failed: update card now&body=KYC expired. Confirm wallet PIN and OTP to continue,email,1
+http://secure-login-check.test/wallet-kyc/2135?session=42077,url,1
+WIFI:T:WPA;S:CampusGuest66;P:StrongPass662026;;,wifi,0
+"mailto:verify@wallet-kyc-alert.test?subject=Final warning: confirm your password&body=Congratulations, you won a cash prize. Claim reward immediately",email,1
+https://hospital.org.np/docs/1202,url,0
+"BEGIN:VCARD
+FN:Student 16
+EMAIL:student16@university.edu.np
+URL:https://university.edu.np/profile/16
+END:VCARD",contact,0
+http://bit.ly/pay-fee819,url,1
+https://coursera.org/profile/1191,url,0
+"BEGIN:VCARD
+FN:Student 100
+EMAIL:student100@university.edu.np
+URL:https://university.edu.np/profile/100
+END:VCARD",contact,0
+SMSTO:+977-9828782925:The invoice has been received and marked paid.,sms,0
+SMSTO:+977-9853919906:Thank you for your payment. No further action is required.,sms,0
+https://nepalbank.com.np/notice/1304,url,0
+http://192.168.45.12/login-update/2939?session=78969,url,1
+mailto:reward@np-prize-claim.test?subject=Urgent account verification required&body=Security alert. Update password within 24 hours,email,1
+SMSTO:+977-9861807582:Your OTP is 123456. Do not share it with anyone.,sms,0
+mailto:security@esewa-bonus-claim.test?subject=Prize claim pending&body=Refund failed. Enter card details to receive money,email,1
+"BEGIN:VCARD
+FN:Student 92
+EMAIL:student92@university.edu.np
+URL:https://university.edu.np/profile/92
+END:VCARD",contact,0
+SMSTO:+977-9863439886:The invoice has been received and marked paid.,sms,0
+"BEGIN:VCARD
+FN:Student 22
+EMAIL:student22@university.edu.np
+URL:https://university.edu.np/profile/22
+END:VCARD",contact,0
+SMSTO:+977-9812070527:Your OTP is 123456. Do not share it with anyone.,sms,0
+SMSTO:+977-9827015758:Thank you for your payment. No further action is required.,sms,0
+https://nepalbank.com.np/help/1749,url,0
+http://bit.ly/verify-account742,url,1
+mailto:support@university.edu.np?subject=Meeting notes&body=Thank you for your payment. No further action is required.,email,0
+mailto:support@bank-support-update.test?subject=Prize claim pending&body=Customs fee pending. Pay now to release your parcel,email,1
+"BEGIN:VCARD
+FN:Student 20
+EMAIL:student20@university.edu.np
+URL:https://university.edu.np/profile/20
+END:VCARD",contact,0
+SMSTO:+977-9844603602:Class starts tomorrow. Please bring your notebook.,sms,0
+"SMSTO:DELIVERY:Congratulations, you won a cash prize. Claim reward immediately: http://khalti-refund.test/verify/5427",sms,1
+https://bank-support-update.test/pay-fee/2880?session=47313,url,1
+SMSTO:DELIVERY:Refund failed. Enter card details to receive money: http://paypal-security.example.ru/verify/5702,sms,1
+SMSTO:DELIVERY:Security alert. Update password within 24 hours: http://np-prize-claim.test/verify/5971,sms,1
+WIFI:T:WPA;S:CampusGuest95;P:StrongPass952026;;,wifi,0
+SMSTO:DELIVERY:Security alert. Update password within 24 hours: http://paypal-security.example.ru/verify/5802,sms,1
+SMSTO:BANKALERT:URGENT: your bank account is blocked. Verify login now: http://10.8.4.22/verify/5267,sms,1
+https://city-services.example/notice/1897,url,0
+mailto:admin@university.edu.np?subject=Project status summary&body=Class starts tomorrow. Please bring your notebook.,email,0
+http://bit.ly/verify-account938,url,1
+SMSTO:+977-9888989050:Your delivery is scheduled for tomorrow afternoon.,sms,0
+WIFI:T:WPA;S:CampusGuest27;P:StrongPass272026;;,wifi,0
+SMSTO:+977-9878211798:Your appointment is confirmed for Friday at 10:00 AM.,sms,0
+mailto:admin@company-intranet.example?subject=Password changed successfully&body=Your appointment is confirmed for Friday at 10:00 AM.,email,0
+SMSTO:+977-9800000000:KYC expired. Confirm wallet PIN and OTP to continue: http://secure-login-check.test/verify/5064,sms,1
+mailto:admin@docs.djangoproject.com?subject=Project status summary&body=Your delivery is scheduled for tomorrow afternoon.,email,0
+SMSTO:+977-9887367064:Thank you for your payment. No further action is required.,sms,0
+https://github.com/docs/1852,url,0
+WIFI:T:WPA;S:CampusGuest110;P:StrongPass1102026;;,wifi,0
+mailto:verify@google-login.example.net?subject=Prize claim pending&body=Customs fee pending. Pay now to release your parcel,email,1
+http://bit.ly/login-update7,url,1
+mailto:support@esewa-bonus-claim.test?subject=Your wallet is blocked&body=Customs fee pending. Pay now to release your parcel,email,1
+SMSTO:BANKALERT:KYC expired. Confirm wallet PIN and OTP to continue: http://wallet-kyc-alert.test/verify/5977,sms,1
+SMSTO:+977-9816302637:Class starts tomorrow. Please bring your notebook.,sms,0
+http://account-verify-now.test/verify-account/2379?session=78125,url,1
+"BEGIN:VCARD
+FN:Student 59
+EMAIL:student59@university.edu.np
+URL:https://university.edu.np/profile/59
+END:VCARD",contact,0
+https://openai.com/notice/1721,url,0
+https://khanacademy.org/receipt/1098,url,0
+"BEGIN:VCARD
+FN:Student 50
+EMAIL:student50@university.edu.np
+URL:https://university.edu.np/profile/50
+END:VCARD",contact,0
+SMSTO:+977-9851690209:Your delivery is scheduled for tomorrow afternoon.,sms,0
+"SMSTO:BANKALERT:Congratulations, you won a cash prize. Claim reward immediately: http://secure-login-check.test/verify/5437",sms,1
+SMSTO:+977-9859280571:Your delivery is scheduled for tomorrow afternoon.,sms,0
+SMSTO:+977-9800000000:Customs fee pending. Pay now to release your parcel: http://google-login.example.net/verify/5279,sms,1
+https://hospital.org.np/notice/1544,url,0
+https://wallet-kyc-alert.test/wallet-kyc/2106?session=64505,url,1
+https://delivery-fee-pay.test/pay-fee/2372?session=35614,url,1
+https://secure-login-check.test/wallet-kyc/2418?session=86544,url,1
+"BEGIN:VCARD
+FN:Student 0
+EMAIL:student0@university.edu.np
+URL:https://university.edu.np/profile/0
+END:VCARD",contact,0
+SMSTO:+977-9874585618:Thank you for your payment. No further action is required.,sms,0
+SMSTO:+977-9818828684:Class starts tomorrow. Please bring your notebook.,sms,0
+https://university.edu.np/docs/1910,url,0
+https://coursera.org/status/1941,url,0
+mailto:noreply@university.edu.np?subject=Receipt for your recent purchase&body=Your delivery is scheduled for tomorrow afternoon.,email,0
+"BEGIN:VCARD
+FN:Student 18
+EMAIL:student18@university.edu.np
+URL:https://university.edu.np/profile/18
+END:VCARD",contact,0
+mailto:reward@np-prize-claim.test?subject=Refund failed: update card now&body=Refund failed. Enter card details to receive money,email,1
+http://bit.ly/wallet-kyc847,url,1
+mailto:support@ird.gov.np?subject=Meeting notes&body=Your delivery is scheduled for tomorrow afternoon.,email,0
+https://mozilla.org/docs/1095,url,0
+"BEGIN:VCARD
+FN:Student 72
+EMAIL:student72@university.edu.np
+URL:https://university.edu.np/profile/72
+END:VCARD",contact,0
+SMSTO:WALLET:URGENT: your bank account is blocked. Verify login now: http://delivery-fee-pay.test/verify/5020,sms,1
+"BEGIN:VCARD
+FN:Student 45
+EMAIL:student45@university.edu.np
+URL:https://university.edu.np/profile/45
+END:VCARD",contact,0
+SMSTO:BANKALERT:URGENT: your bank account is blocked. Verify login now: http://account-verify-now.test/verify/5768,sms,1
+SMSTO:+977-9879401450:Your OTP is 123456. Do not share it with anyone.,sms,0
+mailto:noreply@openai.com?subject=Meeting notes&body=Your appointment is confirmed for Friday at 10:00 AM.,email,0
+mailto:verify@10.8.4.22?subject=Your wallet is blocked&body=Customs fee pending. Pay now to release your parcel,email,1
+mailto:support@university.edu.np?subject=Meeting notes&body=Your delivery is scheduled for tomorrow afternoon.,email,0
+http://paypal-security.example.ru/wallet-kyc/2180?session=24026,url,1
+SMSTO:+977-9850639874:The invoice has been received and marked paid.,sms,0
+WIFI:T:WPA;S:CampusGuest58;P:StrongPass582026;;,wifi,0
+http://bit.ly/pay-fee686,url,1
+https://bank-support-update.test/pay-fee/2703?session=53365,url,1
+https://city-services.example/docs/1440,url,0
+http://secure-login-check.test/verify-account/2398?session=27133,url,1
+mailto:verify@np-prize-claim.test?subject=Final warning: confirm your password&body=Refund failed. Enter card details to receive money,email,1
+"BEGIN:VCARD
+FN:Student 75
+EMAIL:student75@university.edu.np
+URL:https://university.edu.np/profile/75
+END:VCARD",contact,0
+SMSTO:+977-9887985029:Thank you for your payment. No further action is required.,sms,0
+"BEGIN:VCARD
+FN:Student 76
+EMAIL:student76@university.edu.np
+URL:https://university.edu.np/profile/76
+END:VCARD",contact,0
+SMSTO:DELIVERY:Refund failed. Enter card details to receive money: http://secure-login-check.test/verify/5110,sms,1
+SMSTO:+977-9884151411:Your appointment is confirmed for Friday at 10:00 AM.,sms,0
+https://delivery-fee-pay.test/verify-account/2249?session=15856,url,1
+mailto:noreply@university.edu.np?subject=Meeting notes&body=Thank you for your payment. No further action is required.,email,0
+https://openai.com/status/1860,url,0
+mailto:admin@coursera.org?subject=Course update&body=Class starts tomorrow. Please bring your notebook.,email,0
+"BEGIN:VCARD
+FN:Student 47
+EMAIL:student47@university.edu.np
+URL:https://university.edu.np/profile/47
+END:VCARD",contact,0
+https://192.168.45.12/login-update/2622?session=34979,url,1
+"BEGIN:VCARD
+FN:Student 68
+EMAIL:student68@university.edu.np
+URL:https://university.edu.np/profile/68
+END:VCARD",contact,0
+SMSTO:+977-9877887006:The invoice has been received and marked paid.,sms,0
+WIFI:T:WPA;S:CampusGuest13;P:StrongPass132026;;,wifi,0
+"BEGIN:VCARD
+FN:Student 114
+EMAIL:student114@university.edu.np
+URL:https://university.edu.np/profile/114
+END:VCARD",contact,0
+https://mozilla.org/status/1320,url,0
+https://google-login.example.net/verify-account/2346?session=67342,url,1
+"BEGIN:VCARD
+FN:Student 107
+EMAIL:student107@university.edu.np
+URL:https://university.edu.np/profile/107
+END:VCARD",contact,0
+"SMSTO:BANKALERT:Congratulations, you won a cash prize. Claim reward immediately: http://bank-support-update.test/verify/5484",sms,1
+mailto:noreply@wikipedia.org?subject=Course update&body=The invoice has been received and marked paid.,email,0
+"BEGIN:VCARD
+FN:Student 36
+EMAIL:student36@university.edu.np
+URL:https://university.edu.np/profile/36
+END:VCARD",contact,0
+http://paypal-security.example.ru/claim-prize/2044?session=36090,url,1
+SMSTO:+977-9884726038:Your OTP is 123456. Do not share it with anyone.,sms,0
+"BEGIN:VCARD
+FN:Student 10
+EMAIL:student10@university.edu.np
+URL:https://university.edu.np/profile/10
+END:VCARD",contact,0
+WIFI:T:WPA;S:CampusGuest112;P:StrongPass1122026;;,wifi,0
+http://khalti-refund.test/claim-prize/2648?session=60014,url,1
+https://university.edu.np/receipt/1750,url,0
+"BEGIN:VCARD
+FN:Student 42
+EMAIL:student42@university.edu.np
+URL:https://university.edu.np/profile/42
+END:VCARD",contact,0
+"SMSTO:WALLET:Congratulations, you won a cash prize. Claim reward immediately: http://paypal-security.example.ru/verify/5108",sms,1
+mailto:support@openai.com?subject=Meeting notes&body=The invoice has been received and marked paid.,email,0
+mailto:admin@coursera.org?subject=Meeting notes&body=Your OTP is 123456. Do not share it with anyone.,email,0
+WIFI:T:WPA;S:CampusGuest79;P:StrongPass792026;;,wifi,0
+SMSTO:+977-9812089715:Thank you for your payment. No further action is required.,sms,0
+mailto:support@secure-login-check.test?subject=Final warning: confirm your password&body=URGENT: your bank account is blocked. Verify login now,email,1
+mailto:billing@docs.djangoproject.com?subject=Meeting notes&body=Class starts tomorrow. Please bring your notebook.,email,0
+mailto:verify@192.168.45.12?subject=Urgent account verification required&body=KYC expired. Confirm wallet PIN and OTP to continue,email,1
+mailto:reward@bank-support-update.test?subject=Refund failed: update card now&body=Security alert. Update password within 24 hours,email,1
+mailto:support@10.8.4.22?subject=Urgent account verification required&body=KYC expired. Confirm wallet PIN and OTP to continue,email,1
+https://ird.gov.np/course/1247,url,0
+SMSTO:+977-9891722595:The invoice has been received and marked paid.,sms,0
+https://wallet-kyc-alert.test/wallet-kyc/2449?session=59638,url,1
+https://nepalbank.com.np/help/1818,url,0
+SMSTO:+977-9886359325:Your delivery is scheduled for tomorrow afternoon.,sms,0
+"BEGIN:VCARD
+FN:Student 99
+EMAIL:student99@university.edu.np
+URL:https://university.edu.np/profile/99
+END:VCARD",contact,0
+mailto:security@10.8.4.22?subject=Unusual login detected&body=Security alert. Update password within 24 hours,email,1
+http://esewa-bonus-claim.test/pay-fee/2698?session=31096,url,1
+https://nepalbank.com.np/receipt/1681,url,0
+https://wallet-kyc-alert.test/wallet-kyc/2272?session=28388,url,1
+https://account-verify-now.test/claim-prize/2466?session=71727,url,1
+http://bank-support-update.test/login-update/2548?session=74169,url,1
+SMSTO:BANKALERT:URGENT: your bank account is blocked. Verify login now: http://wallet-kyc-alert.test/verify/5840,sms,1
+SMSTO:DELIVERY:Security alert. Update password within 24 hours: http://wallet-kyc-alert.test/verify/5426,sms,1
+SMSTO:+977-9869585481:Your appointment is confirmed for Friday at 10:00 AM.,sms,0
+"BEGIN:VCARD
+FN:Student 37
+EMAIL:student37@university.edu.np
+URL:https://university.edu.np/profile/37
+END:VCARD",contact,0
+https://nrb.org.np/help/1170,url,0
+SMSTO:DELIVERY:Security alert. Update password within 24 hours: http://khalti-refund.test/verify/5659,sms,1
+http://google-login.example.net/verify-account/2381?session=93521,url,1
+"BEGIN:VCARD
+FN:Student 116
+EMAIL:student116@university.edu.np
+URL:https://university.edu.np/profile/116
+END:VCARD",contact,0
+"BEGIN:VCARD
+FN:Student 11
+EMAIL:student11@university.edu.np
+URL:https://university.edu.np/profile/11
+END:VCARD",contact,0
+SMSTO:WALLET:URGENT: your bank account is blocked. Verify login now: http://account-verify-now.test/verify/5574,sms,1
+WIFI:T:WPA;S:CampusGuest119;P:StrongPass1192026;;,wifi,0
+https://coursera.org/notice/1069,url,0
+mailto:support@account-verify-now.test?subject=Refund failed: update card now&body=Security alert. Update password within 24 hours,email,1
+SMSTO:+977-9855367996:Your appointment is confirmed for Friday at 10:00 AM.,sms,0
+http://np-prize-claim.test/claim-prize/2068?session=74094,url,1
+mailto:security@10.8.4.22?subject=Urgent account verification required&body=KYC expired. Confirm wallet PIN and OTP to continue,email,1
+WIFI:T:WPA;S:CampusGuest39;P:StrongPass392026;;,wifi,0
+WIFI:T:WPA;S:CampusGuest57;P:StrongPass572026;;,wifi,0
+https://np-prize-claim.test/verify-account/2279?session=39470,url,1
+"BEGIN:VCARD
+FN:Student 43
+EMAIL:student43@university.edu.np
+URL:https://university.edu.np/profile/43
+END:VCARD",contact,0
+"BEGIN:VCARD
+FN:Student 25
+EMAIL:student25@university.edu.np
+URL:https://university.edu.np/profile/25
+END:VCARD",contact,0
+"BEGIN:VCARD
+FN:Student 33
+EMAIL:student33@university.edu.np
+URL:https://university.edu.np/profile/33
+END:VCARD",contact,0
+mailto:support@account-verify-now.test?subject=Unusual login detected&body=Refund failed. Enter card details to receive money,email,1
+mailto:noreply@khanacademy.org?subject=Project status summary&body=Thank you for your payment. No further action is required.,email,0
+mailto:verify@account-verify-now.test?subject=Prize claim pending&body=Refund failed. Enter card details to receive money,email,1
+http://secure-login-check.test/login-update/2901?session=40928,url,1
+"BEGIN:VCARD
+FN:Student 98
+EMAIL:student98@university.edu.np
+URL:https://university.edu.np/profile/98
+END:VCARD",contact,0
+https://mozilla.org/help/1151,url,0
+https://github.com/profile/1042,url,0
+"BEGIN:VCARD
+FN:Student 65
+EMAIL:student65@university.edu.np
+URL:https://university.edu.np/profile/65
+END:VCARD",contact,0
+https://company-intranet.example/docs/1687,url,0
+SMSTO:+977-9827493080:The invoice has been received and marked paid.,sms,0
+https://mozilla.org/help/1559,url,0
+WIFI:T:WPA;S:CampusGuest60;P:StrongPass602026;;,wifi,0
+https://bank-support-update.test/pay-fee/2247?session=55652,url,1
+WIFI:T:WPA;S:CampusGuest50;P:StrongPass502026;;,wifi,0
+https://company-intranet.example/notice/1760,url,0
+mailto:verify@secure-login-check.test?subject=Urgent account verification required&body=Refund failed. Enter card details to receive money,email,1
+https://bank-support-update.test/wallet-kyc/2710?session=57118,url,1
+SMSTO:BANKALERT:Refund failed. Enter card details to receive money: http://account-verify-now.test/verify/5657,sms,1
+https://bank-support-update.test/pay-fee/2159?session=47101,url,1
+mailto:support@github.com?subject=Password changed successfully&body=Your delivery is scheduled for tomorrow afternoon.,email,0
+SMSTO:+977-9810008169:Thank you for your payment. No further action is required.,sms,0
+http://esewa-bonus-claim.test/claim-prize/2739?session=29692,url,1
+"BEGIN:VCARD
+FN:Student 1
+EMAIL:student1@university.edu.np
+URL:https://university.edu.np/profile/1
+END:VCARD",contact,0
+SMSTO:+977-9800000000:KYC expired. Confirm wallet PIN and OTP to continue: http://account-verify-now.test/verify/5938,sms,1
+https://docs.djangoproject.com/receipt/1454,url,0
+https://wikipedia.org/course/1009,url,0
+SMSTO:DELIVERY:Security alert. Update password within 24 hours: http://khalti-refund.test/verify/5218,sms,1
+mailto:verify@np-prize-claim.test?subject=Your wallet is blocked&body=Customs fee pending. Pay now to release your parcel,email,1
+http://bit.ly/login-update364,url,1
+mailto:support@paypal-security.example.ru?subject=Urgent account verification required&body=Refund failed. Enter card details to receive money,email,1
+https://esewa-bonus-claim.test/verify-account/2569?session=65164,url,1
+WIFI:T:WPA;S:CampusGuest46;P:StrongPass462026;;,wifi,0
+http://bit.ly/login-update441,url,1
+mailto:admin@wikipedia.org?subject=Monthly statement is available&body=The invoice has been received and marked paid.,email,0
+SMSTO:+977-9882617403:Thank you for your payment. No further action is required.,sms,0
+https://khanacademy.org/help/1404,url,0
+https://docs.djangoproject.com/receipt/1763,url,0
+WIFI:T:WPA;S:CampusGuest80;P:StrongPass802026;;,wifi,0
+"SMSTO:+977-9800000000:Congratulations, you won a cash prize. Claim reward immediately: http://paypal-security.example.ru/verify/5828",sms,1
+https://mozilla.org/help/1568,url,0
+mailto:admin@docs.djangoproject.com?subject=Password changed successfully&body=Your OTP is 123456. Do not share it with anyone.,email,0
+mailto:support@wallet-kyc-alert.test?subject=Refund failed: update card now&body=URGENT: your bank account is blocked. Verify login now,email,1
+SMSTO:+977-9810212821:Your delivery is scheduled for tomorrow afternoon.,sms,0
+SMSTO:WALLET:KYC expired. Confirm wallet PIN and OTP to continue: http://192.168.45.12/verify/5816,sms,1
+http://google-login.example.net/wallet-kyc/2579?session=21807,url,1
+"BEGIN:VCARD
+FN:Student 105
+EMAIL:student105@university.edu.np
+URL:https://university.edu.np/profile/105
+END:VCARD",contact,0
+SMSTO:+977-9832778889:Your appointment is confirmed for Friday at 10:00 AM.,sms,0
+SMSTO:DELIVERY:Refund failed. Enter card details to receive money: http://wallet-kyc-alert.test/verify/5676,sms,1
+http://khalti-refund.test/pay-fee/2360?session=15772,url,1
+"BEGIN:VCARD
+FN:Student 14
+EMAIL:student14@university.edu.np
+URL:https://university.edu.np/profile/14
+END:VCARD",contact,0
+SMSTO:+977-9800000000:Customs fee pending. Pay now to release your parcel: http://np-prize-claim.test/verify/5393,sms,1
+http://192.168.45.12/login-update/2086?session=62034,url,1
+https://ird.gov.np/course/1251,url,0
+https://company-intranet.example/course/1270,url,0
+mailto:billing@university.edu.np?subject=Receipt for your recent purchase&body=Class starts tomorrow. Please bring your notebook.,email,0
+mailto:security@wallet-kyc-alert.test?subject=Refund failed: update card now&body=Refund failed. Enter card details to receive money,email,1
+WIFI:T:WPA;S:CampusGuest49;P:StrongPass492026;;,wifi,0
+mailto:verify@np-prize-claim.test?subject=Your wallet is blocked&body=KYC expired. Confirm wallet PIN and OTP to continue,email,1
+mailto:security@192.168.45.12?subject=Unusual login detected&body=Refund failed. Enter card details to receive money,email,1
+http://paypal-security.example.ru/wallet-kyc/2178?session=12192,url,1
+WIFI:T:WPA;S:CampusGuest86;P:StrongPass862026;;,wifi,0
+mailto:admin@docs.djangoproject.com?subject=Library book reminder&body=Class starts tomorrow. Please bring your notebook.,email,0
+SMSTO:WALLET:Security alert. Update password within 24 hours: http://10.8.4.22/verify/5789,sms,1
+https://account-verify-now.test/wallet-kyc/2188?session=94529,url,1
+https://company-intranet.example/receipt/1316,url,0
+SMSTO:+977-9813448448:Class starts tomorrow. Please bring your notebook.,sms,0
+WIFI:T:WPA;S:CampusGuest103;P:StrongPass1032026;;,wifi,0
+mailto:support@coursera.org?subject=Library book reminder&body=Thank you for your payment. No further action is required.,email,0
+http://account-verify-now.test/login-update/2386?session=86638,url,1
+https://paypal-security.example.ru/wallet-kyc/2820?session=80879,url,1
+SMSTO:+977-9800000000:KYC expired. Confirm wallet PIN and OTP to continue: http://wallet-kyc-alert.test/verify/5916,sms,1
+https://city-services.example/receipt/1288,url,0
+SMSTO:+977-9871269496:Your OTP is 123456. Do not share it with anyone.,sms,0
+"BEGIN:VCARD
+FN:Student 85
+EMAIL:student85@university.edu.np
+URL:https://university.edu.np/profile/85
+END:VCARD",contact,0
+SMSTO:BANKALERT:Refund failed. Enter card details to receive money: http://paypal-security.example.ru/verify/5674,sms,1
+mailto:noreply@university.edu.np?subject=Monthly statement is available&body=Thank you for your payment. No further action is required.,email,0
+http://192.168.45.12/wallet-kyc/2270?session=73788,url,1
+https://delivery-fee-pay.test/wallet-kyc/2849?session=19351,url,1
+"BEGIN:VCARD
+FN:Student 86
+EMAIL:student86@university.edu.np
+URL:https://university.edu.np/profile/86
+END:VCARD",contact,0
+mailto:support@google-login.example.net?subject=Unusual login detected&body=Customs fee pending. Pay now to release your parcel,email,1
+mailto:support@wallet-kyc-alert.test?subject=Refund failed: update card now&body=Refund failed. Enter card details to receive money,email,1
+http://esewa-bonus-claim.test/pay-fee/2746?session=85008,url,1
+mailto:verify@bank-support-update.test?subject=Urgent account verification required&body=URGENT: your bank account is blocked. Verify login now,email,1
+WIFI:T:WPA;S:CampusGuest96;P:StrongPass962026;;,wifi,0
+"mailto:reward@google-login.example.net?subject=Your wallet is blocked&body=Congratulations, you won a cash prize. Claim reward immediately",email,1
+https://coursera.org/status/1656,url,0
+https://company-intranet.example/profile/1951,url,0
+mailto:reward@wallet-kyc-alert.test?subject=Unusual login detected&body=URGENT: your bank account is blocked. Verify login now,email,1
+SMSTO:DELIVERY:Security alert. Update password within 24 hours: http://khalti-refund.test/verify/5841,sms,1
+https://github.com/receipt/1561,url,0
+"BEGIN:VCARD
+FN:Student 79
+EMAIL:student79@university.edu.np
+URL:https://university.edu.np/profile/79
+END:VCARD",contact,0
+mailto:admin@khanacademy.org?subject=Project status summary&body=Thank you for your payment. No further action is required.,email,0
+SMSTO:+977-9852196444:The invoice has been received and marked paid.,sms,0
+WIFI:T:WPA;S:CampusGuest93;P:StrongPass932026;;,wifi,0
+https://company-intranet.example/notice/1206,url,0
+SMSTO:+977-9887556314:Your OTP is 123456. Do not share it with anyone.,sms,0
+http://google-login.example.net/login-update/2428?session=79002,url,1
+SMSTO:+977-9800000000:KYC expired. Confirm wallet PIN and OTP to continue: http://account-verify-now.test/verify/5898,sms,1
+mailto:noreply@library.example?subject=Monthly statement is available&body=Class starts tomorrow. Please bring your notebook.,email,0
+mailto:reward@192.168.45.12?subject=Unusual login detected&body=KYC expired. Confirm wallet PIN and OTP to continue,email,1
+mailto:support@khanacademy.org?subject=Appointment reminder&body=Your delivery is scheduled for tomorrow afternoon.,email,0
+SMSTO:+977-9813629536:Class starts tomorrow. Please bring your notebook.,sms,0
+http://secure-login-check.test/pay-fee/2872?session=55073,url,1
+"BEGIN:VCARD
+FN:Student 30
+EMAIL:student30@university.edu.np
+URL:https://university.edu.np/profile/30
+END:VCARD",contact,0
+https://docs.djangoproject.com/notice/1447,url,0
+WIFI:T:WPA;S:CampusGuest4;P:StrongPass42026;;,wifi,0
+https://paypal-security.example.ru/claim-prize/2914?session=34874,url,1
+WIFI:T:WPA;S:CampusGuest98;P:StrongPass982026;;,wifi,0
+"BEGIN:VCARD
+FN:Student 40
+EMAIL:student40@university.edu.np
+URL:https://university.edu.np/profile/40
+END:VCARD",contact,0
+http://paypal-security.example.ru/login-update/2691?session=61248,url,1
+WIFI:T:WPA;S:CampusGuest42;P:StrongPass422026;;,wifi,0
+https://secure-login-check.test/claim-prize/2034?session=88317,url,1
+https://mozilla.org/docs/1497,url,0
+SMSTO:+977-9800000000:URGENT: your bank account is blocked. Verify login now: http://delivery-fee-pay.test/verify/5345,sms,1
+https://hospital.org.np/docs/1326,url,0
+"BEGIN:VCARD
+FN:Student 63
+EMAIL:student63@university.edu.np
+URL:https://university.edu.np/profile/63
+END:VCARD",contact,0
+https://coursera.org/docs/1226,url,0
+"SMSTO:BANKALERT:Congratulations, you won a cash prize. Claim reward immediately: http://192.168.45.12/verify/5952",sms,1
+https://khanacademy.org/receipt/1453,url,0
+https://ird.gov.np/docs/1819,url,0
+http://khalti-refund.test/claim-prize/2697?session=64087,url,1
+mailto:noreply@university.edu.np?subject=Receipt for your recent purchase&body=Your OTP is 123456. Do not share it with anyone.,email,0
+SMSTO:+977-9874205049:Thank you for your payment. No further action is required.,sms,0
+"SMSTO:BANKALERT:Congratulations, you won a cash prize. Claim reward immediately: http://192.168.45.12/verify/5821",sms,1
+https://esewa-bonus-claim.test/verify-account/2717?session=87337,url,1
+SMSTO:WALLET:URGENT: your bank account is blocked. Verify login now: http://bank-support-update.test/verify/5499,sms,1
+SMSTO:DELIVERY:Customs fee pending. Pay now to release your parcel: http://paypal-security.example.ru/verify/5653,sms,1
+WIFI:T:WPA;S:CampusGuest116;P:StrongPass1162026;;,wifi,0
+http://bit.ly/claim-prize140,url,1
+SMSTO:+977-9800000000:URGENT: your bank account is blocked. Verify login now: http://np-prize-claim.test/verify/5947,sms,1
+"BEGIN:VCARD
+FN:Student 28
+EMAIL:student28@university.edu.np
+URL:https://university.edu.np/profile/28
+END:VCARD",contact,0
+mailto:billing@city-services.example?subject=Monthly statement is available&body=Your OTP is 123456. Do not share it with anyone.,email,0
+http://192.168.45.12/claim-prize/2806?session=44517,url,1
+SMSTO:+977-9881472700:The invoice has been received and marked paid.,sms,0
+http://np-prize-claim.test/wallet-kyc/2031?session=21802,url,1
+http://wallet-kyc-alert.test/verify-account/2928?session=24031,url,1
+https://np-prize-claim.test/pay-fee/2656?session=27048,url,1
+"BEGIN:VCARD
+FN:Student 49
+EMAIL:student49@university.edu.np
+URL:https://university.edu.np/profile/49
+END:VCARD",contact,0
+"mailto:support@paypal-security.example.ru?subject=Your wallet is blocked&body=Congratulations, you won a cash prize. Claim reward immediately",email,1
+https://khanacademy.org/profile/1390,url,0
+mailto:support@mozilla.org?subject=Course update&body=Class starts tomorrow. Please bring your notebook.,email,0
+mailto:admin@city-services.example?subject=Project status summary&body=Thank you for your payment. No further action is required.,email,0
+http://delivery-fee-pay.test/login-update/2545?session=73908,url,1
+SMSTO:+977-9893605083:Your appointment is confirmed for Friday at 10:00 AM.,sms,0
+SMSTO:+977-9827160025:The invoice has been received and marked paid.,sms,0
+WIFI:T:WPA;S:CampusGuest31;P:StrongPass312026;;,wifi,0
+WIFI:T:WPA;S:CampusGuest54;P:StrongPass542026;;,wifi,0
+https://university.edu.np/help/1673,url,0
+mailto:security@delivery-fee-pay.test?subject=Prize claim pending&body=Refund failed. Enter card details to receive money,email,1
+mailto:support@company-intranet.example?subject=Meeting notes&body=Thank you for your payment. No further action is required.,email,0
+SMSTO:+977-9800000000:KYC expired. Confirm wallet PIN and OTP to continue: http://paypal-security.example.ru/verify/5734,sms,1
+"BEGIN:VCARD
+FN:Student 52
+EMAIL:student52@university.edu.np
+URL:https://university.edu.np/profile/52
+END:VCARD",contact,0
+mailto:noreply@khanacademy.org?subject=Meeting notes&body=Your OTP is 123456. Do not share it with anyone.,email,0
+SMSTO:+977-9858537393:Thank you for your payment. No further action is required.,sms,0
+SMSTO:+977-9880883378:Thank you for your payment. No further action is required.,sms,0
+https://secure-login-check.test/wallet-kyc/2816?session=91352,url,1
+mailto:support@wikipedia.org?subject=Library book reminder&body=Your appointment is confirmed for Friday at 10:00 AM.,email,0
+WIFI:T:WPA;S:CampusGuest28;P:StrongPass282026;;,wifi,0
+mailto:verify@wallet-kyc-alert.test?subject=Urgent account verification required&body=Customs fee pending. Pay now to release your parcel,email,1
+mailto:noreply@university.edu.np?subject=Password changed successfully&body=Your appointment is confirmed for Friday at 10:00 AM.,email,0
+SMSTO:+977-9848902041:The invoice has been received and marked paid.,sms,0
+WIFI:T:WPA;S:CampusGuest38;P:StrongPass382026;;,wifi,0
+WIFI:T:WPA;S:CampusGuest40;P:StrongPass402026;;,wifi,0
+SMSTO:+977-9884296506:Class starts tomorrow. Please bring your notebook.,sms,0
+WIFI:T:WPA;S:CampusGuest48;P:StrongPass482026;;,wifi,0
+https://10.8.4.22/wallet-kyc/2684?session=51471,url,1
+https://khalti-refund.test/claim-prize/2023?session=62260,url,1
+mailto:billing@nrb.org.np?subject=Monthly statement is available&body=Your delivery is scheduled for tomorrow afternoon.,email,0
+"BEGIN:VCARD
+FN:Student 56
+EMAIL:student56@university.edu.np
+URL:https://university.edu.np/profile/56
+END:VCARD",contact,0
+SMSTO:+977-9834136369:The invoice has been received and marked paid.,sms,0
+SMSTO:+977-9894667848:Thank you for your payment. No further action is required.,sms,0
+SMSTO:DELIVERY:Refund failed. Enter card details to receive money: http://paypal-security.example.ru/verify/5671,sms,1

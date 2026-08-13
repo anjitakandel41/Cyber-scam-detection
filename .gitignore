@@ -1,96 +1,96 @@
 
-# =========================
-# Django Core
-# =========================
-*.log
-*.pot
-*.pyc
-__pycache__/
-db.sqlite3
+# # =========================
+# # Django Core
+# # =========================
+# *.log
+# *.pot
+# *.pyc
+# __pycache__/
+# db.sqlite3
 
-db.sqlite3
-*.sqlite3
-
-
-# migrations (optional clean repo style)
-*/migrations/*.pyc
-*/migrations/__pycache__/
-
-# static & media (generated at runtime)
-staticfiles/
-media/
-
-# =========================
-# Virtual Environment
-# =========================
-venv/
-env/
-ENV/
-.venv/
-
-# =========================
-# Environment Variables (IMPORTANT)
-# =========================
-.env
-.env.*
-*.env
-
-# =========================
-# IDE / Editor files
-# =========================
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# =========================
-# OS files
-# =========================
-.DS_Store
-Thumbs.db
-
-# =========================
-# Python Cache
-# =========================
-*.pyc
-*.pyo
-*.pyd
-__pycache__/
-
-# =========================
-# ML MODEL FILES (VERY IMPORTANT)
-# =========================
-*.pkl
-*.joblib
-*.h5
-*.model
-ml_model/model.pkl
-
-# =========================
-# DATASETS (IMPORTANT)
-# =========================
-*.csv
-*.xlsx
-datasets/
-data/
-
-# =========================
-# GENERATED REPORTS (PDF)
-# =========================
-*.pdf
-media/reports/
+# db.sqlite3
+# *.sqlite3
 
 
-# =========================
-# LOG FILES
-# =========================
-logs/
-*.log
+# # migrations (optional clean repo style)
+# */migrations/*.pyc
+# */migrations/__pycache__/
 
-# =========================
-# SECURITY SENSITIVE FILES
-# =========================
-credentials.json
-secret_key.txt
-apikeys.txt
+# # static & media (generated at runtime)
+# staticfiles/
+# media/
+
+# # =========================
+# # Virtual Environment
+# # =========================
+# venv/
+# env/
+# ENV/
+# .venv/
+
+# # =========================
+# # Environment Variables (IMPORTANT)
+# # =========================
+# .env
+# .env.*
+# *.env
+
+# # =========================
+# # IDE / Editor files
+# # =========================
+# .vscode/
+# .idea/
+# *.swp
+# *.swo
+
+# # =========================
+# # OS files
+# # =========================
+# .DS_Store
+# Thumbs.db
+
+# # =========================
+# # Python Cache
+# # =========================
+# *.pyc
+# *.pyo
+# *.pyd
+# __pycache__/
+
+# # =========================
+# # ML MODEL FILES (VERY IMPORTANT)
+# # =========================
+# *.pkl
+# *.joblib
+# *.h5
+# *.model
+# ml_model/model.pkl
+
+# # =========================
+# # DATASETS (IMPORTANT)
+# # =========================
+# *.csv
+# *.xlsx
+# datasets/
+# data/
+
+# # =========================
+# # GENERATED REPORTS (PDF)
+# # =========================
+# *.pdf
+# media/reports/
+
+
+# # =========================
+# # LOG FILES
+# # =========================
+# logs/
+# *.log
+
+# # =========================
+# # SECURITY SENSITIVE FILES
+# # =========================
+# credentials.json
+# secret_key.txt
+# apikeys.txt
 
