@@ -122,6 +122,41 @@
         margin-top: 1.5rem !important;
     }
 
+    .xai-panel {
+        background: #F5FAFF !important;
+        border: 1px solid #C5D9E8 !important;
+        border-radius: 8px !important;
+        padding: 1rem !important;
+        margin-top: 1rem !important;
+    }
+
+    .xai-panel h3 {
+        color: #1A3A4A !important;
+        font-size: 1.15rem !important;
+        font-weight: 800 !important;
+        margin-bottom: 0.75rem !important;
+    }
+
+    .xai-factor {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        border-bottom: 1px solid #C5D9E8;
+        padding: 0.55rem 0;
+        color: #1A3A4A;
+        font-weight: 600;
+    }
+
+    .xai-factor:last-child {
+        border-bottom: 0;
+    }
+
+    .xai-value {
+        color: #4A6A7A;
+        font-weight: 800;
+        white-space: nowrap;
+    }
+
     .btn-back:hover {
         background: #2A5F82 !important;
         transform: translateY(-2px) !important;
@@ -246,6 +281,40 @@
         </div>
 
         <hr class="result-divider">
+
+        {% if result.xai %}
+        <span class="result-label">
+            <i class="bi bi-diagram-3" style="color: #3A7CA5; margin-right: 0.5rem;"></i>
+            Explainable AI Analysis
+        </span>
+        <div class="xai-panel">
+            <h3>SHAP Analysis</h3>
+            {% if result.xai.shap.available %}
+                {% for item in result.xai.shap.top_features|slice:":5" %}
+                    <div class="xai-factor">
+                        <span>{{ item.description }}</span>
+                        <span class="xai-value">{{ item.shap_value|floatformat:3 }}</span>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="xai-factor">{{ result.xai.shap.message }}</div>
+            {% endif %}
+        </div>
+        <div class="xai-panel">
+            <h3>LIME Analysis</h3>
+            {% if result.xai.lime.available %}
+                {% for item in result.xai.lime.top_features|slice:":5" %}
+                    <div class="xai-factor">
+                        <span>{{ item.description }}</span>
+                        <span class="xai-value">{{ item.weight|floatformat:3 }}</span>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="xai-factor">{{ result.xai.lime.message }}</div>
+            {% endif %}
+        </div>
+        <hr class="result-divider">
+        {% endif %}
 
         <!-- Recommendation -->
         <span class="result-label">

@@ -49,7 +49,7 @@
                         <i class="bi bi-link-45deg"></i><span>URL Scanner</span>{% if is_view_mode %}<i class="bi bi-lock-fill"></i>{% endif %}
                     </a>
                     <a class="sidebar-link {% if is_view_mode %}locked-feature{% endif %} {% if request.path == '/scanner/email/' %}active{% endif %}" href="{% url 'scanner:email_scan' %}"{% if is_view_mode %} title="{{ view_mode_message }}"{% endif %}>
-                        <i class="bi bi-envelope-check"></i><span>Email Scanner</span>{% if is_view_mode %}<i class="bi bi-lock-fill"></i>{% endif %}
+                        <i class="bi bi-envelope-check"></i><span>Email Analyzer</span>{% if is_view_mode %}<i class="bi bi-lock-fill"></i>{% endif %}
                     </a>
                     <a class="sidebar-link {% if is_view_mode %}locked-feature{% endif %} {% if request.path == '/scanner/sms/' %}active{% endif %}" href="{% url 'scanner:sms_scan' %}"{% if is_view_mode %} title="{{ view_mode_message }}"{% endif %}>
                         <i class="bi bi-chat-left-text"></i><span>SMS Analyzer</span>{% if is_view_mode %}<i class="bi bi-lock-fill"></i>{% endif %}

@@ -79,6 +79,104 @@
                 </div>
             </div>
 
+            {% if result.xai %}
+            <div class="report-section xai-section">
+                <h3>Explainable AI Analysis</h3>
+                <p class="xai-statement">{{ result.xai.statement }}</p>
+
+                <div class="xai-grid">
+                    <div class="xai-panel">
+                        <h4>SHAP Analysis</h4>
+                        {% if result.xai.shap.available %}
+                            <div class="xai-subtitle">Top factors increasing risk</div>
+                            {% for item in result.xai.shap.top_features %}
+                                {% if item.direction == 'increases_risk' %}
+                                    <div class="xai-bar-row">
+                                        <div class="xai-bar-label">{{ item.description }}</div>
+                                        <div class="xai-bar-track"><div class="xai-bar-fill danger" style="width: {{ item.display_width }}%;"></div></div>
+                                        <div class="xai-value">+{{ item.shap_value|floatformat:3 }}</div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                            <div class="xai-subtitle">Top factors reducing risk</div>
+                            {% for item in result.xai.shap.top_features %}
+                                {% if item.direction == 'decreases_risk' %}
+                                    <div class="xai-bar-row">
+                                        <div class="xai-bar-label">{{ item.description }}</div>
+                                        <div class="xai-bar-track"><div class="xai-bar-fill safe" style="width: {{ item.display_width }}%;"></div></div>
+                                        <div class="xai-value">{{ item.shap_value|floatformat:3 }}</div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        {% else %}
+                            <p class="xai-unavailable">{{ result.xai.shap.message }}</p>
+                        {% endif %}
+                    </div>
+
+                    <div class="xai-panel">
+                        <h4>LIME Analysis</h4>
+                        {% if result.xai.lime.available %}
+                            <div class="xai-subtitle">Top factors increasing risk</div>
+                            {% for item in result.xai.lime.top_features %}
+                                {% if item.direction == 'increases_risk' %}
+                                    <div class="xai-bar-row">
+                                        <div class="xai-bar-label">{{ item.description }}</div>
+                                        <div class="xai-bar-track"><div class="xai-bar-fill danger" style="width: {{ item.display_width }}%;"></div></div>
+                                        <div class="xai-value">+{{ item.weight|floatformat:3 }}</div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                            <div class="xai-subtitle">Top factors reducing risk</div>
+                            {% for item in result.xai.lime.top_features %}
+                                {% if item.direction == 'decreases_risk' %}
+                                    <div class="xai-bar-row">
+                                        <div class="xai-bar-label">{{ item.description }}</div>
+                                        <div class="xai-bar-track"><div class="xai-bar-fill safe" style="width: {{ item.display_width }}%;"></div></div>
+                                        <div class="xai-value">{{ item.weight|floatformat:3 }}</div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        {% else %}
+                            <p class="xai-unavailable">{{ result.xai.lime.message }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+
+                {% if result.xai.comparison %}
+                    <div class="xai-comparison">
+                        <h4>SHAP and LIME Comparison</h4>
+                        <div class="xai-table">
+                            <div class="xai-table-head">Feature</div>
+                            <div class="xai-table-head">SHAP</div>
+                            <div class="xai-table-head">LIME</div>
+                            {% for item in result.xai.comparison %}
+                                <div>{{ item.description }}</div>
+                                <div>{{ item.shap|floatformat:3 }}</div>
+                                <div>{% if item.lime is None %}N/A{% else %}{{ item.lime|floatformat:3 }}{% endif %}</div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+
+                <div class="xai-grid">
+                    <div class="xai-panel">
+                        <h4>Rule-Based Evidence</h4>
+                        {% for reason in result.xai.rules %}
+                            <div class="clean-reason-item">{{ reason }}</div>
+                        {% endfor %}
+                    </div>
+                    <div class="xai-panel">
+                        <h4>External Evidence</h4>
+                        {% for message in result.xai.external.messages %}
+                            <div class="clean-reason-item">{{ message }}</div>
+                        {% empty %}
+                            <div class="clean-reason-item">No external threat-intelligence findings were available for this scan type.</div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
             <div class="report-section recommendation-clean">
                 <h3>Recommendation</h3>
                 <p>{{ result.recommendation }}</p>
@@ -340,6 +438,125 @@
         font-weight: 600;
     }
 
+    .xai-section {
+        color: #1A3A4A;
+    }
+
+    .xai-statement {
+        color: #4A6A7A;
+        line-height: 1.7;
+        font-weight: 600;
+        margin-bottom: 18px;
+    }
+
+    .xai-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+        margin-top: 18px;
+    }
+
+    .xai-panel {
+        background: #F5FAFF;
+        border: 1px solid #C5D9E8;
+        border-radius: 8px;
+        padding: 18px;
+    }
+
+    .xai-panel h4,
+    .xai-comparison h4 {
+        margin: 0 0 14px;
+        color: #1A3A4A;
+        font-size: 17px;
+        font-weight: 900;
+    }
+
+    .xai-subtitle {
+        margin: 14px 0 8px;
+        color: #4A6A7A;
+        font-size: 12px;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .xai-bar-row {
+        display: grid;
+        grid-template-columns: minmax(140px, 1fr) minmax(100px, 160px) 62px;
+        gap: 10px;
+        align-items: center;
+        padding: 7px 0;
+    }
+
+    .xai-bar-label {
+        font-size: 13px;
+        font-weight: 700;
+        color: #1A3A4A;
+        line-height: 1.35;
+    }
+
+    .xai-bar-track {
+        height: 10px;
+        background: #EBF8FF;
+        border-radius: 999px;
+        overflow: hidden;
+    }
+
+    .xai-bar-fill {
+        height: 100%;
+        border-radius: 999px;
+        min-width: 3px;
+    }
+
+    .xai-bar-fill.danger {
+        background: #D9534F;
+    }
+
+    .xai-bar-fill.safe {
+        background: #4CAF50;
+    }
+
+    .xai-value {
+        color: #4A6A7A;
+        font-size: 12px;
+        font-weight: 900;
+        text-align: right;
+    }
+
+    .xai-unavailable {
+        margin: 0;
+        color: #4A6A7A;
+        font-weight: 700;
+    }
+
+    .xai-comparison {
+        margin-top: 18px;
+    }
+
+    .xai-table {
+        display: grid;
+        grid-template-columns: minmax(180px, 1fr) 90px 90px;
+        border: 1px solid #C5D9E8;
+        border-radius: 8px;
+        overflow: hidden;
+        background: #ffffff;
+    }
+
+    .xai-table div {
+        padding: 10px 12px;
+        border-bottom: 1px solid #C5D9E8;
+        color: #1A3A4A;
+        font-weight: 700;
+    }
+
+    .xai-table-head {
+        background: #EBF8FF;
+        color: #4A6A7A !important;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
     /* Report Actions */
     .report-actions {
         margin-top: 24px;
@@ -500,6 +717,19 @@
 
         .report-meta-grid {
             grid-template-columns: 1fr;
+        }
+
+        .xai-grid,
+        .xai-table {
+            grid-template-columns: 1fr;
+        }
+
+        .xai-bar-row {
+            grid-template-columns: 1fr;
+        }
+
+        .xai-value {
+            text-align: left;
         }
 
         .risk-score-top strong {

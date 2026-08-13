@@ -120,8 +120,21 @@ def _ml_score(content, scan_type):
     model = load_model()
     features = np.array([extract_features(content, scan_type)])
     if hasattr(model, "predict_proba"):
-        return round(float(model.predict_proba(features)[0][1]) * 100)
+        class_index = _dangerous_class_index(model)
+        return round(float(model.predict_proba(features)[0][class_index]) * 100)
     return int(model.predict(features)[0]) * 100
+
+
+def _dangerous_class_index(model):
+    classes = list(getattr(model, "classes_", []))
+    preferred = {1, "1", True, "phishing", "malicious", "scam", "dangerous", "high risk", "high_risk"}
+    for index, class_value in enumerate(classes):
+        normalized = str(class_value).strip().lower()
+        if class_value in preferred or normalized in preferred:
+            return index
+    if len(classes) == 2:
+        return int(np.argmax(classes))
+    raise ValueError(f"Unable to identify dangerous class from model.classes_: {classes}")
 
 
 def _classification(score):
@@ -296,6 +309,29 @@ def scan_content(content, scan_type):
     confidence_score = max(35, min(confidence_score, 99))
 
     explanations = evidence.reasons + external["messages"]
+    try:
+        from .xai_explainer import get_combined_explanation
+
+        xai = get_combined_explanation(
+            normalized_content,
+            scan_type if scan_type in {"url", "email", "sms"} else "qr",
+            rules=evidence.reasons,
+            external=external,
+        )
+    except Exception as exc:
+        import logging
+
+        logging.getLogger(__name__).exception("XAI explanation failed: %s", exc)
+        xai = {
+            "shap": {"method": "SHAP", "available": False, "message": "SHAP explanation unavailable.", "top_features": []},
+            "lime": {"method": "LIME", "available": False, "message": "LIME explanation unavailable.", "top_features": []},
+            "rules": evidence.reasons,
+            "external": external,
+            "comparison": [],
+            "statement": (
+                "SHAP and LIME explain the machine-learning prediction. They do not directly determine the final hybrid risk score."
+            ),
+        }
     return {
         "scan_type": scan_type.title(),
         "content": normalized_content,
@@ -308,6 +344,7 @@ def scan_content(content, scan_type):
         "confidence_score": confidence_score,
         "label": _classification(risk_score),
         "explanation": explanations,
+        "xai": xai,
         "recommendation": _recommendation(risk_score, scan_type, evidence),
     }
 
@@ -326,5 +363,16 @@ def scan_passive_content(content, scan_type, reasons, risk_score=15, confidence_
         "confidence_score": confidence_score,
         "label": _classification(risk_score),
         "explanation": reasons,
+        "xai": {
+            "shap": {"method": "SHAP", "available": False, "message": "SHAP explanation unavailable for passive QR content.", "top_features": []},
+            "lime": {"method": "LIME", "available": False, "message": "LIME explanation unavailable for passive QR content.", "top_features": []},
+            "rules": reasons,
+            "external": {"virustotal_score": 0, "google_safe_browsing_score": 0, "whois_score": 0, "messages": []},
+            "comparison": [],
+            "statement": (
+                "Rule-based explanations provide deterministic reasons based on predefined security signals. "
+                "SHAP and LIME explain machine-learning predictions when the Random Forest model is used."
+            ),
+        },
         "recommendation": _recommendation(risk_score, scan_type),
     }

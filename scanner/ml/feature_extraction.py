@@ -30,6 +30,72 @@ URL_RE = re.compile(r"(?:https?://|www\.)[^\s<>'\"]+", re.IGNORECASE)
 IP_RE = re.compile(r"(?<!\d)(?:\d{1,3}\.){3}\d{1,3}(?!\d)")
 
 
+FEATURE_NAMES = [
+    "text_length",
+    "suspicious_word_count",
+    "url_count",
+    "has_at",
+    "has_hyphen",
+    "is_shortener",
+    "has_ip",
+    "is_http",
+    "is_url",
+    "is_email",
+    "is_sms",
+    "is_qr",
+    "money_reward",
+    "urgency",
+    "sensitive_data_request",
+    "many_subdomains",
+    "domain_length",
+    "path_depth",
+    "query_param_count",
+    "percent_encoding",
+    "brand_impersonation_mismatch",
+    "high_digit_ratio",
+    "high_entropy",
+    "risky_file_extension",
+    "legitimate_mail_markers",
+]
+
+
+FEATURE_DESCRIPTIONS = {
+    "text_length": "Length of the submitted content",
+    "suspicious_word_count": "Number of suspicious words detected",
+    "url_count": "Number of URLs found",
+    "has_at": "Contains an @ symbol that can hide the real destination",
+    "has_hyphen": "Domain contains a hyphen",
+    "is_shortener": "URL shortener detected",
+    "has_ip": "IP address used instead of a domain",
+    "is_http": "Uses insecure HTTP instead of HTTPS",
+    "is_url": "Input is being scanned as a URL",
+    "is_email": "Input is being scanned as an email",
+    "is_sms": "Input is being scanned as an SMS message",
+    "is_qr": "Input came from QR content",
+    "money_reward": "Money, prize, reward, or refund language detected",
+    "urgency": "Urgent or threatening language detected",
+    "sensitive_data_request": "Request for sensitive information detected",
+    "many_subdomains": "URL contains many subdomains",
+    "domain_length": "Length of the detected domain",
+    "path_depth": "Number of URL path levels",
+    "query_param_count": "Number of URL query parameters",
+    "percent_encoding": "Encoded characters detected in the content",
+    "brand_impersonation_mismatch": "Known brand name appears outside its official domain",
+    "high_digit_ratio": "High ratio of digits in the content",
+    "high_entropy": "Domain appears unusually random or complex",
+    "risky_file_extension": "Risky executable or archive file extension detected",
+    "legitimate_mail_markers": "Legitimate email markers such as unsubscribe or receipt language detected",
+}
+
+
+def get_feature_names():
+    return list(FEATURE_NAMES)
+
+
+def get_feature_descriptions():
+    return dict(FEATURE_DESCRIPTIONS)
+
+
 def normalize_url(value):
     text = str(value).strip()
     if text.lower().startswith("www."):

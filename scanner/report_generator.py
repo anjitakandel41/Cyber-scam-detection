@@ -21,6 +21,33 @@ def _risk_color(classification):
     return colors.HexColor('#0f766e')
 
 
+def _summary_items(explanation):
+    if isinstance(explanation, dict):
+        return explanation.get('summary') or explanation.get('rules') or []
+    return explanation or []
+
+
+def _feature_table(features, value_key):
+    rows = [['Factor', 'Value', 'Direction', 'Contribution']]
+    for item in features:
+        direction = 'Increases risk' if item.get('direction') == 'increases_risk' else 'Reduces risk'
+        rows.append([
+            item.get('description') or item.get('feature', ''),
+            str(item.get('value', '')),
+            direction,
+            f"{float(item.get(value_key, 0)):+.4f}",
+        ])
+    table = Table(rows, colWidths=[230, 60, 100, 90])
+    table.setStyle(TableStyle([
+        ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor('#e0f2fe')),
+        ('BOX', (0, 0), (-1, -1), 0.5, colors.HexColor('#cbd5e1')),
+        ('INNERGRID', (0, 0), (-1, -1), 0.25, colors.HexColor('#cbd5e1')),
+        ('PADDING', (0, 0), (-1, -1), 6),
+        ('VALIGN', (0, 0), (-1, -1), 'TOP'),
+    ]))
+    return table
+
+
 def generate_scan_report(scan_result):
     reports_dir = Path(settings.MEDIA_ROOT) / 'reports'
     reports_dir.mkdir(parents=True, exist_ok=True)
@@ -72,8 +99,54 @@ def generate_scan_report(scan_result):
         Paragraph('Explanation', styles['Heading2']),
     ])
     explanation = scan_result.explanation or []
-    for item in explanation:
+    for item in _summary_items(explanation):
         story.append(_paragraph(f'- {item}', styles['BodyText']))
+
+    if isinstance(explanation, dict):
+        story.extend([
+            Spacer(1, 14),
+            Paragraph('Explainable AI Analysis', styles['Heading2']),
+            _paragraph(
+                explanation.get('statement') or (
+                    'SHAP and LIME explain the machine-learning prediction. They do not directly determine the final hybrid risk score.'
+                ),
+                styles['BodyText'],
+            ),
+            Spacer(1, 10),
+            Paragraph('SHAP Analysis', styles['Heading3']),
+        ])
+        shap = explanation.get('shap') or {}
+        if shap.get('top_features'):
+            story.append(_feature_table(shap['top_features'], 'shap_value'))
+        else:
+            story.append(_paragraph(shap.get('message', 'SHAP explanation unavailable.'), styles['BodyText']))
+
+        story.extend([Spacer(1, 10), Paragraph('LIME Analysis', styles['Heading3'])])
+        lime = explanation.get('lime') or {}
+        if lime.get('top_features'):
+            story.append(_feature_table(lime['top_features'], 'weight'))
+        else:
+            story.append(_paragraph(lime.get('message', 'LIME explanation unavailable.'), styles['BodyText']))
+
+        comparison = explanation.get('comparison') or []
+        if comparison:
+            story.extend([Spacer(1, 10), Paragraph('SHAP and LIME Comparison', styles['Heading3'])])
+            comparison_rows = [['Feature', 'SHAP', 'LIME']]
+            for item in comparison:
+                lime_value = item.get('lime')
+                comparison_rows.append([
+                    item.get('description') or item.get('feature', ''),
+                    f"{float(item.get('shap', 0)):+.4f}",
+                    'N/A' if lime_value is None else f"{float(lime_value):+.4f}",
+                ])
+            comparison_table = Table(comparison_rows, colWidths=[300, 90, 90])
+            comparison_table.setStyle(TableStyle([
+                ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor('#e0f2fe')),
+                ('BOX', (0, 0), (-1, -1), 0.5, colors.HexColor('#cbd5e1')),
+                ('INNERGRID', (0, 0), (-1, -1), 0.25, colors.HexColor('#cbd5e1')),
+                ('PADDING', (0, 0), (-1, -1), 6),
+            ]))
+            story.append(comparison_table)
 
     story.extend([
         Spacer(1, 14),

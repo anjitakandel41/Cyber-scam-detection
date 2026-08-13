@@ -187,12 +187,21 @@ Subject: {subject}
 
 
 def save_scan_result(user, result):
+    structured_explanation = {
+        "summary": result["explanation"],
+        "shap": result.get("xai", {}).get("shap", {}),
+        "lime": result.get("xai", {}).get("lime", {}),
+        "rules": result.get("xai", {}).get("rules", result["explanation"]),
+        "external": result.get("xai", {}).get("external", {}),
+        "comparison": result.get("xai", {}).get("comparison", []),
+        "statement": result.get("xai", {}).get("statement", ""),
+    }
     scan_result = ScanResult.objects.create(
         user=user,
         input=result.get('scan_input', result['content']),
         risk_score=result['risk_score'],
         classification=result['label'],
-        explanation=result['explanation'],
+        explanation=structured_explanation,
         recommendation=result['recommendation'],
     )
 
