@@ -953,55 +953,70 @@ cyber-scam-detection/
 
 > The exact directory structure may differ depending on the final implementation.
 
----
-
 # ⚙️ Installation
 
 ## 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/cyber-scam-detection.git
-cd cyber-scam-detection
+git clone https://github.com/anjitakandel41/Cyber-scam-detection.git
+cd Cyber-scam-detection
 ```
-
-Replace `yourusername/cyber-scam-detection` with your actual GitHub repository path.
 
 ---
 
-## 2. Create a Virtual Environment
+## 2. Install `uv`
+
+If `uv` is not already installed, install it using the official installation method for your operating system.
+
+Verify the installation:
+
+```bash
+uv --version
+```
+
+---
+
+## 3. Create the Project Environment
+
+Create a virtual environment using `uv`:
+
+```bash
+uv venv
+```
 
 ### Windows
 
-```bash
-python -m venv venv
-```
-
-Activate it:
+Activate the virtual environment:
 
 ```bash
-venv\Scripts\activate
+.venv\Scripts\activate
 ```
 
 ### Linux/macOS
 
 ```bash
-python3 -m venv venv
-source venv/bin/activate
+source .venv/bin/activate
 ```
 
 ---
 
-## 3. Install Dependencies
+## 4. Install Project Dependencies
+
+If the project contains a `pyproject.toml` file, install the project dependencies with:
 
 ```bash
-pip install -r requirements.txt
+uv sync
 ```
+
+This creates/updates the project's `.venv` environment and installs the dependencies defined in `pyproject.toml` and `uv.lock`.
+
+> **Note:** This project uses `uv` for dependency management. You do not need to run `pip install -r requirements.txt` if `pyproject.toml` and `uv.lock` are included in the repository.
 
 ---
 
-## 4. Configure Environment Variables
+## 5. Configure Environment Variables
 
-Create a `.env` file in the project root.
+Create a `.env` file in the project root directory.
 
 Example:
 
@@ -1018,7 +1033,6 @@ EMAIL_HOST_PASSWORD=your_email_password
 GOOGLE_CLIENT_ID=your_google_client_id
 GOOGLE_CLIENT_SECRET=your_google_client_secret
 
-
 # AI Chatbot
 HUGGINGFACE_API_TOKEN=hf_your_huggingface_api_token
 
@@ -1026,55 +1040,153 @@ HUGGINGFACE_API_TOKEN=hf_your_huggingface_api_token
 LLAMA_MODEL=metaexample/llama-2-7b
 ```
 
-Never upload real API keys, passwords, OAuth credentials, or secret keys to GitHub.
+**Never upload real API keys, passwords, OAuth credentials, or secret keys to GitHub.**
 
-Add the following to `.gitignore`:
+The `.env` file should remain local and must be included in `.gitignore`.
+
+Recommended `.gitignore` entries:
 
 ```gitignore
 .env
+.venv/
 venv/
 __pycache__/
-*.pyc
+*.py[cod]
 db.sqlite3
+*.sqlite3
 media/
 credentials.json
 token.json
+*.log
 ```
 
 ---
 
 # 🗃️ Database Setup
 
-Run migrations:
+Run Django migrations using `uv`:
 
 ```bash
-python manage.py makemigrations
-python manage.py migrate
+uv run python manage.py makemigrations
+uv run python manage.py migrate
 ```
 
 Create an administrator account:
 
 ```bash
-python manage.py createsuperuser
+uv run python manage.py createsuperuser
 ```
 
 ---
 
 # 🚀 Run the Project
 
-Start the Django development server:
+Start the Django development server using:
 
 ```bash
-python manage.py runserver
+uv run python manage.py runserver
 ```
 
-Open the application in your browser:
+The application will be available at:
 
 ```text
 http://127.0.0.1:8000/
 ```
 
 ---
+
+# 🧪 Useful Development Commands
+
+### Check Django Configuration
+
+```bash
+uv run python manage.py check
+```
+
+### Create Migrations
+
+```bash
+uv run python manage.py makemigrations
+```
+
+### Apply Migrations
+
+```bash
+uv run python manage.py migrate
+```
+
+### Create Superuser
+
+```bash
+uv run python manage.py createsuperuser
+```
+
+### Run Development Server
+
+```bash
+uv run python manage.py runserver
+```
+
+### Open Django Shell
+
+```bash
+uv run python manage.py shell
+```
+
+### Install a New Package
+
+For example, to install OpenAI and `python-dotenv`:
+
+```bash
+uv add openai python-dotenv
+```
+
+After adding packages, `uv` updates the project dependency files.
+
+### Remove a Package
+
+```bash
+uv remove package-name
+```
+
+### Synchronize Dependencies
+
+```bash
+uv sync
+```
+
+### Update Dependencies
+
+```bash
+uv lock --upgrade
+uv sync
+```
+
+---
+
+# 📦 Dependency Management
+
+This project uses:
+
+* `pyproject.toml` — Project and dependency configuration
+* `uv.lock` — Locked dependency versions
+* `.venv/` — Local virtual environment
+
+The `.venv/` directory should **not** be uploaded to GitHub.
+
+When another developer clones the repository, they can recreate the environment with:
+
+```bash
+uv sync
+```
+
+Then run Django with:
+
+```bash
+uv run python manage.py runserver
+```
+
+This allows the project to use the same locked dependency versions across different development environments.
 
 # 🧪 Machine Learning Model
 
