@@ -1,29 +1,182 @@
-# Environment variables / secrets
-.env
+# =========================================================
 
 # Python
-__pycache__/
-*.py[cod]
-*.pyo
 
-# Virtual environment
-.venv/
+# =========================================================
+
+**pycache**/
+*.py[cod]
+*$py.class
+*.so
+
+# Python cache
+
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# =========================================================
+
+# Virtual Environment
+
+# =========================================================
+
 venv/
 env/
+ENV/
+.venv/
+env.bak/
+venv.bak/
+
+# =========================================================
 
 # Django
+
+# =========================================================
+
+*.log
+local_settings.py
+
+# Django generated files
+
+staticfiles/
+static_root/
+
+# =========================================================
+
+# Environment Variables & Secrets
+
+# =========================================================
+
+.env
+.env.*
+!.env.example
+
+# Secret/configuration files
+
+secrets.json
+config.json
+credentials.json
+client_secret*.json
+service-account*.json
+
+# =========================================================
+
+# Database
+
+# =========================================================
+
 db.sqlite3
+db.sqlite3-journal
+*.sqlite3
 
-# User uploaded/generated files
+# =========================================================
+
+# Media & Uploaded Files
+
+# =========================================================
+
 media/
+media_root/
+uploads/
 
-# IDE
+# User uploaded QR images
+
+qr_uploads/
+
+# Generated PDF reports
+
+reports/
+pdf_reports/
+
+# =========================================================
+
+# Gmail / Google OAuth
+
+# =========================================================
+
+token.json
+token.pickle
+*.pickle
+
+# Google OAuth credentials
+
+credentials.json
+client_secret*.json
+
+# =========================================================
+
+# Machine Learning Generated Files
+
+# =========================================================
+
+# Uncomment these if you do NOT want to upload trained models
+
+# *.pkl
+
+# *.joblib
+
+# model.pkl
+
+# ML temporary files
+
+models/**pycache**/
+ml/**pycache**/
+
+# =========================================================
+
+# Jupyter Notebook
+
+# =========================================================
+
+.ipynb_checkpoints/
+
+# =========================================================
+
+# IDE / Editors
+
+# =========================================================
+
 .vscode/
 .idea/
+*.swp
+*.swo
 
-# OS files
-.DS_Store
+# VS Code local settings
+
+.history/
+
+# =========================================================
+
+# Operating System
+
+# =========================================================
+
+# Windows
+
 Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+Desktop.ini
 
-# Logs
-*.log
+# =========================================================
+
+*.code-workspace
+.DS_Store
+
+# =========================================================
+
+# Project-specific generated files
+
+# =========================================================
+
+scan_results/
+generated_reports/
+generated_pdfs/
+temporary_files/
+logs/
+
+# =========================================================
+
