@@ -1,96 +1,29 @@
+# Environment variables / secrets
+.env
 
-# # =========================
-# # Django Core
-# # =========================
-# *.log
-# *.pot
-# *.pyc
-# __pycache__/
-# db.sqlite3
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
 
-# db.sqlite3
-# *.sqlite3
+# Virtual environment
+.venv/
+venv/
+env/
 
+# Django
+db.sqlite3
 
-# # migrations (optional clean repo style)
-# */migrations/*.pyc
-# */migrations/__pycache__/
+# User uploaded/generated files
+media/
 
-# # static & media (generated at runtime)
-# staticfiles/
-# media/
+# IDE
+.vscode/
+.idea/
 
-# # =========================
-# # Virtual Environment
-# # =========================
-# venv/
-# env/
-# ENV/
-# .venv/
+# OS files
+.DS_Store
+Thumbs.db
 
-# # =========================
-# # Environment Variables (IMPORTANT)
-# # =========================
-# .env
-# .env.*
-# *.env
-
-# # =========================
-# # IDE / Editor files
-# # =========================
-# .vscode/
-# .idea/
-# *.swp
-# *.swo
-
-# # =========================
-# # OS files
-# # =========================
-# .DS_Store
-# Thumbs.db
-
-# # =========================
-# # Python Cache
-# # =========================
-# *.pyc
-# *.pyo
-# *.pyd
-# __pycache__/
-
-# # =========================
-# # ML MODEL FILES (VERY IMPORTANT)
-# # =========================
-# *.pkl
-# *.joblib
-# *.h5
-# *.model
-# ml_model/model.pkl
-
-# # =========================
-# # DATASETS (IMPORTANT)
-# # =========================
-# *.csv
-# *.xlsx
-# datasets/
-# data/
-
-# # =========================
-# # GENERATED REPORTS (PDF)
-# # =========================
-# *.pdf
-# media/reports/
-
-
-# # =========================
-# # LOG FILES
-# # =========================
-# logs/
-# *.log
-
-# # =========================
-# # SECURITY SENSITIVE FILES
-# # =========================
-# credentials.json
-# secret_key.txt
-# apikeys.txt
-
+# Logs
+*.log
