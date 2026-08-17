@@ -1017,6 +1017,13 @@ EMAIL_HOST_PASSWORD=your_email_password
 
 GOOGLE_CLIENT_ID=your_google_client_id
 GOOGLE_CLIENT_SECRET=your_google_client_secret
+
+
+# AI Chatbot
+HUGGINGFACE_API_TOKEN=hf_your_huggingface_api_token
+
+# Llama
+LLAMA_MODEL=metaexample/llama-2-7b
 ```
 
 Never upload real API keys, passwords, OAuth credentials, or secret keys to GitHub.
