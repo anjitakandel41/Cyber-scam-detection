@@ -2,7 +2,7 @@
 db.sqlite3
 *.sqlite3
 media/
+.venv/
+venv/
 __pycache__/
 *.pyc
-.venv/
-venv/g
